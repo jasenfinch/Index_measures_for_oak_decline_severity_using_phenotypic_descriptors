@@ -1,0 +1,2 @@
+# Quantifying_acute_and_chronic_oak_decline_severity_using_phenotypic_descriptors
+Quantifying acute and chronic oak decline severity using phenotypic descriptors
