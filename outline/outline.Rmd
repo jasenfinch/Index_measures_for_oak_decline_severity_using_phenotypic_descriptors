@@ -1,0 +1,38 @@
+---
+title: "Quantifying acute and chronic oak decline severity using phenotypic descriptors"
+author: "Jasen Finch"
+date: "07/02/2019"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+**Authors:** Jasen Finch, Nathan Brown, John Draper, Sandra Denman
+
+**Proposed journals:**
+
+**Summary:**
+
+**Keywords:** phenotyping, tree-decline, machine-learning, quantification
+
+## Introduction
+
+## Methods
+
+## Results/Discussion
+
+### Phenotypic descriptors
+
+### Extended descriptors
+
+### Decline Indexes
+
+### 
+
+### Applications
+
+## Conclusion
+
+
