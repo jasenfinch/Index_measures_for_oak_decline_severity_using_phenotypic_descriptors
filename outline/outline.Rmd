@@ -1,25 +1,37 @@
 ---
-title: "Quantifying acute and chronic oak decline severity using phenotypic descriptors"
+title: "Indexes for measuring acute and chronic oak decline severity using phenotypic descriptors"
 author: "Jasen Finch"
 date: "07/02/2019"
-output: word_document
+output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-**Authors:** Jasen Finch, Nathan Brown, John Draper, Sandra Denman
+**Authors:** Jasen Finch, Nathan Brown, Sandra Denman & John Draper
 
-**Proposed journals:**
+**Proposed journal:**
 
-**Summary:**
+**Summary:** 
+Two indexes, the phenotypic decline index (PDI) and the decline acuteness index (DAI), were developed to describe acute and chronic oak decline severity using a multitude of easily measureable phenotypic descriptors.
+Measured phenotypic descriptors include aspects of tree shape and size, crown condition and the presence of biotic agents.
+These were collected from 174 trees at 9 sites from across the south, east and west of England.
+Between sites differences were identified as a results of aspects of tree size which were corrected for using a mean centering adjustment.
+The decline indexes were then calculated using proximity values from an unsupervised random forest of the phenotypic descriptors, multidimensional scaling and min-max scaling.
+These indexes are simple measures of tree decline severity allowing easy comparisons of oak trees both spatially and temporally providing a useful tool for forest monitoring and management.
 
-**Keywords:** phenotyping, tree-decline, machine-learning, quantification
+
+
+**Keywords:** acute oak decline, chronic oak decline, phenotyping, machine learning, quantification
 
 ## Introduction
 
 ## Methods
+
+### Phenotypic data collection
+
+### 
 
 ## Results/Discussion
 
@@ -27,12 +39,14 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### Extended descriptors
 
-### Decline Indexes
+### Cross site differences and correction
 
-### 
+### Oak decline indexes
+
+### Comparison to assigned decline status labels
 
 ### Applications
 
-## Conclusion
+## Conclusions
 
-
+## Figures/Tables
