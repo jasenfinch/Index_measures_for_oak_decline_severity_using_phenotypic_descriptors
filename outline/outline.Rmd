@@ -1,6 +1,6 @@
 ---
 title: "Indexes for measuring acute and chronic oak decline severity using phenotypic descriptors"
-output: pdf_document
+output: word_document
 ---
 
 ```{r setup, include=FALSE}
@@ -16,7 +16,7 @@ Two indexes, the Phenotypic Decline Index (PDI) and the Decline Acuteness Index 
 Measured phenotypic descriptors include aspects of tree shape and size, crown condition and the presence of biotic agents.
 These were collected from 174 trees exhibiting a spectrum of decline severity at 9 sites from across the south, east and west of England.
 Inter site differences were identified as a results of aspects of tree size which were corrected for using a mean centering adjustment.
-The decline indexes were then calculated using proximity values from an unsupervised random forest of the phenotypic descriptors, multidimensional scaling and min-max scaling.
+The decline indexes were then calculated using proximity values from an unsupervised random forest of the phenotypic descriptors, multidimensional scaling (MDS) and min-max scaling.
 These indexes are simple but sensitive measures of tree decline severity allowing easy comparisons of oak trees both spatially and temporally providing a useful tool for forest monitoring and management.
 
 **Keywords:** acute oak decline, chronic oak decline, phenotyping, machine learning
