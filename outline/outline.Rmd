@@ -1,7 +1,5 @@
 ---
 title: "Indexes for measuring acute and chronic oak decline severity using phenotypic descriptors"
-author: "Jasen Finch"
-date: "07/02/2019"
 output: pdf_document
 ---
 
@@ -14,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 **Proposed journal:**
 
 **Summary:** 
-Two indexes, the phenotypic decline index (PDI) and the decline acuteness index (DAI), were developed to describe acute and chronic oak decline severity using a multitude of easily measureable phenotypic descriptors.
+Two indexes, the Phenotypic Decline Index (PDI) and the Decline Acuteness Index (DAI), were developed to describe acute and chronic oak decline severity using a multitude of easily measureable phenotypic descriptors.
 Measured phenotypic descriptors include aspects of tree shape and size, crown condition and the presence of biotic agents.
 These were collected from 174 trees at 9 sites from across the south, east and west of England.
 Between sites differences were identified as a results of aspects of tree size which were corrected for using a mean centering adjustment.
@@ -27,25 +25,36 @@ These indexes are simple measures of tree decline severity allowing easy compari
 
 ## Introduction
 
+- Acute and chronic decline associated phenotypes
+
 ## Methods
 
 ### Phenotypic data collection
 
-### 
+### Data preparation and analysis
 
 ## Results/Discussion
 
-### Phenotypic descriptors
+### Phenotypic descriptors for oak decline
 
-### Extended descriptors
+- Descriptions of collected phenotypic desciptors
+
+- Definitions of additionally calculated features (crown condition, crown volume, bleed prevalence, *Agrillus* exit hole density)
 
 ### Cross site differences and correction
 
+- Analysis of cross site differences
+- Outline of cross site correction approach using mean centering adjustment
+
 ### Oak decline indexes
 
-### Comparison to assigned decline status labels
+- Association of phenotypic descriptors with manually assigned decline status
+- Decline index calculation
+- Comparison of indexes with manually assigned decline status labels
 
 ### Applications
+
+- Disscusion of applications to forestry monitoring and management
 
 ## Conclusions
 
