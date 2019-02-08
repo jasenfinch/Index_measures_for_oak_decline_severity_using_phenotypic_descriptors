@@ -30,6 +30,7 @@ These indexes are simple but sensitive measures of tree decline severity allowin
 
 ### Phenotypic data collection
 
+- Site descriptions
 - Field phenotyping protocol
 
 ### Data preparation and analysis
@@ -69,6 +70,8 @@ These indexes are simple but sensitive measures of tree decline severity allowin
 - Decline indexes provide intuitive measures of decline severity based on simple phenotypic measurements that do not require specialist equipment
 
 ## Figures/Tables
+
+**Table 1:** Overview of phenotypic descriptors
 
 **Figure 1:** Site differences MDS plot and feature importance (top ranked trends)
 
