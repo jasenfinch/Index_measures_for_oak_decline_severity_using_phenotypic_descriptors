@@ -9,35 +9,39 @@ knitr::opts_chunk$set(echo = TRUE)
 
 **Authors:** Jasen Finch, Nathan Brown, Sandra Denman & John Draper
 
-**Proposed journal:**
+**Proposed journal:** Still undecided! ??Plant Methods, Forestry?? 
 
 **Summary:** 
-Two indexes, the Phenotypic Decline Index (PDI) and the Decline Acuteness Index (DAI), were developed to describe acute and chronic oak decline severity using a multitude of easily measureable phenotypic descriptors.
+Two indexes, the Phenotypic Decline Index (PDI) and the Decline Acuteness Index (DAI), were developed to describe acute and chronic oak decline severity using a multitude of easily measurable phenotypic descriptors.
 Measured phenotypic descriptors include aspects of tree shape and size, crown condition and the presence of biotic agents.
-These were collected from 174 trees at 9 sites from across the south, east and west of England.
-Between sites differences were identified as a results of aspects of tree size which were corrected for using a mean centering adjustment.
+These were collected from 174 trees exhibiting a spectrum of decline severity at 9 sites from across the south, east and west of England.
+Inter site differences were identified as a results of aspects of tree size which were corrected for using a mean centering adjustment.
 The decline indexes were then calculated using proximity values from an unsupervised random forest of the phenotypic descriptors, multidimensional scaling and min-max scaling.
-These indexes are simple measures of tree decline severity allowing easy comparisons of oak trees both spatially and temporally providing a useful tool for forest monitoring and management.
+These indexes are simple but sensitive measures of tree decline severity allowing easy comparisons of oak trees both spatially and temporally providing a useful tool for forest monitoring and management.
 
-
-
-**Keywords:** acute oak decline, chronic oak decline, phenotyping, machine learning, quantification
+**Keywords:** acute oak decline, chronic oak decline, phenotyping, machine learning
 
 ## Introduction
 
 - Acute and chronic decline associated phenotypes
+- Manual assignment of decline status difficult prone to error for due to contribution of many factors. 
 
 ## Methods
 
 ### Phenotypic data collection
 
+- Field phenotyping protocol
+
 ### Data preparation and analysis
+
+- Aggregation of cardinal observations.
+- Random forest and MDS analyses
 
 ## Results/Discussion
 
 ### Phenotypic descriptors for oak decline
 
-- Descriptions of collected phenotypic desciptors
+- Descriptions of collected phenotypic descriptors and manual status assignment
 
 - Definitions of additionally calculated features (crown condition, crown volume, bleed prevalence, *Agrillus* exit hole density)
 
@@ -48,14 +52,35 @@ These indexes are simple measures of tree decline severity allowing easy compari
 
 ### Oak decline indexes
 
-- Association of phenotypic descriptors with manually assigned decline status
+- Suitability of collected phenotypic descriptors for describing decline status
 - Decline index calculation
 - Comparison of indexes with manually assigned decline status labels
+- Index thresholds for category definitions (healthy, declining, severe decline etc.)
 
 ### Applications
 
-- Disscusion of applications to forestry monitoring and management
+- Discussion of applications to forestry monitoring and management
+- Sensitivity for integration with molecular data compared to categorical assignments
 
 ## Conclusions
 
+- Crown condition descriptors most important for describing overall decline severity in the PDI.
+- Bacterial bleed related descriptors are most important for describing decline acuteness.
+- Decline indexes provide intuitive measures of decline severity based on simple phenotypic measurements that do not require specialist equipment
+
 ## Figures/Tables
+
+**Figure 1:** Site differences MDS plot and feature importance (top ranked trends)
+
+**Figure 2:** Example of site correction effect on a descriptor
+
+**Figure 3:** Decline index scales (graphical representations of the indexes)
+
+**Figure 4:** Decline index descriptor contributions and trends of top ranked
+
+**Figure 5:** Decline indexes versus manual status assignments
+
+**Supplementary:**
+
+  - Descriptor associations with PDI
+  - Descriptor associations with DAI
