@@ -1,5 +1,5 @@
 ---
-title: "Indexes for measuring acute and chronic oak decline severity using phenotypic descriptors"
+title: "Indexes measures for oak decline severity using phenotypic descriptors"
 output: word_document
 ---
 
@@ -56,6 +56,7 @@ These indexes are simple but sensitive measures of tree decline severity allowin
 - Suitability of collected phenotypic descriptors for describing decline status
 - Decline index calculation
 - Comparison of indexes with manually assigned decline status labels
+- Top ranked descriptor index response surfaces
 - Index thresholds for category definitions (healthy, declining, severe decline etc.)
 
 ### Applications
@@ -73,13 +74,16 @@ These indexes are simple but sensitive measures of tree decline severity allowin
 
 **Table 1:** Overview of phenotypic descriptors
 
-**Figure 1:** Site differences MDS plot and feature importance (top ranked trends)
+**Figure 1:** 
+    - a) Site differences MDS plot
+    - b) Site difference feature importance
+    - c) Example of site correction effect on a descriptor
 
-**Figure 2:** Example of site correction effect on a descriptor
+**Figure 2:** Decline index scales (graphical representations of the indexes)
 
-**Figure 3:** Decline index scales (graphical representations of the indexes)
+**Figure 3:** Decline index descriptor contributions
 
-**Figure 4:** Decline index descriptor contributions and trends of top ranked
+**Figure 4:** Top ranked descriptor response surfaces
 
 **Figure 5:** Decline indexes versus manual status assignments
 
