@@ -77,15 +77,16 @@ These indexes are simple but sensitive measures of tree decline severity allowin
 **Figure 1:** 
     - a) Site differences MDS plot
     - b) Site difference feature importance
-    - c) Example of site correction effect on a descriptor
 
-**Figure 2:** Decline index scales (graphical representations of the indexes)
+**Figure 2:** Example of site correction effect on a descriptor
 
-**Figure 3:** Decline index descriptor contributions
+**Figure 3:** Decline index scales (graphical representations of the indexes)
 
-**Figure 4:** Top ranked descriptor response surfaces
+**Figure 4:** Decline index descriptor contributions
 
-**Figure 5:** Decline indexes versus manual status assignments
+**Figure 5:** Top ranked descriptor response surfaces
+
+**Figure 6:** Decline indexes versus manual status assignments
 
 **Supplementary:**
 
