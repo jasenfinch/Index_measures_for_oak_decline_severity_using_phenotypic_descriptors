@@ -1,0 +1,24 @@
+---
+title: "Indexes measures for oak decline severity using phenotypic descriptors"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,cache = TRUE)
+```
+
+```{r library_load}
+source('../code/library_load.R')
+```
+
+```{r prep}
+source('../code/data_prep.R')
+```
+
+```{r figure_1}
+source('../code/Figure_1_site_differences.R')
+
+figure1 %>%
+  wrap_plots()
+```
+

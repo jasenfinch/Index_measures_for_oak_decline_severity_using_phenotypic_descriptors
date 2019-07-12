@@ -28,7 +28,7 @@ locationImportance <- locationRF %>%
   arrange(`Relative Importance`) %>%
   mutate(Descriptor = factor(Descriptor,levels = Descriptor))
 
-figure1 <- list(
+site_differences <- list(
   a = ggplot() +
     geom_point(data = locationMDS,aes(x = `Dimension 1`, y = `Dimension 2`,fill = Location),shape = 21,size = 3) +
     geom_text(data = locationMargin,aes(x = x,y = y,label = label)) +
