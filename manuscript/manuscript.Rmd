@@ -15,10 +15,17 @@ source('../code/library_load.R')
 source('../code/data_prep.R')
 ```
 
-```{r figure_1}
-source('../code/Figure_1_site_differences.R')
+```{r site_differences}
+source('../code/site_differences.R')
 
-figure1 %>%
+site_differences %>%
+  wrap_plots()
+```
+
+```{r descriptor_adjustment,fig.cap='Error bars show ±1SE of the mean.\nDashed red line shows the overall mean.'}
+source('../code/descriptor_adjustment.R')
+
+descriptor_adjustment %>%
   wrap_plots()
 ```
 
