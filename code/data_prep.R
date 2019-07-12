@@ -43,3 +43,9 @@ correctedPhenoData <- siteCorrection(phenoData) %>%
                                                   `Diameter at breast height (cm)`),
          `Agrilus exit hole density (m^-2)` = agrilusExitHoleDensity(`Agrilus exit holes`,`Diameter at breast height (cm)`)
   )
+
+analysisTable <- makeAnalysisTable(correctedPhenoData)
+
+set.seed(1234)
+PDIrf <- randomForest(analysisTable,DIs$DIs$PDI,ntree = 10000)
+DAIrf <- randomForest(analysisTable,DIs$DIs$DAI,ntree = 10000,mtry = 11)

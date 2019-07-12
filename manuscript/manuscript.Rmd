@@ -33,3 +33,11 @@ descriptor_adjustment %>%
 DIspace()
 ```
 
+```{r}
+source('../code/descriptor_contributions.R')
+descriptor_contributions %>%
+  wrap_plots() + 
+  plot_annotation(title = 'Descriptor importance scores from random forest models for relative contributions to\ndecline index measures',caption = 'Gini importance scores averaged across 100 repetitions')
+```
+
+
