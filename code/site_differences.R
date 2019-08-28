@@ -28,6 +28,15 @@ locationImportance <- locationRF %>%
   arrange(`Relative Importance`) %>%
   mutate(Descriptor = factor(Descriptor,levels = Descriptor))
 
+descriptorLabels <- locationImportance$Descriptor %>%
+  as.character() %>%
+  {c(.[1:6],
+                      expression(Agrillus~exit~hole~density ( m^-2 ) ),
+                      .[8:25],
+                      expression(Crown~volume ( m^3 ) ),
+                      .[27:34])
+  }
+
 site_differences <- list(
   a = ggplot() +
     geom_point(data = locationMDS,aes(x = `Dimension 1`, y = `Dimension 2`,fill = Location),shape = 21,size = 3) +
@@ -39,12 +48,16 @@ site_differences <- list(
           legend.title = element_text(face = 'bold'),
           legend.position = 'bottom') +
     coord_fixed() +
-    guides(fill = guide_legend(nrow = 3,title.position = "top")) +
-    labs(title = 'a)'),
+    guides(fill = guide_legend(ncol = 2,title.position = "top")) +
+    labs(title = 'a)',
+         fill = 'Site'),
   b = ggplot(locationImportance,aes(x = `Relative Importance`,y = Descriptor)) +
     geom_point(shape = 21,fill = ptol_pal()(1),size = 3) +
     theme_bw() +
     theme(plot.title = element_text(face = 'bold'),
-          axis.title = element_text(face = 'bold')) +
-    labs(title = 'b)')
+          axis.title = element_text(face = 'bold',size = 10)) +
+    labs(title = 'b)',
+         y = NULL,
+         x = 'Relative Gini\nimportance') +
+    scale_y_discrete(labels = descriptorLabels)
 )

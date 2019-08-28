@@ -1,0 +1,33 @@
+---
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,cache = TRUE)
+```
+
+```{r library_load}
+source('../code/library_load.R')
+```
+
+```{r prep}
+source('../code/data_prep.R')
+```
+
+# Figures
+
+```{r site_differences,fig.cap='Differences between sites in phenotypic descriptors analysed by supervised Random Forest. a) Multidimensional scaling (MDS) plot of random forest proximity values of individual trees scaled to two dimensions. Mean margin value shown. b) Relative descriptor Gini importances measures.',fig.height=5}
+source('../code/site_differences.R')
+grid.arrange(site_differences$a,site_differences$b,nrow = 1)
+```
+
+```{r DI_space,fig.cap=''}
+DIspace()
+```
+
+```{r descriptor_contributions, fig.cap = ''}
+source('../code/descriptor_contributions.R')
+descriptor_contributions %>%
+  wrap_plots() + 
+  plot_annotation(title = 'Descriptor importance scores from random forest models for relative contributions to\ndecline index measures',caption = 'Gini importance scores averaged across 100 repetitions')
+```

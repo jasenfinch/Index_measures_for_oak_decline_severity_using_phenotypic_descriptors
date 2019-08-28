@@ -45,25 +45,33 @@ $a$ = average active bleed size (cm), $A$ = number of active bleeds, $b$ = avera
 ***Agrilus* exit hole density (m<sup>-2</sup>)** - density of observed *Agrilus* exit holes across the surveyed trunk area.
 $$e = \frac{h}{\frac{2d}{100}\pi}$$
 $h$ = number of *Agrilus* exit holes, $d$ = diameter at breast height (cm)
-```{r site_differences}
+
+# Discussion
+
+# Conclusions
+
+# References
+
+# Figures
+
+```{r site_differences,fig.cap='Site differences',fig.height=6}
 source('../code/site_differences.R')
-site_differences %>%
-  wrap_plots()
+grid.arrange(site_differences$a,site_differences$b,nrow = 1)
 ```
+
 ```{r descriptor_adjustment,fig.cap='Error bars show ±1SE of the mean.\nDashed red line shows the overall mean.'}
 source('../code/descriptor_adjustment.R')
 descriptor_adjustment %>%
   wrap_plots()
 ```
-```{r DIspace}
+
+```{r DI_space,fig.cap=''}
 DIspace()
 ```
-```{r}
+
+```{r descriptor_contributions, fig.cap = ''}
 source('../code/descriptor_contributions.R')
 descriptor_contributions %>%
   wrap_plots() + 
   plot_annotation(title = 'Descriptor importance scores from random forest models for relative contributions to\ndecline index measures',caption = 'Gini importance scores averaged across 100 repetitions')
 ```
-# Discussion
-# Conclusions
-# References
