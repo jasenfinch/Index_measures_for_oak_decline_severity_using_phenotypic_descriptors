@@ -26,13 +26,17 @@ source('../code/site_differences.R')
 grid.arrange(site_differences$a,site_differences$b,nrow = 1)
 ```
 
-```{r DI_space,fig.cap=''}
+```{r DI_space,fig.cap='Two dimensional continuum of the phenotypic decline indexes for oak decline severity.',fig.height=3,fig.width=5}
 DIspace()
 ```
 
-```{r descriptor_contributions, fig.cap = ''}
+```{r descriptor_contributions, fig.height = 5,fig.cap = 'Descriptor importance scores from random forest models for relative contributions to\ndecline index measures. a) Phenotypic decline index (PDI). b) Decline acuteness index (DAI)'}
 source('../code/descriptor_contributions.R')
 descriptor_contributions %>%
-  wrap_plots() + 
-  plot_annotation(title = 'Descriptor importance scores from random forest models for relative contributions to\ndecline index measures',caption = 'Gini importance scores averaged across 100 repetitions')
+  wrap_plots()
+```
+
+```{r PDI_response_surfaces,fig.cap='PDI response surfaces for simulated descriptor values from trained Random Forest models. All other descriptors were set at the values of those of the trees with the lowest PDI used for trainig the models',cache=FALSE}
+source('../code/response_surfaces.R')
+grid.arrange(PDI_response_plot$`a)`,PDI_response_plot$`b)`,PDI_response_plot$`c)`,PDI_response_plot$legend,nrow = 2)
 ```
