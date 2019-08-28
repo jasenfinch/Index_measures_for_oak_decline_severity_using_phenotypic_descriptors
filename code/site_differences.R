@@ -39,7 +39,12 @@ descriptorLabels <- locationImportance$Descriptor %>%
 
 site_differences <- list(
   a = ggplot() +
-    geom_point(data = locationMDS,aes(x = `Dimension 1`, y = `Dimension 2`,fill = Location),shape = 21,size = 3) +
+    geom_point(data = locationMDS,
+               aes(x = `Dimension 1`, 
+                   y = `Dimension 2`,
+                   fill = Location),
+               shape = 21,
+               size = 3) +
     geom_text(data = locationMargin,aes(x = x,y = y,label = label)) +
     scale_fill_ptol() +
     theme_bw() +

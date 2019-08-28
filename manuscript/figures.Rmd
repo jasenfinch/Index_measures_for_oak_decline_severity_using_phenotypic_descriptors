@@ -6,7 +6,7 @@ output: pdf_document
 knitr::opts_chunk$set(echo = FALSE,cache = TRUE)
 ```
 
-```{r library_load}
+```{r library_load,cache=FALSE}
 source('../code/library_load.R')
 ```
 
@@ -15,6 +15,11 @@ source('../code/data_prep.R')
 ```
 
 # Figures
+
+```{r siteLocations,fig.cap='Map showing locations of the nine sites used for collection of phenotypic descriptors.',fig.width=3,fig.height=5}
+source('../code/site_locations.R')
+site_locations_map
+```
 
 ```{r site_differences,fig.cap='Differences between sites in phenotypic descriptors analysed by supervised Random Forest. a) Multidimensional scaling (MDS) plot of random forest proximity values of individual trees scaled to two dimensions. Mean margin value shown. b) Relative descriptor Gini importances measures.',fig.height=5}
 source('../code/site_differences.R')
