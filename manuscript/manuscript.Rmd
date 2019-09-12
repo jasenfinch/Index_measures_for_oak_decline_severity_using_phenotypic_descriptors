@@ -12,13 +12,28 @@ knitr::opts_chunk$set(echo = FALSE)
 source('../code/library_load.R')
 ```
 
-# Introduction
+## Abstract
 
-# Materials and methods
+Two indexes, the Phenotypic Decline Index (PDI) and the Decline Acuteness Index (DAI), were developed to describe acute and chronic oak decline severity using a multitude of easily measurable phenotypic descriptors.
+Measured phenotypic descriptors include aspects of tree shape and size, crown condition and the presence of biotic agents.
+These were collected from 174 trees exhibiting a spectrum of decline severity at 9 sites from across the south, east and west of England.
+Inter site differences were identified as a results of aspects of tree size which were corrected for using a mean centring adjustment.
+The decline indexes were then calculated using proximity values from an unsupervised random forest of the phenotypic descriptors, multidimensional scaling (MDS) and min-max scaling.
+These indexes are simple but sensitive measures of tree decline severity allowing easy comparisons of oak trees both spatially and temporally providing a useful tool for forest monitoring and management.
 
-# Results
+## Introduction
 
-## Additional Descriptors
+## Materials and methods
+
+### Phenotypic data collection
+
+### Phenotypic descriptor preparation and analysis
+
+## Results
+
+### Phenotypic descriptors
+
+The following four additional descriptors were calculated:
 
 **Crown condition (%)** - percentage of present crown proportional to the percentage crown density.
 
@@ -26,7 +41,7 @@ $$c = (100 - m)(1-\frac{t}{100})$$
 
 $m$ = missing crown (%), $t$ = crown transparency (%)
 
-**Estimated crown volume (m<sup>3</sup>)** - estimated volume of crown as an ellipsoid proportional to the crown condition.
+**Estimated crown volume (m^3^)** - estimated volume of crown as an ellipsoid proportional to the crown condition.
 
 $$v = \frac{c(h - l)}{150}\pi r^2$$
 
@@ -38,17 +53,23 @@ $$p = \frac{a^2A + b^2B}{3d\pi}$$
 
 $a$ = average active bleed size (cm), $A$ = number of active bleeds, $b$ = average black stain size (cm), $B$ = black stain number, $d$ = diameter at breast height (cm)
 
-***Agrilus* exit hole density (m<sup>-2</sup>)** - density of observed *Agrilus* exit holes across the surveyed trunk area.
+***Agrilus* exit hole density (m^-2^)** - density of observed *Agrilus* exit holes across the surveyed trunk area.
 $$e = \frac{h}{\frac{2d}{100}\pi}$$
 $h$ = number of *Agrilus* exit holes, $d$ = diameter at breast height (cm)
 
-# Discussion
+### Tree size descriptor adjustment by site
 
-# Conclusions
+### Phenotypic decline and decline acuteness indexes
 
-# References
+## Discussion
 
-```{r check}
+### Applications
+
+## Conclusions
+
+## References
+
+```{r check,comment=''}
 source('../code/check.R')
-check()
+manuscript_check()
 ```

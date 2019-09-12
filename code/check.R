@@ -1,6 +1,7 @@
 
-check <- function(file = 'manuscript.Rmd'){
+manuscript_check <- function(file = 'manuscript.Rmd'){
   
+  cat('######### Manuscript Checks #########\n')
   cat('\nWord count')
   
   suppressMessages({
