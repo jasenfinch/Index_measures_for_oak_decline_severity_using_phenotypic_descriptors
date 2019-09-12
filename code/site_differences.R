@@ -34,7 +34,7 @@ descriptorLabels <- locationImportance$Descriptor %>%
                       expression(Agrillus~exit~hole~density ( m^-2 ) ),
                       .[8:25],
                       expression(Crown~volume ( m^3 ) ),
-                      .[27:34])
+                      .[27:35])
   }
 
 site_differences <- list(

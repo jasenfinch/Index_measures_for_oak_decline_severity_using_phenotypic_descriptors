@@ -15,7 +15,7 @@ descriptor_contributions <- list(
       as.character() %>%
       {c(.[1:5],
          expression(Agrillus~exit~hole~density ( m^-2 ) ),
-         .[7:33],
+         .[7:34],
          expression(Crown~volume ( m^3 ) )
       )}
     
@@ -43,11 +43,11 @@ descriptor_contributions <- list(
     
     descriptorLabels <- dat$Feature %>%
       as.character() %>%
-      {c(.[1:10],
+      {c(.[1:11],
          expression(Agrillus~exit~hole~density ( m^-2 ) ),
-         .[12:30],
+         .[13:31],
          expression(Crown~volume ( m^3 ) ),
-         .[32:34]
+         .[33:35]
       )}
     
     ggplot(dat,aes(x = Feature,y = `Relative Importance`)) +

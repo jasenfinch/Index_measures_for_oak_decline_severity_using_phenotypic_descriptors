@@ -1,4 +1,5 @@
 ---
+title: Figures
 output: pdf_document
 ---
 
@@ -13,8 +14,6 @@ source('../code/library_load.R')
 ```{r prep}
 source('../code/data_prep.R')
 ```
-
-# Figures
 
 ```{r siteLocations,fig.cap='Map showing locations of the nine sites used for collection of phenotypic descriptors.',fig.width=3,fig.height=5}
 source('../code/site_locations.R')
@@ -36,12 +35,12 @@ descriptor_contributions %>%
   wrap_plots()
 ```
 
-```{r PDI_response_surfaces,fig.cap='PDI response surfaces for simulated descriptor values from trained Random Forest models. All other descriptors were set at the values of those of the trees with the lowest PDI used for trainig the models',cache=TRUE}
+```{r PDI_response_surfaces,fig.height = 6,fig.cap='PDI response surfaces for simulated descriptor values from trained Random Forest models. All other descriptors were set at the values of those of the trees with the lowest PDI used for trainig the models',cache=TRUE}
 source('../code/PDI_response_surfaces.R')
-grid.arrange(PDI_response_plot$`a)`,PDI_response_plot$`b)`,PDI_response_plot$`c)`,PDI_response_plot$legend,nrow = 2)
+grid.arrange(PDI_response_plot$`a)`,PDI_response_plot$`b)`,PDI_response_plot$`c)`,PDI_response_plot$legend,nrow = 2,newpage = F)
 ```
 
 ```{r DAI_response_surfaces,fig.height = 8,fig.cap='DAI response surfaces for simulated descriptor values from trained Random Forest models. All other descriptors were set at the values of those of the trees with the lowest PDI used for trainig the models',cache=FALSE}
 source('../code/DAI_response_surfaces.R')
-grid.arrange(DAI_response_plot$`a)`,DAI_response_plot$`b)`,DAI_response_plot$`c)`,DAI_response_plot$`d)`,DAI_response_plot$`e)`,DAI_response_plot$`f)`,DAI_response_plot$legend,ncol = 3,layout_matrix = rbind(c(1,4,7),c(2,5,7),c(3,6,7)),widths = c(4,4,1))
+grid.arrange(DAI_response_plot$`a)`,DAI_response_plot$`b)`,DAI_response_plot$`c)`,DAI_response_plot$`d)`,DAI_response_plot$`e)`,DAI_response_plot$`f)`,DAI_response_plot$legend,ncol = 3,layout_matrix = rbind(c(1,4,7),c(2,5,7),c(3,6,7)),widths = c(4,4,1),newpage = F)
 ```
