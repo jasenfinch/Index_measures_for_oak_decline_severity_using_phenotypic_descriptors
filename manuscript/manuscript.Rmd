@@ -5,15 +5,11 @@ keep_tex: yes
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE,cache = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
 ```
 
 ```{r library_load}
 source('../code/library_load.R')
-```
-
-```{r prep}
-source('../code/data_prep.R')
 ```
 
 # Introduction
@@ -52,26 +48,7 @@ $h$ = number of *Agrilus* exit holes, $d$ = diameter at breast height (cm)
 
 # References
 
-# Figures
-
-```{r site_differences,fig.cap='Site differences',fig.height=6}
-source('../code/site_differences.R')
-grid.arrange(site_differences$a,site_differences$b,nrow = 1)
-```
-
-```{r descriptor_adjustment,fig.cap='Error bars show ±1SE of the mean.\nDashed red line shows the overall mean.'}
-source('../code/descriptor_adjustment.R')
-descriptor_adjustment %>%
-  wrap_plots()
-```
-
-```{r DI_space,fig.cap=''}
-DIspace()
-```
-
-```{r descriptor_contributions, fig.cap = ''}
-source('../code/descriptor_contributions.R')
-descriptor_contributions %>%
-  wrap_plots() + 
-  plot_annotation(title = 'Descriptor importance scores from random forest models for relative contributions to\ndecline index measures',caption = 'Gini importance scores averaged across 100 repetitions')
+```{r check}
+source('../code/check.R')
+check()
 ```
