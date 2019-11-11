@@ -5,11 +5,15 @@ keep_tex: yes
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE,warning = FALSE,message = FALSE)
+knitr::opts_chunk$set(echo = FALSE,cache = TRUE,warning = FALSE,message = FALSE)
 ```
 
 ```{r library_load}
 source('../code/library_load.R')
+```
+
+```{r prep}
+source('../code/data_prep.R')
 ```
 
 ## Abstract
@@ -67,9 +71,16 @@ $h$ = number of *Agrilus* exit holes, $d$ = diameter at breast height (cm)
 
 ## Conclusions
 
-## References
+## Figures
+
+```{r figures,child='figures.Rmd'}
+```
+
+## Checks
 
 ```{r check,comment=''}
 source('../code/check.R')
 manuscript_check()
 ```
+
+## References
