@@ -1,6 +1,8 @@
 
 manuscript_check <- function(file = 'manuscript.Rmd'){
   
+  options(knitr.table.format = 'markdown')
+  
   cat('######### Manuscript Checks #########\n')
   cat('\nWord count')
   
@@ -9,12 +11,12 @@ manuscript_check <- function(file = 'manuscript.Rmd'){
       print()
   })
   
-  cat('\nSpelling')
+  cat('\nSpelling\n\n')
   
   spelling::spell_check_files(file,lang = 'en_GB') %>%
     print()
   
-  cat('\nGrammar')
+  cat('\nStyle')
   
   gramr::write_good_file(file) %>%
     print()
