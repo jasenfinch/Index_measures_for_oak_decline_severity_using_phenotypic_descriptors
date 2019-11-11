@@ -1,6 +1,6 @@
 
 ```{r phenotypic_descriptors,cache=FALSE}
-source('../code/figures/phenotypic_descriptors.R')
+source('../R/figures/phenotypic_descriptors.R')
 pt %>%
   kable()
 ```

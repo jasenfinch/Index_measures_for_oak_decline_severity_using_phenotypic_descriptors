@@ -18,11 +18,15 @@ knitr::opts_chunk$set(echo = FALSE,
 ```
 
 ```{r library_load,cache=FALSE}
-source('../code/figures/library_load.R')
+source('../R/figures/library_load.R')
+
+'../R/R/' %>%
+  list.files(full.names = T) %>%
+  walk(source)
 ```
 
 ```{r prep}
-source('../code/figures/data_prep.R')
+source('../R/figures/data_prep.R')
 ```
 
 ## Abstract
@@ -101,14 +105,8 @@ Large phenotypic differences were found between the sites by supervised random f
 \newpage
 ## Checks
 
-## Figures
-
-```{r figures,child='figures.Rmd'}
-
-```
-
 ```{r check,comment='',cache=FALSE}
-source('../code/figures/check.R')
+source('../R/figures/check.R')
 manuscript_check()
 ```
 
