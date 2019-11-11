@@ -1,11 +1,11 @@
 
 ```{r siteLocations,fig.cap='Map showing locations of the nine sites used for collection of phenotypic descriptors.',fig.width=3,fig.height=5}
-source('../code/site_locations.R')
+source('../code/figures/site_locations.R')
 site_locations_map
 ```
 
 ```{r site_differences,fig.cap='Differences between sites in phenotypic descriptors analysed by supervised Random Forest. a) Multidimensional scaling (MDS) plot of random forest proximity values of individual trees scaled to two dimensions. Mean margin value shown. b) Relative descriptor Gini importances measures.',fig.height=5}
-source('../code/site_differences.R')
+source('../code/figures/site_differences.R')
 grid.arrange(site_differences$a,site_differences$b,nrow = 1)
 ```
 
@@ -14,17 +14,17 @@ DIspace()
 ```
 
 ```{r descriptor_contributions, fig.height = 5,fig.cap = 'Descriptor importance scores from random forest models for relative contributions to\ndecline index measures. a) Phenotypic decline index (PDI). b) Decline acuteness index (DAI)'}
-source('../code/descriptor_contributions.R')
+source('../code/figures/descriptor_contributions.R')
 descriptor_contributions %>%
   patchwork::wrap_plots()
 ```
 
 ```{r PDI_response_surfaces,fig.height = 6,fig.cap='PDI response surfaces for simulated descriptor values from trained Random Forest models. All other descriptors were set at the values of those of the trees with the lowest PDI used for trainig the models'}
-source('../code/PDI_response_surfaces.R')
+source('../code/figures/PDI_response_surfaces.R')
 grid.arrange(PDI_response_plot$`a)`,PDI_response_plot$`b)`,PDI_response_plot$`c)`,PDI_response_plot$legend,nrow = 2,newpage = F)
 ```
 
 ```{r DAI_response_surfaces,fig.height = 8,fig.cap='DAI response surfaces for simulated descriptor values from trained Random Forest models. All other descriptors were set at the values of those of the trees with the lowest PDI used for trainig the models'}
-source('../code/DAI_response_surfaces.R')
+source('../code/figures/DAI_response_surfaces.R')
 grid.arrange(DAI_response_plot$`a)`,DAI_response_plot$`b)`,DAI_response_plot$`c)`,DAI_response_plot$`d)`,DAI_response_plot$`e)`,DAI_response_plot$`f)`,DAI_response_plot$legend,ncol = 3,layout_matrix = rbind(c(1,4,7),c(2,5,7),c(3,6,7)),widths = c(4,4,1),newpage = F)
 ```

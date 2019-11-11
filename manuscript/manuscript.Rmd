@@ -18,11 +18,11 @@ knitr::opts_chunk$set(echo = FALSE,
 ```
 
 ```{r library_load,cache=FALSE}
-source('../code/library_load.R')
+source('../code/figures/library_load.R')
 ```
 
 ```{r prep}
-source('../code/data_prep.R')
+source('../code/figures/data_prep.R')
 ```
 
 ## Abstract
@@ -108,7 +108,7 @@ Large phenotypic differences were found between the sites by supervised random f
 ```
 
 ```{r check,comment='',cache=FALSE}
-source('../code/check.R')
+source('../code/figures/check.R')
 manuscript_check()
 ```
 
