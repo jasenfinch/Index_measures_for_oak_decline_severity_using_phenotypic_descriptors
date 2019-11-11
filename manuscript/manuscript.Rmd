@@ -71,11 +71,19 @@ $h$ = number of *Agrilus* exit holes, $d$ = diameter at breast height (cm)
 
 ## Conclusions
 
+\newpage
+## Tables
+
+```{r tables,child='tables.Rmd'}
+```
+
+\newpage
 ## Figures
 
 ```{r figures,child='figures.Rmd'}
 ```
 
+\newpage
 ## Checks
 
 ```{r check,comment=''}
@@ -83,4 +91,5 @@ source('../code/check.R')
 manuscript_check()
 ```
 
+\newpage
 ## References

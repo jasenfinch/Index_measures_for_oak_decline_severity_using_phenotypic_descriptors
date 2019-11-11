@@ -1,0 +1,12 @@
+
+```{r phenotypic_descriptors,cache=FALSE}
+source('../code/phenotypic_descriptors.R')
+pt %>%
+  kable()
+```
+
+```{r resampled_results}
+
+```
+
+

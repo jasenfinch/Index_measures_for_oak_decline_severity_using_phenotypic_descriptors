@@ -1,6 +1,6 @@
 ---
 title: "Indexes measures for oak decline severity using phenotypic descriptors"
-output: word_document
+output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
@@ -74,9 +74,12 @@ These indexes are simple but sensitive measures of tree decline severity allowin
 
 **Table 1:** Overview of phenotypic descriptors
 
+**Table 2:** Resampled index performance results
+
 **Figure 1:** 
-    - a) Site differences MDS plot
-    - b) Site difference feature importance
+
+  - a) Site differences MDS plot
+  - b) Site difference feature importance
 
 **Figure 2:** Example of site correction effect on a descriptor
 
