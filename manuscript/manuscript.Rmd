@@ -8,7 +8,7 @@ keep_tex: yes
 knitr::opts_chunk$set(echo = FALSE,cache = TRUE,warning = FALSE,message = FALSE)
 ```
 
-```{r library_load}
+```{r library_load,cache=FALSE}
 source('../code/library_load.R')
 ```
 

@@ -19,7 +19,7 @@ descriptor_contributions %>%
   patchwork::wrap_plots()
 ```
 
-```{r PDI_response_surfaces,fig.height = 6,fig.cap='PDI response surfaces for simulated descriptor values from trained Random Forest models. All other descriptors were set at the values of those of the trees with the lowest PDI used for trainig the models',cache=TRUE}
+```{r PDI_response_surfaces,fig.height = 6,fig.cap='PDI response surfaces for simulated descriptor values from trained Random Forest models. All other descriptors were set at the values of those of the trees with the lowest PDI used for trainig the models'}
 source('../code/PDI_response_surfaces.R')
 grid.arrange(PDI_response_plot$`a)`,PDI_response_plot$`b)`,PDI_response_plot$`c)`,PDI_response_plot$legend,nrow = 2,newpage = F)
 ```
