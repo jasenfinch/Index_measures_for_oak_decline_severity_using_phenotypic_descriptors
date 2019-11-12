@@ -1,6 +1,10 @@
+---
+output: pdf_document
+---
 
 ```{r descriptor_adjustment,fig.cap='Error bars show ±1SE of the mean.\nDashed red line shows the overall mean.'}
-source('../code/figures/descriptor_adjustment.R')
-descriptor_adjustment %>%
+loadd(descriptor_adjustment_example)
+
+descriptor_adjustment_example %>%
   wrap_plots()
 ```

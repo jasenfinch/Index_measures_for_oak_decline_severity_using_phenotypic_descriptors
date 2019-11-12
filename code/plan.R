@@ -41,10 +41,20 @@ plan <- drake_plan(
   site_differences_mds_plot = site_differences_rf %>%
     siteDifferencesRFplot(pheno_data_with_additional_descriptors),
     
+  ## calculate descriptor correction factors
+  
+  site_correction_factors <- pheno_data_with_additional_descriptors %>%
+    siteCorrectionFactors(),
+  
   ## apply site corrections and recalculate additional descriptors
   site_corrected_pheno_data = pheno_data %>%
     siteCorrection() %>%
     calcAdditionalDescriptors(),
+  
+  ## plot descriptor adjustment example using dbh
+  
+  descriptor_adjustment_example = pheno_data_with_additional_descriptors %>%
+    descriptorAdjustmentPlot(site_corrected_pheno_data),
   
   ## make site corrected analysis suitable table
   site_corrected_analysis_suitable_data = site_corrected_pheno_data %>%
@@ -85,5 +95,8 @@ plan <- drake_plan(
                                               site_corrected_analysis_suitable_data),
   
   ## render manuscript
-  manuscript = render(knitr_in('manuscript/manuscript.Rmd'),quiet = T)
+  manuscript = render(knitr_in('manuscript/manuscript.Rmd'),quiet = T),
+  
+  ## render supplementary
+  supplementary = render(knitr_in('manuscript/supplementary.Rmd'),quiet = T)
 )

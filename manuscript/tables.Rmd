@@ -3,7 +3,7 @@
 loadd(phenotypic_descriptor_info)
 
 phenotypic_descriptor_info %>%
-  kable()
+  kable(format = 'latex')
 ```
 
 ```{r resampled_results}
