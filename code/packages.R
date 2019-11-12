@@ -2,6 +2,7 @@
 
 pacman::p_load(drake,
                conflicted,
+               rmarkdown,
                maps,
                mapdata,
                ggthemes,

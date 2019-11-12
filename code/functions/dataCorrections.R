@@ -19,5 +19,8 @@ dataCorrections <- function(phenoData){
   
   phenoData$`Crown transparency (%)`[phenoData$Location %in% c('Attingham','Langdale')] <- 100 - phenoData$`Crown transparency (%)`[phenoData$Location %in% c('Attingham','Langdale')]
   
+  phenoData <- phenoData %>%
+    correctStatuses()
+  
   return(phenoData)
 }
