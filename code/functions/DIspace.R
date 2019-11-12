@@ -1,4 +1,5 @@
-#' @export
+#' DIspace
+#' @description Plot the 2 dimensional decline index continuum.
 
 DIspace <- function(){
   labels <- tibble(
@@ -6,7 +7,7 @@ DIspace <- function(){
     x = c(0.17,0.75,0.66,0.5,0.83,0.25),
     y = c(0,0.66,-0.66,0,0,0.66)
   )
-
+  
   segs <- 3000
   rectangle <- map(0:segs,~{
     f <- . /segs
@@ -24,19 +25,19 @@ DIspace <- function(){
     )
   }) %>%
     bind_rows()
-
+  
   hlines <- tibble(
     x = c(0.33,1,0,1),
     y = c(-0.33,-0.33,0.33,0.33),
     groups = c(1,1,2,2)
   )
-
+  
   vlines <- tibble(
     x = c(0.33,0.33,0.5,0.5,0.66,0.66),
     y = c(0.33 * -1.34 - 0.33,0.33,0.33,1,-0.33,0.33),
     groups = c(1,1,2,2,3,3)
   )
-
+  
   ggplot() +
     geom_segment(data = rectangle,aes(x = x,xend = xend,y = y,yend = yend,colour = x)) +
     scale_colour_gradient2(low = 'green',mid = 'orange',high = 'red',midpoint = 0.5) +

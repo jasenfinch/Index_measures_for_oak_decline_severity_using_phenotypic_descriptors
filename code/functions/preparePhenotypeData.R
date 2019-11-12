@@ -1,9 +1,6 @@
 #' preparePhenotypeData
 #' @description process parsed phenotype data sheets into a tibble suitable for random forest analysis
 #' @param phenotypeData parsed phenotype data collection sheet returned from \code{readPhenotypeSheet}
-#' @importFrom tidyr spread
-#' @importFrom dplyr filter group_by mutate summarise tbl_df rename left_join
-#' @export
 
 preparePhenotypeData <- function(phenotypeData){
   description <- phenotypeData %>%

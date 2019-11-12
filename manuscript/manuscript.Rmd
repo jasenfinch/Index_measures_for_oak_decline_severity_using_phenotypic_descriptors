@@ -4,29 +4,17 @@ output:
   bookdown::pdf_document2:
    toc: false
    number_sections: false
-keep_tex: yes
+   keep_tex: no
 ---
 
    
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE,
-                      cache = TRUE,
+                      #cache = TRUE,
                       fig.pos = 'H',
                       warning = FALSE,
                       message = FALSE)
-```
-
-```{r library_load,cache=FALSE}
-source('../R/figures/library_load.R')
-
-'../R/R/' %>%
-  list.files(full.names = T) %>%
-  walk(source)
-```
-
-```{r prep}
-source('../R/figures/data_prep.R')
 ```
 
 ## Abstract
@@ -106,7 +94,6 @@ Large phenotypic differences were found between the sites by supervised random f
 ## Checks
 
 ```{r check,comment='',cache=FALSE}
-source('../R/figures/check.R')
 manuscript_check()
 ```
 

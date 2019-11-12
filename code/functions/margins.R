@@ -1,8 +1,6 @@
 #' margins
 #' @description calculate class margins
 #' @param rfModels list containing random forest models
-#' @importFrom randomForest margin
-#' @export
 
 margins <- function(rfModels){
   rfModels %>%

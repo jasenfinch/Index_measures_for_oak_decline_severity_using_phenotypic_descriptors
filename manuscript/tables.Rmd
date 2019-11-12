@@ -1,8 +1,9 @@
 
 ```{r phenotypic_descriptors,cache=FALSE}
-source('../R/figures/phenotypic_descriptors.R')
-pt %>%
-  kable()
+loadd(phenotypic_descriptor_info)
+
+phenotypic_descriptor_info %>%
+  kable(format = 'latex')
 ```
 
 ```{r resampled_results}

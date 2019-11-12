@@ -1,13 +1,9 @@
-#' calcPHI
-#' @description calculate phenotypic health indexes
+#' mds
+#' @description perform multidimensional scaling of random forest proximities
 #' @param rfModels list containing random forest models
-#' @param phenoData tibble containing phenotype data
-#' @importFrom tibble tibble
-#' @export
 
-calcPHI <- function(rfModels,phenoData){
-
-  prox <- rfModels %>%
+mds <- function(rfModels){
+  rfModels %>%
     map(~{.$proximity %>%
         as_tibble() %>%
         rowid_to_column(var = 'Sample1') %>%
@@ -19,11 +15,9 @@ calcPHI <- function(rfModels,phenoData){
     spread(Sample2,Proximity) %>%
     tbl_df() %>%
     select(-Sample1) %>%
-    as.matrix()
-
-  {1 - prox} %>%
-    cmdscale(k = 1) %>%
-    {tibble(PHI = .[,1])} %>%
-    bind_cols(select(phenoData,Location,`Tree No`,Status,ChosenGroup)) %>%
-    mutate(PHI = (PHI - min(PHI)) / (max(PHI) - min(PHI)))
+    as.matrix() %>%
+    {1 - .} %>%
+    cmdscale() %>%
+    as_tibble() %>%
+    rename(`Dimension 1` = V1,`Dimension 2` = V2)
 }
