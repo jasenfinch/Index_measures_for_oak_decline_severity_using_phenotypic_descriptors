@@ -61,6 +61,10 @@ plan <- drake_plan(
   decline_indexes = unsupervised_rf %>%
     calcDIs(site_corrected_pheno_data),
   
+  ## plot descriptors against decline indexes 
+  descriptor_scatter_plots = site_corrected_analysis_suitable_data %>%
+    descriptorScatterPlots(decline_indexes),
+  
   ## generate PDI predictive random forest model
   PDI_rf_model = site_corrected_analysis_suitable_data %>%
     {set.seed(1234)

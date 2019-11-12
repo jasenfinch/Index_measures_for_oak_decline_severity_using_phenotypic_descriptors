@@ -4,14 +4,7 @@ output:
     keep_tex: no
 ---
 
-## Supplementary
-
-```{r descriptor_adjustment_factors}
-loadd(site_correction_factors)
-
-site_correction_factors %>%
-  kable()
-```
+## Supplementary information
 
 ```{r descriptor_adjustment,fig.cap='Error bars show ±1SE of the mean.\nDashed red line shows the overall mean.'}
 loadd(descriptor_adjustment_example)
@@ -19,3 +12,29 @@ loadd(descriptor_adjustment_example)
 descriptor_adjustment_example %>%
   wrap_plots()
 ```
+
+```{r descriptor_adjustment_factors}
+loadd(site_correction_factors)
+
+site_correction_factors %>%
+  kable(caption = 'Descriptor correction factors at each site')
+```
+
+```{r PDInumeric,fig.height=8}
+loadd(descriptor_scatter_plots)
+
+descriptor_scatter_plots$PDI_numeric
+```
+
+```{r PDIfactor,fig.height=8}
+descriptor_scatter_plots$PDI_factor
+```
+
+```{r DAInumeric,fig.height=8}
+descriptor_scatter_plots$DAI_numeric
+```
+
+```{r DAIfactor,fig.height=8}
+descriptor_scatter_plots$DAI_factor
+```
+
