@@ -24,3 +24,4 @@ pacman::p_load(drake,
 map <- conflict_prefer('map','purrr')
 gather <- conflict_prefer('gather','tidyr')
 filter <- conflict_prefer('filter','dplyr')
+margin <- conflict_prefer('margin','randomForest')

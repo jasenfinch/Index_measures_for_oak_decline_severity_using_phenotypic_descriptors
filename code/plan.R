@@ -3,11 +3,11 @@
 plan <- drake_plan(
   
   ## Locate data files
-  pheno_files = 'data/phenotype_collection_sheets' %>%
+  phenotype_data_file_paths = 'data/phenotype_collection_sheets' %>%
     list.files(full.names = T),
   
   ## read in data, correct data sheet mistakes
-  pheno_data = pheno_files %>%
+  pheno_data = phenotype_data_file_paths %>%
     map(readPhenotypeSheet) %>%
     {set_names(.,map_chr(.,~{.$Location}))} %>%
     dataCorrections(), 
@@ -25,6 +25,21 @@ plan <- drake_plan(
   
   phenotypic_descriptor_info = analysis_suitable_data %>%
     descriptorInfo(),
+  
+  ## create site location map
+  
+  site_location_map = locationMap(),
+  
+  ## Analyse site differences using supervised random forest
+  
+  site_differences_rf = analysis_suitable_data %>%
+    rf(cls = pheno_data_with_additional_descriptors$Location %>% factor(),
+       nreps = 100),
+  
+  ## site differences MDS and importance plots
+  
+  site_differences_mds_plot = site_differences_rf %>%
+    site_differences_rf_plot(pheno_data_with_additional_descriptors),
     
   ## apply site corrections and recalculate additional descriptors
   site_corrected_pheno_data = pheno_data %>%
@@ -40,7 +55,7 @@ plan <- drake_plan(
     rf(cls = NULL,nreps = 100),
   
   ## calculate decline indexes
-  DIs = unsupervised_rf %>%
+  decline_indexes = unsupervised_rf %>%
     calcDIs(site_corrected_pheno_data),
   
   ## render manuscript

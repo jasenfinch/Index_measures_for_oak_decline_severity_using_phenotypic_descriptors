@@ -17,10 +17,6 @@ knitr::opts_chunk$set(echo = FALSE,
                       message = FALSE)
 ```
 
-```{r load_data}
-loadd(phenotypic_descriptor_info)
-```
-
 ## Abstract
 
 Two indexes, the Phenotypic Decline Index (PDI) and the Decline Acuteness Index (DAI), were developed to describe acute and chronic oak decline severity using a multitude of easily measurable phenotypic descriptors.

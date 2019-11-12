@@ -1,12 +1,13 @@
 
 ```{r siteLocations,fig.cap='Map showing locations of the nine sites used for collection of phenotypic descriptors.',fig.width=3,fig.height=5}
-source('../code/figures/site_locations.R')
-site_locations_map
+loadd(site_location_map)
+
+print(site_location_map)
 ```
 
 ```{r site_differences,fig.cap='Differences between sites in phenotypic descriptors analysed by supervised Random Forest. a) Multidimensional scaling (MDS) plot of random forest proximity values of individual trees scaled to two dimensions. Mean margin value shown. b) Relative descriptor Gini importances measures.',fig.height=5}
-source('../R/figures/site_differences.R')
-grid.arrange(site_differences$a,site_differences$b,nrow = 1)
+loadd(site_differences_mds_plot)
+grid.arrange(site_differences_mds_plot$a,site_differences_mds_plot$b,nrow = 1)
 ```
 
 ```{r DI_space,fig.cap='Two dimensional continuum of the phenotypic decline indexes for oak decline severity.',fig.height=3,fig.width=5}

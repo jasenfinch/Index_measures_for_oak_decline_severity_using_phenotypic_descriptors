@@ -1,5 +1,7 @@
 
 ```{r phenotypic_descriptors,cache=FALSE}
+loadd(phenotypic_descriptor_info)
+
 phenotypic_descriptor_info %>%
   kable()
 ```
