@@ -13,7 +13,6 @@ plan <- drake_plan(
     dataCorrections(), 
   
   ## calculate additional desecriptors
-  
   pheno_data_with_additional_descriptors = pheno_data %>%
     calcAdditionalDescriptors(),
   
@@ -22,28 +21,23 @@ plan <- drake_plan(
     makeAnalysisTable(),
   
   ## collect phenotypic descriptor information into table
-  
   phenotypic_descriptor_info = analysis_suitable_data %>%
     descriptorInfo(),
   
   ## create site location map
-  
   site_location_map = locationMap(),
   
   ## Analyse site differences using supervised random forest
-  
   site_differences_rf = analysis_suitable_data %>%
     rf(cls = pheno_data_with_additional_descriptors$Location %>% factor(),
        nreps = 100),
   
   ## site differences MDS and importance plots
-  
   site_differences_mds_plot = site_differences_rf %>%
     siteDifferencesRFplot(pheno_data_with_additional_descriptors),
     
   ## calculate descriptor correction factors
-  
-  site_correction_factors <- pheno_data_with_additional_descriptors %>%
+  site_correction_factors = pheno_data_with_additional_descriptors %>%
     siteCorrectionFactors(),
   
   ## apply site corrections and recalculate additional descriptors
@@ -52,7 +46,6 @@ plan <- drake_plan(
     calcAdditionalDescriptors(),
   
   ## plot descriptor adjustment example using dbh
-  
   descriptor_adjustment_example = pheno_data_with_additional_descriptors %>%
     descriptorAdjustmentPlot(site_corrected_pheno_data),
   

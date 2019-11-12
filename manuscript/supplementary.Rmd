@@ -1,6 +1,17 @@
 ---
-output: pdf_document
+output: 
+  pdf_document:
+    keep_tex: no
 ---
+
+## Supplementary
+
+```{r descriptor_adjustment_factors}
+loadd(site_correction_factors)
+
+site_correction_factors %>%
+  kable()
+```
 
 ```{r descriptor_adjustment,fig.cap='Error bars show ±1SE of the mean.\nDashed red line shows the overall mean.'}
 loadd(descriptor_adjustment_example)
