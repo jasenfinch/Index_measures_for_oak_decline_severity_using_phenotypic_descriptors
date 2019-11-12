@@ -17,16 +17,8 @@ knitr::opts_chunk$set(echo = FALSE,
                       message = FALSE)
 ```
 
-```{r library_load,cache=FALSE}
-source('../R/figures/library_load.R')
-
-'../R/R/' %>%
-  list.files(full.names = T) %>%
-  walk(source)
-```
-
-```{r prep}
-source('../R/figures/data_prep.R')
+```{r load_data}
+loadd(phenotypic_descriptor_info)
 ```
 
 ## Abstract

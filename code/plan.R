@@ -20,6 +20,11 @@ plan <- drake_plan(
   ## make analysis suitable table
   analysis_suitable_data = pheno_data_with_additional_descriptors %>%
     makeAnalysisTable(),
+  
+  ## collect phenotypic descriptor information into table
+  
+  phenotypic_descriptor_info = analysis_suitable_data %>%
+    descriptorInfo(),
     
   ## apply site corrections and recalculate additional descriptors
   site_corrected_pheno_data = pheno_data %>%
@@ -39,5 +44,5 @@ plan <- drake_plan(
     calcDIs(site_corrected_pheno_data),
   
   ## render manuscript
-  ms = render(knitr_in('manuscript/manuscript.Rmd'),quiet = T)
+  manuscript = render(knitr_in('manuscript/manuscript.Rmd'),quiet = T)
 )

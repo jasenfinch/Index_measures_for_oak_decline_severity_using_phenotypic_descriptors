@@ -1,6 +1,6 @@
 
 ```{r siteLocations,fig.cap='Map showing locations of the nine sites used for collection of phenotypic descriptors.',fig.width=3,fig.height=5}
-source('../R/figures/site_locations.R')
+source('../code/figures/site_locations.R')
 site_locations_map
 ```
 
