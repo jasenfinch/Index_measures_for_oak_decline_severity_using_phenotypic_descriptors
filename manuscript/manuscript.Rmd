@@ -11,7 +11,7 @@ keep_tex: yes
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE,
-                      cache = TRUE,
+                      #cache = TRUE,
                       fig.pos = 'H',
                       warning = FALSE,
                       message = FALSE)
