@@ -1,6 +1,12 @@
 #' readPhenotypeSheet
 #' @description parse .xls phenotype data collection sheets
 #' @param file file path to excel file to parse
+#' @importFrom readxl read_excel
+#' @importFrom tibble rowid_to_column
+#' @importFrom tidyr gather
+#' @importFrom stats na.omit
+#' @importFrom stringr str_replace_all
+#' @export
 
 readPhenotypeSheet <- function(file){
   suppressWarnings(suppressMessages(description <- read_excel(file,sheet = 'Description')))
