@@ -1,9 +1,9 @@
-#' site_differences_rf_plot
+#' siteDifferencesRFplot
 #' @description create MDS scatter and random forest variable importance plots for site phenotypic differences
 #' @param site_differences_rf list of site supervised random forest models
 #' @param phenoData tibble containing phenotype data
 
-site_differences_rf_plot <- function(site_differences_rf,phenoData){
+siteDifferencesRFplot <- function(site_differences_rf,phenoData){
   locationMDS <- site_differences_rf %>%
     mds() %>%
     bind_cols(phenoData %>%

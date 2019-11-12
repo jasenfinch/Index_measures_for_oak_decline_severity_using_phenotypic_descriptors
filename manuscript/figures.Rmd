@@ -15,17 +15,20 @@ DIspace()
 ```
 
 ```{r descriptor_contributions, fig.height = 5,fig.cap = 'Descriptor importance scores from random forest models for relative contributions to\ndecline index measures. a) Phenotypic decline index (PDI). b) Decline acuteness index (DAI)'}
-source('../R/figures/descriptor_contributions.R')
-descriptor_contributions %>%
-  patchwork::wrap_plots()
+loadd(descriptor_contribution_plots)
+
+descriptor_contribution_plots %>%
+  wrap_plots()
 ```
 
 ```{r PDI_response_surfaces,fig.height = 6,fig.cap='PDI response surfaces for simulated descriptor values from trained Random Forest models. All other descriptors were set at the values of those of the trees with the lowest PDI used for trainig the models'}
-source('../R/figures/PDI_response_surfaces.R')
-grid.arrange(PDI_response_plot$`a)`,PDI_response_plot$`b)`,PDI_response_plot$`c)`,PDI_response_plot$legend,nrow = 2,newpage = F)
+loadd(PDI_response_surfaces)
+
+grid.arrange(PDI_response_surfaces$`a)`,PDI_response_surfaces$`b)`,PDI_response_surfaces$`c)`,PDI_response_surfaces$legend,nrow = 2,newpage = F)
 ```
 
 ```{r DAI_response_surfaces,fig.height = 8,fig.cap='DAI response surfaces for simulated descriptor values from trained Random Forest models. All other descriptors were set at the values of those of the trees with the lowest PDI used for trainig the models'}
-source('../R/figures/DAI_response_surfaces.R')
-grid.arrange(DAI_response_plot$`a)`,DAI_response_plot$`b)`,DAI_response_plot$`c)`,DAI_response_plot$`d)`,DAI_response_plot$`e)`,DAI_response_plot$`f)`,DAI_response_plot$legend,ncol = 3,layout_matrix = rbind(c(1,4,7),c(2,5,7),c(3,6,7)),widths = c(4,4,1),newpage = F)
+loadd(DAI_response_surfaces)
+
+grid.arrange(DAI_response_surfaces$`a)`,DAI_response_surfaces$`b)`,DAI_response_surfaces$`c)`,DAI_response_surfaces$`d)`,DAI_response_surfaces$`e)`,DAI_response_surfaces$`f)`,DAI_response_surfaces$legend,ncol = 3,layout_matrix = rbind(c(1,4,7),c(2,5,7),c(3,6,7)),widths = c(4,4,1),newpage = F)
 ```

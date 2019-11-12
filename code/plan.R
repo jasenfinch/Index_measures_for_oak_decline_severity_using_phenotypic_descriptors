@@ -39,7 +39,7 @@ plan <- drake_plan(
   ## site differences MDS and importance plots
   
   site_differences_mds_plot = site_differences_rf %>%
-    site_differences_rf_plot(pheno_data_with_additional_descriptors),
+    siteDifferencesRFplot(pheno_data_with_additional_descriptors),
     
   ## apply site corrections and recalculate additional descriptors
   site_corrected_pheno_data = pheno_data %>%
@@ -57,6 +57,32 @@ plan <- drake_plan(
   ## calculate decline indexes
   decline_indexes = unsupervised_rf %>%
     calcDIs(site_corrected_pheno_data),
+  
+  ## generate PDI predictive random forest model
+  PDI_rf_model = site_corrected_analysis_suitable_data %>%
+    {set.seed(1234)
+      randomForest(.,y = decline_indexes$PDI,
+                 ntree = 10000)},
+  
+  ## generate DAI predictive random forest model
+  DAI_rf_model = site_corrected_analysis_suitable_data %>%
+    {set.seed(1234)
+      randomForest(.,y = decline_indexes$DAI,
+                   ntree = 10000,
+                   mtry = 11)},
+  
+  ## create descriptor contribution plots
+  descriptor_contribution_plots = descriptorImportancePlots(PDI_rf_model,DAI_rf_model),
+  
+  ## PDI rf model response surfaces
+  PDI_response_surfaces = PDIresponseSurfaces(PDI_rf_model,
+                                              decline_indexes,
+                                              site_corrected_analysis_suitable_data),
+  
+  ## DAI rf model response surfaces
+  DAI_response_surfaces = DAIresponseSurfaces(DAI_rf_model,
+                                              decline_indexes,
+                                              site_corrected_analysis_suitable_data),
   
   ## render manuscript
   manuscript = render(knitr_in('manuscript/manuscript.Rmd'),quiet = T)

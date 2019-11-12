@@ -94,7 +94,6 @@ Large phenotypic differences were found between the sites by supervised random f
 ## Checks
 
 ```{r check,comment='',cache=FALSE}
-source('../R/figures/check.R')
 manuscript_check()
 ```
 
