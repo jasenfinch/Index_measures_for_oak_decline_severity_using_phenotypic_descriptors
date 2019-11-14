@@ -1,10 +1,9 @@
 ---
+title: Supplementary information
 output: 
   pdf_document:
-    keep_tex: no
+    keep_tex: false
 ---
-
-## Supplementary information
 
 ```{r descriptor_adjustment,fig.cap='Error bars show ±1SE of the mean.\nDashed red line shows the overall mean.'}
 loadd(descriptor_adjustment_example)

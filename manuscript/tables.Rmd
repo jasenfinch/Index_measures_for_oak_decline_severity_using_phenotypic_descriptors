@@ -1,9 +1,21 @@
+---
+title: Tables
+output: pdf_document
+---
+
+## Tables
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      message = FALSE)
+```
 
 ```{r phenotypic_descriptors,cache=FALSE}
 loadd(phenotypic_descriptor_info)
 
 phenotypic_descriptor_info %>%
-  kable(format = 'latex')
+  kable(format = 'markdown')
 ```
 
 ```{r resampled_results}

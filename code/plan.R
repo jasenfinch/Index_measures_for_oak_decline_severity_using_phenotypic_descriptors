@@ -91,6 +91,12 @@ plan <- drake_plan(
                                               decline_indexes,
                                               site_corrected_analysis_suitable_data),
   
+  ## render tables
+  tables = render(knitr_in('manuscript/tables.Rmd'),quiet = T),
+  
+  ## render figures
+  figures = render(knitr_in('manuscript/figures.Rmd'),quiet = T),
+  
   ## render manuscript
   manuscript = render(knitr_in('manuscript/manuscript.Rmd'),quiet = T),
   
