@@ -121,13 +121,6 @@
       "Repository": "CRAN",
       "Hash": "62408262624d9f8e436f51ca901424e2"
     },
-    "bookdown": {
-      "Package": "bookdown",
-      "Version": "0.15",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "f05c39060e000ad5c68fe962053a9b88"
-    },
     "broom": {
       "Package": "broom",
       "Version": "0.5.2",
@@ -756,18 +749,6 @@
       "Repository": "CRAN",
       "Hash": "830aa73278dce9beba583bfe57a5c015"
     },
-    "renv": {
-      "Package": "renv",
-      "Version": "0.8.3-16",
-      "Source": "GitHub",
-      "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteRepo": "renv",
-      "RemoteUsername": "rstudio",
-      "RemoteRef": "master",
-      "RemoteSha": "a8395cc9ee16400aef046a559577420d9eace1cd",
-      "Hash": "3729ba82fb66a8190e3e7a5fb21739fa"
-    },
     "reprex": {
       "Package": "reprex",
       "Version": "0.3.0",
@@ -987,8 +968,8 @@
       "RemoteRepo": "wordcountaddin",
       "RemoteUsername": "benmarwick",
       "RemoteRef": "master",
-      "RemoteSha": "b469b220cc6955bb427a89b763caa209dbc2d330",
-      "Hash": "2984bb51e9068ba2440b7b9d45f0f10b"
+      "RemoteSha": "fdf70d9c2d91bc54396026d148ea90aaba5973fd",
+      "Hash": "ed46051df7973b95cec5d4cd3d2360ab"
     },
     "xfun": {
       "Package": "xfun",
