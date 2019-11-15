@@ -1,26 +1,28 @@
+library(pacman)
+
 # Load dependant CRAN libraries
 
-pacman::p_load(drake,
-               conflicted,
-               rmarkdown,
-               maps,
-               mapdata,
-               ggthemes,
-               randomForest,
-               gridExtra,
-               ggrepel,
-               metR,
-               tidyverse,
-               ggpubr,
-               spelling,
-               knitr,
-               readxl)
+p_load(drake,
+       conflicted,
+       rmarkdown,
+       maps,
+       mapdata,
+       ggthemes,
+       randomForest,
+       gridExtra,
+       ggrepel,
+       metR,
+       tidyverse,
+       ggpubr,
+       spelling,
+       knitr,
+       readxl)
 
 # Load dependant GitHub libraries
 
-pacman::p_load_gh('thomasp85/patchwork',
-                  'ropenscilabs/gramr',
-                  'benmarwick/wordcountaddin')
+p_load_gh('thomasp85/patchwork',
+          'ropenscilabs/gramr',
+          'benmarwick/wordcountaddin')
 
 # Resolve conflicts
 

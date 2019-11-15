@@ -5,7 +5,7 @@ services:
     ports:
       - "8888:8888"
     volumes:
-      - ".:/root/Index_measures_for_oak_decline_severity_using_phenotypic_descriptors"
+      - ".:/home/rstudio/Index_measures_for_oak_decline_severity_using_phenotypic_descriptors"
     environment:
       DISABLE_AUTH: "true"
-    working_dir: /root/Index_measures_for_oak_decline_severity_using_phenotypic_descriptors
+    working_dir: /home/rstudio/Index_measures_for_oak_decline_severity_using_phenotypic_descriptors
