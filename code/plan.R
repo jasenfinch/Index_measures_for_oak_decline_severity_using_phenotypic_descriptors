@@ -65,18 +65,30 @@ plan <- drake_plan(
   descriptor_scatter_plots = site_corrected_analysis_suitable_data %>%
     descriptorScatterPlots(decline_indexes),
   
+  ## find optimal random forest parameters for PDI
+  PDI_rf_tune_results = tuneModel(site_corrected_analysis_suitable_data,decline_indexes$PDI),
+  PDI_rf_tune_params = optimalParams(PDI_rf_tune_results),
+  
+  ## find optimal random forest parameters for PDI
+  DAI_rf_tune_results = tuneModel(site_corrected_analysis_suitable_data,decline_indexes$DAI),
+  DAI_rf_tune_params = optimalParams(DAI_rf_tune_results),
+  
+  ## plot tuning results
+  rf_tune_plot = tuneResultsPlot(PDI_rf_tune_results,DAI_rf_tune_results),
+  
   ## generate PDI predictive random forest model
   PDI_rf_model = site_corrected_analysis_suitable_data %>%
     {set.seed(1234)
       randomForest(.,y = decline_indexes$PDI,
-                 ntree = 10000)},
+                 ntree = PDI_rf_tune_params$ntree,
+                 mtry = PDI_rf_tune_params$mtry)},
   
   ## generate DAI predictive random forest model
   DAI_rf_model = site_corrected_analysis_suitable_data %>%
     {set.seed(1234)
       randomForest(.,y = decline_indexes$DAI,
-                   ntree = 10000,
-                   mtry = 11)},
+                   ntree = DAI_rf_tune_params$ntree,
+                   mtry = DAI_rf_tune_params$mtry)},
   
   ## create descriptor contribution plots
   descriptor_contribution_plots = descriptorImportancePlots(PDI_rf_model,DAI_rf_model),

@@ -37,3 +37,9 @@ descriptor_scatter_plots$DAI_numeric
 descriptor_scatter_plots$DAI_factor
 ```
 
+```{r modelTuningResultsPlot}
+loadd(rf_tune_plot)
+
+rf_tune_plot
+```
+
