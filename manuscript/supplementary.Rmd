@@ -19,6 +19,12 @@ site_correction_factors %>%
   kable(caption = 'Descriptor correction factors at each site')
 ```
 
+```{r decline_index_plot}
+loadd(decline_indexes_plot)
+
+decline_indexes_plot
+```
+
 ```{r PDInumeric,fig.height=8}
 loadd(descriptor_scatter_plots)
 

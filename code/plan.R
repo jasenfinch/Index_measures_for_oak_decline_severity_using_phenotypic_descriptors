@@ -61,6 +61,9 @@ plan <- drake_plan(
   decline_indexes = unsupervised_rf %>%
     calcDIs(site_corrected_pheno_data),
   
+  ## plot decline indexes
+  decline_indexes_plot = declineIndexesPlot(decline_indexes),
+  
   ## plot descriptors against decline indexes 
   descriptor_scatter_plots = site_corrected_analysis_suitable_data %>%
     descriptorScatterPlots(decline_indexes),
