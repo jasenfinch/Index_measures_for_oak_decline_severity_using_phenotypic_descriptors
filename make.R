@@ -1,3 +1,4 @@
+renv::restore()
 
 source('code/packages.R')
 
