@@ -282,6 +282,13 @@
       "Repository": "CRAN",
       "Hash": "cd87b0162287f0da225edfaa2fd3a20c"
     },
+    "farver": {
+      "Package": "farver",
+      "Version": "2.0.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "8b389e971e00a574360051d7dd84d823"
+    },
     "fastmap": {
       "Package": "fastmap",
       "Version": "1.0.1",
@@ -807,15 +814,15 @@
     },
     "renv": {
       "Package": "renv",
-      "Version": "0.8.3-24",
+      "Version": "0.8.3-27",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteUsername": "rstudio",
       "RemoteRepo": "renv",
       "RemoteRef": "master",
-      "RemoteSha": "795b8468e886c44f2a848d0ffab687c9ade60757",
+      "RemoteSha": "0a22c5076f144298660e38fd661a433d561f81bf",
       "RemoteHost": "api.github.com",
-      "Hash": "0339da2cbb60a2d28b45212b480c8b08"
+      "Hash": "2b095dfb211a1add6b4d031e1f042643"
     },
     "reprex": {
       "Package": "reprex",
@@ -861,10 +868,10 @@
     },
     "scales": {
       "Package": "scales",
-      "Version": "1.0.0",
+      "Version": "1.1.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "a96e9571cd875b7b934990d85b7a3c18"
+      "Hash": "a98877092d646d981a9249d5ea7774ea"
     },
     "selectr": {
       "Package": "selectr",
