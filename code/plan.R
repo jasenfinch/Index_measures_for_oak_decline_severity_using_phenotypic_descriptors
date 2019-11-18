@@ -96,6 +96,12 @@ plan <- drake_plan(
   ## create descriptor contribution plots
   descriptor_contribution_plots = descriptorImportancePlots(PDI_rf_model,DAI_rf_model),
   
+  ## PDI lime analysis
+  PDI_lime_analysis = PDIlimeAnalysis(site_corrected_analysis_suitable_data,PDI_rf_model,decline_indexes),
+  
+  ## DAI lime analysis
+  DAI_lime_analysis = DAIlimeAnalysis(site_corrected_analysis_suitable_data,DAI_rf_model,decline_indexes),
+  
   ## PDI rf model response surfaces
   PDI_response_surfaces = PDIresponseSurfaces(PDI_rf_model,
                                               decline_indexes,

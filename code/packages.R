@@ -14,7 +14,8 @@ pacman::p_load(drake,
                ggpubr,
                spelling,
                knitr,
-               readxl)
+               readxl,
+               lime)
 
 # Load dependant GitHub libraries
 
@@ -28,3 +29,5 @@ map <- conflict_prefer('map','purrr',quiet = T)
 gather <- conflict_prefer('gather','tidyr',quiet = T)
 filter <- conflict_prefer('filter','dplyr',quiet = T)
 margin <- conflict_prefer('margin','randomForest',quiet = T)
+
+explain <- conflict_prefer("explain", "lime",quiet = T)
