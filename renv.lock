@@ -72,6 +72,13 @@
       "Repository": "CRAN",
       "Hash": "084336e3a1a0d358337525d7a394bb8b"
     },
+    "RcppEigen": {
+      "Package": "RcppEigen",
+      "Version": "0.3.3.7.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "5cb1fc5891388020894f7e3199d4c1c4"
+    },
     "V8": {
       "Package": "V8",
       "Version": "2.3",
@@ -162,6 +169,13 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "9a99b54d2baf9393d0a68b6ea9513ee6"
+    },
+    "codetools": {
+      "Package": "codetools",
+      "Version": "0.2-16",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "3bf2a0853d7faf7f865d0b877946e452"
     },
     "colorspace": {
       "Package": "colorspace",
@@ -296,6 +310,13 @@
       "Repository": "CRAN",
       "Hash": "4d7e4a2ed5adadda6714eb7b9361213b"
     },
+    "foreach": {
+      "Package": "foreach",
+      "Version": "1.4.7",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "679941326860ea87464d7f010341fb05"
+    },
     "foreign": {
       "Package": "foreign",
       "Version": "0.8-72",
@@ -366,12 +387,26 @@
       "Repository": "CRAN",
       "Hash": "bc3e11207ac8dc4df1532663c4cf6a7a"
     },
+    "glmnet": {
+      "Package": "glmnet",
+      "Version": "3.0-1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "33ff027a3b18acc5c9e1ff0abc93c6d5"
+    },
     "glue": {
       "Package": "glue",
       "Version": "1.3.1",
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "e8436e647719b7c9d01409767cd88cc8"
+    },
+    "gower": {
+      "Package": "gower",
+      "Version": "0.2.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "1f63bd78e56884fb959fe36b7bdb8f74"
     },
     "gramr": {
       "Package": "gramr",
@@ -427,6 +462,13 @@
       "Repository": "CRAN",
       "Hash": "639ced211d4574cb149a7906b22e110f"
     },
+    "htmlwidgets": {
+      "Package": "htmlwidgets",
+      "Version": "1.5.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "f2ea129162a975cc3828d56d5270616d"
+    },
     "httpuv": {
       "Package": "httpuv",
       "Version": "1.5.2",
@@ -454,6 +496,13 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "6eb7a604bc33c66dac0611b7ce75ac69"
+    },
+    "iterators": {
+      "Package": "iterators",
+      "Version": "1.0.12",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "30ef58a17d970ae05c85793da79152d6"
     },
     "jsonlite": {
       "Package": "jsonlite",
@@ -517,6 +566,13 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "670a552ae202a4f69e2e644f524dfffd"
+    },
+    "lime": {
+      "Package": "lime",
+      "Version": "0.5.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "0cff0ecb395f06067b6fdfe8b7d99568"
     },
     "lubridate": {
       "Package": "lubridate",
@@ -749,6 +805,18 @@
       "Repository": "CRAN",
       "Hash": "830aa73278dce9beba583bfe57a5c015"
     },
+    "renv": {
+      "Package": "renv",
+      "Version": "0.8.3-24",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteUsername": "rstudio",
+      "RemoteRepo": "renv",
+      "RemoteRef": "master",
+      "RemoteSha": "795b8468e886c44f2a848d0ffab687c9ade60757",
+      "RemoteHost": "api.github.com",
+      "Hash": "0339da2cbb60a2d28b45212b480c8b08"
+    },
     "reprex": {
       "Package": "reprex",
       "Version": "0.3.0",
@@ -805,12 +873,26 @@
       "Repository": "CRAN",
       "Hash": "40ccee5dc2b97e197648525aefcfd0ba"
     },
+    "shape": {
+      "Package": "shape",
+      "Version": "1.4.4",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "8fa55e90bb9c5bcf45e1fcb44087b0bf"
+    },
     "shiny": {
       "Package": "shiny",
       "Version": "1.4.0",
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "25dd339c951981444081a370b4afad40"
+    },
+    "shinythemes": {
+      "Package": "shinythemes",
+      "Version": "1.1.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "fd438135f3656d7bf5e854060c13ff56"
     },
     "sourcetools": {
       "Package": "sourcetools",
