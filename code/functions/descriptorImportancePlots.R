@@ -14,9 +14,9 @@ descriptorImportancePlots <- function(PDIrf,DAIrf){
       
       descriptorLabels <- dat$Feature %>%
         as.character() %>%
-        {c(.[1:5],
+        {c(.[1:(which(str_detect(.,coll('Agrilus exit hole density (m^-2)'))) - 1)],
            expression(Agrillus~exit~hole~density ( m^-2 ) ),
-           .[7:34],
+           .[(which(str_detect(.,coll('Agrilus exit hole density (m^-2)'))) + 1):34],
            expression(Crown~volume ( m^3 ) )
         )}
       
@@ -44,11 +44,11 @@ descriptorImportancePlots <- function(PDIrf,DAIrf){
       
       descriptorLabels <- dat$Feature %>%
         as.character() %>%
-        {c(.[1:11],
+        {c(.[1:(which(str_detect(.,coll('Agrilus exit hole density (m^-2)'))) - 1)],
            expression(Agrillus~exit~hole~density ( m^-2 ) ),
-           .[13:31],
+           .[(which(str_detect(.,coll('Agrilus exit hole density (m^-2)'))) + 1):(which(str_detect(.,coll('Crown volume (m^3)'))) - 1)],
            expression(Crown~volume ( m^3 ) ),
-           .[33:35]
+           .[(which(str_detect(.,coll('Crown volume (m^3)'))) + 1):35]
         )}
       
       ggplot(dat,aes(x = Feature,y = `Relative Importance`)) +
