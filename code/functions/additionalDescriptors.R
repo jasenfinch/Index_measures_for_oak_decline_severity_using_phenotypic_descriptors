@@ -12,5 +12,5 @@ bleedPrevalence <- function(a,A,b,B,d) {
 }
 
 agrilusExitHoleDensity <- function(h,d) {
-  h/((2 * d)/100 * pi)
+  h/((2 * d)/1000 * pi)
 }

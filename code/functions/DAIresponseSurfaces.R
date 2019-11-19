@@ -46,26 +46,26 @@ DAIresponseSurfaces <- function(DAIrf,decline_indexes,site_corrected_analysis_su
   spectrumTrees_DAI$`e)`$`Lower crown height (m)` <- ranges$center[ranges$Descriptor == 'Lower crown height (m)']
   spectrumTrees_DAI$`f)`$`Lower crown height (m)` <- ranges$min[ranges$Descriptor == 'Lower crown height (m)']
   
-  spectrumTrees_DAI$`a)`$`Diameter at breast height (cm)` <- ranges$min[ranges$Descriptor == 'Diameter at breast height (cm)']
-  spectrumTrees_DAI$`b)`$`Diameter at breast height (cm)` <- ranges$center[ranges$Descriptor == 'Diameter at breast height (cm)']
-  spectrumTrees_DAI$`c)`$`Diameter at breast height (cm)` <- ranges$max[ranges$Descriptor == 'Diameter at breast height (cm)']
-  spectrumTrees_DAI$`d)`$`Diameter at breast height (cm)` <- ranges$max[ranges$Descriptor == 'Diameter at breast height (cm)']
-  spectrumTrees_DAI$`e)`$`Diameter at breast height (cm)` <- ranges$center[ranges$Descriptor == 'Diameter at breast height (cm)']
-  spectrumTrees_DAI$`f)`$`Diameter at breast height (cm)` <- ranges$min[ranges$Descriptor == 'Diameter at breast height (cm)']
+  spectrumTrees_DAI$`a)`$`Diameter at breast height (mm)` <- ranges$min[ranges$Descriptor == 'Diameter at breast height (mm)']
+  spectrumTrees_DAI$`b)`$`Diameter at breast height (mm)` <- ranges$center[ranges$Descriptor == 'Diameter at breast height (mm)']
+  spectrumTrees_DAI$`c)`$`Diameter at breast height (mm)` <- ranges$max[ranges$Descriptor == 'Diameter at breast height (mm)']
+  spectrumTrees_DAI$`d)`$`Diameter at breast height (mm)` <- ranges$max[ranges$Descriptor == 'Diameter at breast height (mm)']
+  spectrumTrees_DAI$`e)`$`Diameter at breast height (mm)` <- ranges$center[ranges$Descriptor == 'Diameter at breast height (mm)']
+  spectrumTrees_DAI$`f)`$`Diameter at breast height (mm)` <- ranges$min[ranges$Descriptor == 'Diameter at breast height (mm)']
   
   plotRanges_DAI_abc <- spectrumTrees_DAI[c('a)','b)','c)')] %>%
     names() %>%
     map(~{
       type <- .
       list(
-        `Active bleed size (cm)` = seq(ranges$min[ranges$Descriptor == 'Active bleed size (cm)'],ranges$center[ranges$Descriptor == 'Active bleed size (cm)']/8,length.out = 100),
-        `Black staining size (cm)` = seq(ranges$min[ranges$Descriptor == 'Black staining size (cm)'],ranges$center[ranges$Descriptor == 'Black staining size (cm)']/8,length.out = 100)
+        `Active bleed size (mm)` = seq(ranges$min[ranges$Descriptor == 'Active bleed size (mm)'],ranges$center[ranges$Descriptor == 'Active bleed size (mm)']/8,length.out = 100),
+        `Black staining size (mm)` = seq(ranges$min[ranges$Descriptor == 'Black staining size (mm)'],ranges$center[ranges$Descriptor == 'Black staining size (mm)']/8,length.out = 100)
       ) %>%
         expand.grid() %>%
         as_tibble() %>%
         mutate(ID = 1) %>%
         left_join(spectrumTrees_DAI[[type]] %>%
-                    select(-`Active bleed size (cm)`,-`Black staining size (cm)`) %>%
+                    select(-`Active bleed size (mm)`,-`Black staining size (mm)`) %>%
                     mutate(ID = 1),
                   by = 'ID') %>%
         select(-ID) %>%
@@ -76,11 +76,11 @@ DAIresponseSurfaces <- function(DAIrf,decline_indexes,site_corrected_analysis_su
                                              `Total height (m)`,
                                              `Lower crown height (m)`,
                                              `Crown condition (%)`),
-          `Bleed prevalence (%)` = bleedPrevalence(`Active bleed size (cm)`,
+          `Bleed prevalence (%)` = bleedPrevalence(`Active bleed size (mm)`,
                                                    `Active bleeds`,
-                                                   `Black staining size (cm)`,
+                                                   `Black staining size (mm)`,
                                                    `Black staining`,
-                                                   `Diameter at breast height (cm)`)
+                                                   `Diameter at breast height (mm)`)
         ) %>%
         mutate(DAI = predict(DAIrf,newdata = .))
     }) %>%
@@ -109,11 +109,11 @@ DAIresponseSurfaces <- function(DAIrf,decline_indexes,site_corrected_analysis_su
                                              `Total height (m)`,
                                              `Lower crown height (m)`,
                                              `Crown condition (%)`),
-          `Bleed prevalence (%)` = bleedPrevalence(`Active bleed size (cm)`,
+          `Bleed prevalence (%)` = bleedPrevalence(`Active bleed size (mm)`,
                                                    `Active bleeds`,
-                                                   `Black staining size (cm)`,
+                                                   `Black staining size (mm)`,
                                                    `Black staining`,
-                                                   `Diameter at breast height (cm)`)
+                                                   `Diameter at breast height (mm)`)
         ) %>%
         mutate(DAI = predict(DAIrf,newdata = .))
     }) %>%
@@ -124,7 +124,7 @@ DAIresponseSurfaces <- function(DAIrf,decline_indexes,site_corrected_analysis_su
     map(~{
       type <- .
       pl <- plotRanges_DAI_abc[[type]] %>%
-        ggplot(aes(x = `Active bleed size (cm)`,y = `Black staining size (cm)`,fill = DAI,z = DAI)) +
+        ggplot(aes(x = `Active bleed size (mm)`,y = `Black staining size (mm)`,fill = DAI,z = DAI)) +
         geom_raster() +
         geom_raster() +
         geom_contour(colour = 'black',binwidth = 0.1) +
@@ -141,7 +141,7 @@ DAIresponseSurfaces <- function(DAIrf,decline_indexes,site_corrected_analysis_su
              caption = str_c(
                'Active bleeds = ',plotRanges_DAI_abc[[type]]$`Active bleeds`[1] %>% round(3),'\n',
                'Black staining = ',plotRanges_DAI_abc[[type]]$`Black staining`[1] %>% round(3),'\n',
-               'Diameter at breast height (cm) = ',plotRanges_DAI_abc[[type]]$`Diameter at breast height (cm)`[1] %>% round(3)
+               'Diameter at breast height (mm) = ',plotRanges_DAI_abc[[type]]$`Diameter at breast height (mm)`[1] %>% round(3)
              )
         )
       return(pl)
@@ -170,7 +170,7 @@ DAIresponseSurfaces <- function(DAIrf,decline_indexes,site_corrected_analysis_su
                'Crown radius (m) = ',plotRanges_DAI_def[[type]]$`Crown radius (m)`[1] %>% round(3),'\n',
                'Total height (m) = ',plotRanges_DAI_def[[type]]$`Total height (m)`[1] %>% round(3),'\n',
                'Lower crown height (m) = ',plotRanges_DAI_def[[type]]$`Lower crown height (m)`[1] %>% round(3),'\n',
-               'Diameter at breast height (cm) = ',plotRanges_DAI_def[[type]]$`Diameter at breast height (cm)`[1] %>% round(3)
+               'Diameter at breast height (mm) = ',plotRanges_DAI_def[[type]]$`Diameter at breast height (mm)`[1] %>% round(3)
              )
         )
       return(pl)

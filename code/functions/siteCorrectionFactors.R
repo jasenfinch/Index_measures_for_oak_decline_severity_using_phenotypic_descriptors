@@ -5,7 +5,7 @@
 #' @export
 
 
-siteCorrectionFactors <- function(phenoData,descriptors = c("Diameter at breast height (cm)",
+siteCorrectionFactors <- function(phenoData,descriptors = c("Diameter at breast height (mm)",
                                                             "Lower crown height (m)",
                                                             "Timber height (m)",
                                                             "Total height (m)",

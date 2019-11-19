@@ -10,11 +10,11 @@ calcAdditionalDescriptors <- function(phenoData){
                                               `Total height (m)`,
                                               `Lower crown height (m)`,
                                               `Crown condition (%)`),
-           `Bleed prevalence (%)` = bleedPrevalence(`Active bleed size (cm)`,
+           `Bleed prevalence (%)` = bleedPrevalence(`Active bleed size (mm)`,
                                                     `Active bleeds`,
-                                                    `Black staining size (cm)`,
+                                                    `Black staining size (mm)`,
                                                     `Black staining`,
-                                                    `Diameter at breast height (cm)`),
-           `Agrilus exit hole density (m^-2)` = agrilusExitHoleDensity(`Agrilus exit holes`,`Diameter at breast height (cm)`)
+                                                    `Diameter at breast height (mm)`),
+           `Agrilus exit hole density (m^-2)` = agrilusExitHoleDensity(`Agrilus exit holes`,`Diameter at breast height (mm)`)
     )
 }
