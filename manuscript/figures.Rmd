@@ -29,8 +29,7 @@ DIspace()
 ```{r descriptor_contributions, fig.height = 5,fig.cap = 'Descriptor importance scores from random forest models for relative contributions to\ndecline index measures. a) Phenotypic decline index (PDI). b) Decline acuteness index (DAI)'}
 loadd(descriptor_contribution_plots)
 
-descriptor_contribution_plots %>%
-  wrap_plots()
+descriptor_contribution_plots$a + descriptor_contribution_plots$b
 ```
 
 ```{r PDI_response_surfaces,fig.height = 6,fig.cap='PDI response surfaces for simulated descriptor values from trained Random Forest models. All other descriptors were set at the values of those of the trees with the lowest PDI used for trainig the models'}
