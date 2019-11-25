@@ -5,7 +5,7 @@
 mds <- function(rfModels){
   rfModels %>%
     map(~{.$proximity %>%
-        as_tibble() %>%
+        as_tibble(.name_repair = 'minimal') %>%
         rowid_to_column(var = 'Sample1') %>%
         gather('Sample2','Proximity',-Sample1)}) %>%
     bind_rows(.id = 'Iteration') %>%
@@ -18,6 +18,6 @@ mds <- function(rfModels){
     as.matrix() %>%
     {1 - .} %>%
     cmdscale() %>%
-    as_tibble() %>%
-    rename(`Dimension 1` = V1,`Dimension 2` = V2)
+    {suppressMessages(as_tibble(.,.name_repair = 'universal'))} %>%
+    rename(`Dimension 1` = `...1`,`Dimension 2` = `...2`)
 }
