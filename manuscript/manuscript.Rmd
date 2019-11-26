@@ -36,6 +36,9 @@ Oak decline syndromes are facilitated by a variety of both biotic and abiotic fa
 
 ### Phenotypic data collection
 
+Phenotypic data were collected from a total of 174 trees from 9 sites from across the south, eas and west of England.
+
+
 ### Phenotypic descriptor preparation and analysis
 
 R v`r str_c(version$major,version$minor,sep ='.')` was used for all parsing, preparation and analysis of phenotypic data.

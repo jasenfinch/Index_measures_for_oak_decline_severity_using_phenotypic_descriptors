@@ -9,10 +9,10 @@ descriptorInfo <- function(analysisTable){
   
   type <- tribble(
     ~Descriptor,~Description,~`Categories / units`,~Reference,
-    'Diameter at breast height (mm)','','mm','',
+    'Diameter at breast height (mm)','Diameter of the trunk to within 1mm at a height of 1.3m.','mm','',
     'Crown radius (m)','','m','',
-    'Total height (m)','','m','',
-    'Lower crown height (m)','','m','',
+    'Total height (m)','Total tree height.','m','',
+    'Lower crown height (m)','Lowest live crown height to within 0.1m.','m','',
     'Timber height (m)','','m','',
     'Missing crown (%)','','%','',
     'Crown transparency (%)','','%','',
@@ -26,7 +26,7 @@ descriptorInfo <- function(analysisTable){
     'Insect defoliation type','','','',
     'Pruning / branch loss','','','',
     'Canopy closure','','','',
-    'Social class','','','',
+    'Social class','','1 = dominant; 2 = codominant; 3 = subdominant; 4 = suppressed','',
     'Agrilus exit holes','Number of *Agrilus* exit holes.','frequency','',
     'Stem epicormics','','','',
     'Dead stem tissue','','','',
