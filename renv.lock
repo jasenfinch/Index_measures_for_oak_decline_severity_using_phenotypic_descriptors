@@ -39,10 +39,10 @@
     },
     "Matrix": {
       "Package": "Matrix",
-      "Version": "1.2-17",
+      "Version": "1.2-18",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "39ea11fb3ad0d759f9f1c053fd442957"
+      "Hash": "08588806cba69f04797dab50627428ed"
     },
     "R6": {
       "Package": "R6",
@@ -506,10 +506,10 @@
     },
     "igraph": {
       "Package": "igraph",
-      "Version": "1.2.4.1",
+      "Version": "1.2.4.2",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "12eccd39a9fe9fd7a805b40fc0b7d01f"
+      "Hash": "fffa635f747cd07ffc56bc13a23701e4"
     },
     "iterators": {
       "Package": "iterators",
@@ -821,15 +821,15 @@
     },
     "renv": {
       "Package": "renv",
-      "Version": "0.8.3-55",
+      "Version": "0.8.3-66",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteUsername": "rstudio",
       "RemoteRepo": "renv",
       "RemoteRef": "master",
-      "RemoteSha": "2ed87c5886dbce7332d7cf646a7081ac5a39db3c",
-      "Hash": "6fb7b90065c772ae4611156decfbc232"
+      "RemoteSha": "c93cede1e455b4769a9c253de9d6914355e672e6",
+      "Hash": "edbf9438e2b175cd7bf665c960a4c847"
     },
     "reprex": {
       "Package": "reprex",
