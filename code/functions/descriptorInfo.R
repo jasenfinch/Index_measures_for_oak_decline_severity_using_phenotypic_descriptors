@@ -24,7 +24,7 @@ descriptorInfo <- function(analysisTable){
     'Dieback type','','','',
     'Insect defoliation','','','',
     'Insect defoliation type','','','',
-    'Pruning / branch loss','','','',
+    'Pruning / branch loss','','P = present; A = absent','',
     'Canopy closure','','','',
     'Social class','','1 = dominant; 2 = codominant; 3 = subdominant; 4 = suppressed','',
     'Agrilus exit holes','Number of *Agrilus* exit holes.','frequency','',
