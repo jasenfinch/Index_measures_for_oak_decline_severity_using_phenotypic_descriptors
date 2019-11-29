@@ -18,6 +18,11 @@ loadd(site_rf_margin)
 loadd(site_rf_post_correction_margin)
 ```
 
+**Authors:** Jasen Finch, Nathan Brown, Sandra Denman & John Draper
+
+**Proposed journal:** Still undecided! ??Plant Methods, Forestry?? 
+
+**Keywords:** acute oak decline, chronic oak decline, phenotyping, machine learning
 
 ## Abstract
 
@@ -30,22 +35,53 @@ These indexes are simple but sensitive measures of tree decline severity allowin
 
 ## Introduction
 
-Oak decline syndromes are facilitated by a variety of both biotic and abiotic factors 
+- define phenotype and descriptor
+- Acute and chronic decline associated phenotypes
+- The oak decline spectrum move away from simplistic binary categorisations
+- Manual assignment of decline status difficult prone to error for due to contribution of many factors. 
+
+Oak decline syndromes are facilitated by a variety of both abiotic and biotic factors.
+
+Abiotic factors can include...
+Biotic factors can include...
+
+As a results of this, there are many visual cues measures that contribute to what can be defined as a declining oak tree.
+A severely declining oak is prominantly characterised by very poor crown condition and numerous dead branches.
+Compounding this complexity is the addition of different types of oak decline (AOD) that are often categorised based on the duration over which a tree has been declining or the biotic agents/factors associated with a declining tree.
+For instance a chronically declining oak can subsequently begin to also develop the stem bleeds associated with AOD.
+Accurately diagnosing in the field the severity and type of oak decline present is difficult and can requires much experience, expertise and training.
+
+Here, we propose a framework for quantitatively measuring the severity of oak decline 
+
+* The phenotypic decline index (PDI) - a measure of decline severity scoring trees between 0 and 1.
+More severly declining oak trees have a score closer to 1.
+
+* The decline acuteness index (DAI) - a measure differentiating between chronically and acutely declining oak trees with a score between -1 and 1. 
+Acutely declining trees have a score closer to 1 and chronically declining trees have a score closer to -1.
+
 
 ## Materials and methods
 
 ### Phenotypic data collection
+
+- Site descriptions
+- Field phenotyping protocol
 
 Phenotypic data were collected from a total of 174 trees from 9 sites from across the south, eas and west of England.
 
 
 ### Phenotypic descriptor preparation and analysis
 
+- Aggregation of cardinal observations.
+- Random forest and MDS analyses
+
 R v`r str_c(version$major,version$minor,sep ='.')` was used for all parsing, preparation and analysis of phenotypic data.
 
 ## Results
 
-### Phenotypic descriptors
+### Phenotypic descriptors for oak decline
+
+- Descriptions of collected phenotypic descriptors and manual status assignment
 
 The following four additional descriptors were calculated:
 
@@ -73,6 +109,9 @@ $h$ = number of *Agrilus* exit holes, $d$ = diameter at breast height (cm)
 
 ### Tree size descriptor adjustment by site
 
+- Analysis of cross site differences
+- Outline of cross site correction approach using mean centering adjustment
+
 Large phenotypic differences were found between the sites by supervised random forest (Figure #a; margin = `r site_rf_margin$Margin %>% signif(digits = 3)`). 
 This was as a results of differences in descriptors relating tree size and likely the ages of the trees between the sites. 
 To account for these differences and to make the trees across the sites comparable in the context of decline, an adjustment of site means to the overall mean was applied to each of the size descriptors (diameter at breast height, lower crown height, timber height, total height, crown radius). 
@@ -80,7 +119,11 @@ An example of this adjustment is shown for diameter at breast height in Suppleme
 This adjustment removed inter-site variability but maintained intra-site variability, allowing comparisons to be made between the trees at the different sites in the context of decline severity.
 Post adjustment the random forest margin was substantially reduced to `r site_rf_post_correction_margin$Margin %>% signif(digits = 3)` indicating that the majority of the between site variance had been removed. 
 
-### Phenotypic decline and decline acuteness indexes
+### Phenotypic decline and decline acuteness indexes for oak decline severity
+
+- Decline index calculation
+- Comparison of indexes with manually assigned decline status labels
+- Top ranked descriptor index response surfaces
 
 Using unsupervised random forest proximities and the phenotypic descriptors as reported previously,multidimensional scaling (MDS) to two dimensions was performed to yield two phenotypic indexes:
 
@@ -137,9 +180,25 @@ AOD occurs over a much shorter period compared COD and therefore has less time i
 
 ## Discussion
 
+- Accessability of collecting descriptors
+- Suitability of collected phenotypic descriptors for describing decline status
+- Concession of model interpretability to predictive capability by using a machine learning approach
+- Trends of key phenotypic descriptors withing the PDI and DAI mesures
+- Sensitivity provided for integration with large scale omics analyses as well as long term monitoring for forest condition
+- Index thresholds for category definitions (healthy, declining, severe decline etc.)
+- When viewed in the 2D continuum, the categorisation of AOD to only include bleeds of certain bacteria seems likely to be too specific and by definition should only describe the period of time under which the tree have been declining.
+Perhaps subcategories of AOD would be more suitable such as Agrillus associated AOD or Armillaria associated AOD. 
+
 ### Applications
 
+- Discussion of applications to forestry monitoring and management
+- Sensitivity for integration with molecular data compared to categorical assignments
+
 ## Conclusions
+
+- Crown condition descriptors most important for describing overall decline severity in the PDI.
+- Bacterial bleed related descriptors are most important for describing decline acuteness.
+- Decline indexes provide intuitive measures of decline severity based on simple phenotypic measurements that do not require specialist equipment
 
 \newpage
 ## Checks
@@ -148,5 +207,4 @@ AOD occurs over a much shorter period compared COD and therefore has less time i
 manuscript_check()
 ```
 
-\newpage
 ## References
