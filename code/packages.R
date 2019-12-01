@@ -1,3 +1,6 @@
+# Restore package cache
+renv::restore()
+
 # Load dependant CRAN libraries
 
 pacman::p_load(drake,
@@ -25,9 +28,8 @@ pacman::p_load_gh('thomasp85/patchwork',
 
 # Resolve conflicts
 
-map <- conflict_prefer('map','purrr',quiet = T)
-gather <- conflict_prefer('gather','tidyr',quiet = T)
-filter <- conflict_prefer('filter','dplyr',quiet = T)
-margin <- conflict_prefer('margin','randomForest',quiet = T)
-
-explain <- conflict_prefer("explain", "lime",quiet = T)
+conflict_prefer('map','purrr',quiet = T)
+conflict_prefer('gather','tidyr',quiet = T)
+conflict_prefer('filter','dplyr',quiet = T)
+conflict_prefer('margin','randomForest',quiet = T)
+conflict_prefer("explain", "lime",quiet = T)
