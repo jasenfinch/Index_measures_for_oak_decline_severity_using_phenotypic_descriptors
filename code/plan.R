@@ -16,6 +16,10 @@ plan <- drake_plan(
   pheno_data_with_additional_descriptors = pheno_data %>%
     calcAdditionalDescriptors(),
   
+  ## export phenotypic data
+  export_pheno_data_with_additional_descriptors = pheno_data_with_additional_descriptors %>%
+    write_csv(file_out('data/exports/pheno_data_with_additional_descriptors.csv')),
+  
   ## make analysis suitable table
   analysis_suitable_data = pheno_data_with_additional_descriptors %>%
     makeAnalysisTable(),
@@ -75,6 +79,10 @@ plan <- drake_plan(
   ## calculate decline indexes
   decline_indexes = unsupervised_rf %>%
     calcDIs(site_corrected_pheno_data),
+  
+  ## export decline indexes
+  export_decline_indexes = decline_indexes %>%
+    write_csv(file_out('data/exports/decline_indexes.csv')),
   
   ## plot decline indexes
   decline_indexes_plot = declineIndexesPlot(decline_indexes),
