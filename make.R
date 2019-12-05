@@ -1,10 +1,10 @@
 
-source('code/packages.R')
+source('R/packages.R')
 
-'code/functions/' %>%
+'R/functions/' %>%
   list.files(full.names = T) %>%
   walk(source)
 
-source('code/plan.R')
+source('R/plan.R')
 
 make(plan)
