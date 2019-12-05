@@ -221,10 +221,10 @@
     },
     "curl": {
       "Package": "curl",
-      "Version": "4.2",
+      "Version": "4.3",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "ec0bde6776afca14b9ec1e3e0735a846"
+      "Hash": "2b7d10581cc730804e9ed178c8374bd6"
     },
     "data.table": {
       "Package": "data.table",
@@ -263,10 +263,10 @@
     },
     "drake": {
       "Package": "drake",
-      "Version": "7.7.0",
+      "Version": "7.8.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "42bf05aad589e29d12a155438db98c92"
+      "Hash": "eac83dedaa90a04e21c40af828aea40a"
     },
     "ellipsis": {
       "Package": "ellipsis",
@@ -821,15 +821,15 @@
     },
     "renv": {
       "Package": "renv",
-      "Version": "0.8.3-66",
+      "Version": "0.8.3-81",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteUsername": "rstudio",
       "RemoteRepo": "renv",
       "RemoteRef": "master",
-      "RemoteSha": "c93cede1e455b4769a9c253de9d6914355e672e6",
-      "Hash": "edbf9438e2b175cd7bf665c960a4c847"
+      "RemoteSha": "4efa2c803022be76cf3c42229f068628789849b4",
+      "Hash": "6001950ef2707cae65f71ab6e34ca6d8"
     },
     "reprex": {
       "Package": "reprex",

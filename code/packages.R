@@ -22,8 +22,7 @@ pacman::p_load(drake,
 
 # Load dependant GitHub libraries
 
-pacman::p_load_gh('thomasp85/patchwork',
-                  'ropenscilabs/gramr',
+pacman::p_load_gh('ropenscilabs/gramr',
                   'benmarwick/wordcountaddin')
 
 # Resolve conflicts
