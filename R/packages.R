@@ -18,7 +18,8 @@ pacman::p_load(drake,
                spelling,
                knitr,
                readxl,
-               lime)
+               lime,
+               patchwork)
 
 # Load dependant GitHub libraries
 
