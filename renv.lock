@@ -707,6 +707,13 @@
       "Repository": "CRAN",
       "Hash": "b37932b67288bc62bb81686b2f337a7d"
     },
+    "patchwork": {
+      "Package": "patchwork",
+      "Version": "1.0.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "16eee5b5edc41eec5af1149ccdc6b2c9"
+    },
     "pillar": {
       "Package": "pillar",
       "Version": "1.4.2",
@@ -919,10 +926,10 @@
     },
     "spam": {
       "Package": "spam",
-      "Version": "2.4-0",
+      "Version": "2.5-0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "f18694c7dc2f8746f2cd3daa7644efd8"
+      "Hash": "a02109d78304b0ca3b2482ebafd3369e"
     },
     "spelling": {
       "Package": "spelling",
