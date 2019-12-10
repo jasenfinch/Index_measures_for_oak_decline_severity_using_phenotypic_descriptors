@@ -53,7 +53,6 @@ Compounding this complexity is the addition of different types of oak decline (A
 For instance a chronically declining oak can subsequently begin to also develop the stem bleeds associated with AOD.
 Accurately diagnosing in the field the severity and type of oak decline present is difficult and can requires much experience, expertise and training.
 
-
 Machine learning is finding increasing utility in biological and geographical applications due to it's ability to learn complex patterns withing and between 
 A popular algroith is that of random forest due to it's versatility, relatively trivial training requirements and resiliance against overfitting [@breiman2001] (refs). 
 It is an ensemble machine learning method where forests of bootstrap sampled decision trees are grown, yielding both out of bag (OOB) sample prediction accuracies and variable importance.
@@ -225,7 +224,7 @@ They allow sensitive comparisons to be made for the same tree between years as w
 ## Checks
 
 ```{r check,comment='',cache=FALSE}
-manuscript_check()
+manuscript_check(checks = c('word count','spelling'))
 ```
 
 ## References
