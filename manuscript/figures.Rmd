@@ -16,10 +16,6 @@ loadd(site_differences_mds_plot)
 grid.arrange(site_differences_mds_plot$a,site_differences_mds_plot$b,nrow = 1)
 ```
 
-```{r DI_space,fig.cap='Two dimensional continuum of the phenotypic decline indexes for oak decline severity.',fig.height=3,fig.width=5}
-DIspace()
-```
-
 ```{r descriptor_contributions, fig.height = 5,fig.cap = 'Descriptor importance scores from random forest models for relative contributions to\ndecline index measures. a) Phenotypic decline index (PDI). b) Decline acuteness index (DAI)'}
 loadd(descriptor_contribution_plots)
 
@@ -37,4 +33,8 @@ grid.arrange(PDI_response_surfaces$`a)`,PDI_response_surfaces$`b)`,PDI_response_
 loadd(DAI_response_surfaces)
 
 grid.arrange(DAI_response_surfaces$`a)`,DAI_response_surfaces$`b)`,DAI_response_surfaces$`c)`,DAI_response_surfaces$`d)`,DAI_response_surfaces$`e)`,DAI_response_surfaces$`f)`,DAI_response_surfaces$legend,ncol = 3,layout_matrix = rbind(c(1,4,7),c(2,5,7),c(3,6,7)),widths = c(4,4,1),newpage = F)
+```
+
+```{r DI_space,fig.cap='Two dimensional continuum of the phenotypic decline indexes for oak decline severity.',fig.height=3,fig.width=5}
+DIspace()
 ```
