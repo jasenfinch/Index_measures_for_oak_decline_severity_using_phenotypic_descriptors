@@ -51,6 +51,6 @@ DIspace <- function(){
     theme_classic() +
     theme(plot.title = element_text(face = 'bold'),
           axis.title = element_text(face = 'bold'),
-          panel.background = element_rect(fill = 'black')) +
+          panel.background = element_rect(fill = '#302F2C')) +
     guides(colour = FALSE)
 }
