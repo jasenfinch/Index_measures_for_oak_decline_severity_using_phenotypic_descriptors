@@ -47,22 +47,22 @@ Abiotic factors can include both predisposing and inciting factors such as droug
 Biotic factors can include...
 
 As a results of this, there are many visual phenotypic descriptors encompassing the entirety of an oak tree that contribute to what can be defined as a declining oak tree.
-A severely declining oak is most prominantly characterised by very poor crown condition and numerous dead branches (ref).
+A severely declining oak is most prominently characterised by very poor crown condition and numerous dead branches (ref).
 
 Compounding this complexity is the addition of different types of oak decline (AOD) that are often categorised based on the duration over which a tree has been declining or the biotic agents/factors associated with a declining tree.
 For instance a chronically declining oak can subsequently begin to also develop the stem bleeds associated with AOD.
 Accurately diagnosing in the field the severity and type of oak decline present is difficult and can requires much experience, expertise and training.
 
 Machine learning is finding increasing utility in biological and geographical applications due to it's ability to learn complex patterns withing and between 
-A popular algroith is that of random forest due to it's versatility, relatively trivial training requirements and resiliance against overfitting [@breiman2001] (refs). 
-It is an ensemble machine learning method where forests of bootstrap sampled decision trees are grown, yielding both out of bag (OOB) sample prediction accuracies and variable importance.
+A popular algorithm is that of random forest due to it's versatility, relatively trivial training requirements and resilience against over fitting [@breiman2001] (refs). 
+It is an ensemble machine learning method where forests of bootstrap sampled decision trees are grown, yielding both out of bag sample prediction accuracies and variable importance.
 Unsupervised learning is also possible [@shi2006]
 
 Here, we propose a framework to enable quantitative visible oak decline severity measurement that utilises a range of targeted phenotypic descriptors and unsupervised random forest machine learning.
 These measures include:
 
 * The phenotypic decline index (PDI) - a measure of decline severity scoring trees between 0 and 1.
-More severly declining oak trees have a score closer to 1.
+More severely declining oak trees have a score closer to 1.
 
 * The decline acuteness index (DAI) - a measure differentiating between chronically and acutely declining oak trees with a score between -1 and 1. 
 Acutely declining trees have a score closer to 1 and chronically declining trees have a score closer to -1.
@@ -141,13 +141,13 @@ Post adjustment the random forest margin was substantially reduced to `r site_rf
 - Top ranked descriptor index response surfaces
 - Random forest able to assess categorical and continuous descriptors simultaneously
 
-The phenotypic descriptors were analysed using 100 repeatitions of unsupervised random forest.
+The phenotypic descriptors were analysed using 100 repetitions of unsupervised random forest.
 The proximity 
 The relative proximities and the phenotypic descriptors multidimensional scaling (MDS) to two dimensions was performed to yield two phenotypic indexes:
 
-Proximity matrix transformed to a disimilarity (1- P) then multidimensional scaling (MDS) to 2 dimensions applied.
+Proximity matrix transformed to a dissimilarity (1- P) then multidimensional scaling (MDS) to 2 dimensions applied.
 The first dimension was found to be related to the overall severity of decline. 
-It was min-max scaled to give the PDI a scale between 0 and 1 with more severly declining trees having a score closer to 1.
+It was min-max scaled to give the PDI a scale between 0 and 1 with more severely declining trees having a score closer to 1.
 
 * **Decline acuteness index (DAI)** - a measure that allows the differentiation between chronically and acutely declining oaks. 
 The second MDS dimension was min-max scaled to give scores between -1 and 1 with chronically declining trees having a score closer to -1 and acutely declining trees having a score closer to 1. 
@@ -199,13 +199,13 @@ AOD occurs over a much shorter period compared COD and therefore has less time i
 - Accessability of collecting descriptors
 - Suitability of collected phenotypic descriptors for describing decline status
 - Concession of model interpretability to predictive capability by using a machine learning approach
-- Trends of key phenotypic descriptors withing the PDI and DAI mesures
+- Trends of key phenotypic descriptors withing the PDI and DAI measures
 - Sensitivity provided for integration with large scale omics analyses as well as long term monitoring for forest condition
 - Index thresholds for category definitions (healthy, declining, severe decline etc.)
 - When viewed in the 2D continuum, the categorisation of AOD to only include bleeds of certain bacteria seems likely to be too specific and by definition should only describe the period of time under which the tree have been declining.
-Perhaps subcategories of AOD would be more suitable such as Agrillus associated AOD or Armillaria associated AOD. 
+Perhaps subcategories of AOD would be more suitable such as Agrilus associated AOD or Armillaria associated AOD. 
 
-The two dimensional space provided by these phenotypic indexes, for measuring decline severity isshown in Figure 1. 
+The two dimensional space provided by these phenotypic indexes, for measuring decline severity is shown in Figure 1. 
 The phenotypic descriptors used to calculate these indexes are easily measurable in the field and require no specialist equipment. 
 They allow sensitive comparisons to be made for the same tree between years as well as comparisons of trees between different locations, which could have great utility in long term forest health monitoring for both forestry management and research.
 
