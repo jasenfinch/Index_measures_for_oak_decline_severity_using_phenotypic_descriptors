@@ -4,7 +4,7 @@ crownCondition <- function(m,t) {
 }
 
 crownVolume <- function(r,h,l,c) {
-  (c * (h - l))/150 * pi * r^2
+  (pi * r ^ 2 * c * (h - l)) / 200
 }
 
 bleedPrevalence <- function(a,A,b,B,d) {
