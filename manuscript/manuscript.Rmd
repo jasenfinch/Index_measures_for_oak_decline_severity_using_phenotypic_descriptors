@@ -34,28 +34,30 @@ These indexes are simple but sensitive measures of tree decline severity allowin
 
 ## Introduction
 
-- define phenotype and descriptor
+- Increasing importance of monitoring 
 - Acute and chronic decline associated phenotypes
 - The oak decline spectrum move away from simplistic binary categorisations
 - Manual assignment of decline status difficult prone to error for due to contribution of many factors. 
 - Random forest
 - Unsupervised learning for complex patterns between descriptors.
 
-Oak decline syndromes are facilitated by a variety of both abiotic and biotic factors.
+Oak declines are complex syndromes that are facilitated by a variety of both abiotic and biotic factors.
+Abiotic factors can include both predisposing and inciting factors such as drought and are often
 
-Abiotic factors can include...
 Biotic factors can include...
 
-As a results of this, there are many visual cues measures that contribute to what can be defined as a declining oak tree.
-A severely declining oak is prominantly characterised by very poor crown condition and numerous dead branches.
+As a results of this, there are many visual phenotypic descriptors encompassing the entirety of an oak tree that contribute to what can be defined as a declining oak tree.
+A severely declining oak is most prominantly characterised by very poor crown condition and numerous dead branches (ref).
+
 Compounding this complexity is the addition of different types of oak decline (AOD) that are often categorised based on the duration over which a tree has been declining or the biotic agents/factors associated with a declining tree.
 For instance a chronically declining oak can subsequently begin to also develop the stem bleeds associated with AOD.
 Accurately diagnosing in the field the severity and type of oak decline present is difficult and can requires much experience, expertise and training.
 
-Machine learning is finding increasing utility in biological and geographical applications due to it's...
+
+Machine learning is finding increasing utility in biological and geographical applications due to it's ability to learn complex patterns withing and between 
 A popular algroith is that of random forest due to it's versatility, relatively trivial training requirements and resiliance against overfitting [@breiman2001] (refs). 
 It is an ensemble machine learning method where forests of bootstrap sampled decision trees are grown, yielding both out of bag (OOB) sample prediction accuracies and variable importance.
-Unsupervised learning is also possible
+Unsupervised learning is also possible [@shi2006]
 
 Here, we propose a framework to enable quantitative visible oak decline severity measurement that utilises a range of targeted phenotypic descriptors and unsupervised random forest machine learning.
 These measures include:
@@ -81,7 +83,7 @@ Phenotypic data were collected from a total of 174 trees from 9 sites from acros
 A total of 30 phenotypic descriptors were collected relating to the trees shape, size, crown condition and the presence of biotic agents including insects, bacteria and fungi.
 
 
-### Phenotypic descriptor preparation and analysis
+### Phenotypic descriptor preparation
 
 - Aggregation of cardinal observations.
 - Random forest and MDS analyses
@@ -90,6 +92,11 @@ A total of 30 phenotypic descriptors were collected relating to the trees shape,
 R v`r str_c(version$major,version$minor,sep ='.')` was used for all parsing, preparation and analysis of phenotypic data (ref).
 
 Cardinal crown radius measurements were averaged.
+
+### Machine learning analyses
+
+The code used to generate the decline indexes is available as an R package at [https://github.com/jasenfinch/pdi].
+All raw data and code used to generate this manuscript are available at [https://github.com/jasenfinch/Index_measures_for_oak_decline_severity_using_phenotypic_descriptors]
 
 ## Results
 
