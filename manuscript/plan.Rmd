@@ -1,0 +1,15 @@
+---
+title: "Plan"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+\newpage
+## Checks
+
+```{r check,comment='',cache=FALSE}
+manuscript_check(file = 'plan.Rmd')
+```

@@ -144,10 +144,10 @@
     },
     "callr": {
       "Package": "callr",
-      "Version": "3.3.2",
+      "Version": "3.4.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "75d46070f66638c29e4518d5a944abfa"
+      "Hash": "f73f76ba9c2c23cbe3a7657f7411ddc4"
     },
     "cellranger": {
       "Package": "cellranger",
@@ -165,10 +165,10 @@
     },
     "cli": {
       "Package": "cli",
-      "Version": "1.1.0",
+      "Version": "2.0.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "44036d89d2bbffdbf1a9698cc86d0976"
+      "Hash": "f41a3aa27b911750a6526b450d0b8ea4"
     },
     "clipr": {
       "Package": "clipr",
@@ -228,10 +228,10 @@
     },
     "data.table": {
       "Package": "data.table",
-      "Version": "1.12.6",
+      "Version": "1.12.8",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "0b9e358c2aec426ac00f3aee7db51858"
+      "Hash": "cd711af60c47207a776213a368626369"
     },
     "dbplyr": {
       "Package": "dbplyr",
@@ -828,10 +828,10 @@
     },
     "renv": {
       "Package": "renv",
-      "Version": "0.9.0",
+      "Version": "0.9.1",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "91df5c2b0ad3b3c6d5c4016f44656cc0"
+      "Hash": "2493509e836304c687514e4ff635d8e5"
     },
     "reprex": {
       "Package": "reprex",
