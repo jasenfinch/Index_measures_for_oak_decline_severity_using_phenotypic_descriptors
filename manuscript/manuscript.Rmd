@@ -1,10 +1,9 @@
 ---
 title: "Index measures for oak decline severity using phenotypic descriptors"
 output: 
-  bookdown::pdf_document2:
+  bookdown::word_document2:
    toc: false
-   number_sections: false
-   keep_tex: no
+bibliography: references.bib
 ---
 
 ```{r setup, include=FALSE}
@@ -53,11 +52,13 @@ Compounding this complexity is the addition of different types of oak decline (A
 For instance a chronically declining oak can subsequently begin to also develop the stem bleeds associated with AOD.
 Accurately diagnosing in the field the severity and type of oak decline present is difficult and can requires much experience, expertise and training.
 
-Random forest is an ensemble machine learning 
+Machine learning is finding increasing utility in biological and geographical applications due to it's...
+A popular algroith is that of random forest due to it's versatility, relatively trivial training requirements and resiliance against overfitting [@breiman2001] (refs). 
+It is an ensemble machine learning method where forests of bootstrap sampled decision trees are grown, yielding both out of bag (OOB) sample prediction accuracies and variable importance.
+Unsupervised learning is also possible
 
-Unsupervised learning ...
-
-Here, we propose a framework for quantitatively measuring the phenotypic severity of oak decline that is based on unsupervised random forest machine learning 
+Here, we propose a framework to enable quantitative visible oak decline severity measurement that utilises a range of targeted phenotypic descriptors and unsupervised random forest machine learning.
+These measures include:
 
 * The phenotypic decline index (PDI) - a measure of decline severity scoring trees between 0 and 1.
 More severly declining oak trees have a score closer to 1.
