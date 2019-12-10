@@ -11,12 +11,6 @@ knitr::opts_chunk$set(echo = FALSE,
                       message = FALSE)
 ```
 
-```{r siteLocations,fig.cap='Map showing locations of the nine sites used for collection of phenotypic descriptors.',fig.width=3,fig.height=5}
-loadd(site_location_map)
-
-print(site_location_map)
-```
-
 ```{r site_differences,fig.cap='Differences between sites in phenotypic descriptors analysed by supervised Random Forest. a) Multidimensional scaling (MDS) plot of random forest proximity values of individual trees scaled to two dimensions. Mean margin value shown. b) Relative descriptor Gini importances measures.',fig.height=5}
 loadd(site_differences_mds_plot)
 grid.arrange(site_differences_mds_plot$a,site_differences_mds_plot$b,nrow = 1)
@@ -37,6 +31,7 @@ loadd(PDI_response_surfaces)
 
 grid.arrange(PDI_response_surfaces$`a)`,PDI_response_surfaces$`b)`,PDI_response_surfaces$`c)`,PDI_response_surfaces$legend,nrow = 2,newpage = F)
 ```
+
 
 ```{r DAI_response_surfaces,fig.height = 8,fig.cap='DAI response surfaces for simulated descriptor values from trained Random Forest models. All other descriptors were set at the values of those of the trees with the lowest PDI used for trainig the models'}
 loadd(DAI_response_surfaces)
