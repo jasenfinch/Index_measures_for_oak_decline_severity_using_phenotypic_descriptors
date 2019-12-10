@@ -147,9 +147,6 @@ plan <- drake_plan(
   ## render figures
   figures = render(knitr_in('manuscript/figures.Rmd'),quiet = T),
   
-  ## render plan
-  plan = render(knitr_in('manuscript/plan.Rmd'),quiet = TRUE),
-  
   ## render manuscript
   manuscript = render(knitr_in('manuscript/manuscript.Rmd'),quiet = T),
   
