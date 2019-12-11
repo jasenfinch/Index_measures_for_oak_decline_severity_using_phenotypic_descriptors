@@ -30,6 +30,8 @@ site_correction_factors %>%
   kable(caption = 'Descriptor correction factors at each site')
 ```
 
+\newpage
+
 ```{r PDInumeric,fig.height=8}
 loadd(descriptor_scatter_plots)
 
