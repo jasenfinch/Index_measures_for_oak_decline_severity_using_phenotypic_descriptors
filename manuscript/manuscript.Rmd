@@ -114,17 +114,23 @@ All raw data and code used to generate this manuscript are available at https://
 Four additional composite descriptors were calculated to account for the three dimensional attributes of the tree and covariate nature of certain descriptors as suggested by @@zarnoch2004.
 These included:
 
+**Live crown ratio** -
+
 **Crown condition (%)** - percentage of present crown proportional to the percentage crown density.
 
 $$c = (100 - m)(1-\frac{t}{100})$$
 
 $m$ = missing crown (%), $t$ = crown transparency (%)
 
-**Estimated crown volume (m^3^)** - estimated volume of crown as an paraboloid proportional to the crown condition. Based on the composite crown volumne from @zarnoch2004 .
+**Composite crown volume (m^3^)** - Estimated volume of crown as an paraboloid proportional to the crown condition. Based on the composite crown volumne from @zarnoch2004 but uses crown condition instead of crown density.
 
 $$v = \frac{\pi r^2c(h-l)}{200}$$
 
 $r$ = crown radius (m), $h$ = total height (m), $l$ = lower crown height (m), $c$ = crown condition (%)
+
+**Composite crown surface area (m^2^)** - 
+
+**Crown production efficiency** - 
 
 **Estimated bleed prevalence (%)** - estimated percentage of the surveyed 3m basal trunk area affected by bleeds or black staining.
 

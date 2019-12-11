@@ -4,12 +4,20 @@
 
 calcAdditionalDescriptors <- function(phenoData){
   phenoData %>%
-    mutate(`Crown condition (%)` = crownCondition(`Missing crown (%)`,
+    mutate(`Live crown ratio (%)` = liveCrownRatio(`Total height (m)`,
+                                                   `Lower crown height (m)`),
+           `Crown condition (%)` = crownCondition(`Missing crown (%)`,
                                                   `Crown transparency (%)`),
            `Crown volume (m^3)` = crownVolume(`Crown radius (m)`,
                                               `Total height (m)`,
                                               `Lower crown height (m)`,
                                               `Crown condition (%)`),
+           `Crown surface area (m^2)` = crownSurfaceArea(`Crown radius (m)`,
+                                                         `Total height (m)`,
+                                                         `Lower crown height (m)`,
+                                                         `Crown condition (%)`),
+           `Crown production efficiency` = crownProductionEfficiency(`Crown surface area (m^2)`,
+                                                                      `Crown volume (m^3)`),
            `Bleed prevalence (%)` = bleedPrevalence(`Active bleed size (mm)`,
                                                     `Active bleeds`,
                                                     `Black staining size (mm)`,
