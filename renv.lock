@@ -403,10 +403,10 @@
     },
     "glmnet": {
       "Package": "glmnet",
-      "Version": "3.0-1",
+      "Version": "3.0-2",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "612bbfbf408df596aedbb0259cf7ccac"
+      "Hash": "96a03ce147d2a6d3e056e9da1d9c6940"
     },
     "glue": {
       "Package": "glue",
