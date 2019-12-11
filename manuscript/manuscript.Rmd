@@ -209,6 +209,7 @@ Perhaps subcategories of AOD would be more suitable such as Agrilus associated A
 - Thresholds for decline groupings within index ranges
 - Validation of decline scores - chicken and paradox
 - Refined definition of remission
+- use of unsupervised over supervised analysis
 
 This plot highlights the inaccuracies in manual field classifications of decline status with several trees classified as healthy controls that, when compared quantitatively to other trees, are in fact
 in a decline state. 
