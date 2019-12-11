@@ -127,7 +127,7 @@ $r$ = crown radius (m), $h$ = total height (m), $l$ = lower crown height (m), $c
 
 $$p = \frac{a^2A + b^2B}{3d\pi}$$
 
-$a$ = average active bleed size (cm), $A$ = number of active bleeds, $b$ = average black stain size (cm), $B$ = black stain number, $d$ = diameter at breast height (cm)
+$a$ = average active bleed size (mm), $A$ = number of active bleeds, $b$ = average black stain size (mm), $B$ = black stain number, $d$ = diameter at breast height (mm)
 
 ***Agrilus* exit hole density (m^-2^)** - density of observed *Agrilus* exit holes across the surveyed 2m basal trunk area.
 $$e = \frac{h}{\frac{2d}{100}\pi}$$

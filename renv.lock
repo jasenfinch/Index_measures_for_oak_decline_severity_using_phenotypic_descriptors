@@ -1010,10 +1010,10 @@
     },
     "tinytex": {
       "Package": "tinytex",
-      "Version": "0.17",
+      "Version": "0.18",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "9f259855f66a72efd6a49f1689af935b"
+      "Hash": "e2ce80882682180c2b5f86d2b47c9951"
     },
     "txtq": {
       "Package": "txtq",
@@ -1062,11 +1062,11 @@
       "Version": "0.3.0.9000",
       "Source": "GitHub",
       "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteRepo": "wordcountaddin",
       "RemoteUsername": "benmarwick",
+      "RemoteRepo": "wordcountaddin",
       "RemoteRef": "master",
       "RemoteSha": "fdf70d9c2d91bc54396026d148ea90aaba5973fd",
+      "RemoteHost": "api.github.com",
       "Hash": "e9bde46ecd243f8487ded1e181f4c237"
     },
     "xfun": {
