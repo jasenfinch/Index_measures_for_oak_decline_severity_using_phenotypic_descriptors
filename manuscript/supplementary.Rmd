@@ -66,7 +66,7 @@ loadd(site_differences_mds_plot)
 grid.arrange(site_differences_mds_plot$a,site_differences_mds_plot$b,nrow = 1)
 ```
 
-```{r PDInumeric,fig.height=8}
+```{r PDInumeric,fig.height=9}
 loadd(descriptor_scatter_plots)
 
 descriptor_scatter_plots$PDI_numeric
@@ -76,7 +76,7 @@ descriptor_scatter_plots$PDI_numeric
 descriptor_scatter_plots$PDI_factor
 ```
 
-```{r DAInumeric,fig.height=8}
+```{r DAInumeric,fig.height=9}
 descriptor_scatter_plots$DAI_numeric
 ```
 
