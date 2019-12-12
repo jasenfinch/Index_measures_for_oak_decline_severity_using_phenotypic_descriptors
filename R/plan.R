@@ -87,6 +87,30 @@ plan <- drake_plan(
   ## plot decline indexes
   decline_indexes_plot = declineIndexesPlot(decline_indexes),
   
+  ## plot PDI against symptomatic and non-sympotmatic groups
+  PDI_status_plot = decline_indexes %>% 
+    ggplot(aes(x = Status, y = PDI)) + 
+    geom_boxplot() + 
+    theme_bw(),
+  
+  ## t-test for PDI and status
+  PDI_status_ttest = decline_indexes %>%
+    t.test(PDI~Status,data = .,var.equal = TRUE) %>%
+    tidy(),
+  
+  ## plot DAI against AOD and COD groups
+  DAI_groups_plot = decline_indexes %>% 
+    filter(ChosenGroup %in% c('AOD','COD')) %>% 
+    ggplot(aes(x = ChosenGroup, y = DAI)) + 
+    geom_boxplot() + 
+    theme_bw(),
+  
+  ## t-test for DAI and AOD and COD groups
+  DAI_groups_ttest = decline_indexes %>% 
+    filter(ChosenGroup %in% c('AOD','COD')) %>%
+    t.test(DAI~ChosenGroup,data = .,var.equal = TRUE) %>%
+    tidy(),
+  
   ## plot descriptors against decline indexes 
   descriptor_scatter_plots = site_corrected_analysis_suitable_data %>%
     descriptorScatterPlots(decline_indexes),

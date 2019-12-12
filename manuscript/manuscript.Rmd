@@ -13,8 +13,10 @@ knitr::opts_chunk$set(echo = FALSE,
 ```
 
 ```{r loadData, include = FALSE}
-loadd(site_rf_margin)
-loadd(site_rf_post_correction_margin)
+loadd(site_rf_margin,
+      site_rf_post_correction_margin,
+      PDI_status_ttest,
+      DAI_groups_ttest)
 ```
 
 **Authors:** Jasen Finch, Nathan Brown, Sandra Denman & John Draper
@@ -88,7 +90,7 @@ These descriptors are shown in Table #.
 Crown radius, canopy closure and tap tests for dead stem tissue were measured for each cardinal point.
 AOD stem symptoms (active bleeds, black staining, callused wounds) were collected from the basel 3m of the stem.
 Each individual 
-All trees were manually assigned a decline status category; healthy, AOD, COD or remission.
+All trees were manually assigned a decline status category; control, AOD, COD or remission.
 
 ### Phenotypic descriptor preparation
 
@@ -99,17 +101,10 @@ All trees were manually assigned a decline status category; healthy, AOD, COD or
 - Descriptions of collected phenotypic descriptors and manual status assignment
 
 R v`r str_c(version$major,version$minor,sep ='.')` was used for all parsing, preparation and analysis of phenotypic data [@R2019].
-
-Cardinal assessments were averaged to give a single value.
-
-### Machine learning analyses
-
 The code used to generate the decline indexes is available as an R package pdi (v) at https://github.com/jasenfinch/pdi.
 All raw data and code used to generate this manuscript are available at https://github.com/jasenfinch/Index_measures_for_oak_decline_severity_using_phenotypic_descriptors.
 
-## Results
-
-### Phenotypic descriptors for oak decline
+Cardinal assessments were averaged to give a single value.
 
 Four additional composite descriptors were calculated to account for the three dimensional attributes of the tree and covariate nature of certain descriptors as suggested by @@zarnoch2004.
 These included:
@@ -142,6 +137,15 @@ $a$ = average active bleed size (mm), $A$ = number of active bleeds, $b$ = avera
 $$e = \frac{h}{\frac{2d}{100}\pi}$$
 $h$ = number of *Agrilus* exit holes, $d$ = diameter at breast height (cm)
 
+### Machine learning analyses
+
+The randomForest R package
+
+## Results
+
+### Phenotypic descriptors for oak decline
+
+
 ### Tree size descriptor adjustment by site
 
 Large phenotypic differences were found between the sites by supervised random forest (Supplementary  figure #a; margin = `r site_rf_margin$Margin %>% signif(digits = 3)`). 
@@ -159,12 +163,15 @@ The phenotypic descriptors were analysed using 100 repetitions of unsupervised r
 The proximity 
 The relative proximities and the phenotypic descriptors multidimensional scaling (MDS) to two dimensions was performed to yield two phenotypic indexes:
 
-Proximity matrix ($$P$$) was transformed to a dissimilarity ($$1 - P$$) then multidimensional scaling (MDS) to 2 dimensions applied.
+Proximity matrix (*P*) was transformed to a dissimilarity (1 - *P*) then multidimensional scaling (MDS) to 2 dimensions applied.
 The first dimension was found to be related to the overall severity of decline.
 It was min-max scaled to give the PDI a scale between 0 and 1 with more severely declining trees having a score closer to 1.
 The second MDS dimension was found to be associated with  min-max scaled to give scores between -1 and 1 with chronically declining trees having a score closer to -1 and acutely declining trees having a score closer to 1. 
 Trees with a score around 0 are neither distinctively AOD or COD sharing characteristics of both conditions in trees with PDI greater than 0.3.
-The PDI and DAI indexes are plotted for all 174 trees in Figure # showing the relationship with the  
+A significant difference was found in the PDI between non-symptomatic (control) and symptomatic (AOD and COD) decline statuses using an independant two sample t-test (`r glue("t({PDI_status_ttest$parameter}) = {signif(PDI_status_ttest$statistic,digits = 3) %>% abs()}, p < 0.001")`) with group means of `r signif(PDI_status_ttest$estimate1,digits = 3)` and `r signif(PDI_status_ttest$estimate2,digits = 3)` for non-symptomatic and symptomatic statuses respectively.
+Significance was also found in the DAI between the AOD and COD groups (`r glue("t({DAI_groups_ttest$parameter}) = {signif(DAI_groups_ttest$statistic,digits = 3) %>% abs()}, p < 0.001")`) with group means of `r signif(DAI_groups_ttest$estimate1,digits = 3)` and `r signif(DAI_groups_ttest$estimate2,digits = 3)` for the AOD and COD groups respectively.
+A scatter plot of PDI against DAI is shown in Figure # for all 174 trees.
+It can clearly be seen that the 
 
 ### Descriptor contributions and trends
 
