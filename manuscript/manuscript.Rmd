@@ -77,7 +77,6 @@ Acutely declining trees have a score closer to 1 and chronically declining trees
 ### Phenotypic data collection
 
 - Site types
-- Descriptor types
 - Field phenotyping protocol
 - Crown assessments
 - Stem assessments - 2m base, 3m base
@@ -88,8 +87,9 @@ Phenotypic data were collected from a total of 174 trees from 9 sites from acros
 A total of 30 phenotypic descriptors were collected relating to the trees shape, size, crown condition and the presence of biotic agents including insects, bacteria and fungi.
 These descriptors are shown in Table #.
 Crown radius, canopy closure and tap tests for dead stem tissue were measured for each cardinal point.
-AOD stem symptoms (active bleeds, black staining, callused wounds) were collected from the basel 3m of the stem.
-Each individual 
+The crown radius was
+The AOD stem symptoms (active bleeds, black staining, callused wounds) were collected by measuring longest axis of each individual bleed, stain or callused wound found within the basal 3m of the stem (ref).
+The frequency of *A. biguttatus* exit holes were counted along with the presence or absence of each of oval shaped exit holes, small circular shaped exit holes and ground level fungal fruiting bodies were recorded from the basal 2m of the stem (ref). 
 All trees were manually assigned a decline status category; control, AOD, COD or remission.
 
 ### Phenotypic descriptor preparation
@@ -111,6 +111,10 @@ These included:
 
 **Live crown ratio** -
 
+$$R = \frac{(h-l)}{h} \times 100$$
+
+$h$ = total height (m), $l$ = lower crown height (m)
+
 **Crown condition (%)** - percentage of present crown proportional to the percentage crown density.
 
 $$c = (100 - m)(1-\frac{t}{100})$$
@@ -125,7 +129,15 @@ $r$ = crown radius (m), $h$ = total height (m), $l$ = lower crown height (m), $c
 
 **Composite crown surface area (m^2^)** - 
 
+$$S = \frac{4\pi(h-l)}{3r^2} \left[ \left( r^2 + \frac{r^4}{4(h-l)^2} \right) ^{1.5} - \left( \frac{r^4}{4(h-l)^2} \right) ^{1.5} \right] \times c $$
+
+$r$ = crown radius (m), $h$ = total height (m), $l$ = lower crown height (m), c = crown condition (%)
+
 **Crown production efficiency** - 
+
+$$e = \frac{S}{v}$$
+
+$S$ = composite crown surface area (m^2^), $v$ = composite crown volume (m^3^) 
 
 **Estimated bleed prevalence (%)** - estimated percentage of the surveyed 3m basal trunk area affected by bleeds or black staining.
 
