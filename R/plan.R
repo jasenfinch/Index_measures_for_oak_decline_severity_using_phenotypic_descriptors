@@ -152,8 +152,14 @@ plan <- drake_plan(
   ## DAI lime analysis
   DAI_lime_analysis = DAIlimeAnalysis(site_corrected_analysis_suitable_data,DAI_rf_model,decline_indexes),
   
+  ## PDI lime analysis table
+  PDI_lime_analysis_table = PDIlimeAnalysisTable(PDI_lime_analysis,decline_indexes),
+  
   ## PDI lime analysis plot
   PDI_lime_analysis_plot = PDIlimeAnalysisPlot(PDI_lime_analysis,decline_indexes),
+  
+  ## PDI lime analysis table
+  DAI_lime_analysis_table = DAIlimeAnalysisTable(DAI_lime_analysis,decline_indexes),
   
   ## DAI lime analysis plot
   DAI_lime_analysis_plot = DAIlimeAnalysisPlot(DAI_lime_analysis,decline_indexes),
