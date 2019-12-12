@@ -1,10 +1,12 @@
 ---
 title: "Index measures for oak decline severity using phenotypic descriptors"
 output: 
-  bookdown::pdf_document2:
-   toc: false
-   number_sections: false
-   keep_tex: no
+  #bookdown::word_document2:
+  # toc: false
+  bookdown::pdf_document2: 
+    toc: false
+    number_sections: false
+bibliography: references.bib
 ---
 
 ```{r setup, include=FALSE}
@@ -12,6 +14,21 @@ knitr::opts_chunk$set(echo = FALSE,
                       warning = FALSE,
                       message = FALSE)
 ```
+
+```{r loadData, include = FALSE}
+loadd(site_rf_margin,
+      site_rf_post_correction_margin,
+      PDI_status_ttest,
+      DAI_groups_ttest,
+      PDI_rf_tune_params,
+      DAI_rf_tune_params)
+```
+
+**Authors:** Jasen Finch, Nathan Brown, Sandra Denman & John Draper
+
+**Proposed journal:** Still undecided! ??Plant Methods, Forestry?? 
+
+**Keywords:** acute oak decline, chronic oak decline, phenotyping, machine learning, unsupervised learning, random forest
 
 ## Abstract
 
@@ -24,21 +41,89 @@ These indexes are simple but sensitive measures of tree decline severity allowin
 
 ## Introduction
 
-Oak decline syndromes are facilitated by a variety of both biotic and abiotic factors 
+- Monitoring currently focusses on crown assessments
+- Acute and chronic decline associated phenotypes
+- The oak decline spectrum move away from simplistic binary categorisations
+- Manual assignment of decline status difficult prone to error for due to contribution of many factors. 
+- Unsupervised learning for complex patterns between descriptors.
+
+Oak declines are complex syndromes that are facilitated by a variety of both abiotic and biotic factors.
+Abiotic factors can include both predisposing and inciting factors such as drought and are often
+Biotic agents can include insect infestation such as the larvae of bark boring bettle *Agrilus biguttatus* associated 
+
+As a results of this, there are many visual phenotypic descriptors encompassing the entirety of an oak tree that contribute to what can be defined as a declining oak tree.
+A severely declining oak is most prominently characterised by very poor crown condition and numerous dead branches (ref).
+It is these characteristics that many studies use as the primary indicator of tree decline severity [@zarnoch2004].
+
+Compounding this complexity is the addition of different types of oak decline (AOD) that are often categorised based on the duration over which a tree has been declining or the biotic agents/factors associated with a declining tree.
+For instance a chronically declining oak can subsequently begin to also develop the stem bleeds associated with AOD [@denman2014].
+Accurately diagnosing in the field the severity and type of oak decline present is difficult and can requires much experience, expertise and training.
+
+It is becoming increasingly important that oak tree health within woodlands is accurately and sensitively monitoried to enable the detection of decline as well as it's spread and severity over time to enable accurate forecasting and inform forestry management practices (ref).
+Monitoring methods need to take advantage of modern data analysis techniques whilst still retaining practical simplicity in the field.
+
+Machine learning is finding increasing utility in biological and geographical applications due to it's ability to learn complex patterns withing and between 
+A popular algorithm is that of random forest due to it's versatility, relatively trivial training requirements and resilience against over fitting [@breiman2001] (refs). 
+It is an ensemble machine learning method where forests of bootstrap sampled decision trees are grown, yielding both out of bag sample prediction accuracies and variable importance.
+It is also able to simultaneously handle both continuous and categorical variables.
+Unsupervised learning is also possible [@shi2006]
+
+Here, we propose a framework to enable quantitative visible oak decline severity measurement that utilises a range of targeted phenotypic descriptors and unsupervised random forest machine learning.
+The two resulting measures are:
+
+* The phenotypic decline index (PDI) - a measure of decline severity scoring trees between 0 and 1.
+More severely declining oak trees have a score closer to 1.
+
+* The decline acuteness index (DAI) - a measure differentiating between chronically and acutely declining oak trees with a score between -1 and 1. 
+Acutely declining trees have a score closer to 1 and chronically declining trees have a score closer to -1.
 
 ## Materials and methods
 
 ### Phenotypic data collection
 
-### Phenotypic descriptor preparation and analysis
+- Site types
+- Field phenotyping protocol
+- Crown assessments
+- Other assessments
+- Descriptions of collected phenotypic descriptors
 
-R v`r str_c(version$major,version$minor,sep ='.')` was used for all parsing, preparation and analysis of phenotypic data.
+Phenotypic data were collected from a total of 174 trees from nine sites from across the south, east and west of England between June and September in 2016 or 2017.
+The occurance of AOD has previously been reported and studied at six of the sites [@brown2016; @brown2017].
 
-## Results
+Descriptors were collected relating to the trees shape, size, crown condition and the presence of biotic agents including insects, bacteria and fungi.
+These descriptors are shown in Table #.
+Crown radius, canopy closure and tap tests for dead stem tissue were measured for each cardinal point.
+The crown radius was
+The AOD stem symptoms (active bleeds, black staining, callused wounds) were collected by measuring longest axis of each individual bleed, stain or callused wound found within the basal 3m of the stem (ref).
+The frequency of *A. biguttatus* exit holes were counted along with the presence or absence of each of oval shaped exit holes, small circular shaped exit holes and ground level fungal fruiting bodies were recorded from the basal 2m of the stem (ref). 
+All trees were manually assigned a decline status category; control, AOD, COD or remission.
 
-### Phenotypic descriptors
+All raw data and analysis code used to generate this manuscript are available at https://github.com/jasenfinch/Index_measures_for_oak_decline_severity_using_phenotypic_descriptors.
 
-The following four additional descriptors were calculated:
+### Phenotypic descriptor preparation
+
+- Descriptors converted to presence and absence
+- Aggregation of cardinal observations.
+- Symptom type sizes average and frequency taken
+- DBH converted to m and symptom sizes to mm
+
+R v`r str_c(version$major,version$minor,sep ='.')` was used for all parsing, preparation and subsequent analysis of phenotypic data [@R2019].
+
+Cardinal assessments were averaged to give a single value.
+
+A total of 31 raw descriptors collected 
+
+### Composite descriptor calculation
+
+Seven additional, composite descriptors were calculated to account for the three dimensional attributes of the tree and covariate nature of certain descriptors as suggested by @zarnoch2004.
+This then gave a total of 38 raw and composite phenotypic descriptors.
+The additional descriptors are defined as follows:
+
+**Live crown ratio (%)** - percentage of the whole tree height that supports live crown.
+
+$$R = \frac{(h-l)}{h} \times 100$$
+
+$h$ = total height (m), $l$ = lower crown height (m)
 
 **Crown condition (%)** - percentage of present crown proportional to the percentage crown density.
 
@@ -46,40 +131,156 @@ $$c = (100 - m)(1-\frac{t}{100})$$
 
 $m$ = missing crown (%), $t$ = crown transparency (%)
 
-**Estimated crown volume (m^3^)** - estimated volume of crown as an ellipsoid proportional to the crown condition.
+**Composite crown volume (m^3^)** - Estimated volume of crown as an paraboloid proportional to the crown condition. Based on the composite crown volumne from @zarnoch2004 but uses crown condition instead of crown density alone.
 
-$$v = \frac{c(h - l)}{150}\pi r^2$$
+$$v = \frac{\pi r^2c(h-l)}{200}$$
 
-$r$ = crown radius (m), $h$ = total height (m), $l$ = lower crown height (m), $c$ = crown condition (%)
+$r$ = crown radius (m)
 
-**Estimated bleed prevalence (%)** - estimated percentage of the surveyed trunk area affected by bleeds or black staining.
+**Composite crown surface area (m^2^)** - 
+
+$$S = \frac{4\pi(h-l)}{3r^2} \left[ \left( r^2 + \frac{r^4}{4(h-l)^2} \right) ^{1.5} - \left( \frac{r^4}{4(h-l)^2} \right) ^{1.5} \right] \times c $$
+
+**Crown production efficiency** - 
+
+$$e = \frac{S}{v}$$
+
+**Estimated bleed prevalence (%)** - estimated percentage of the surveyed 3m basal trunk area affected by bleeds or black staining.
 
 $$p = \frac{a^2A + b^2B}{3d\pi}$$
 
-$a$ = average active bleed size (cm), $A$ = number of active bleeds, $b$ = average black stain size (cm), $B$ = black stain number, $d$ = diameter at breast height (cm)
+$a$ = average active bleed size (mm), $A$ = number of active bleeds, $b$ = average black stain size (mm), $B$ = black stain number, $d$ = diameter at breast height (mm)
 
-***Agrilus* exit hole density (m^-2^)** - density of observed *Agrilus* exit holes across the surveyed trunk area.
+***Agrilus* exit hole density (m^-2^)** - density of observed *Agrilus* exit holes across the surveyed 2m basal trunk area.
+
 $$e = \frac{h}{\frac{2d}{100}\pi}$$
-$h$ = number of *Agrilus* exit holes, $d$ = diameter at breast height (cm)
 
-### Tree size descriptor adjustment by site
+$h$ = number of *Agrilus* exit holes
 
-Large phenotypic differences were found between the sites by supervised random forest (Figure #)
+### Tree size descriptor adjustment for age and inter site variance
 
-### Phenotypic decline and decline acuteness indexes
+To account for these differences and to make the trees across the sites comparable in the context of decline, an adjustment of site means to the overall mean was applied to each of the size descriptors (diameter at breast height, lower crown height, timber height, total height, crown radius). 
+An example of this adjustment is shown for diameter at breast height in Supplementary Figure # and the adjustment factors for each of the descriptors at each site is shown in Supplementary Table #.  
+
+### Calculation of indexes for oak decline severity
+
+The phenotypic descriptors were analysed using 100 repetitions of unsupervised random forest using the randomForest R package v`r packageVersion('randomForest') %>% as.character()` [@liaw2002].
+The proximity matrices from each repetition were averaged to a single proximity matrix ($P$).
+This was then transformed to a dissimilarity matrix ($1 - P$) and scaled to two dimensions using  multidimensional scaling (MDS).
+The first MDS dimension was min-max scaled to give a scale between 0 and 1 with more severely declining trees having a score closer to 1.
+This dimension was named the PDI.
+The second MDS dimension ($D$) was first inverted ($1 - D$) to ensure the correct dimension orientation relative to decline type.
+The dimension was then min-max scaled and then transformed ($2D - 1$) to give a scale between -1 and 1 with COD trees having a score closer to -1 and AOD having a score closer to 1. 
+This dimension was named the DAI.
+With different data, it is likely that the MDS dimensions may require inversion prior to min-max scaling to ensure their correct orientation.
+
+The code used to generate the decline indexes is available as an R package pdi v`r packageVersion('pdi') %>% as.character()` at https://github.com/jasenfinch/pdi.
+
+### Overall and local descriptor importance
+
+- LIME analysis to identify locally important descriptors under circumstances of interest
+- simulated descriptor response surfaces
+
+Individual random forest regression models of the phenotypic descriptors were trained, supervised using each decline index.
+Optimal number of trees (ntree) and number randomly of variables (mtry) parameters for random forest were tuned prior to training. 
+The combination parameters giving the lowest percent mean absolute error (PMAE) were selected and as follows: PDI - `r glue('ntree = {PDI_rf_tune_params$ntree}, mtry = {PDI_rf_tune_params$mtry}, PMAE = {PDI_rf_tune_params$PMAE %>% signif(digits = 3)}%')`; DAI - `r glue('ntree = {DAI_rf_tune_params$ntree}, mtry = {DAI_rf_tune_params$mtry}, PMAE = {DAI_rf_tune_params$PMAE %>% signif(digits = 3)}%')` (Supplementary figure #)
+
+To understand the descriptors contributing to each of the indexes, Local Interpretable Model-Agnostic Explanations (LIME) using the lime R package v`r packageVersion('lime') %>% as.character()` [@ribeiro2016; @pedersen2019]
+
+## Results
+
+### Site differences
+
+Large phenotypic differences were found between the sites by supervised random forest (Supplementary  figure #a; margin = `r site_rf_margin$Margin %>% signif(digits = 3)`). 
+This was as a results of differences in descriptors relating tree size and likely the ages of the trees between the sites. 
+This adjustment removed inter-site variability but maintained intra-site variability, allowing comparisons to be made between the trees at the different sites in the context of decline severity.
+Post adjustment the random forest margin was substantially reduced to `r site_rf_post_correction_margin$Margin %>% signif(digits = 3)` indicating that the majority of the between site variance had been removed.
+
+### Oak decline indexes
+
+Trees with a score around 0 are neither distinctively AOD or COD sharing characteristics of both conditions in trees with PDI greater than 0.3.
+A significant difference was found in the PDI between non-symptomatic (control) and symptomatic (AOD and COD) decline statuses using an independant two sample t-test (`r glue("t({PDI_status_ttest$parameter}) = {signif(PDI_status_ttest$statistic,digits = 3) %>% abs()}, p < 0.001")`) with group means of `r signif(PDI_status_ttest$estimate1,digits = 3)` and `r signif(PDI_status_ttest$estimate2,digits = 3)` for non-symptomatic and symptomatic statuses respectively.
+Significance was also found in the DAI between the AOD and COD groups (`r glue("t({DAI_groups_ttest$parameter}) = {signif(DAI_groups_ttest$statistic,digits = 3) %>% abs()}, p < 0.001")`) with group means of `r signif(DAI_groups_ttest$estimate1,digits = 3)` and `r signif(DAI_groups_ttest$estimate2,digits = 3)` for the AOD and COD groups respectively.
+A scatter plot of PDI against DAI is shown in Figure # for all 174 trees.
+It can clearly be seen that the 
+
+### Descriptor contributions and trends
+
+- Accuracies of retrained models
+- Lime results
+- Top ranked descriptor index response surfaces
+
+Crown related descriptors were found to contribute most to the PDI (Figure #) with more severely declining trees having reduced crown volume and condition. 
+The DAI was a more complex in descriptor contribution with trunk staining and bleeding descriptors contributing highly with bleed prevalence contributing the most. 
+Trees with high bleed prevalence and therefore a larger area of their trunk covered with black staining or active bleeds had much higher DAI scores.
+
+The phenotypic indexes of all 171 trees (including the 20 trees Chestnuts) are shown in Figure 3. 
+It can be seen that across the 9 sites, purely chronic oak decline sites such as Chestnuts and Speculation are easily distinguishable using the DAI compared to more AOD dominant sites such as Langdale or mixed sites such as Great Monks Wood.
+
+The Phenotypic Decline Index (PDI) and Decline Acuteness Index (DAI) were previously defined in the 30 month report. 
+A machine learning approach was used to derive these measures as it allows the complex interactions and trends between phenotypic descriptors to be modelled from which the decline indexes are calculated. 
+This would likely be oversimplified using conventional modelling strategies. 
+These complex interactions can be investigated by simulating phenotypic data and generating the index values from random forest models that have been trained for each of the indexes, supervised using phenotypic descriptors from the 171 trees. 
+The index values generated by the models from these simulated phenotypic data can then be visualised as response surface plots, from which descriptor interactions within the indexes can be interpreted. 
+Figures 1 and 2 show the simulated index value response surfaces under a variety of different circumstances for key phenotypic descriptors that contribute highly to the PDI and DAI.
+
+Crown condition descriptors such as crown volume and crown condition contributed highly to the PDI. 
+The phenotypic measures central to this were percentage missing crown and percentage crowntransparency from which crown condition and crown volume are calculated. 
+It can be seen in Figure 1 that as the percentage missing crown and percentage crown transparency increase and therefore crown condition and estimated crown volume decrease, the PDI increases. 
+A much greater range of PDI values can be obtained from trees with relatively greater stature (e.g. greater crown radius, total height, lower crown height and diameter at breast height; Figures 1a & b), with relatively small stature trees having PDIs of 0.5 or greater even with 100% crown condition.
+
+The DAI is a much more complex index with more descriptors contributing to it than the PDI such as bleed prevalence, diameter at breast height and crown condition descriptors. 
+Simulated response surfaces for the DAI are shown in Figure 2. 
+These response surfaces show circumstances under which bleed prevalence related descriptors (Figures 2a, b & c) and crown condition descriptors (Figures 2d, e & f) change for non-symptomatic AOD or COD trees (Figures 2a & d respectively), moderate AOD or COD (Figures 2b & e respectively) and severe AOD or COD (Figures 2c & f respectively). 
+Increasing active bleed, staining size and frequency contributed to greater positive values of the DAI and more severe AOD. 
+Also higher DAI values could be obtained from trees with greater stature (Figure 2c). 
+Similarly to the PDI, trees with smaller stature and poorer crown condition give lower DAI values (Figures 2d, e & f) and therefore more severe COD.
+The relationship of relative tree stature and the acuteness of the decline likely reflects the period of time under which these trees have been afflict. 
+AOD occurs over a much shorter period compared COD and therefore has less time in which to inhibit growth of the tree as a whole.
 
 ## Discussion
 
+- Accessability of collecting descriptors
+- Suitability of collected phenotypic descriptors for describing decline status
+- Concession of model interpretability to predictive capability by using a machine learning approach
+- Trends of key phenotypic descriptors withing the PDI and DAI measures
+- Sensitivity provided for integration with large scale omics analyses as well as long term monitoring for forest condition
+- Index thresholds for category definitions (healthy, declining, severe decline etc.)
+- Semi-supervised can be used if unsupervised model is unable to pull out decline severity scale
+- Scalability of method for wider application
+- Thresholds for decline groupings within index ranges
+- Validation of decline scores - chicken and paradox
+- Refined definition of remission
+- use of unsupervised over supervised analysis
+- Scale inversion likely need with new data
+
+This plot highlights the inaccuracies in manual field classifications of decline status with several trees classified as healthy controls that, when compared quantitatively to other trees, are in fact
+in a decline state. 
+Most notably this has occurred in a number of trees at Attingham, Hatchlands and Winding Wood. 
+Also notable from Figure 3 is the disparity between the relative health of the healthier trees across the sites. 
+The healthier trees at sites such as Attingham and Hatchlands were found to be in a more declined state than those at sites such as Langdale and Chestnuts.
+
+The two dimensional space provided by these phenotypic indexes, for measuring decline severity is shown in Figure 1. 
+The phenotypic descriptors used to calculate these indexes are easily measurable in the field and require no specialist equipment. 
+They allow sensitive comparisons to be made for the same tree between years as well as comparisons of trees between different locations, which could have great utility in long term forest health monitoring for both forestry management and research.
+
 ### Applications
 
+- Discussion of applications to forestry monitoring and management
+- Sensitivity for integration with molecular data compared to categorical assignments
+
 ## Conclusions
+
+- Crown condition descriptors most important for describing overall decline severity in the PDI.
+- Bacterial bleed related descriptors are most important for describing decline acuteness.
+- Decline indexes provide intuitive measures of decline severity based on simple phenotypic measurements that do not require specialist equipment
+- Encouraged to use this approach in other contexts
 
 \newpage
 ## Checks
 
 ```{r check,comment='',cache=FALSE}
-manuscript_check()
+manuscript_check(checks = c('word count','spelling'))
 ```
 
-\newpage
 ## References

@@ -3,7 +3,41 @@ title: Supplementary information
 output: 
   pdf_document:
     keep_tex: false
+header-includes:
+  - \usepackage{booktabs}
+  - \usepackage{longtable}
+  - \usepackage{array}
+  - \usepackage{multirow}
+  - \usepackage{wrapfig}
+  - \usepackage{float}
+  - \usepackage{colortbl}
+  - \usepackage{pdflscape}
+  - \usepackage{tabu}
+  - \usepackage{threeparttable}
+  - \usepackage{threeparttablex}
+  - \usepackage[normalem]{ulem}
+  - \usepackage{makecell}
+  - \usepackage{xcolor}
 ---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      message = FALSE)
+```
+
+```{r phenotypic_descriptors,cache=FALSE}
+loadd(phenotypic_descriptor_info)
+
+phenotypic_descriptor_info %>%
+  kable(format = 'latex',booktabs = TRUE,longtable = TRUE) %>%
+  kable_styling(latex_options = 'repeat_header',repeat_header_continued = TRUE) %>%
+  column_spec(1,width = '1.5cm') %>%
+  column_spec(2,width = '3cm') %>%
+  column_spec(4:5,width = '7cm') %>%
+  collapse_rows(columns = 1,latex_hline = "major", valign = "middle") %>%
+  landscape()
+```
 
 ```{r descriptor_adjustment,fig.cap='Error bars show ±1SE of the mean.\nDashed red line shows the overall mean.'}
 loadd(descriptor_adjustment_example)
@@ -16,10 +50,23 @@ descriptor_adjustment_example %>%
 loadd(site_correction_factors)
 
 site_correction_factors %>%
-  kable(caption = 'Descriptor correction factors at each site')
+  mutate_if(is.double,signif,digits = 3) %>%
+  kable(format = 'latex',booktabs = TRUE,caption = 'Descriptor correction factors at each site') %>%
+  collapse_rows(columns = 1,latex_hline = "major", valign = "middle")
 ```
 
-```{r PDInumeric,fig.height=8}
+```{r modelTuningResultsPlot}
+loadd(rf_tune_plot)
+
+rf_tune_plot
+```
+
+```{r site_differences,fig.cap='Differences between sites in phenotypic descriptors analysed by supervised Random Forest. a) Multidimensional scaling (MDS) plot of random forest proximity values of individual trees scaled to two dimensions. Mean margin value shown. b) Relative descriptor Gini importances measures.',fig.height=6}
+loadd(site_differences_mds_plot)
+grid.arrange(site_differences_mds_plot$a,site_differences_mds_plot$b,nrow = 1)
+```
+
+```{r PDInumeric,fig.height=9}
 loadd(descriptor_scatter_plots)
 
 descriptor_scatter_plots$PDI_numeric
@@ -29,11 +76,10 @@ descriptor_scatter_plots$PDI_numeric
 descriptor_scatter_plots$PDI_factor
 ```
 
-```{r DAInumeric,fig.height=8}
+```{r DAInumeric,fig.height=9}
 descriptor_scatter_plots$DAI_numeric
 ```
 
 ```{r DAIfactor,fig.height=8}
 descriptor_scatter_plots$DAI_factor
 ```
-
