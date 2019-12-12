@@ -34,9 +34,11 @@ siteDifferencesRFplot <- function(site_differences_rf,phenoData){
     as.character() %>%
     {c(.[1:6],
        expression(Agrillus~exit~hole~density ( m^-2 ) ),
-       .[8:25],
+       .[8:23],
+       expression(Crown~surface~area ( m^2 )),
+       .[25],
        expression(Crown~volume ( m^3 ) ),
-       .[27:35])
+       .[27:38])
     }
   
   site_differences <- list(

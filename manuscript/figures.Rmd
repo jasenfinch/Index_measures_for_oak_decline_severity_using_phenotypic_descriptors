@@ -17,7 +17,7 @@ loadd(decline_indexes_plot)
 decline_indexes_plot
 ```
 
-```{r descriptor_contributions, fig.height = 5,fig.cap = 'Descriptor importance scores from random forest models for relative contributions to\ndecline index measures. a) Phenotypic decline index (PDI). b) Decline acuteness index (DAI)'}
+```{r descriptor_contributions, fig.height = 6,fig.cap = 'Descriptor importance scores from random forest models for relative contributions to\ndecline index measures. a) Phenotypic decline index (PDI). b) Decline acuteness index (DAI)'}
 loadd(descriptor_contribution_plots)
 
 descriptor_contribution_plots$a + descriptor_contribution_plots$b

@@ -16,7 +16,8 @@ descriptorImportancePlots <- function(PDIrf,DAIrf){
         as.character() %>%
         {c(.[1:(which(str_detect(.,coll('Agrilus exit hole density (m^-2)'))) - 1)],
            expression(Agrillus~exit~hole~density ( m^-2 ) ),
-           .[(which(str_detect(.,coll('Agrilus exit hole density (m^-2)'))) + 1):34],
+           .[(which(str_detect(.,coll('Agrilus exit hole density (m^-2)'))) + 1):36],
+           expression(Crown~surface~area ( m^2 )),
            expression(Crown~volume ( m^3 ) )
         )}
       
@@ -26,7 +27,7 @@ descriptorImportancePlots <- function(PDIrf,DAIrf){
         theme_bw() +
         theme(plot.title = element_text(face = 'bold'),
               axis.title = element_text(face = 'bold',size = 10)) +
-        labs(title = 'a)',
+        labs(title = 'a) PDI',
              y = 'Relative Gini\nimportance',
              x = NULL) +
         scale_x_discrete(labels = descriptorLabels)
@@ -46,9 +47,10 @@ descriptorImportancePlots <- function(PDIrf,DAIrf){
         as.character() %>%
         {c(.[1:(which(str_detect(.,coll('Agrilus exit hole density (m^-2)'))) - 1)],
            expression(Agrillus~exit~hole~density ( m^-2 ) ),
-           .[(which(str_detect(.,coll('Agrilus exit hole density (m^-2)'))) + 1):(which(str_detect(.,coll('Crown volume (m^3)'))) - 1)],
+           .[(which(str_detect(.,coll('Agrilus exit hole density (m^-2)'))) + 1):(which(str_detect(.,coll('Crown surface area (m^2)'))) - 1)],
+           expression(Crown~surface~area ( m^2 )),
            expression(Crown~volume ( m^3 ) ),
-           .[(which(str_detect(.,coll('Crown volume (m^3)'))) + 1):35]
+           .[(which(str_detect(.,coll('Crown volume (m^3)'))) + 1):38]
         )}
       
       ggplot(dat,aes(x = Feature,y = `Relative Importance`)) +
@@ -57,7 +59,7 @@ descriptorImportancePlots <- function(PDIrf,DAIrf){
         theme_bw() +
         theme(plot.title = element_text(face = 'bold'),
               axis.title = element_text(face = 'bold',size = 10)) +
-        labs(title = 'b)',
+        labs(title = 'b) DAI',
              y = 'Relative Gini\nimportance',
              x = NULL) +
         scale_x_discrete(labels = descriptorLabels)
