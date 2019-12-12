@@ -5,7 +5,7 @@
 descriptorInfo <- function(analysisTable){
   pt <- analysisTable %>%
     {tibble(Descriptor = names(.),`Data Type` = map_chr(.,class))} %>%
-    filter(!(Descriptor %in% c('Crown condition (%)','Crown volume (m^3)','Bleed prevalence (%)','Agrilus exit hole density (m^-2)')))
+    filter(!(Descriptor %in% c('Crown condition (%)','Crown volume (m^3)','Bleed prevalence (%)','Agrilus exit hole density (m^-2)',"Live crown ratio (%)","Crown surface area (m^2)","Crown production efficiency")))
   
   type <- tribble(
     ~Descriptor,~Description,~`Categories / units`,~Reference,
