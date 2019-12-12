@@ -116,11 +116,14 @@ plan <- drake_plan(
     descriptorScatterPlots(decline_indexes),
   
   ## find optimal random forest parameters for PDI
-  PDI_rf_tune_results = tuneModel(site_corrected_analysis_suitable_data,decline_indexes$PDI),
+  PDI_rf_tune_results = tuneModel(site_corrected_analysis_suitable_data,
+                                  decline_indexes$PDI,
+                                  index_size = 1),
   PDI_rf_tune_params = optimalParams(PDI_rf_tune_results),
   
   ## find optimal random forest parameters for PDI
-  DAI_rf_tune_results = tuneModel(site_corrected_analysis_suitable_data,decline_indexes$DAI),
+  DAI_rf_tune_results = tuneModel(site_corrected_analysis_suitable_data,
+                                  decline_indexes$DAI,index_size = 2),
   DAI_rf_tune_params = optimalParams(DAI_rf_tune_results),
   
   ## plot tuning results

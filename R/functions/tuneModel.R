@@ -1,5 +1,5 @@
 
-tuneModel <- function(site_corrected_analysis_suitable_data,index){
+tuneModel <- function(site_corrected_analysis_suitable_data,index,index_size){
   mtry <- seq(2,26,by = 4)
   ntree <- seq(1,4,by = 1) %>%
     {10 ^ .}
@@ -17,7 +17,7 @@ tuneModel <- function(site_corrected_analysis_suitable_data,index){
           .$predicted %>%
           {abs(. - index)} %>%
           mean(na.rm = TRUE) %>%
-          tibble(mtry = n$mtry,ntree = n$ntree,MAE = .)
+          tibble(mtry = n$mtry,ntree = n$ntree,MAE = .,PMAE = . / index_size * 100)
     }) %>%
     bind_rows()
   
