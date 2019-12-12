@@ -11,11 +11,6 @@ knitr::opts_chunk$set(echo = FALSE,
                       message = FALSE)
 ```
 
-```{r site_differences,fig.cap='Differences between sites in phenotypic descriptors analysed by supervised Random Forest. a) Multidimensional scaling (MDS) plot of random forest proximity values of individual trees scaled to two dimensions. Mean margin value shown. b) Relative descriptor Gini importances measures.',fig.height=6}
-loadd(site_differences_mds_plot)
-grid.arrange(site_differences_mds_plot$a,site_differences_mds_plot$b,nrow = 1)
-```
-
 ```{r descriptor_adjustment,fig.cap='Error bars show ±1SE of the mean.\nDashed red line shows the overall mean.'}
 loadd(descriptor_adjustment_example)
 
@@ -30,7 +25,16 @@ site_correction_factors %>%
   kable(caption = 'Descriptor correction factors at each site')
 ```
 
-\newpage
+```{r modelTuningResultsPlot}
+loadd(rf_tune_plot)
+
+rf_tune_plot
+```
+
+```{r site_differences,fig.cap='Differences between sites in phenotypic descriptors analysed by supervised Random Forest. a) Multidimensional scaling (MDS) plot of random forest proximity values of individual trees scaled to two dimensions. Mean margin value shown. b) Relative descriptor Gini importances measures.',fig.height=6}
+loadd(site_differences_mds_plot)
+grid.arrange(site_differences_mds_plot$a,site_differences_mds_plot$b,nrow = 1)
+```
 
 ```{r PDInumeric,fig.height=8}
 loadd(descriptor_scatter_plots)
@@ -48,12 +52,6 @@ descriptor_scatter_plots$DAI_numeric
 
 ```{r DAIfactor,fig.height=8}
 descriptor_scatter_plots$DAI_factor
-```
-
-```{r modelTuningResultsPlot}
-loadd(rf_tune_plot)
-
-rf_tune_plot
 ```
 
 ```{r PDIlimeAnalysisPlot}
