@@ -525,6 +525,13 @@
       "Repository": "CRAN",
       "Hash": "bc5739654d032acf531356e32e0d0f54"
     },
+    "kableExtra": {
+      "Package": "kableExtra",
+      "Version": "1.1.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "37e11c605b3c0b7207763beda52c8535"
+    },
     "knitr": {
       "Package": "knitr",
       "Version": "1.26",
@@ -856,10 +863,10 @@
     },
     "rmarkdown": {
       "Package": "rmarkdown",
-      "Version": "1.18",
+      "Version": "2.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "2a1b6baa83112f3c8e1909f3989ea9d9"
+      "Hash": "745a60d9256842b1abae2dcf7b64ebc1"
     },
     "rstudioapi": {
       "Package": "rstudioapi",
@@ -926,10 +933,10 @@
     },
     "spam": {
       "Package": "spam",
-      "Version": "2.5-0",
+      "Version": "2.5-1",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "a02109d78304b0ca3b2482ebafd3369e"
+      "Hash": "efe6e43f90ee66c765fdaea2bf2cf7e6"
     },
     "spelling": {
       "Package": "spelling",
@@ -1042,6 +1049,13 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "ce4f6271baa94776db692f1cb2055bee"
+    },
+    "webshot": {
+      "Package": "webshot",
+      "Version": "0.5.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "e99d80ad34457a4853674e89d5e806de"
     },
     "whisker": {
       "Package": "whisker",
