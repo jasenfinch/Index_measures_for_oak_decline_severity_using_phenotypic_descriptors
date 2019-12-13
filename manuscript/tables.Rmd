@@ -39,6 +39,6 @@ loadd(DAI_lime_analysis_table)
 
 DAI_lime_analysis_table %>%
   kable(format = 'latex',booktabs = TRUE,escape = FALSE,caption = ' ') %>%
-  collapse_rows(columns = 1:3, latex_hline = "major", valign = "middle")
+  collapse_rows(columns = 1:4, latex_hline = "custom", valign = "middle",custom_latex_hline = 1:4)
 ```
 
