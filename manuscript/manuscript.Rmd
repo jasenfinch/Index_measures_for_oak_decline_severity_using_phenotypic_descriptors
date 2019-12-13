@@ -112,6 +112,11 @@ Cardinal assessments were averaged to give a single value.
 
 A total of 31 raw descriptors collected 
 
+### Tree size descriptor adjustment for age and inter site variance
+
+To account age, size and site specific tree difference, an adjustment of site means to the overall mean was applied to each of the size descriptors (diameter at breast height, lower crown height, timber height, total height, crown radius). 
+An example of this adjustment is shown for diameter at breast height in Supplementary Figure # and the adjustment factors for each of the descriptors at each site is shown in Supplementary Table #.  
+
 ### Composite descriptor calculation
 
 Seven additional, composite descriptors were calculated to account for the three dimensional attributes of the tree and covariate nature of certain descriptors as suggested by @zarnoch2004.
@@ -156,11 +161,6 @@ $$e = \frac{h}{\frac{2d}{100}\pi}$$
 
 $h$ = number of *Agrilus* exit holes
 
-### Tree size descriptor adjustment for age and inter site variance
-
-To account for these differences and to make the trees across the sites comparable in the context of decline, an adjustment of site means to the overall mean was applied to each of the size descriptors (diameter at breast height, lower crown height, timber height, total height, crown radius). 
-An example of this adjustment is shown for diameter at breast height in Supplementary Figure # and the adjustment factors for each of the descriptors at each site is shown in Supplementary Table #.  
-
 ### Calculation of indexes for oak decline severity
 
 The phenotypic descriptors were analysed using 100 repetitions of unsupervised random forest using the randomForest R package v`r packageVersion('randomForest') %>% as.character()` [@liaw2002].
@@ -175,16 +175,19 @@ With different data, it is likely that the MDS dimensions may require inversion 
 
 The code used to generate the decline indexes is available as an R package pdi v`r packageVersion('pdi') %>% as.character()` at https://github.com/jasenfinch/pdi.
 
-### Overall and local descriptor importance
+### Identifying important descriptors and their trends within the decline indexes
 
-- LIME analysis to identify locally important descriptors under circumstances of interest
 - simulated descriptor response surfaces
 
 Individual random forest regression models of the phenotypic descriptors were trained, supervised using each decline index.
-Optimal number of trees (ntree) and number randomly of variables (mtry) parameters for random forest were tuned prior to training. 
-The combination parameters giving the lowest percent mean absolute error (PMAE) were selected and as follows: PDI - `r glue('ntree = {PDI_rf_tune_params$ntree}, mtry = {PDI_rf_tune_params$mtry}, PMAE = {PDI_rf_tune_params$PMAE %>% signif(digits = 3)}%')`; DAI - `r glue('ntree = {DAI_rf_tune_params$ntree}, mtry = {DAI_rf_tune_params$mtry}, PMAE = {DAI_rf_tune_params$PMAE %>% signif(digits = 3)}%')` (Supplementary figure #)
+The optimal number of trees (ntree) and number randomly of variables (mtry) parameters for random forest were tuned prior to training. 
+The combination parameters giving the lowest percent mean absolute error (PMAE) were selected and set as follows: PDI - `r glue('ntree = {PDI_rf_tune_params$ntree}, mtry = {PDI_rf_tune_params$mtry}, PMAE = {PDI_rf_tune_params$PMAE %>% signif(digits = 3)}%')`; DAI - `r glue('ntree = {DAI_rf_tune_params$ntree}, mtry = {DAI_rf_tune_params$mtry}, PMAE = {DAI_rf_tune_params$PMAE %>% signif(digits = 3)}%')` (Supplementary figure #)
 
-To understand the descriptors contributing to each of the indexes, Local Interpretable Model-Agnostic Explanations (LIME) using the lime R package v`r packageVersion('lime') %>% as.character()` [@ribeiro2016; @pedersen2019]
+Local Interpretable Model-Agnostic Explanations (LIME) To understand the descriptors contributing to case specific examples of each of the indexes,  were computed for a range of specific cases [@ribeiro2016]. 
+The lime R package v`r packageVersion('lime') %>% as.character()` was used with the default parameters [@pedersen2019].
+A low, a moderate and a severe decline cases was used for the PDI. For each case, a tree with a score closest to 0, 0.5 and 1 respectively was selected.
+For the DAI, a decline neautral case was selected with a score closes to 0.
+Then for each of the AOD and COD syndrome types a moderatefor the DAI . 
 
 ## Results
 
@@ -203,7 +206,7 @@ Significance was also found in the DAI between the AOD and COD groups (`r glue("
 A scatter plot of PDI against DAI is shown in Figure # for all 174 trees.
 It can clearly be seen that the 
 
-### Descriptor contributions and trends
+### Descriptor contributions and trends to the decline indexes
 
 - Accuracies of retrained models
 - Lime results
