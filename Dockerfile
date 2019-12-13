@@ -4,10 +4,8 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update
 
-ENV RENV_VERSION 0.8.3-16
 ENV RENV_PATHS_ROOT /home/rstudio/
-RUN Rscript -e "install.packages(c('remotes'), repos = c(CRAN = 'https://cloud.r-project.org'))"
-RUN Rscript -e "remotes::install_github('rstudio/renv@${RENV_VERSION}')"
+RUN Rscript -e "install.packages(c('renv'), repos = c(CRAN = 'https://cloud.r-project.org'))"
 
 WORKDIR /home/rstudio/
 
