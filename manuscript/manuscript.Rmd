@@ -62,7 +62,7 @@ Accurately diagnosing in the field the severity and type of oak decline present 
 It is becoming increasingly important that oak tree health within woodlands is accurately and sensitively monitoried to enable the detection of decline as well as it's spread and severity over time to enable accurate forecasting and inform forestry management practices (ref).
 Monitoring methods need to take advantage of modern data analysis techniques whilst still retaining practical simplicity in the field.
 
-Machine learning is finding increasing utility in biological and geographical applications due to it's ability to learn complex patterns withing and between 
+Machine learning is finding increasing utility in biological and geographical applications due to it's ability to learn complex patterns within and between variables.
 A popular algorithm is that of random forest due to it's versatility, relatively trivial training requirements and resilience against over fitting [@breiman2001] (refs). 
 It is an ensemble machine learning method where forests of bootstrap sampled decision trees are grown, yielding both out of bag sample prediction accuracies and variable importance.
 It is also able to simultaneously handle both continuous and categorical variables.
@@ -91,13 +91,12 @@ Phenotypic data were collected from a total of 174 trees from nine sites from ac
 The occurance of AOD has previously been reported and studied at six of the sites [@brown2016; @brown2017].
 
 Descriptors were collected relating to the trees shape, size, crown condition and the presence of biotic agents including insects, bacteria and fungi.
-These descriptors are shown in Table #.
 Crown radius, canopy closure and tap tests for dead stem tissue were measured for each cardinal point.
 The crown radius was
 The AOD stem symptoms (active bleeds, black staining, callused wounds) were collected by measuring longest axis of each individual bleed, stain or callused wound found within the basal 3m of the stem (ref).
 The frequency of *A. biguttatus* exit holes were counted along with the presence or absence of each of oval shaped exit holes, small circular shaped exit holes and ground level fungal fruiting bodies were recorded from the basal 2m of the stem (ref). 
+These descriptors are shown in Supplementary table #.
 All trees were manually assigned a decline status category; control, AOD, COD or remission.
-
 All raw data and analysis code used to generate this manuscript are available at https://github.com/jasenfinch/Index_measures_for_oak_decline_severity_using_phenotypic_descriptors.
 
 ### Phenotypic descriptor preparation
@@ -131,17 +130,17 @@ $$c = (100 - m)(1-\frac{t}{100})$$
 
 $m$ = missing crown (%), $t$ = crown transparency (%)
 
-**Composite crown volume (m^3^)** - Estimated volume of crown as an paraboloid proportional to the crown condition. Based on the composite crown volumne from @zarnoch2004 but uses crown condition instead of crown density alone.
+**Composite crown volume (m^3^)** - Estimated volume of crown as an paraboloid proportional to the crown condition. Adapted from the composite crown volume from @zarnoch2004 using crown condition instead of crown density alone.
 
 $$v = \frac{\pi r^2c(h-l)}{200}$$
 
 $r$ = crown radius (m)
 
-**Composite crown surface area (m^2^)** - 
+**Composite crown surface area (m^2^)** - Estimated crown surface area proportional to crown condition. Adapted from @laroque1994.
 
 $$S = \frac{4\pi(h-l)}{3r^2} \left[ \left( r^2 + \frac{r^4}{4(h-l)^2} \right) ^{1.5} - \left( \frac{r^4}{4(h-l)^2} \right) ^{1.5} \right] \times c $$
 
-**Crown production efficiency** - 
+**Crown production efficiency** - Estimate of crown production effieceny as a ratio between the composite crown surface area and the composite crown volumne [@zarnoch2004].
 
 $$e = \frac{S}{v}$$
 
