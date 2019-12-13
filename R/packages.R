@@ -22,7 +22,8 @@ pacman::p_load(drake,
                patchwork,
                broom,
                glue,
-               kableExtra)
+               kableExtra,
+               grid)
 
 # Load dependant GitHub libraries
 

@@ -26,14 +26,34 @@ descriptor_contribution_plots$a + descriptor_contribution_plots$b
 ```{r PDI_response_surfaces,fig.height = 6,fig.cap='PDI response surfaces for simulated descriptor values from trained Random Forest models. All other descriptors were set at the values of those of the trees with the lowest PDI used for trainig the models'}
 loadd(PDI_response_surfaces)
 
-grid.arrange(PDI_response_surfaces$`a)`,PDI_response_surfaces$`b)`,PDI_response_surfaces$`c)`,PDI_response_surfaces$legend,nrow = 2,newpage = F)
+grid.arrange(PDI_response_surfaces$`a)`,
+             PDI_response_surfaces$`b)`,
+             PDI_response_surfaces$`c)`,
+             PDI_response_surfaces$legend,
+             nrow = 2,newpage = F)
 ```
 
 
 ```{r DAI_response_surfaces,fig.height = 8,fig.cap='DAI response surfaces for simulated descriptor values from trained Random Forest models. All other descriptors were set at the values of those of the trees with the lowest PDI used for trainig the models'}
 loadd(DAI_response_surfaces)
 
-grid.arrange(DAI_response_surfaces$`a)`,DAI_response_surfaces$`b)`,DAI_response_surfaces$`c)`,DAI_response_surfaces$`d)`,DAI_response_surfaces$`e)`,DAI_response_surfaces$`f)`,DAI_response_surfaces$legend,ncol = 3,layout_matrix = rbind(c(1,4,7),c(2,5,7),c(3,6,7)),widths = c(4,4,1),newpage = F)
+grid.arrange(textGrob(expression(bold('AOD')),hjust = -0.1),
+             textGrob(expression(bold('COD')),hjust = -0.1),
+             textGrob(expression(bold('Neutral')),rot = 90,hjust = -0.1),
+             textGrob(expression(bold('Moderate')),rot = 90,hjust = -0.1),
+             textGrob(expression(bold('Severe')),rot = 90,hjust = -0.1),
+             DAI_response_surfaces$`a)`,
+             DAI_response_surfaces$`b)`,
+             DAI_response_surfaces$`c)`,
+             DAI_response_surfaces$`d)`,
+             DAI_response_surfaces$`e)`,
+             DAI_response_surfaces$`f)`,
+             DAI_response_surfaces$legend,
+             ncol = 4,
+             layout_matrix = rbind(c(NA,1,2,NA),c(3,6,9,12),c(4,7,10,12),c(5,8,11,12)),
+             widths = c(1,10,10,2),
+             heights = c(1,10,10,10),
+             newpage = F)
 ```
 
 ```{r DI_space,fig.cap='Two dimensional continuum of the phenotypic decline indexes for oak decline severity.',fig.height=3,fig.width=5}
