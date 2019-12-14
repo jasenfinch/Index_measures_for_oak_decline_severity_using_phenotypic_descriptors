@@ -98,6 +98,13 @@ plan <- drake_plan(
     t.test(PDI~Status,data = .,var.equal = TRUE) %>%
     tidy(),
   
+  ## DAI decline type summary
+  DAI_groups_summary = decline_indexes %>%
+    filter(ChosenGroup %in% c('AOD','COD')) %>% 
+    group_by(ChosenGroup) %>% 
+    summarise(median = median(DAI),
+              mean = mean(DAI)),
+  
   ## plot DAI against AOD and COD groups
   DAI_groups_plot = decline_indexes %>% 
     filter(ChosenGroup %in% c('AOD','COD')) %>% 

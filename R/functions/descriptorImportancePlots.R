@@ -15,12 +15,11 @@ descriptorImportancePlots <- function(PDIrf,DAIrf){
       
       descriptorLabels <- dat$Feature %>%
         as.character() %>%
-      {c(.[1:(which(str_detect(.,coll('Agrilus exit hole density (m^-2)'))) - 1)],
-         expression(Agrillus~exit~hole~density ( m^-2 ) ),
-         .[(which(str_detect(.,coll('Agrilus exit hole density (m^-2)'))) + 1):36],
-         expression(Crown~volume ( m^3 ) ),
-         expression(Crown~surface~area ( m^2 ))
-      )}
+        {
+          .[str_detect(.,coll('Agrilus exit hole density (m^-2)'))] <- expression(Agrillus~exit~hole~density ( m^-2 ) )
+          .[str_detect(.,coll('Crown volume (m^3)'))] <- expression(Crown~volume ( m^3 ) )
+          return(.)
+        }
       
       ggplot(dat,aes(x = Feature,y = `%IncMSE`)) +
         geom_point(fill = ptol_pal()(1),shape = 21,size = 2) +
@@ -47,12 +46,11 @@ descriptorImportancePlots <- function(PDIrf,DAIrf){
       
       descriptorLabels <- dat$Feature %>%
         as.character() %>%
-        {c(.[1:(which(str_detect(.,coll('Agrilus exit hole density (m^-2)'))) - 1)],
-           expression(Agrillus~exit~hole~density ( m^-2 ) ),
-           .[(which(str_detect(.,coll('Agrilus exit hole density (m^-2)'))) + 1):(which(str_detect(.,coll('Crown surface area (m^2)'))) - 1)],
-           expression(Crown~surface~area ( m^2 )),
-           expression(Crown~volume ( m^3 ) )
-        )}
+        {
+          .[str_detect(.,coll('Agrilus exit hole density (m^-2)'))] <- expression(Agrillus~exit~hole~density ( m^-2 ) )
+          .[str_detect(.,coll('Crown volume (m^3)'))] <- expression(Crown~volume ( m^3 ) )
+          return(.)
+        }
       
       ggplot(dat,aes(x = Feature,y = `%IncMSE`)) +
         geom_point(fill = ptol_pal()(1),shape = 21,size = 2) +

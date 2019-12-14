@@ -32,14 +32,10 @@ siteDifferencesRFplot <- function(site_differences_rf,phenoData){
   
   descriptorLabels <- locationImportance$Descriptor %>%
     as.character() %>%
-    {c(.[1:2],
-       expression(Agrillus~exit~hole~density ( m^-2 ) ),
-       .[4:16],
-       expression(Crown~surface~area ( m^2 )),
-       .[18:22],
-       expression(Crown~volume ( m^3 ) ),
-       .[24:38]
-      )
+    {
+      .[str_detect(.,coll('Agrilus exit hole density (m^-2)'))] <- expression(Agrillus~exit~hole~density ( m^-2 ) )
+      .[str_detect(.,coll('Crown volume (m^3)'))] <- expression(Crown~volume ( m^3 ) )
+      return(.)
     }
   
   site_differences <- list(

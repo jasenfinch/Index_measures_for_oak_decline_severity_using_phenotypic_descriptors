@@ -22,6 +22,7 @@ loadd(site_rf_margin,
       DAI_groups_ttest,
       PDI_rf_tune_params,
       DAI_rf_tune_params,
+      analysis_suitable_data,
       site_corrected_analysis_suitable_data)
 ```
 
@@ -91,32 +92,17 @@ These sites included a variety of woodland types, management types, soil types a
 
 Descriptors were collected relating to the trees shape, size, crown condition and the presence of biotic agents including insects, bacteria and fungi.
 All trees were manually assigned a decline status category; control, AOD, COD or remission prior to collection of phenotypic descriptors.
+Diameter at breast height (DBH) was collected at a stem height of 1.3m, to the nearest 0.1cm.
+Total height, timber hight and lowest live crown were measured using an inclinometer to the nearest 0.1m
+The timber height was measured at either 7cm top stem diameter or where no main stem could be distinguished.
+For the crown, canopy closure, missing crown and absolute crown density percentages were visually estimated within 5% classes
 
-- 12 figure grid reference for each tree
-- DBH to nearest 0.1cm
-- Total height to nearest 0.1m
-- Timber height - either 7cm top diameter or where no main stem can be distinguished
-- Lowest live crown to nearest 0.1m
-- Social class
+Other categorical descriptors included social class, diaback type, main crown dieback location, stem epicormic growth, branch epicormic growth, extent of insect damage, insect damage type, extent of crown mildew and the presence or absence of pruning damage or branch loss from the main stem.
+See supplementary table # for category details.
 
 Crown radius, canopy closure and tap tests for dead stem tissue were measured for each cardinal point.
-The crown radius was measured using a vertex transponder attached to the relevant side of the stem at a height of 1.3m.
-
-- Canopy closure recorded as yes or no depending on whether any other crowns are touching the sampling tree.
-- High resolution photo collected from the vase to the spring of the crown on each cardinal point
-- High resolution photo of stem from the base to a height of 3m
-
-- Canopy closure percentage
-- Presence or absence of pruning damage or branch loss from main stem
-- % missing crown excluded from crown density assessment
-- absolute crown density in 5% classes
-- dieback type
-- main crown dieback location
-- stem epicormic growth
-- branch epicormic growth
-- insect damage on leaves and type
-- crown mildew
-
+The crown radius was measured using a vertex transponder attached to the relevant side of the stem at a height of 1.3m.Canopy closure recorded as yes or no depending on whether any other crowns are touching the sampling tree.
+A high resolution photo was taken of the vase to the spring of the crown and of the stem from the base to a height of 3m for each cardinal point for later reference.
 
 The AOD stem symptoms (active bleeds, black staining, callused wounds) were collected by measuring longest axis of each individual bleed, stain or callused wound found within the basal 3m of the stem (ref).
 The frequency of *A. biguttatus* exit holes were counted along with the presence or absence of each of oval shaped exit holes, small circular shaped exit holes and ground level fungal fruiting bodies were recorded from the basal 2m of the stem (ref). 
@@ -142,8 +128,8 @@ An example of this adjustment is shown for diameter at breast height in Suppleme
 
 ### Composite descriptor calculation
 
-Seven additional, composite descriptors were calculated to account for the three dimensional attributes of the tree and covariate nature of certain descriptors as suggested by @zarnoch2004.
-This then gave a total of 38 raw and composite phenotypic descriptors.
+Five additional, composite descriptors were calculated to account for the three dimensional attributes of the tree and covariate nature of certain descriptors as suggested by @zarnoch2004.
+This then gave a total of `r ncol(analysis_suitable_data)` raw and composite phenotypic descriptors.
 The additional descriptors are defined as follows:
 
 **Live crown ratio (%)** - percentage of the whole tree height that supports live crown.
@@ -163,14 +149,6 @@ $m$ = missing crown (%), $t$ = crown transparency (%)
 $$v = \frac{\pi r^2c(h-l)}{200}$$
 
 $r$ = crown radius (m)
-
-**Composite crown surface area (m^2^)** - Estimated crown surface area proportional to crown condition. Adapted from @laroque1994.
-
-$$S = \frac{4\pi(h-l)}{3r^2} \left[ \left( r^2 + \frac{r^4}{4(h-l)^2} \right) ^{1.5} - \left( \frac{r^4}{4(h-l)^2} \right) ^{1.5} \right] \times c $$
-
-**Crown production efficiency** - Estimate of crown production efficiency as a ratio between the composite crown surface area and the composite crown volume [@zarnoch2004].
-
-$$e = \frac{S}{v}$$
 
 **Estimated bleed prevalence (%)** - estimated percentage of the surveyed 3m basal trunk area affected by bleeds or black staining.
 
@@ -192,8 +170,7 @@ This was then transformed to a dissimilarity matrix ($1 - P$) and scaled to two 
 The first MDS dimension ($D$) was first inverted ($1 - D$) to ensure the correct dimension orientation relative to decline severity.
 It was then min-max scaled to give a scale between 0 and 1 with more severely declining trees having a score closer to 1.
 This dimension was named the PDI.
-The second MDS dimension was similarly inverted to ensure the correct dimension orientation relative to decline type.
-The dimension was then min-max scaled and then transformed ($2D - 1$) to give a scale between -1 and 1 with COD trees having a score closer to -1 and AOD having a score closer to 1. 
+The second MDS dimension was min-max scaled and then transformed ($2D - 1$) to give a scale between -1 and 1 with COD trees having a score closer to -1 and AOD having a score closer to 1. 
 This dimension was named the DAI.
 With different data, it is likely that the MDS dimensions may require inversion prior to min-max scaling to ensure their correct orientation.
 
@@ -229,9 +206,9 @@ symptom_ranges <- site_corrected_analysis_suitable_data %>%
 ```
 
 
-The same approach was used for the DAI using also a comparison between active bleed size and black staining size () as well as missing crown and crown transparency.
+The same approach was used for the DAI using also a comparison between active bleed size and black staining size as well as missing crown and crown transparency.
 The upper boundary for the ranges of active bleed size and black stain size was taken as the center value between the maximum and minimum and reduced by a factor of eight to give ranges of `r glue("{symptom_ranges$minimum[1]}-{signif(symptom_ranges$center[1] / 8,digits = 3)}mm")` and `r glue("{symptom_ranges$minimum[2]}-{signif(symptom_ranges$center[2] / 8,digits = 3)}mm")` respectively and enable more effective visualisation.
-Cases included neutral, moderate and severe with DAI scores closest to 0, 0.5 and 1 respectively for AOD and 0, -0.5 and -1 respectively for COD.
+Cases included neutral, moderate and severe with PDI scores greater than 0.5 and DAI scores closest to 0, 0.5 and 1 respectively for AOD and 0, -0.5 and -1 respectively for COD.
 
 ### Local descriptor contribution to index models
 

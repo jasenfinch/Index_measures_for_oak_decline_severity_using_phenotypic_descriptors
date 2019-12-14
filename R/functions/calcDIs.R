@@ -7,7 +7,6 @@ calcDIs <- function(rfModels,phenoData){
              {. * -1} %>%
              minMaxScale(),
            DAI = DAI %>%
-             {. * -1} %>%
              minMaxScale() %>%
              {2 * . - 1}) %>%
     bind_cols(phenoData %>%
