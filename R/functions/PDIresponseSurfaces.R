@@ -33,22 +33,6 @@ PDIresponseSurfaces <- function(PDIrf,decline_indexes,site_corrected_analysis_su
     set_names(variables) %>%
     bind_rows(.id = 'Descriptor')
   
-  # spectrumTrees_PDI$`a)`$`Crown radius (m)` <- ranges$max[ranges$Descriptor == 'Crown radius (m)']
-  # spectrumTrees_PDI$`b)`$`Crown radius (m)` <- ranges$center[ranges$Descriptor == 'Crown radius (m)']
-  # spectrumTrees_PDI$`c)`$`Crown radius (m)` <- ranges$min[ranges$Descriptor == 'Crown radius (m)']
-  # 
-  # spectrumTrees_PDI$`a)`$`Total height (m)` <- ranges$max[ranges$Descriptor == 'Total height (m)']
-  # spectrumTrees_PDI$`b)`$`Total height (m)` <- ranges$center[ranges$Descriptor == 'Total height (m)']
-  # spectrumTrees_PDI$`c)`$`Total height (m)` <- ranges$min[ranges$Descriptor == 'Total height (m)']
-  # 
-  # spectrumTrees_PDI$`a)`$`Lower crown height (m)` <- ranges$max[ranges$Descriptor == 'Lower crown height (m)']
-  # spectrumTrees_PDI$`b)`$`Lower crown height (m)` <- ranges$center[ranges$Descriptor == 'Lower crown height (m)']
-  # spectrumTrees_PDI$`c)`$`Lower crown height (m)` <- ranges$min[ranges$Descriptor == 'Lower crown height (m)']
-  # 
-  # spectrumTrees_PDI$`a)`$`Diameter at breast height (mm)` <- ranges$max[ranges$Descriptor == 'Diameter at breast height (mm)']
-  # spectrumTrees_PDI$`b)`$`Diameter at breast height (mm)` <- ranges$center[ranges$Descriptor == 'Diameter at breast height (mm)']
-  # spectrumTrees_PDI$`c)`$`Diameter at breast height (mm)` <- ranges$min[ranges$Descriptor == 'Diameter at breast height (mm)']
-  
   plotRanges_PDI <- spectrumTrees_PDI %>%
     names() %>%
     map(~{

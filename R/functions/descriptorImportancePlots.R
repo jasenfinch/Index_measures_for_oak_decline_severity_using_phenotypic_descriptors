@@ -23,7 +23,7 @@ descriptorImportancePlots <- function(PDIrf,DAIrf){
       )}
       
       ggplot(dat,aes(x = Feature,y = `%IncMSE`)) +
-        geom_point(fill = ptol_pal()(1),shape = 21) +
+        geom_point(fill = ptol_pal()(1),shape = 21,size = 2) +
         coord_flip() +
         theme_bw() +
         theme(plot.title = element_text(face = 'bold'),
@@ -55,7 +55,7 @@ descriptorImportancePlots <- function(PDIrf,DAIrf){
         )}
       
       ggplot(dat,aes(x = Feature,y = `%IncMSE`)) +
-        geom_point(fill = ptol_pal()(1),shape = 21) +
+        geom_point(fill = ptol_pal()(1),shape = 21,size = 2) +
         coord_flip() +
         theme_bw() +
         theme(plot.title = element_text(face = 'bold'),

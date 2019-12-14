@@ -21,7 +21,8 @@ loadd(site_rf_margin,
       PDI_status_ttest,
       DAI_groups_ttest,
       PDI_rf_tune_params,
-      DAI_rf_tune_params)
+      DAI_rf_tune_params,
+      site_corrected_analysis_suitable_data)
 ```
 
 **Authors:** Jasen Finch, Nathan Brown, Sandra Denman & John Draper
@@ -106,11 +107,11 @@ All raw data and analysis code used to generate this manuscript are available at
 - Symptom type sizes average and frequency taken
 - DBH converted to m and symptom sizes to mm
 
-R v`r str_c(version$major,version$minor,sep ='.')` was used for all parsing, preparation and subsequent analysis of phenotypic data [@R2019].
+R version `r str_c(version$major,version$minor,sep ='.')` was used for all parsing, preparation and subsequent analysis of phenotypic data [@R2019].
 
 Cardinal assessments were averaged to give a single value.
 
-A total of 31 raw descriptors collected 
+After preparation there were a total of 31 raw descriptors for analysis. 
 
 ### Tree size descriptor adjustment for age and inter site variance
 
@@ -176,21 +177,34 @@ With different data, it is likely that the MDS dimensions may require inversion 
 
 The code used to generate the decline indexes is available as an R package pdi v`r packageVersion('pdi') %>% as.character()` at https://github.com/jasenfinch/pdi.
 
-### Identifying important descriptors and their trends within the decline indexes
-
-- descriptor importance for each index
-- simulated descriptor response surfaces
+### Descriptor contribution decline indexes
 
 Individual random forest regression models of the phenotypic descriptors were trained, supervised using each decline index.
 The optimal number of trees (ntree) and number randomly of variables (mtry) parameters for random forest were tuned prior to training. 
 The combination parameters giving the lowest percent mean absolute error (PMAE) were selected and set as follows: PDI - `r glue('ntree = {PDI_rf_tune_params$ntree}, mtry = {PDI_rf_tune_params$mtry}, PMAE = {PDI_rf_tune_params$PMAE %>% signif(digits = 3)}%')`; DAI - `r glue('ntree = {DAI_rf_tune_params$ntree}, mtry = {DAI_rf_tune_params$mtry}, PMAE = {DAI_rf_tune_params$PMAE %>% signif(digits = 3)}%')` (Supplementary figure #)
 
-Overall descriptor importance contributions to each of the indexes was retrieved from these models using gini impurity (ref).
-The assoication of key raw descriptors identified from the overall importance were investigated by simulating
+Overall descriptor importance contributions to each of the indexes was retrieved from these models using the mean decrease in accuracy measure (ref).
+
+### Index model simulations to investigate interactions of key descriptors
+
+The interactions of key raw descriptors identified from the overall importance scores and their associations with the decline indexes was investigated by using simulated descriptor values to construct index model responses surfaces for specific cases.
+This approach was similar to response surface methodology without the need for probabalistic approximation due to the low computation time required for index calculation (ref).
+
+For the PDI, missing crown and crown transparency were compared for example cases of a healthy, a moderate and a severly tree.
+The example cases were identified by selecting the descriptor values for trees with PDI values closes to the 25, 50 and 75% quantiles for the healthy, moderate and severely declining trees respectively.
+The value ranges for the missing crown (`r glue("{min(site_corrected_analysis_suitable_data[['Missing crown (%)']])}-{max(site_corrected_analysis_suitable_data[['Missing crown (%)']])}%")`) and crown transparency (`r glue("{min(site_corrected_analysis_suitable_data[['Crown transparency (%)']])}-{max(site_corrected_analysis_suitable_data[['Crown transparency (%)']])}%")`) descriptors divided into 100 increments.
+For a given case, each combination of theses simulated descriptor values were used to calculate a PDI value from the supervised random forest regression model, building a model response surface.
+
+A similar process was used for the DAI using also a comparison between active bleed size and black staining size as well as missing crown and crown transparency.
+Cases included neutral, moderate and severe AOD and COD decline types.
+
+- reduced by a factor of 16 for clearer visualisation
+
+### Local descriptor contribution to index models
 
 Local Interpretable Model-Agnostic Explanations (LIME) were computed to identify descriptors contributing locally to case specific examples of each of the indexes [@ribeiro2016]. 
 The lime R package v`r packageVersion('lime') %>% as.character()` was used with the default parameters [@pedersen2019].
-A low, a moderate and a severe decline cases was used for the PDI. 
+A healthy, a moderate and a severe decline cases was used for the PDI. 
 For each case, a tree with a score closest to 0, 0.5 and 1 respectively was selected.
 For the DAI, a decline neutral case was selected with a score closes to 0.
 Then for each of the AOD and COD syndromes, moderate and severe cases were selected with scores closes to 0.5 and 1 for AOD and -0.5 and -1 for COD. 
