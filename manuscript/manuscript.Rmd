@@ -65,6 +65,9 @@ Monitoring methods need to take advantage of modern data analysis techniques whi
 
 Machine learning is finding increasing utility in biological and geographical applications due to it's ability to learn complex patterns within and between variables.
 A popular algorithm is that of random forest due to it's versatility, relatively trivial training requirements and resilience against over fitting [@breiman2001] (refs). 
+
+- Random forest has previously been used in a forest condition context [@vitale2014].
+
 It is an ensemble machine learning method where forests of bootstrap sampled decision trees are grown, yielding both out of bag sample prediction accuracies and variable importance.
 It is also able to simultaneously handle both continuous and categorical variables.
 Unsupervised learning is also possible [@shi2006]
@@ -82,35 +85,54 @@ Acutely declining trees have a score closer to 1 and chronically declining trees
 
 ### Phenotypic data collection
 
-- Site types
-- Field phenotyping protocol
-- Crown assessments
-- Other assessments
-- Descriptions of collected phenotypic descriptors
-
-Phenotypic data were collected from a total of 174 trees from nine sites from across the south, east and west of England between June and September in 2016 or 2017.
+The phenotypic data were collected from a total of 174 trees from nine sites from across the south (Hatchlands and Richmond Park), east (Big Wood, Great Monks Wood and Winding Wood) and west (Attingham, Chestnuts, Langdale and Speculation) of England between June and September in 2016 or 2017.
 The occurrence of AOD has previously been reported and studied at six of the sites [@brown2016; @brown2017].
+These sites included a variety of woodland types, management types, soil types and tree sizes/ages.
 
 Descriptors were collected relating to the trees shape, size, crown condition and the presence of biotic agents including insects, bacteria and fungi.
+All trees were manually assigned a decline status category; control, AOD, COD or remission prior to collection of phenotypic descriptors.
+
+- 12 figure grid reference for each tree
+- DBH to nearest 0.1cm
+- Total height to nearest 0.1m
+- Timber height - either 7cm top diameter or where no main stem can be distinguished
+- Lowest live crown to nearest 0.1m
+- Social class
+
 Crown radius, canopy closure and tap tests for dead stem tissue were measured for each cardinal point.
-The crown radius was
+The crown radius was measured using a vertex transponder attached to the relevant side of the stem at a height of 1.3m.
+
+- Canopy closure recorded as yes or no depending on whether any other crowns are touching the sampling tree.
+- High resolution photo collected from the vase to the spring of the crown on each cardinal point
+- High resolution photo of stem from the base to a height of 3m
+
+- Canopy closure percentage
+- Presence or absence of pruning damage or branch loss from main stem
+- % missing crown excluded from crown density assessment
+- absolute crown density in 5% classes
+- dieback type
+- main crown dieback location
+- stem epicormic growth
+- branch epicormic growth
+- insect damage on leaves and type
+- crown mildew
+
+
 The AOD stem symptoms (active bleeds, black staining, callused wounds) were collected by measuring longest axis of each individual bleed, stain or callused wound found within the basal 3m of the stem (ref).
 The frequency of *A. biguttatus* exit holes were counted along with the presence or absence of each of oval shaped exit holes, small circular shaped exit holes and ground level fungal fruiting bodies were recorded from the basal 2m of the stem (ref). 
 These descriptors are shown in Supplementary table #.
-All trees were manually assigned a decline status category; control, AOD, COD or remission.
-All raw data and analysis code used to generate this manuscript are available at https://github.com/jasenfinch/Index_measures_for_oak_decline_severity_using_phenotypic_descriptors.
 
 ### Phenotypic descriptor preparation
 
-- Descriptors converted to presence and absence
-- Aggregation of cardinal observations.
-- Symptom type sizes average and frequency taken
-- DBH converted to m and symptom sizes to mm
-
 R version `r str_c(version$major,version$minor,sep ='.')` was used for all parsing, preparation and subsequent analysis of phenotypic data [@R2019].
+All raw data, data preparation routines and analysis code used to generate this manuscript are available at https://github.com/jasenfinch/Index_measures_for_oak_decline_severity_using_phenotypic_descriptors.
 
-Cardinal assessments were averaged to give a single value.
-
+All cardinal assessments were averaged to give a single value per tree.
+The crown density ($CD$) values erranously collected at Attingham and Langdale were converted to crown transparency ($t = 100 - CD$)
+All descriptors collected in cm were converted to mm.
+The tap tests that were positive for hollow stem tissue were converted to present and absent renamed dead stem tissue.
+The canopy closure descriptor was converted from yes and now to present and absent.
+Finally, the stem symptoms sizes for active bleeds, black staining and callused wounds were averaged and a frequency per tree collected.
 After preparation there were a total of 31 raw descriptors for analysis. 
 
 ### Tree size descriptor adjustment for age and inter site variance
