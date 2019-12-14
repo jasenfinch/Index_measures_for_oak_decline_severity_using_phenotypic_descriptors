@@ -3,8 +3,8 @@ PDIresponseSurfaces <- function(PDIrf,decline_indexes,site_corrected_analysis_su
   
   PDI_quantiles <- decline_indexes$PDI %>%
     quantile() %>%
-    # .[c("0%","50%",'100%')]
-    .[c("25%","50%",'75%')]
+    .[c("0%","50%",'100%')]
+    # .[c("25%","50%",'75%')]
 
   PDI_values <- PDI_quantiles %>%
     map_dbl(~{
@@ -15,9 +15,9 @@ PDIresponseSurfaces <- function(PDIrf,decline_indexes,site_corrected_analysis_su
       })
   
   spectrumTrees_PDI <- list(
-    `a) Healthy` = site_corrected_analysis_suitable_data[decline_indexes$PDI == PDI_values[['25%']],],
+    `a) Healthy` = site_corrected_analysis_suitable_data[decline_indexes$PDI == PDI_values[['0%']],],
     `b) Moderate decline` = site_corrected_analysis_suitable_data[decline_indexes$PDI == PDI_values[['50%']],],
-    `c) Severe decline` = site_corrected_analysis_suitable_data[decline_indexes$PDI == PDI_values[['75%']],]
+    `c) Severe decline` = site_corrected_analysis_suitable_data[decline_indexes$PDI == PDI_values[['100%']],]
   )
   
   variables <- names(site_corrected_analysis_suitable_data)[map_lgl(site_corrected_analysis_suitable_data,is.numeric)]
