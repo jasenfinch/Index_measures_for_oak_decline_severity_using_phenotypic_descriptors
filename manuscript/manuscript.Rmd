@@ -195,10 +195,21 @@ The example cases were identified by selecting the descriptor values for trees w
 The value ranges for the missing crown (`r glue("{min(site_corrected_analysis_suitable_data[['Missing crown (%)']])}-{max(site_corrected_analysis_suitable_data[['Missing crown (%)']])}%")`) and crown transparency (`r glue("{min(site_corrected_analysis_suitable_data[['Crown transparency (%)']])}-{max(site_corrected_analysis_suitable_data[['Crown transparency (%)']])}%")`) descriptors divided into 100 increments.
 For a given case, each combination of theses simulated descriptor values were used to calculate a PDI value from the supervised random forest regression model, building a model response surface.
 
-A similar process was used for the DAI using also a comparison between active bleed size and black staining size as well as missing crown and crown transparency.
-Cases included neutral, moderate and severe AOD and COD decline types.
+```{r stem_symptom_ranges}
+symptom_ranges <- site_corrected_analysis_suitable_data %>%
+  select(`Active bleed size (mm)`,`Black staining size (mm)`) %>%
+  gather(descriptor,value) %>%
+  group_by(descriptor) %>%
+  summarise(minimum = min(value),
+             maximum = max(value),
+             center = minimum + (maximum - minimum) / 2
+             )
+```
 
-- reduced by a factor of 16 for clearer visualisation
+
+The same approach was used for the DAI using also a comparison between active bleed size and black staining size () as well as missing crown and crown transparency.
+The upper boundary for the ranges of active bleed size and black stain size was taken as the center value between the maximum and minimum and reduced by a factor of eight to give ranges of `r glue("{symptom_ranges$minimum[1]}-{signif(symptom_ranges$center[1] / 8,digits = 3)}mm")` and `r glue("{symptom_ranges$minimum[2]}-{signif(symptom_ranges$center[2] / 8,digits = 3)}mm")` respectively and enable more effective visualisation.
+Cases included neutral, moderate and severe with DAI scores closest to 0, 0.5 and 1 respectively for AOD and 0, -0.5 and -1 respectively for COD.
 
 ### Local descriptor contribution to index models
 

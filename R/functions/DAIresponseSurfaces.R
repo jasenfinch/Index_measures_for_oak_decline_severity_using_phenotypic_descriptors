@@ -16,42 +16,12 @@ DAIresponseSurfaces <- function(DAIrf,decline_indexes,site_corrected_analysis_su
       site_corrected_analysis_suitable_data[,.] %>%
         unlist() %>%
         {tibble(min = min(.),
-                max = max(.))} %>%
+                max = max(.),
+                center = median(.))} %>%
         mutate(center = min + (max - min)/2)
     }) %>%
     set_names(variables) %>%
     bind_rows(.id = 'Descriptor')
-  
-  spectrumTrees_DAI$`a)`$`Active bleeds` <- ranges$min[ranges$Descriptor == 'Active bleeds']
-  spectrumTrees_DAI$`b)`$`Active bleeds` <- {ranges$center[ranges$Descriptor == 'Active bleeds'] / 16} %>%
-    round()
-  spectrumTrees_DAI$`c)`$`Active bleeds` <- {ranges$max[ranges$Descriptor == 'Active bleeds'] / 16} %>%
-    round()
-  
-  spectrumTrees_DAI$`a)`$`Black staining` <- ranges$min[ranges$Descriptor == 'Black staining']
-  spectrumTrees_DAI$`b)`$`Black staining` <- {ranges$center[ranges$Descriptor == 'Black staining'] / 16} %>%
-    round()
-  spectrumTrees_DAI$`c)`$`Black staining` <- {ranges$max[ranges$Descriptor == 'Black staining'] / 16} %>%
-    round()
-  
-  spectrumTrees_DAI$`d)`$`Crown radius (m)` <- ranges$max[ranges$Descriptor == 'Crown radius (m)']
-  spectrumTrees_DAI$`e)`$`Crown radius (m)` <- ranges$center[ranges$Descriptor == 'Crown radius (m)']
-  spectrumTrees_DAI$`f)`$`Crown radius (m)` <- ranges$min[ranges$Descriptor == 'Crown radius (m)']
-  
-  spectrumTrees_DAI$`d)`$`Total height (m)` <- ranges$max[ranges$Descriptor == 'Total height (m)']
-  spectrumTrees_DAI$`e)`$`Total height (m)` <- ranges$center[ranges$Descriptor == 'Total height (m)']
-  spectrumTrees_DAI$`f)`$`Total height (m)` <- ranges$min[ranges$Descriptor == 'Total height (m)']
-  
-  spectrumTrees_DAI$`d)`$`Lower crown height (sm)` <- ranges$max[ranges$Descriptor == 'Lower crown height (m)']
-  spectrumTrees_DAI$`e)`$`Lower crown height (m)` <- ranges$center[ranges$Descriptor == 'Lower crown height (m)']
-  spectrumTrees_DAI$`f)`$`Lower crown height (m)` <- ranges$min[ranges$Descriptor == 'Lower crown height (m)']
-  
-  spectrumTrees_DAI$`a)`$`Diameter at breast height (mm)` <- ranges$min[ranges$Descriptor == 'Diameter at breast height (mm)']
-  spectrumTrees_DAI$`b)`$`Diameter at breast height (mm)` <- ranges$center[ranges$Descriptor == 'Diameter at breast height (mm)']
-  spectrumTrees_DAI$`c)`$`Diameter at breast height (mm)` <- ranges$max[ranges$Descriptor == 'Diameter at breast height (mm)']
-  spectrumTrees_DAI$`d)`$`Diameter at breast height (mm)` <- ranges$max[ranges$Descriptor == 'Diameter at breast height (mm)']
-  spectrumTrees_DAI$`e)`$`Diameter at breast height (mm)` <- ranges$center[ranges$Descriptor == 'Diameter at breast height (mm)']
-  spectrumTrees_DAI$`f)`$`Diameter at breast height (mm)` <- ranges$min[ranges$Descriptor == 'Diameter at breast height (mm)']
   
   plotRanges_DAI_abc <- spectrumTrees_DAI[c('a)','b)','c)')] %>%
     names() %>%
@@ -189,5 +159,6 @@ DAIresponseSurfaces <- function(DAIrf,decline_indexes,site_corrected_analysis_su
       . + guides(fill = FALSE)
     })
   
-  DAI_response_plot <- c(DAI_response_plot_abc,DAI_response_plot_def,list(legend = DAI_legend))  
+  DAI_response_plot <- c(DAI_response_plot_abc,DAI_response_plot_def,list(legend = DAI_legend))
+  return(DAI_response_plot)
 }
