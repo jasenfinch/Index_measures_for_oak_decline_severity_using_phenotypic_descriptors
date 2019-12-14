@@ -1,13 +1,26 @@
 
 DAIresponseSurfaces <- function(DAIrf,decline_indexes,site_corrected_analysis_suitable_data){
+  
+  dat <- site_corrected_analysis_suitable_data %>%
+    bind_cols(decline_indexes %>%
+                select(PDI,DAI)) %>%
+    filter(PDI > 0.5)
+  
   spectrumTrees_DAI <- list(
-    `a)` = site_corrected_analysis_suitable_data[which(abs(decline_indexes$DAI) == min(abs(decline_indexes$DAI))),],
-    `b)` = site_corrected_analysis_suitable_data[which(abs(decline_indexes$DAI - 0.5) == min(abs(decline_indexes$DAI - 0.5))),],
-    `c)` = site_corrected_analysis_suitable_data[which(decline_indexes$DAI == max(decline_indexes$DAI)),],
-    `d)` = site_corrected_analysis_suitable_data[which(abs(decline_indexes$DAI) == min(abs(decline_indexes$DAI))),],
-    `e)` = site_corrected_analysis_suitable_data[which(abs(decline_indexes$DAI + 0.5) == min(abs(decline_indexes$DAI + 0.5))),],
-    `f)` = site_corrected_analysis_suitable_data[which(decline_indexes$DAI == min(decline_indexes$DAI)),]
-  )
+    `a)` = dat %>%
+      filter(abs(DAI) == min(abs(DAI))),
+    `b)` = dat %>%
+      filter(abs(DAI - 0.5) == min(abs(DAI - 0.5))),
+    `c)` = dat %>%
+      filter(DAI == max(DAI)),
+    `d)` = dat %>%
+      filter(abs(DAI) == min(abs(DAI))),
+    `e)` = dat %>%
+      filter(abs(DAI + 0.5) == min(abs(DAI + 0.5))),
+    `f)` = dat %>%
+      filter(DAI == min(DAI))
+  ) %>%
+    map(select,-PDI,-DAI)
   
   variables <- names(site_corrected_analysis_suitable_data)[map_lgl(site_corrected_analysis_suitable_data,is.numeric)]
   
