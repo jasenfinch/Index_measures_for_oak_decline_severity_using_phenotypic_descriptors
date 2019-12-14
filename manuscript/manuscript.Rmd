@@ -92,32 +92,17 @@ These sites included a variety of woodland types, management types, soil types a
 
 Descriptors were collected relating to the trees shape, size, crown condition and the presence of biotic agents including insects, bacteria and fungi.
 All trees were manually assigned a decline status category; control, AOD, COD or remission prior to collection of phenotypic descriptors.
+Diameter at breast height (DBH) was collected at a stem height of 1.3m, to the nearest 0.1cm.
+Total height, timber hight and lowest live crown were measured using an inclinometer to the nearest 0.1m
+The timber height was measured at either 7cm top stem diameter or where no main stem could be distinguished.
+For the crown, canopy closure, missing crown and absolute crown density percentages were visually estimated within 5% classes
 
-- 12 figure grid reference for each tree
-- DBH to nearest 0.1cm
-- Total height to nearest 0.1m
-- Timber height - either 7cm top diameter or where no main stem can be distinguished
-- Lowest live crown to nearest 0.1m
-- Social class
+Other categorical descriptors included social class, diaback type, main crown dieback location, stem epicormic growth, branch epicormic growth, extent of insect damage, insect damage type, extent of crown mildew and the presence or absence of pruning damage or branch loss from the main stem.
+See supplementary table # for category details.
 
 Crown radius, canopy closure and tap tests for dead stem tissue were measured for each cardinal point.
-The crown radius was measured using a vertex transponder attached to the relevant side of the stem at a height of 1.3m.
-
-- Canopy closure recorded as yes or no depending on whether any other crowns are touching the sampling tree.
-- High resolution photo collected from the vase to the spring of the crown on each cardinal point
-- High resolution photo of stem from the base to a height of 3m
-
-- Canopy closure percentage
-- Presence or absence of pruning damage or branch loss from main stem
-- % missing crown excluded from crown density assessment
-- absolute crown density in 5% classes
-- dieback type
-- main crown dieback location
-- stem epicormic growth
-- branch epicormic growth
-- insect damage on leaves and type
-- crown mildew
-
+The crown radius was measured using a vertex transponder attached to the relevant side of the stem at a height of 1.3m.Canopy closure recorded as yes or no depending on whether any other crowns are touching the sampling tree.
+A high resolution photo was taken of the vase to the spring of the crown and of the stem from the base to a height of 3m for each cardinal point for later reference.
 
 The AOD stem symptoms (active bleeds, black staining, callused wounds) were collected by measuring longest axis of each individual bleed, stain or callused wound found within the basal 3m of the stem (ref).
 The frequency of *A. biguttatus* exit holes were counted along with the presence or absence of each of oval shaped exit holes, small circular shaped exit holes and ground level fungal fruiting bodies were recorded from the basal 2m of the stem (ref). 
