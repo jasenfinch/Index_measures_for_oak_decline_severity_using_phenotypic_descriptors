@@ -134,14 +134,16 @@ plan <- drake_plan(
     {set.seed(1234)
       randomForest(.,y = decline_indexes$PDI,
                  ntree = PDI_rf_tune_params$ntree,
-                 mtry = PDI_rf_tune_params$mtry)},
+                 mtry = PDI_rf_tune_params$mtry,
+                 importance = TRUE)},
   
   ## generate DAI predictive random forest model
   DAI_rf_model = site_corrected_analysis_suitable_data %>%
     {set.seed(1234)
       randomForest(.,y = decline_indexes$DAI,
                    ntree = DAI_rf_tune_params$ntree,
-                   mtry = DAI_rf_tune_params$mtry)},
+                   mtry = DAI_rf_tune_params$mtry,
+                   importance = TRUE)},
   
   ## create descriptor contribution plots
   descriptor_contribution_plots = descriptorImportancePlots(PDI_rf_model,DAI_rf_model),

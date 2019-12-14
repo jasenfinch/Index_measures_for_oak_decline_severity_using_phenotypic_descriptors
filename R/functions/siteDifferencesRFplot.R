@@ -21,24 +21,25 @@ siteDifferencesRFplot <- function(site_differences_rf,phenoData){
       imp <- imp %>%
         as_tibble() %>%
         mutate(Descriptor = desc) %>%
-        select(Descriptor,MeanDecreaseGini)
+        select(Descriptor,MeanDecreaseAccuracy,MeanDecreaseGini)
     }) %>%
     bind_rows(.id = 'Rep') %>%
     group_by(Descriptor) %>%
-    summarise(Importance = mean(MeanDecreaseGini)) %>%
-    mutate(`Relative Importance` = Importance / max(Importance)) %>%
-    arrange(`Relative Importance`) %>%
+    summarise(MeanDecreaseAccuracy = mean(MeanDecreaseAccuracy),
+              GiniImportance = mean(MeanDecreaseGini)) %>%
+    arrange(MeanDecreaseAccuracy) %>%
     mutate(Descriptor = factor(Descriptor,levels = Descriptor))
   
   descriptorLabels <- locationImportance$Descriptor %>%
     as.character() %>%
-    {c(.[1:6],
+    {c(.[1:2],
        expression(Agrillus~exit~hole~density ( m^-2 ) ),
-       .[8:23],
+       .[4:16],
        expression(Crown~surface~area ( m^2 )),
-       .[25],
+       .[18:22],
        expression(Crown~volume ( m^3 ) ),
-       .[27:38])
+       .[24:38]
+      )
     }
   
   site_differences <- list(
@@ -58,16 +59,16 @@ siteDifferencesRFplot <- function(site_differences_rf,phenoData){
             legend.position = 'bottom') +
       coord_fixed() +
       guides(fill = guide_legend(ncol = 2,title.position = "top")) +
-      labs(title = 'a)',
+      labs(title = 'a) MDS plot',
            fill = 'Site'),
-    b = ggplot(locationImportance,aes(x = `Relative Importance`,y = Descriptor)) +
+    b = ggplot(locationImportance,aes(x = `MeanDecreaseAccuracy`,y = Descriptor)) +
       geom_point(shape = 21,fill = ptol_pal()(1),size = 3) +
       theme_bw() +
       theme(plot.title = element_text(face = 'bold'),
             axis.title = element_text(face = 'bold',size = 10)) +
-      labs(title = 'b)',
+      labs(title = 'b) Descriptor\nimportance',
            y = NULL,
-           x = 'Relative Gini\nimportance') +
+           x = 'Mean decrease in\naccuracy') +
       scale_y_discrete(labels = descriptorLabels)
   )
   
