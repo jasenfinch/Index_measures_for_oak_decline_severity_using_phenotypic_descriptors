@@ -223,10 +223,10 @@ Then for each of the AOD and COD syndromes, moderate and severe cases were selec
 
 ### Site differences
 
-Large phenotypic differences were found between the sites by supervised random forest (Supplementary  figure #a; margin = `r site_rf_margin$Margin %>% signif(digits = 3)`). 
-This was as a results of differences in descriptors relating tree size and likely the ages of the trees between the sites. 
-This adjustment removed inter-site variability but maintained intra-site variability, allowing comparisons to be made between the trees at the different sites in the context of decline severity.
-Post adjustment the random forest margin was substantially reduced to `r site_rf_post_correction_margin$Margin %>% signif(digits = 3)` indicating that the majority of the between site variance had been removed.
+High discrimination was found in the phenotypic descriptors between between the sites using supervised random forest classification (Supplementary  figure #a; margin = `r site_rf_margin$Margin %>% signif(digits = 3)`). 
+The descriptors that contributed most to this discrimination were those that were related to trees size such as DBH, total height and crown radius and likely reflect the varied tree age and planting density acrosses the nine sites (Supplementary figure #b). 
+After the trees size adjustment was applied to removed inter-site variability but maintain intra-site variability, the random forest margin was substantially reduced to `r site_rf_post_correction_margin$Margin %>% signif(digits = 3)` indicating that the majority of the between site variance had been removed.
+This enabled comparisons to be made between the trees at the different sites in the context of decline severity.
 
 ### Oak decline indexes
 
