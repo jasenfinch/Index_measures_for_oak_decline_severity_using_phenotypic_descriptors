@@ -185,8 +185,7 @@ This was then transformed to a dissimilarity matrix ($1 - P$) and scaled to two 
 The first MDS dimension ($D$) was first inverted ($1 - D$) to ensure the correct dimension orientation relative to decline severity.
 It was then min-max scaled to give a scale between 0 and 1 with more severely declining trees having a score closer to 1.
 This dimension was named the PDI.
-The second MDS dimension was similarly inverted to ensure the correct dimension orientation relative to decline type.
-The dimension was then min-max scaled and then transformed ($2D - 1$) to give a scale between -1 and 1 with COD trees having a score closer to -1 and AOD having a score closer to 1. 
+The second MDS dimension was min-max scaled and then transformed ($2D - 1$) to give a scale between -1 and 1 with COD trees having a score closer to -1 and AOD having a score closer to 1. 
 This dimension was named the DAI.
 With different data, it is likely that the MDS dimensions may require inversion prior to min-max scaling to ensure their correct orientation.
 
