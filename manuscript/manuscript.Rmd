@@ -180,7 +180,7 @@ With different data, it is likely that the MDS dimensions may require inversion 
 
 The code used to generate the decline indexes is available as an R package pdi v`r packageVersion('pdi') %>% as.character()` at https://github.com/jasenfinch/pdi.
 
-### Descriptor contribution decline indexes
+### Descriptor contribution to decline indexes
 
 Individual random forest regression models of the phenotypic descriptors were trained, supervised using each decline index.
 The optimal number of trees (ntree) and number randomly of variables (mtry) parameters for random forest were tuned prior to training. 
@@ -188,13 +188,22 @@ The combination parameters giving the lowest percent mean absolute error (PMAE) 
 
 Overall descriptor importance contributions to each of the indexes was retrieved from these models using the mean decrease in accuracy measure (ref).
 
+### Local descriptor contribution to index models
+
+Local Interpretable Model-Agnostic Explanations (LIME) were computed to identify descriptors contributing locally to case specific examples of each of the indexes [@ribeiro2016]. 
+The lime R package v`r packageVersion('lime') %>% as.character()` was used with the default parameters [@pedersen2019].
+A healthy, a moderate and a severe decline cases was used for the PDI. 
+For each case, a tree with a score closest to 0, 0.5 and 1 respectively was selected.
+For the DAI, a decline neutral case was selected with a score closes to 0.
+Then for each of the AOD and COD syndromes, moderate and severe cases were selected with scores closes to 0.5 and 1 for AOD and -0.5 and -1 for COD. 
+
 ### Index model simulations to investigate interactions of key descriptors
 
 The interactions of key raw descriptors identified from the overall importance scores and their associations with the decline indexes was investigated by using simulated descriptor values to construct index model responses surfaces for specific cases.
 This approach was similar to response surface methodology without the need for probabalistic approximation due to the low computation time required for index calculation (ref).
 
 For the PDI, missing crown and crown transparency were compared for example cases of a healthy, a moderate and a severly tree.
-The example cases were identified by selecting the descriptor values for trees with PDI values closes to the 25, 50 and 75% quantiles for the healthy, moderate and severely declining trees respectively.
+The example cases included the trees with the minimum and maximum PDI values and the tree with the PDI value closest to the median for the healthy, severe and moderately declining trees respectively.
 The value ranges for the missing crown (`r glue("{min(site_corrected_analysis_suitable_data[['Missing crown (%)']])}-{max(site_corrected_analysis_suitable_data[['Missing crown (%)']])}%")`) and crown transparency (`r glue("{min(site_corrected_analysis_suitable_data[['Crown transparency (%)']])}-{max(site_corrected_analysis_suitable_data[['Crown transparency (%)']])}%")`) descriptors divided into 100 increments.
 For a given case, each combination of theses simulated descriptor values were used to calculate a PDI value from the supervised random forest regression model, building a model response surface.
 
@@ -213,15 +222,6 @@ symptom_ranges <- site_corrected_analysis_suitable_data %>%
 The same approach was used for the DAI using also a comparison between active bleed size and black staining size as well as missing crown and crown transparency.
 The upper boundary for the ranges of active bleed size and black stain size was taken as the center value between the maximum and minimum and reduced by a factor of eight to give ranges of `r glue("{symptom_ranges$minimum[1]}-{signif(symptom_ranges$center[1] / 8,digits = 3)}mm")` and `r glue("{symptom_ranges$minimum[2]}-{signif(symptom_ranges$center[2] / 8,digits = 3)}mm")` respectively and enable more effective visualisation.
 Cases included neutral, moderate and severe with PDI scores greater than 0.5 and DAI scores closest to 0, 0.5 and 1 respectively for AOD and 0, -0.5 and -1 respectively for COD.
-
-### Local descriptor contribution to index models
-
-Local Interpretable Model-Agnostic Explanations (LIME) were computed to identify descriptors contributing locally to case specific examples of each of the indexes [@ribeiro2016]. 
-The lime R package v`r packageVersion('lime') %>% as.character()` was used with the default parameters [@pedersen2019].
-A healthy, a moderate and a severe decline cases was used for the PDI. 
-For each case, a tree with a score closest to 0, 0.5 and 1 respectively was selected.
-For the DAI, a decline neutral case was selected with a score closes to 0.
-Then for each of the AOD and COD syndromes, moderate and severe cases were selected with scores closes to 0.5 and 1 for AOD and -0.5 and -1 for COD. 
 
 ## Results
 
@@ -247,23 +247,30 @@ As a group these trees are showing moderate overall decline.
 The remission trees were also found to be significantly different to the AOD (`r glue("t({remission_DAI_group_ttest$parameter[1]}) = {signif(remission_DAI_group_ttest$statistic[1],digits = 3) %>% abs()}, p = < 0.001")`) and COD (`r glue("t({remission_DAI_group_ttest$parameter[2]}) = {signif(remission_DAI_group_ttest$statistic[2],digits = 3) %>% abs()}, p = {round(remission_DAI_group_ttest$p.value[2],3)}")`) groups on the DAI scale with group means of `r signif(remission_DAI_group_ttest$estimate1[1],digits = 3)`, `r signif(remission_DAI_group_ttest$estimate2[1],digits = 3)` and `r signif(remission_DAI_group_ttest$estimate1[2],digits = 3)` for the AOD, remission and COD groups respectively. 
 As a group the remission trees are of neutral decline type.
 
-### Overall descriptor contributions and trends to the decline indexes
+### Key descriptors contributing to the decline indexes
 
 - Top ranked descriptors contributing to the decline indexes
-- Trends of key phenotypic descriptors withing the PDI and DAI measures
-- Agrilus exit hole density had no contribution
-- Top ranked descriptor index response surfaces
 
-Crown related descriptors were found to contribute most to the PDI (Figure #a) with more severely declining trees having reduced crown volume and condition. 
+The top ranked descriptors found to contr crown related descriptors were found to contribute most to the PDI (Figure #a) with more severely declining trees having reduced crown volume and condition.
+
+- Plots of the individual descriptors available  
+
 The DAI was a more complex in descriptor contribution with trunk staining and bleeding descriptors contributing highly with bleed prevalence contributing the most. 
 Trees with high bleed prevalence and therefore a larger area of their trunk covered with black staining or active bleeds had much higher DAI scores.
 
-The phenotypic indexes of all 171 trees (including the 20 trees Chestnuts) are shown in Figure 3. 
-It can be seen that across the 9 sites, purely chronic oak decline sites such as Chestnuts and Speculation are easily distinguishable using the DAI compared to more AOD dominant sites such as Langdale or mixed sites such as Great Monks Wood.
+- Agrilus exit hole density had no contribution
 
-The Phenotypic Decline Index (PDI) and Decline Acuteness Index (DAI) were previously defined in the 30 month report. 
-A machine learning approach was used to derive these measures as it allows the complex interactions and trends between phenotypic descriptors to be modelled from which the decline indexes are calculated. 
-This would likely be oversimplified using conventional modelling strategies. 
+
+### Localised descriptor contributions and trends within the PDI and DAI models
+
+- Lime results
+
+### Key descriptor interactions within the decline index models
+
+- Top ranked descriptor index response surfaces
+- Trends of key phenotypic descriptors within the PDI and DAI measures
+- Relatively smaller trees associated with more severe decline.
+
 These complex interactions can be investigated by simulating phenotypic data and generating the index values from random forest models that have been trained for each of the indexes, supervised using phenotypic descriptors from the 171 trees. 
 The index values generated by the models from these simulated phenotypic data can then be visualised as response surface plots, from which descriptor interactions within the indexes can be interpreted. 
 Figures 1 and 2 show the simulated index value response surfaces under a variety of different circumstances for key phenotypic descriptors that contribute highly to the PDI and DAI.
@@ -281,10 +288,6 @@ Also higher DAI values could be obtained from trees with greater stature (Figure
 Similarly to the PDI, trees with smaller stature and poorer crown condition give lower DAI values (Figures 2d, e & f) and therefore more severe COD.
 The relationship of relative tree stature and the acuteness of the decline likely reflects the period of time under which these trees have been afflict. 
 AOD occurs over a much shorter period compared COD and therefore has less time in which to inhibit growth of the tree as a whole.
-
-### Localised descriptor contributions and trends within the PDI and DAI models
-
-- Lime results
 
 ## Discussion
 
@@ -306,6 +309,9 @@ in a decline state.
 Most notably this has occurred in a number of trees at Attingham, Hatchlands and Winding Wood. 
 Also notable from Figure 3 is the disparity between the relative health of the healthier trees across the sites. 
 The healthier trees at sites such as Attingham and Hatchlands were found to be in a more declined state than those at sites such as Langdale and Chestnuts.
+
+A machine learning approach was used to derive these measures as it allows the complex interactions and trends between phenotypic descriptors to be modelled from which the decline indexes are calculated. 
+This would likely be oversimplified using conventional modelling strategies. 
 
 The two dimensional space provided by these phenotypic indexes, for measuring decline severity is shown in Figure 1. 
 The phenotypic descriptors used to calculate these indexes are easily measurable in the field and require no specialist equipment. 
