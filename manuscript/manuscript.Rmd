@@ -23,7 +23,9 @@ loadd(site_rf_margin,
       PDI_rf_tune_params,
       DAI_rf_tune_params,
       analysis_suitable_data,
-      site_corrected_analysis_suitable_data)
+      site_corrected_analysis_suitable_data,
+      remission_PDI_group_ttest,
+      remission_DAI_group_ttest)
 ```
 
 **Authors:** Jasen Finch, Nathan Brown, Sandra Denman & John Draper
@@ -92,6 +94,8 @@ These sites included a variety of woodland types, management types, soil types a
 
 Descriptors were collected relating to the trees shape, size, crown condition and the presence of biotic agents including insects, bacteria and fungi.
 All trees were manually assigned a decline status category; control, AOD, COD or remission prior to collection of phenotypic descriptors.
+The remission group included trees that had shown stem bleeds associatied with AOD in the past but were not showing signs of stem bleeds at the time of assessment.
+
 Diameter at breast height (DBH) was collected at a stem height of 1.3m, to the nearest 0.1cm.
 Total height, timber hight and lowest live crown were measured using an inclinometer to the nearest 0.1m
 The timber height was measured at either 7cm top stem diameter or where no main stem could be distinguished.
@@ -228,22 +232,29 @@ The descriptors that contributed most to this discrimination were those that wer
 After the trees size adjustment was applied to removed inter-site variability but maintain intra-site variability, the random forest margin was substantially reduced to `r site_rf_post_correction_margin$Margin %>% signif(digits = 3)` indicating that the majority of the between site variance had been removed.
 This enabled comparisons to be made between the trees at the different sites in the context of decline severity.
 
-### Oak decline indexes
+### Oak decline severity indexes of manually assigned decline statuses
 
-Trees with a score around 0 are neither distinctively AOD or COD sharing characteristics of both conditions in trees with PDI greater than 0.3.
-A significant difference was found in the PDI between non-symptomatic (control) and symptomatic (AOD and COD) decline statuses using an independent two sample t-test (`r glue("t({PDI_status_ttest$parameter}) = {signif(PDI_status_ttest$statistic,digits = 3) %>% abs()}, p < 0.001")`) with group means of `r signif(PDI_status_ttest$estimate1,digits = 3)` and `r signif(PDI_status_ttest$estimate2,digits = 3)` for non-symptomatic and symptomatic statuses respectively.
-Significance was also found in the DAI between the AOD and COD groups (`r glue("t({DAI_groups_ttest$parameter}) = {signif(DAI_groups_ttest$statistic,digits = 3) %>% abs()}, p < 0.001")`) with group means of `r signif(DAI_groups_ttest$estimate1,digits = 3)` and `r signif(DAI_groups_ttest$estimate2,digits = 3)` for the AOD and COD groups respectively.
-A scatter plot of PDI against DAI is shown in Figure # for all 174 trees.
-It can clearly be seen that the 
+A scatter plot of the calculated PDI and DAI scores is shown in Figure # for all 174 trees for which phenotypic descriptor data was collected.
+It can clearly be seen that the control trees group towards the lower end of the PDI scale and the sympotmatic COD and AOD groups towards the higher end.
+This gave a significant difference when PDI of the control and symptomatic (AOD and COD) decline statuses were compared using an independent two sample t-test (`r glue("t({PDI_status_ttest$parameter}) = {signif(PDI_status_ttest$statistic,digits = 3) %>% abs()}, p < 0.001")`) with group means of `r signif(PDI_status_ttest$estimate1,digits = 3)` and `r signif(PDI_status_ttest$estimate2,digits = 3)` for non-symptomatic and symptomatic statuses respectively.
 
-### Descriptor contributions and trends to the decline indexes
+On the DAI scale, the AOD trees group at the upper end of the scale (> 0) and the COD trees at the lower end (< 0).
+This was confirmed with significance found in the DAI between these groups (`r glue("t({DAI_groups_ttest$parameter}) = {signif(DAI_groups_ttest$statistic,digits = 3) %>% abs()}, p < 0.001")`) with group means of `r signif(DAI_groups_ttest$estimate1,digits = 3)` and `r signif(DAI_groups_ttest$estimate2,digits = 3)` for the AOD and COD groups respectively.
 
+The remission trees were found to be significantly different in their PDI scores from both the control (`r glue("t({remission_PDI_group_ttest$parameter[1]}) = {signif(remission_PDI_group_ttest$statistic[1],digits = 3) %>% abs()}, p < 0.001")`) and symptomatic (AOD and COD; `r glue("t({remission_PDI_group_ttest$parameter[2]}) = {signif(remission_PDI_group_ttest$statistic[2],digits = 3) %>% abs()}, p < 0.001")`) groups with means of `r signif(remission_PDI_group_ttest$estimate1[1],digits = 3)`, `r signif(remission_PDI_group_ttest$estimate2[1],digits = 3)` and `r signif(remission_PDI_group_ttest$estimate2[2],digits = 3)` for the control, remission and symptomatic groups respectively.
+As a group these trees are showing moderate overall decline.
+
+The remission trees were also found to be significantly different to the AOD (`r glue("t({remission_DAI_group_ttest$parameter[1]}) = {signif(remission_DAI_group_ttest$statistic[1],digits = 3) %>% abs()}, p = < 0.001")`) and COD (`r glue("t({remission_DAI_group_ttest$parameter[2]}) = {signif(remission_DAI_group_ttest$statistic[2],digits = 3) %>% abs()}, p = {round(remission_DAI_group_ttest$p.value[2],3)}")`) groups on the DAI scale with group means of `r signif(remission_DAI_group_ttest$estimate1[1],digits = 3)`, `r signif(remission_DAI_group_ttest$estimate2[1],digits = 3)` and `r signif(remission_DAI_group_ttest$estimate1[2],digits = 3)` for the AOD, remission and COD groups respectively. 
+As a group the remission trees are of neutral decline type.
+
+### Overall descriptor contributions and trends to the decline indexes
+
+- Top ranked descriptors contributing to the decline indexes
 - Trends of key phenotypic descriptors withing the PDI and DAI measures
 - Agrilus exit hole density had no contribution
-- Lime results
 - Top ranked descriptor index response surfaces
 
-Crown related descriptors were found to contribute most to the PDI (Figure #) with more severely declining trees having reduced crown volume and condition. 
+Crown related descriptors were found to contribute most to the PDI (Figure #a) with more severely declining trees having reduced crown volume and condition. 
 The DAI was a more complex in descriptor contribution with trunk staining and bleeding descriptors contributing highly with bleed prevalence contributing the most. 
 Trees with high bleed prevalence and therefore a larger area of their trunk covered with black staining or active bleeds had much higher DAI scores.
 
@@ -270,6 +281,10 @@ Also higher DAI values could be obtained from trees with greater stature (Figure
 Similarly to the PDI, trees with smaller stature and poorer crown condition give lower DAI values (Figures 2d, e & f) and therefore more severe COD.
 The relationship of relative tree stature and the acuteness of the decline likely reflects the period of time under which these trees have been afflict. 
 AOD occurs over a much shorter period compared COD and therefore has less time in which to inhibit growth of the tree as a whole.
+
+### Localised descriptor contributions and trends within the PDI and DAI models
+
+- Lime results
 
 ## Discussion
 
