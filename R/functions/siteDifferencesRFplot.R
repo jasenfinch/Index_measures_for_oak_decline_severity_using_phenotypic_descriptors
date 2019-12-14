@@ -31,16 +31,16 @@ siteDifferencesRFplot <- function(site_differences_rf,phenoData){
     mutate(Descriptor = factor(Descriptor,levels = Descriptor))
   
   descriptorLabels <- locationImportance$Descriptor %>%
-    as.character() %>%
-    {c(.[1:2],
-       expression(Agrillus~exit~hole~density ( m^-2 ) ),
-       .[4:16],
-       expression(Crown~surface~area ( m^2 )),
-       .[18:22],
-       expression(Crown~volume ( m^3 ) ),
-       .[24:38]
-      )
-    }
+    as.character() #%>%
+    # {c(.[1:2],
+    #    expression(Agrillus~exit~hole~density ( m^-2 ) ),
+    #    .[4:16],
+    #    expression(Crown~surface~area ( m^2 )),
+    #    .[18:22],
+    #    expression(Crown~volume ( m^3 ) ),
+    #    .[24:38]
+    #   )
+    # }
   
   site_differences <- list(
     a = ggplot() +
