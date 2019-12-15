@@ -321,6 +321,7 @@ They allow sensitive comparisons to be made for the same tree between years as w
 - For given context, descriptors not contributing to the indexes could be removed
 - Concession of model interpretability to predictive capability by using a machine learning approach
 - seen as black box but LIME and response surfaces enable interpretation and therefore trust
+- LIME can be applied to out of place cases
 
 A machine learning approach was used to derive these measures as it allows the complex interactions and trends between phenotypic descriptors to be modelled from which the decline indexes are calculated. 
 This would likely be oversimplified using conventional modelling strategies [@breiman2001b]. 
