@@ -314,7 +314,7 @@ Also notable from Figure 3 is the disparity between the relative health of the h
 The two dimensional space provided by these phenotypic indexes, for measuring decline severity is shown in Figure 1. 
 The healthier trees at sites such as Attingham and Hatchlands were found to be in a more declined state than those at sites such as Langdale and Chestnuts.
 The phenotypic descriptors used to calculate these indexes are easily measurable in the field and require no specialist equipment. 
-They allow sensitive comparisons to be made for the same tree between years as well as comparisons of trees between different locations, which could have great utility in long term forest health monitoring for both forestry management and research.
+They allow sensitive comparisons to be made for the same tree between years as well as comparisons of trees between different locations.
 
 ### The machine learning approach
 
@@ -338,6 +338,8 @@ This would likely be oversimplified using conventional modelling strategies [@br
 - Sensitivity for integration with molecular data compared to categorical assignments
 - Sensitivity provided for integration with large scale omics analyses as well as long term monitoring for forest condition
 - Refinement of protocol for large scale surveying
+
+which could have great utility in long term forest health monitoring for both forestry management and research.
 
 ## Conclusions
 
