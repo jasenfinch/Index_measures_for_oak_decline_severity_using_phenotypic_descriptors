@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "3.6.1",
+    "Version": "3.6.2",
     "Repositories": [
       {
         "Name": "CRAN",
@@ -18,10 +18,10 @@
     },
     "DBI": {
       "Package": "DBI",
-      "Version": "1.0.0",
+      "Version": "1.1.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "7bc8be0e425da29fe0e10f792bdbb74b"
+      "Hash": "4744be45519d675af66c28478720fce5"
     },
     "Formula": {
       "Package": "Formula",
@@ -137,10 +137,10 @@
     },
     "broom": {
       "Package": "broom",
-      "Version": "0.5.2",
+      "Version": "0.5.3",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "065e275fddb15dc398c02dccba7c2922"
+      "Hash": "e462266fa373879ac10b8ba0529d5935"
     },
     "callr": {
       "Package": "callr",
@@ -1076,11 +1076,11 @@
       "Version": "0.3.0.9000",
       "Source": "GitHub",
       "RemoteType": "github",
-      "RemoteUsername": "benmarwick",
+      "RemoteHost": "api.github.com",
       "RemoteRepo": "wordcountaddin",
+      "RemoteUsername": "benmarwick",
       "RemoteRef": "master",
       "RemoteSha": "fdf70d9c2d91bc54396026d148ea90aaba5973fd",
-      "RemoteHost": "api.github.com",
       "Hash": "e9bde46ecd243f8487ded1e181f4c237"
     },
     "xfun": {
