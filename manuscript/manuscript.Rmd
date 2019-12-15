@@ -98,7 +98,7 @@ All trees were manually assigned a decline status category; control, AOD, COD or
 The remission group included trees that had shown stem bleeds associated with AOD in the past but were not showing signs of stem bleeds at the time of assessment.
 
 Diameter at breast height (DBH) was collected at a stem height of 1.3m, to the nearest 0.1cm.
-Total height, timber hight and lowest live crown were measured using an inclinometer to the nearest 0.1m
+Total height, timber height and lowest live crown were measured using an inclinometer to the nearest 0.1m
 The timber height was measured at either 7cm top stem diameter or where no main stem could be distinguished.
 For the crown, canopy closure, missing crown and absolute crown density percentages were visually estimated within 5% classes
 
@@ -336,7 +336,7 @@ Machine learning approaches are usually seen as black box
 ### Applications and wider scalability
 
 - Scalability of method for wider application
-- Accessability of collecting descriptors
+- Accessibility of collecting descriptors
 - Discussion of applications to forestry monitoring and management
 - Sensitivity for integration with molecular data compared to categorical assignments
 - Sensitivity provided for integration with large scale omics analyses as well as long term monitoring for forest condition
@@ -353,7 +353,11 @@ which could have great utility in long term forest health monitoring for both fo
 - Decline indexes provide intuitive measures of decline severity based on simple phenotypic measurements that do not require specialist equipment
 - Encouraged to use this approach in other contexts
 
-\newpage
+## Acknowledgements
+
+We would like to thank the Forest Research TSU for collecting the phenotypic data presented in this article especially Liz Richardson and Mark Oram for coordinating surveying.
+This work was supported by Woodland Heritage and the Future Proofing Plant Health (FPPH) Oak Resilience project.
+
 ## Checks
 
 ```{r check,comment='',cache=FALSE}
