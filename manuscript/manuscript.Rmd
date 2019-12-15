@@ -25,7 +25,8 @@ loadd(site_rf_margin,
       analysis_suitable_data,
       site_corrected_analysis_suitable_data,
       remission_PDI_group_ttest,
-      remission_DAI_group_ttest)
+      remission_DAI_group_ttest,
+      DAI_descriptor_importance)
 ```
 
 **Authors:** Jasen Finch, Nathan Brown, Sandra Denman & John Draper
@@ -67,7 +68,7 @@ It is becoming increasingly important that oak tree health within woodlands is a
 Monitoring methods need to take advantage of modern data analysis techniques whilst still retaining practical simplicity in the field.
 
 Machine learning is finding increasing utility in biological and geographical applications due to it's ability to learn complex patterns within and between variables.
-A popular algorithm is that of random forest due to it's versatility, relatively trivial training requirements and resilience against over fitting [@breiman2001] (refs). 
+A popular algorithm is that of random forest due to it's versatility, relatively trivial training requirements and resilience against over fitting [@breiman2001a] (refs). 
 
 - Random forest has previously been used in a forest condition context [@vitale2014].
 
@@ -250,20 +251,20 @@ As a group the remission trees are of neutral decline type.
 
 ### Key descriptors contributing to the decline indexes
 
-- Top ranked descriptors contributing to the decline indexes
+The top four ranked descriptors found to contribute to the PDI index model were all crown size and condition related descriptors with crown volume the top ranked descriptor overall (Figure #a).
+Other tree size related descriptors such as and stem bleeding descriptors such as contributed secondarily.
 
-The top ranked descriptors found to contr crown related descriptors were found to contribute most to the PDI (Figure #a) with more severely declining trees having reduced crown volume and condition.
+The DAI was more complex in descriptor contribution many more descriptors contributing more equally than the PDI (Figure #b).
+The overall tree size descriptors live crown ratio, DBH and crown volume contributed almost equally to the DAI index model.
+These were followed closely by the stem staining and bleeding descriptors such as bleed prevalence. 
+The presence of *A. biguttatus* exit holes had very little contribution to the DAI with exit hole density ranked only `r which(DAI_descriptor_importance$Feature == 'Agrilus exit hole density (m^-2)')` th.
 
-- Plots of the individual descriptors available  
-
-The DAI was a more complex in descriptor contribution with trunk staining and bleeding descriptors contributing highly with bleed prevalence contributing the most. 
-Trees with high bleed prevalence and therefore a larger area of their trunk covered with black staining or active bleeds had much higher DAI scores.
-
-- Agrilus exit hole density had no contribution
+Plots of the individual descriptors against the decline indexes are available in Supplementary figures #-#. 
+The following sections identify how the descriptors contribute and interact to the decline index models in specific decline cases. 
 
 ### Localised descriptor contributions and trends within the PDI and DAI models
 
-- Important descriptors identified model-wide aren't necessarily relevant to localised cases. 
+The LIME eas used to identify theImportant descriptors identified model-wide aren't necessarily relevant to localised cases. 
 
 - Top descriptors for each case same as top descriptors in overall model importance lists for PDI.
 - Decline is associated with a reduction in the size and condition of the crown
@@ -296,38 +297,42 @@ AOD occurs over a much shorter period compared COD and therefore has less time i
 
 ## Discussion
 
-- reasons for selecting machine learing approach
-- use of unsupervised over supervised analysis
-- Semi-supervised can be used if unsupervised model is unable to pull out decline severity scale
-- For given context, descriptors not contributing to the indexes could be removed
+### Suitablity of the decline indexes for describing decline severity and type
 
-- Accessability of collecting descriptors
-- Suitability of collected phenotypic descriptors for describing decline status
-- Concession of model interpretability to predictive capability by using a machine learning approach
+- Suitability of collected phenotypic descriptors and decline indexes for describing decline status
 - Index thresholds for category definitions (healthy, declining, severe decline etc.)
-- Scalability of method for wider application
-- Thresholds for decline groupings within index ranges
 - Validation of decline scores - chicken and paradox
+- Refined definition of remission - repeat measurement
 
 This plot highlights the inaccuracies in manual field classifications of decline status with several trees classified as healthy controls that, when compared quantitatively to other trees, are in fact
 in a decline state. 
 Most notably this has occurred in a number of trees at Attingham, Hatchlands and Winding Wood. 
 Also notable from Figure 3 is the disparity between the relative health of the healthier trees across the sites. 
-The healthier trees at sites such as Attingham and Hatchlands were found to be in a more declined state than those at sites such as Langdale and Chestnuts.
-
-A machine learning approach was used to derive these measures as it allows the complex interactions and trends between phenotypic descriptors to be modelled from which the decline indexes are calculated. 
-This would likely be oversimplified using conventional modelling strategies. 
-
 The two dimensional space provided by these phenotypic indexes, for measuring decline severity is shown in Figure 1. 
+The healthier trees at sites such as Attingham and Hatchlands were found to be in a more declined state than those at sites such as Langdale and Chestnuts.
 The phenotypic descriptors used to calculate these indexes are easily measurable in the field and require no specialist equipment. 
 They allow sensitive comparisons to be made for the same tree between years as well as comparisons of trees between different locations, which could have great utility in long term forest health monitoring for both forestry management and research.
 
-### Applications
+### The machine learning approach
 
+- reasons for selecting machine learing approach
+- use of unsupervised over supervised analysis
+- Semi-supervised can be used if unsupervised model is unable to pull out decline severity scale
+- For given context, descriptors not contributing to the indexes could be removed
+- Concession of model interpretability to predictive capability by using a machine learning approach
+- seen as black box but LIME and response surfaces enable interpretation and therefore trust
+
+A machine learning approach was used to derive these measures as it allows the complex interactions and trends between phenotypic descriptors to be modelled from which the decline indexes are calculated. 
+This would likely be oversimplified using conventional modelling strategies [@breiman2001b]. 
+
+### Applications and wider scaleablity
+
+- Scalability of method for wider application
+- Accessability of collecting descriptors
 - Discussion of applications to forestry monitoring and management
 - Sensitivity for integration with molecular data compared to categorical assignments
 - Sensitivity provided for integration with large scale omics analyses as well as long term monitoring for forest condition
-- Refined definition of remission - repeat measurement
+- Refinement of protocol for large scale surveying
 
 ## Conclusions
 

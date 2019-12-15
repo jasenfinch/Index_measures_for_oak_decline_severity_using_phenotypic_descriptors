@@ -187,6 +187,9 @@ plan <- drake_plan(
                    mtry = PDI_rf_tune_params$mtry,
                    importance = TRUE)},
   
+  ## PDI descriptor importance
+  PDI_descriptor_importance = descriptorImportance(PDI_rf_model),
+  
   ## generate DAI predictive random forest model
   DAI_rf_model = site_corrected_analysis_suitable_data %>%
     {set.seed(1234)
@@ -195,8 +198,11 @@ plan <- drake_plan(
                    mtry = DAI_rf_tune_params$mtry,
                    importance = TRUE)},
   
+  ## DAI descriptor importance
+  DAI_descriptor_importance = descriptorImportance(DAI_rf_model),
+  
   ## create descriptor contribution plots
-  descriptor_contribution_plots = descriptorImportancePlots(PDI_rf_model,DAI_rf_model),
+  descriptor_contribution_plots = descriptorImportancePlots(PDI_descriptor_importance,DAI_descriptor_importance),
   
   ## PDI lime analysis
   PDI_lime_analysis = PDIlimeAnalysis(site_corrected_analysis_suitable_data,PDI_rf_model,decline_indexes),

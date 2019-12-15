@@ -1,18 +1,10 @@
 
-descriptorImportancePlots <- function(PDIrf,DAIrf){
+descriptorImportancePlots <- function(PDI_descriptor_importance,DAI_descriptor_importance){
   list(
     a = {
-      dat <- PDIrf %>%
-        {
-          imp <- importance(.)
-          feat <- rownames(imp)
-          tibble(Feature = feat,`%IncMSE` = imp[,'%IncMSE'],
-                 IncNodePurity = imp[,'IncNodePurity'])
-        } %>%
+      dat <- PDI_descriptor_importance %>%
         arrange(`%IncMSE`) %>%
-        mutate(Feature = factor(Feature,levels = Feature), 
-               `Relative Importance` = `%IncMSE` / max(`%IncMSE`)) 
-      
+        mutate(Feature = factor(Feature,levels = Feature)) 
       descriptorLabels <- dat$Feature %>%
         as.character() %>%
         {
@@ -33,16 +25,9 @@ descriptorImportancePlots <- function(PDIrf,DAIrf){
         scale_x_discrete(labels = descriptorLabels)
     },
     b = {
-      dat <- DAIrf %>%
-        {
-          imp <- importance(.)
-          feat <- rownames(imp)
-          tibble(Feature = feat,`%IncMSE` = imp[,'%IncMSE'],
-                 IncNodePurity = imp[,'IncNodePurity'])
-        } %>%
+      dat <- DAI_descriptor_importance %>%
         arrange(`%IncMSE`) %>%
-        mutate(Feature = factor(Feature,levels = Feature), 
-               `Relative Importance` = `%IncMSE` / max(`%IncMSE`)) 
+        mutate(Feature = factor(Feature,levels = Feature)) 
       
       descriptorLabels <- dat$Feature %>%
         as.character() %>%
