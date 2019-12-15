@@ -31,7 +31,10 @@ loadd(phenotypic_descriptor_info)
 
 phenotypic_descriptor_info %>%
   select(-`Descriptor Type`,-`Data Type`) %>%
-  kable(format = 'latex',booktabs = TRUE,longtable = TRUE) %>%
+  kable(format = 'latex',
+        booktabs = TRUE,
+        longtable = TRUE,
+        caption = 'Phenotypic descriptors collected for oak decline severity.') %>%
   kable_styling(latex_options = c('striped','repeat_header'),repeat_header_continued = TRUE) %>%
   # column_spec(1,width = '1.5cm') %>%
   column_spec(1,width = '3cm') %>%
