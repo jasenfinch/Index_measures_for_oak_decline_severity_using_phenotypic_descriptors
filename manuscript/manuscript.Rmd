@@ -40,31 +40,31 @@ loadd(site_rf_margin,
 Oak decline is becoming increasingly prevalent along with the need for accurate quantitative oak health monitoring.
 The Phenotypic Decline Index (PDI) and the Decline Acuteness Index (DAI), were developed to quantitatively describe and differentiate acute and chronic oak decline severity using a multitude of easily measurable phenotypic descriptors.
 Measured phenotypic descriptors include aspects of tree shape and size, crown condition and the presence of biotic agents.
-The decline indexes were then calculated using proximity values from an unsupervised random forest of the phenotypic descriptors, multidimensional scaling (MDS) and min-max scaling.
-These indexes are simple but sensitive measures of tree decline severity allowing easy comparisons of oak trees both spatially and temporally providing a useful tool for forest monitoring and management.
+The decline indexes were derived using proximity values from n unsupervised random forest of the phenotypic descriptors, multidimensional scaling (MDS) and min-max scaling.
+These indexes are simple but sensitive measures of tree decline severity allowing easy comparisons of oak trees both spatially and temporally providing a potentially useful tool for forest monitoring and management.
 
 ## Introduction
 
-- Monitoring currently focusses on crown assessments
-- Acute and chronic decline associated phenotypes
-- The oak decline spectrum move away from simplistic binary categorisations
-- Manual assignment of decline status difficult prone to error for due to contribution of many factors. 
-- Unsupervised learning for complex patterns between descriptors.
-
 Oak declines are complex syndromes that are facilitated by a variety of both abiotic and biotic factors.
 Abiotic factors can include both predisposing and inciting factors such as drought and are often
-Biotic agents can include insect infestation such as the larvae of bark boring beetle *Agrilus biguttatus* associated 
+Biotic agents can include insect infestation such as the larvae of bark boring beetle *Agrilus biguttatus* or bacterial stem bleeds associated with acute oak decline (AOD) [@brown2017; @denman2014].
 
 As a results of this, there are many visual phenotypic descriptors encompassing the entirety of an oak tree that contribute to what can be defined as a declining oak tree.
 A severely declining oak is most prominently characterised by very poor crown condition and numerous dead branches (ref).
 It is these characteristics that many studies use as the primary indicator of tree decline severity [@zarnoch2004].
 
-Compounding this complexity is the addition of different types of oak decline (AOD) that are often categorised based on the duration over which a tree has been declining or the biotic agents/factors associated with a declining tree.
-For instance a chronically declining oak can subsequently begin to also develop the stem bleeds associated with AOD [@denman2014].
-Accurately diagnosing in the field the severity and type of oak decline present is difficult and can requires much experience, expertise and training.
+Compounding the complexity of oak decline syndromes is the addition of different types of oak decline that are often categorised based on the duration over which a tree has been declining and the biotic agents/factors associated with a declining tree.
+Mortality in trees suffering from chronic oak decline (COD) can occur over a period of decades where as AOD can occur in 5-10 years [@denman2009].
+Also a chronically declining oak (COD) can subsequently begin to develop the stem bleeds associated with AOD.
+The visual, manual assignment of decline status and severity in the field is variable and error prone due to the contribution of many factors.
+Doing this accurately requires much expertise, experience, and training (ref).
 
-It is becoming increasingly important that oak tree health within woodlands is accurately and sensitively monitored to enable the detection of decline as well as it's spread and severity over time to enable accurate forecasting and inform forestry management practices (ref).
-Monitoring methods need to take advantage of modern data analysis techniques whilst still retaining practical simplicity in the field.
+Assigning discrete decline status labels neglects the true spectrum of decline severity encountered in the field.
+There is a growning need for sensitive, continuous measures of tree decline that accuratly reflect the decline spectrum [@pontius2014].
+This has the potential to greatly imporove monitoring to enable the detection of decline as well as it's spread and severity over time to enable accurate forecasting and inform forestry management practices (ref).
+Along with this, monitoring methods need to take advantage of modern data analysis techniques whilst still retaining practical simplicity in the field.
+
+- Monitoring currently focusses on crown assessments
 
 Machine learning is finding increasing utility in biological and geographical applications due to it's ability to learn complex patterns within and between variables.
 A popular algorithm is that of random forest due to it's versatility, relatively trivial training requirements and resilience against over fitting [@breiman2001a] (refs). 
@@ -74,6 +74,8 @@ A popular algorithm is that of random forest due to it's versatility, relatively
 It is an ensemble machine learning method where forests of bootstrap sampled decision trees are grown, yielding both out of bag sample prediction accuracies and variable importance.
 It is also able to simultaneously handle both continuous and categorical variables.
 Unsupervised learning is also possible [@shi2006]
+
+- Unsupervised learning for complex patterns between descriptors.
 
 Here, we propose a framework to enable quantitative visible oak decline severity measurement that utilises a range of targeted phenotypic descriptors and unsupervised random forest machine learning.
 The two resulting measures are:
