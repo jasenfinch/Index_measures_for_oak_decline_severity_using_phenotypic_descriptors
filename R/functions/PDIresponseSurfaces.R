@@ -11,7 +11,7 @@ PDIresponseSurfaces <- function(PDIrf,decline_indexes,site_corrected_analysis_su
       a <- decline_indexes$PDI %>%
         {. - .x} %>%
         abs()
-      decline_indexes$PDI[which(a == min(a))]
+      decline_indexes$PDI[which(a == min(a))[1]]
       })
   
   spectrumTrees_PDI <- list(
@@ -73,7 +73,7 @@ PDIresponseSurfaces <- function(PDIrf,decline_indexes,site_corrected_analysis_su
              caption = str_c('Crown radius (m) = ',plotRanges_PDI[[type]]$`Crown radius (m)`[1] %>% round(3),'\n',
                              'Total height (m) = ',plotRanges_PDI[[type]]$`Total height (m)`[1] %>% round(3),'\n',
                              'Lower crown height (m) = ',plotRanges_PDI[[type]]$`Lower crown height (m)`[1] %>% round(3),'\n',
-                             'Diameter at breast height (mm) = ',plotRanges_PDI[[type]]$`Diameter at breast height (mm)`[1] %>% round(3)
+                             'Diameter at breast height (m) = ',plotRanges_PDI[[type]]$`Diameter at breast height (m)`[1] %>% round(3)
              )
         )
       return(pl)

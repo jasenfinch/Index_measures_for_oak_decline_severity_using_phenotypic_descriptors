@@ -97,7 +97,7 @@ Descriptors were collected relating to the trees shape, size, crown condition an
 All trees were manually assigned a decline status category; control, AOD, COD or remission prior to collection of phenotypic descriptors.
 The remission group included trees that had shown stem bleeds associated with AOD in the past but were not showing signs of stem bleeds at the time of assessment.
 
-Diameter at breast height (DBH) was collected at a stem height of 1.3m, to the nearest 0.1cm.
+DBH (DBH) was collected at a stem height of 1.3m, to the nearest 0.1cm.
 Total height, timber height and lowest live crown were measured using an inclinometer to the nearest 0.1m
 The timber height was measured at either 7cm top stem diameter or where no main stem could be distinguished.
 For the crown, canopy closure, missing crown and absolute crown density percentages were visually estimated within 5% classes
@@ -128,8 +128,8 @@ After preparation there were a total of 31 raw descriptors for analysis.
 
 ### Tree size descriptor adjustment for age and inter site variance
 
-To account age, size and site specific tree difference, an adjustment of site means to the overall mean was applied to each of the size descriptors (diameter at breast height, lower crown height, timber height, total height, crown radius). 
-An example of this adjustment is shown for diameter at breast height in Supplementary Figure # and the adjustment factors for each of the descriptors at each site is shown in Supplementary Table #.  
+To account age, size and site specific tree difference, an adjustment of site means to the overall mean was applied to each of the size descriptors (DBH, lower crown height, timber height, total height, crown radius). 
+An example of this adjustment is shown for DBH in Supplementary Figure # and the adjustment factors for each of the descriptors at each site is shown in Supplementary Table #.  
 
 ### Composite descriptor calculation
 
@@ -157,15 +157,15 @@ $r$ = crown radius (m)
 
 **Estimated bleed prevalence (%)** - estimated percentage of the surveyed 3m basal trunk area affected by bleeds or black staining.
 
-$$p = \frac{a^2A + b^2B}{3d\pi}$$
+$$p = \frac{a^2A + b^2B}{3000d\pi} \times 100$$
 
-$a$ = average active bleed size (mm), $A$ = number of active bleeds, $b$ = average black stain size (mm), $B$ = black stain number, $d$ = diameter at breast height (mm)
+$a$ = average active bleed size (mm), $A$ = number of active bleeds, $b$ = average black stain size (mm), $B$ = black stain number, $d$ = $DBH (m) \times 1000$
 
 ***Agrilus* exit hole density (m^-2^)** - density of observed *Agrilus* exit holes across the surveyed 2m basal trunk area.
 
-$$e = \frac{h}{\frac{2d}{100}\pi}$$
+$$e = \frac{h}{2d\pi}$$
 
-$h$ = number of *Agrilus* exit holes
+$h$ = number of *Agrilus* exit holes, d = DBH (m)
 
 ### Calculation of indexes for oak decline severity
 
@@ -286,9 +286,9 @@ Figures # and # show the simulated index value response surfaces under a variety
 Crown condition descriptors such as crown volume and crown condition contributed highly to the PDI (Figure #).
 The phenotypic measures central to this were percentage missing crown and percentage crown transparency from which crown condition and crown volume are calculated. 
 It can be seen in Figure # that as the percentage missing crown and percentage crown transparency increase and therefore crown condition and estimated crown volume decrease, the PDI increases. 
-A much greater range of PDI values can be obtained from trees with relatively greater stature (e.g. greater crown radius, total height, lower crown height and diameter at breast height; Figures #a & b), with relatively small stature trees having PDIs of 0.5 or greater even with 100% crown condition.
+A much greater range of PDI values can be obtained from trees with relatively greater stature (e.g. greater crown radius, total height, lower crown height and DBH; Figures #a & b), with relatively small stature trees having PDIs of 0.5 or greater even with 100% crown condition.
 
-The DAI is a much more complex index with more descriptors contributing to it than the PDI such as bleed prevalence, diameter at breast height and crown condition descriptors. 
+The DAI is a much more complex index with more descriptors contributing to it than the PDI such as bleed prevalence, DBH and crown condition descriptors. 
 Simulated response surfaces for the DAI are shown in Figure c. 
 These response surfaces show circumstances under which bleed prevalence related descriptors (Figures #a, b & c) and crown condition descriptors (Figures #d, e & f) change for non-symptomatic AOD or COD trees (Figures #a & d respectively), moderate AOD or COD (Figures #b & e respectively) and severe AOD or COD (Figures #c & f respectively). 
 Increasing active bleed, staining size and frequency contributed to greater positive values of the DAI and more severe AOD. 

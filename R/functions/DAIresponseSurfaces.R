@@ -63,7 +63,7 @@ DAIresponseSurfaces <- function(DAIrf,decline_indexes,site_corrected_analysis_su
                                                    `Active bleeds`,
                                                    `Black staining size (mm)`,
                                                    `Black staining`,
-                                                   `Diameter at breast height (mm)`)
+                                                   `Diameter at breast height (m)`)
         ) %>%
         mutate(DAI = predict(DAIrf,newdata = .))
     }) %>%
@@ -96,7 +96,7 @@ DAIresponseSurfaces <- function(DAIrf,decline_indexes,site_corrected_analysis_su
                                                    `Active bleeds`,
                                                    `Black staining size (mm)`,
                                                    `Black staining`,
-                                                   `Diameter at breast height (mm)`)
+                                                   `Diameter at breast height (m)`)
         ) %>%
         mutate(DAI = predict(DAIrf,newdata = .))
     }) %>%
@@ -124,7 +124,7 @@ DAIresponseSurfaces <- function(DAIrf,decline_indexes,site_corrected_analysis_su
              caption = str_c(
                'Active bleeds = ',plotRanges_DAI_abc[[type]]$`Active bleeds`[1] %>% round(3),'\n',
                'Black staining = ',plotRanges_DAI_abc[[type]]$`Black staining`[1] %>% round(3),'\n',
-               'Diameter at breast height (mm) = ',plotRanges_DAI_abc[[type]]$`Diameter at breast height (mm)`[1] %>% round(3)
+               'Diameter at breast height (m) = ',plotRanges_DAI_abc[[type]]$`Diameter at breast height (m)`[1] %>% round(3)
              )
         )
       return(pl)
@@ -153,7 +153,7 @@ DAIresponseSurfaces <- function(DAIrf,decline_indexes,site_corrected_analysis_su
                'Crown radius (m) = ',plotRanges_DAI_def[[type]]$`Crown radius (m)`[1] %>% round(3),'\n',
                'Total height (m) = ',plotRanges_DAI_def[[type]]$`Total height (m)`[1] %>% round(3),'\n',
                'Lower crown height (m) = ',plotRanges_DAI_def[[type]]$`Lower crown height (m)`[1] %>% round(3),'\n',
-               'Diameter at breast height (mm) = ',plotRanges_DAI_def[[type]]$`Diameter at breast height (mm)`[1] %>% round(3)
+               'Diameter at breast height (m) = ',plotRanges_DAI_def[[type]]$`Diameter at breast height (m)`[1] %>% round(3)
              )
         )
       return(pl)
