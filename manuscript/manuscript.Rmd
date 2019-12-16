@@ -45,6 +45,7 @@ These indexes are simple but sensitive measures of tree decline severity allowin
 
 ## Introduction
 
+Oak decline is becoming/predicted to become increasingly prevalent in the UK and across Europe with the onset of climate change (ref).
 Oak declines are complex syndromes that are facilitated by a variety of both abiotic and biotic factors.
 Abiotic factors can include both predisposing and inciting factors such as drought and are often
 Biotic agents can include insect infestation such as the larvae of bark boring beetle *Agrilus biguttatus* or bacterial stem bleeds associated with acute oak decline (AOD) [@brown2017; @denman2014].
@@ -64,18 +65,13 @@ There is a growning need for sensitive, continuous measures of tree decline that
 This has the potential to greatly imporove monitoring to enable the detection of decline as well as it's spread and severity over time to enable accurate forecasting and inform forestry management practices (ref).
 Along with this, monitoring methods need to take advantage of modern data analysis techniques whilst still retaining practical simplicity in the field.
 
-- Monitoring currently focusses on crown assessments
-
-Machine learning is finding increasing utility in biological and geographical applications due to it's ability to learn complex patterns within and between variables.
+Machine learning is finding increasing utility in ecological and environmental applications due to it's ability to learn complex patterns within and between variables [@cutler2007;@belgiu2016].
 A popular algorithm is that of random forest due to it's versatility, relatively trivial training requirements and resilience against over fitting [@breiman2001a] (refs). 
-
-- Random forest has previously been used in a forest condition context [@vitale2014].
 
 It is an ensemble machine learning method where forests of bootstrap sampled decision trees are grown, yielding both out of bag sample prediction accuracies and variable importance.
 It is also able to simultaneously handle both continuous and categorical variables.
-Unsupervised learning is also possible [@shi2006]
-
-- Unsupervised learning for complex patterns between descriptors.
+Unsupervised learning is also possible using the assumption that if the data contains any underlying structure, this should be distinguishable from a randomly generated version of itself [@shi2006].
+An observation proximity matrix can be derived from this process on which additional unsupervised methods can be applied such as multidimensional scaling (ref).
 
 Here, we propose a framework to enable quantitative visible oak decline severity measurement that utilises a range of targeted phenotypic descriptors and unsupervised random forest machine learning.
 The two resulting measures are:
@@ -342,6 +338,8 @@ Machine learning approaches are usually seen as black box
 - Sensitivity for integration with molecular data compared to categorical assignments
 - Sensitivity provided for integration with large scale omics analyses as well as long term monitoring for forest condition
 - Refinement of protocol for large scale surveying
+- Aid long term monitoring by providing comparibility over time. This was highlighted in the recently published Action Oak Knowledge Review as a key requirment in the future for safeguarding oak health. [@quine2019],
+- Applied to long established monitoring data sets such as The International Co-operative Programme on Assessment and Monitoring of Air Pollution Effects on Forests (ICP Forests) [@lorenz1995].
 
 The phenotypic descriptors used to calculate these indexes are easily measurable in the field and require no specialist equipment. 
 They allow sensitive comparisons to be made for the same tree between years as well as comparisons of trees between different locations.
