@@ -148,7 +148,7 @@ $m$ = missing crown (%), $t$ = crown transparency (%)
 
 **Composite crown volume (m^3^)** - Estimated volume of crown as an paraboloid proportional to the crown condition. Adapted from the composite crown volume from @zarnoch2004 using crown condition instead of crown density alone.
 
-$$v = \frac{\pi r^2c(h-l)}{200}$$
+$$v = \frac{1}{2} \pi r^2(h-l) \times \frac{c}{100}$$
 
 $r$ = crown radius (m)
 
@@ -330,18 +330,28 @@ Machine learning approaches are usually seen as black box
 - LIME can be applied to out of place cases
 - Important descriptors identified model-wide aren't necessarily relevant to localised cases. 
 
+- use of indexes derived from machine learning are context agnostic
+
 ### Applications and wider scalability
 
-- Scalability of method for wider application
-- Accessibility of collecting descriptors
+The phenotypic descriptors used to calculate these indexes are easily measurable in the field and require no specialist equipment and are based on well established tree condition assessment protocols (refs).
+The representation of the decline severity spectrum provided by these decline indexes provides greatly enhanced sensitivity over categorical decline status assignments that could enhance integration with large scale data such as those from genome wide association studies or remote sensing (refs).  
+
+The current context in which these decline indexes are presented is based on a very focus set of descriptors on sites with a high proportion of declining trees. 
+
+Scaling this technique to enable generalised naive compuation of decline indexes for any tree sampled in the UK would require a substantially larger training data set that incorporates the descirptive diversity of oak decline in the population as whole (ref).
+Scaling to this level would also require an approprite method of tree size correction that could be applied on an individual tree basis.
+A potential solution to this would be to correct trees based on estimated age from DBH as proposed by @white1998.
+This would enable the development of web based tools that can then provide acces to 
+
 - Discussion of applications to forestry monitoring and management
-- Sensitivity for integration with molecular data compared to categorical assignments
-- Sensitivity provided for integration with large scale omics analyses as well as long term monitoring for forest condition
 - Refinement of protocol for large scale surveying
+
+Alternative phenotyping protocols could be developed compare across species that would incorporate appropriate tree size corrections
 - Aid long term monitoring by providing comparibility over time. This was highlighted in the recently published Action Oak Knowledge Review as a key requirment in the future for safeguarding oak health. [@quine2019],
 - Applied to long established monitoring data sets such as The International Co-operative Programme on Assessment and Monitoring of Air Pollution Effects on Forests (ICP Forests) [@lorenz1995].
 
-The phenotypic descriptors used to calculate these indexes are easily measurable in the field and require no specialist equipment. 
+
 They allow sensitive comparisons to be made for the same tree between years as well as comparisons of trees between different locations.
 which could have great utility in long term forest health monitoring for both forestry management and research.
 
@@ -350,7 +360,10 @@ which could have great utility in long term forest health monitoring for both fo
 - Crown condition descriptors most important for describing overall decline severity in the PDI.
 - Bacterial bleed related descriptors are most important for describing decline acuteness.
 - Decline indexes provide intuitive measures of decline severity based on simple phenotypic measurements that do not require specialist equipment
-- Encouraged to use this approach in other contexts
+- Encouraged to apply this approach in other contexts
+
+The decline indexes presented here provided intuitive measures 
+The approach presented here is easily adaptable to incorporate any phenot
 
 ## Acknowledgements
 
