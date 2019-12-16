@@ -42,7 +42,7 @@ phenotypic_descriptor_info %>%
   # collapse_rows(columns = 1,latex_hline = "major", valign = "middle")
 ```
 
-```{r descriptor_adjustment,fig.cap='Error bars show ±1SE of the mean.\nDashed red line shows the overall mean.'}
+```{r descriptor_adjustment,fig.cap='Exapmle of overall mean adjustment applied to the diameter at breast height descriptor. Error bars show ±1SE of the mean. Dashed red line shows the overall mean.'}
 loadd(descriptor_adjustment_example)
 
 descriptor_adjustment_example %>%
@@ -54,11 +54,11 @@ loadd(site_correction_factors)
 
 site_correction_factors %>%
   mutate_if(is.double,signif,digits = 3) %>%
-  kable(format = 'latex',booktabs = TRUE,caption = 'Descriptor correction factors at each site') %>%
+  kable(format = 'latex',booktabs = TRUE,caption = 'Descriptor adjustment factors at each site.') %>%
   collapse_rows(columns = 1,latex_hline = "major", valign = "middle")
 ```
 
-```{r modelTuningResultsPlot}
+```{r modelTuningResultsPlot,fig.cap='Random forest parameter tuning results for decline index models.'}
 loadd(rf_tune_plot)
 
 rf_tune_plot
@@ -69,20 +69,20 @@ loadd(site_differences_mds_plot)
 grid.arrange(site_differences_mds_plot$a,site_differences_mds_plot$b,nrow = 1)
 ```
 
-```{r PDInumeric,fig.height=9}
+```{r PDInumeric,fig.height=9,fig.cap='Continuous descriptors plotted against the PDI.'}
 loadd(descriptor_scatter_plots)
 
 descriptor_scatter_plots$PDI_numeric
 ```
 
-```{r PDIfactor,fig.height=8}
+```{r PDIfactor,fig.height=8,fig.cap='Categorical descriptors plotted against the PDI.'}
 descriptor_scatter_plots$PDI_factor
 ```
 
-```{r DAInumeric,fig.height=9}
+```{r DAInumeric,fig.height=9,fig.cap='Continuous descriptors plotted against the DAI.'}
 descriptor_scatter_plots$DAI_numeric
 ```
 
-```{r DAIfactor,fig.height=8}
+```{r DAIfactor,fig.height=8,fig.cap='Categorical descriptors plotted against the DAI.'}
 descriptor_scatter_plots$DAI_factor
 ```
