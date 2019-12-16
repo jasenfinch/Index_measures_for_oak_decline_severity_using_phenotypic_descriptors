@@ -37,10 +37,9 @@ loadd(site_rf_margin,
 
 ## Abstract
 
-Two indexes, the Phenotypic Decline Index (PDI) and the Decline Acuteness Index (DAI), were developed to describe acute and chronic oak decline severity using a multitude of easily measurable phenotypic descriptors.
+Oak decline is becoming increasingly prevalent along with the need for accurate quantitative oak health monitoring.
+The Phenotypic Decline Index (PDI) and the Decline Acuteness Index (DAI), were developed to quantitatively describe and differentiate acute and chronic oak decline severity using a multitude of easily measurable phenotypic descriptors.
 Measured phenotypic descriptors include aspects of tree shape and size, crown condition and the presence of biotic agents.
-These were collected from 174 trees exhibiting a spectrum of decline severity at 9 sites from across the south, east and west of England.
-Inter site differences were identified as a results of aspects of tree size which were corrected for using a mean centring adjustment.
 The decline indexes were then calculated using proximity values from an unsupervised random forest of the phenotypic descriptors, multidimensional scaling (MDS) and min-max scaling.
 These indexes are simple but sensitive measures of tree decline severity allowing easy comparisons of oak trees both spatially and temporally providing a useful tool for forest monitoring and management.
 
