@@ -1,8 +1,8 @@
 ---
 title: "Index measures for oak decline severity using phenotypic descriptors"
 output: 
-  word_document: default
-  # pdf_document: default
+  #word_document: default
+  pdf_document: default
 bibliography: references.bib
 ---
 
@@ -26,7 +26,7 @@ loadd(site_rf_margin,
       DAI_descriptor_importance)
 ```
 
-**Authors:** Jasen Finch, Nathan Brown, Sandra Denman & John Draper
+**Authors:** Jasen Finch, Nathan Brown, John Draper & Sandra Denman 
 
 **Proposed journal:** Still undecided! ??Plant Methods, Forestry?? 
 
@@ -45,7 +45,7 @@ These indexes are simple but sensitive measures of tree decline severity allowin
 Oak decline is expected to become increasingly prevalent in the UK and across Europe with the onset of climate change (ref).
 Oak declines are complex syndromes that are facilitated by a variety of both abiotic and biotic factors.
 Abiotic factors can include both predisposing and inciting factors such as drought.
-Biotic agents can include insect infestation such as the larvae of bark boring beetle *Agrilus biguttatus* or bacterial stem bleeds associated with acute oak decline (AOD) [@brown2017; @denman2014].
+Biotic agents can include insect infestation such as the larvae of bark boring beetle *Agrilus biguttatus* or bacterial stem bleeds associated with acute oak decline (AOD) [@brown2017a; @denman2014].
 
 As a results of this, there are many visual phenotypic descriptors encompassing the entirety of an oak tree that contribute to what can be defined as a declining oak tree.
 A severely declining oak is most prominently characterised by very poor crown condition and numerous dead branches (ref).
@@ -84,8 +84,8 @@ Acutely declining trees have a score closer to 1 and chronically declining trees
 ### Phenotypic data collection
 
 The phenotypic data were collected from a total of 174 trees from nine sites from across the south (Hatchlands and Richmond Park), east (Big Wood, Great Monks Wood and Winding Wood) and west (Attingham, Chestnuts, Langdale and Speculation) of England between June and September in 2016 or 2017.
-The occurrence of AOD has previously been reported and studied at six of the sites [@brown2016; @brown2017].
-These sites included a variety of woodland types, management types, soil types and tree sizes/ages.
+The occurrence of AOD has previously been reported and studied at six of the sites [@brown2016; @brown2017a].
+These sites included a variety of woodland types, management types, soil types and tree sizes/ages and were made up mainly *Quercus robur*.
 
 Descriptors were collected relating to the trees shape, size, crown condition and the presence of biotic agents including insects, bacteria and fungi.
 All trees were manually assigned a decline status category; control, AOD, COD or remission prior to collection of phenotypic descriptors.
@@ -298,7 +298,6 @@ These two indexes provide a two dimensional continuum under which the spectrum o
 - Indexes place the descriptors into single intuitive scores based on a wide number of factors known to be heavily influenced by oak decline severity
 - Suitability of collected phenotypic descriptors and decline indexes for describing decline status
 
-
 This plot highlights the inaccuracies in manual field classifications of decline status with several trees classified as healthy controls that, when compared quantitatively to other trees, are in fact
 in a decline state. 
 
@@ -307,9 +306,9 @@ in a decline state.
 - Association of PDI and overall oak decline with crown condition well documented
 - Association of crown condition and AOD severity. Could not previously be shown by @denman2014.
 - Bleed prevalence and AOD
-- Agrillus exit hole occurance with stem bleeding - smaller area surveyed compared to bleeding. Trees with bleeds do not always have stem bleeds [@brown2017;@vansteenkiste2004]
+- Agrillus exit hole occurance with stem bleeding - smaller area surveyed compared to bleeding. Trees with bleeds do not always have stem bleeds [@brown2017a;@vansteenkiste2004]
 - Size differences between AOD and COD trees
-
+  
 The relationship of relative tree stature and the acuteness of the decline likely reflects the period of time under which these trees have been afflict. 
 AOD occurs over a much shorter period compared COD and therefore has less time in which to inhibit growth of the tree as a whole.
 
@@ -336,27 +335,22 @@ This inturn promotes trust in the indexes derived from these models and reduces 
 
 ### Applications
 
-- Explain the wider application of the approach
+The current context in which these decline indexes are presented is study specific and is based on a relatively small sample size that may not be generally representative of the UK oak population as a whole.
+Subsequent studies could incorporate the data from this study with additional data to train random forest models if comparable phenotyping protocols are used or generate study specific decline index values using the unsupervised learning approach.
 
-The phenotypic descriptors used to calculate these indexes are easily measurable in the field and require no specialist equipment and are based on well established tree condition assessment protocols (refs).
-The representation of the decline severity spectrum provided by these decline indexes provides greatly enhanced sensitivity over categorical decline status assignments that could enhance integration with large scale data such as those from genome wide association studies or remote sensing (refs).  
+The representation of the decline severity spectrum provided by these decline indexes provides greatly enhanced sensitivity over categorical decline status assignments.
+This could enhance integration with large scale data such as those from genome wide association studies or remote sensing [@stocks2019] (ref). These index measures allow sensitive comparisons of visual health to be made for the same tree between years as well as comparisons of trees between different locations. 
 
-This would enable the development of web based tools that can then provide access to 
-
-- Discussion of applications to forestry monitoring and management
-- Refinement of protocol for large scale surveying or alternative applications
-
-Alternative phenotyping protocols could be developed compare across species that would incorporate appropriate tree size corrections
-- Aid long term monitoring by providing comparability over time. This was highlighted in the recently published Action Oak Knowledge Review as a key requirement in the future for safeguarding oak health. [@quine2019],
-- Applied to long established monitoring data sets such as The International Co-operative Programme on Assessment and Monitoring of Air Pollution Effects on Forests (ICP Forests) [@lorenz1995].
-
-The current context in which these decline indexes are presented is based on a very focus set of descriptors on sites with a high proportion of declining trees. 
-Scaling this technique to enable generalised naive computation of decline indexes for any tree sampled in the UK would require a substantially larger training data set that incorporates the descriptive diversity of oak decline in the population as whole (ref).
+Scaling this technique to enable generalised naive computation of decline indexes for any tree sampled in the UK would require index models trained using a substantially larger data set that incorporates the descriptive diversity of oak decline in the population as whole (ref).
 Scaling to this level would also require an appropriate method of tree size correction that could be applied on an individual tree basis.
 A potential solution to this would be to correct trees based on estimated age from DBH as proposed by @white1998.
+These indexes could have great utility in long term forest health monitoring by providing comparability over time that could be utilised for both forestry management and research (ref).
+The development of tools to aid long term monitoring was highlighted as a key requirement in the future for safeguarding UK oak health in the recently published Action Oak Knowledge Review [@quine2019].
 
-They allow sensitive comparisons to be made for the same tree between years as well as comparisons of trees between different locations.
-which could have great utility in long term forest health monitoring for both forestry management and research.
+The phenotypic descriptors used to calculate these indexes are easily measurable in the field and require no specialist equipment and are based on well established tree condition assessment protocols [@innes1990].
+Refinement of the protocols used here could make could reduce survey time and complexity and potentially be incorporated into citizen science programmes as a resource to build general UK oak training set [@brown2017b]
+
+Alternatively, the machine learning approach used to derive these decline indexes could also be applied to long established oak health monitoring programmes to aid sensitivity in detecting overall trends in oak health. An example programme includes The International Co-operative Programme on Assessment and Monitoring of Air Pollution Effects on Forests (ICP Forests) [@lorenz1995].
 
 ## Conclusions
 
