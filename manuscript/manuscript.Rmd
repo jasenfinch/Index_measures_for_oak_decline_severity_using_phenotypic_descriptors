@@ -304,9 +304,11 @@ in a decline state.
 - Index thresholds for category definitions (healthy, declining, severe decline etc.)
 
 - Association of PDI and overall oak decline with crown condition well documented
-- Association of crown condition and AOD severity. Could not previously be shown by @denman2014.
+- Association of crown condition and AOD severity in trees  Could not previously be shown by @denman2014.
 - Bleed prevalence and AOD
-- Agrillus exit hole occurance with stem bleeding - smaller area surveyed compared to bleeding. Trees with bleeds do not always have stem bleeds [@brown2017a;@vansteenkiste2004]
+
+There was no contribution of *A. biguttatus* exit hole occurance with with the DAI and therefore stem bleeding - smaller area surveyed compared to bleeding. It has also been found previouly that trees with bleeds do not always have exit holes as  [@brown2017a;@vansteenkiste2004].
+
 - Size differences between AOD and COD trees
   
 The relationship of relative tree stature and the acuteness of the decline likely reflects the period of time under which these trees have been afflict. 
