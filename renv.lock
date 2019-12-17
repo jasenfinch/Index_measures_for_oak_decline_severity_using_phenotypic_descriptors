@@ -11,10 +11,10 @@
   "Packages": {
     "BH": {
       "Package": "BH",
-      "Version": "1.69.0-1",
+      "Version": "1.72.0-1",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "f4605d46264b35f53072fc9ee7ace15f"
+      "Hash": "55962c9f3aae8ce5c908b82000233283"
     },
     "DBI": {
       "Package": "DBI",
@@ -127,13 +127,6 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "0b118d5900596bae6c4d4865374536a6"
-    },
-    "bookdown": {
-      "Package": "bookdown",
-      "Version": "0.16",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "224429a9fded5e2933a6f4ce3568a743"
     },
     "broom": {
       "Package": "broom",
@@ -1076,11 +1069,11 @@
       "Version": "0.3.0.9000",
       "Source": "GitHub",
       "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteRepo": "wordcountaddin",
       "RemoteUsername": "benmarwick",
+      "RemoteRepo": "wordcountaddin",
       "RemoteRef": "master",
       "RemoteSha": "fdf70d9c2d91bc54396026d148ea90aaba5973fd",
+      "RemoteHost": "api.github.com",
       "Hash": "e9bde46ecd243f8487ded1e181f4c237"
     },
     "xfun": {

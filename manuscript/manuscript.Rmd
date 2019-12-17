@@ -1,11 +1,8 @@
 ---
 title: "Index measures for oak decline severity using phenotypic descriptors"
 output: 
-  #bookdown::word_document2:
-  # toc: false
-  bookdown::pdf_document2: 
-    toc: false
-    number_sections: false
+  word_document: default
+  # pdf_document: default
 bibliography: references.bib
 ---
 
@@ -94,6 +91,7 @@ Descriptors were collected relating to the trees shape, size, crown condition an
 All trees were manually assigned a decline status category; control, AOD, COD or remission prior to collection of phenotypic descriptors.
 The remission group included trees that had shown stem bleeds associated with AOD within the previous three years but were not showing signs of stem bleeds at the time of assessment.
 
+The phenotypic descriptors collected were based on @innes1990.
 Diameter at breast height (DBH) was collected at a stem height of 1.3m, to the nearest 0.1cm.
 Total height, timber height and lowest live crown were measured using an inclinometer to the nearest 0.1m
 The timber height was measured at either 7cm top stem diameter or where no main stem could be distinguished.
@@ -196,8 +194,8 @@ Then for each of the AOD and COD syndromes, moderate and severe cases were selec
 
 ### Index model simulations to investigate interactions of key descriptors
 
-The interactions of key raw descriptors identified from the overall importance scores and their associations with the decline indexes was investigated by using simulated descriptor values to construct index model responses surfaces for specific cases.
-This approach was similar to response surface methodology without the need for probabilistic approximation due to the low computation time required for index calculation (ref).
+The interactions of key raw descriptors identified from the overall importance scores and their associations with the decline indexes was investigated by using simulated descriptor values to construct index model response surfaces for specific cases.
+This approach was similar to response surface methodology without the need for probabilistic approximation due to the low computation time required for index calculation [@abbasi2012].
 
 For the PDI, missing crown and crown transparency were compared for example cases of a healthy, a moderate and a severely tree.
 The example cases included the trees with the minimum and maximum PDI values and the tree with the PDI value closest to the median for the healthy, severe and moderately declining trees respectively.
@@ -289,66 +287,73 @@ Increasing active bleed, staining size and frequency contributed to greater posi
 Also higher DAI values could be obtained from trees with greater stature (Figure 4c). 
 Crown transparency and missing crown have no influence on the DAI for trees of neutral decline type (Figure 4d).
 Similarly to the PDI, trees with smaller stature and poorer crown condition give lower DAI values (Figures 4e & f) and therefore more severe COD.
-The relationship of relative tree stature and the acuteness of the decline likely reflects the period of time under which these trees have been afflicted. 
-AOD occurs over a much shorter period compared COD and therefore has less time in which to inhibit growth of the tree as a whole.
 
 ## Discussion
 
 ### Suitability of the decline indexes for describing decline severity and type
 
-The phenotypic descriptors were selected for use in this study purposefully 
+The decline indexes presented here show 
+These two indexes provide a two dimensional continuum under which the spectrum of decline severity and type can be assessed (Figure 5).
 
+- Indexes place the descriptors into single intuitive scores based on a wide number of factors known to be heavily influenced by oak decline severity
 - Suitability of collected phenotypic descriptors and decline indexes for describing decline status
-- Index thresholds for category definitions (healthy, declining, severe decline etc.)
-- Validation of decline scores - chicken and paradox
-- Direct validation difficult 
-- Refined definition of remission - repeat measurement
-- With different data, it is likely that the MDS dimensions may require inversion prior to min-max scaling to ensure their correct orientation.
+
 
 This plot highlights the inaccuracies in manual field classifications of decline status with several trees classified as healthy controls that, when compared quantitatively to other trees, are in fact
 in a decline state. 
 
-These two indexes provide a two dimensional continuum under which the spectrum of decline severity and type can be assessed.
+- Index thresholds for category definitions (healthy, declining, severe decline etc.)
 
-The two dimensional space provided by these phenotypic indexes, for measuring decline severity is shown in Figure 5. 
+- Association of PDI and overall oak decline with crown condition well documented
+- Association of crown condition and AOD severity. Could not previously be shown by @denman2014.
+- Bleed prevalence and AOD
+- Agrillus exit hole occurance with stem bleeding - smaller area surveyed compared to bleeding. Trees with bleeds do not always have stem bleeds [@brown2017;@vansteenkiste2004]
+- Size differences between AOD and COD trees
+
+The relationship of relative tree stature and the acuteness of the decline likely reflects the period of time under which these trees have been afflict. 
+AOD occurs over a much shorter period compared COD and therefore has less time in which to inhibit growth of the tree as a whole.
+
+- Refined definition of remission - repeat measurement
 
 ### The machine learning approach
 
 A machine learning approach was used to derive the phenotypic index measures as it allows the moulded to the complex interactions and trends between phenotypic descriptors from which the decline indexes are calculated. 
 This would likely be oversimplified using conventional modelling strategies [@breiman2001b]. 
 
-- reasons for selecting machine learning approach
-- use of unsupervised over supervised analysis
-- Semi-supervised can be used if unsupervised model is unable to pull out decline severity scale
-- For given context, descriptors not contributing to the indexes could be removed
-- Concession of model interpretability to predictive capability by using a machine learning approach
+An unsupervised approach was favoured in this context due to the concession that there know difficulties and inaccuracy of manual field decline status classification (ref).
+This is highlighted in Figure 1 where a numerous trees would be considered to have been misclassified as they fall into regions of the decline indexes associated with a different decline status (eg. COD trees with DAI values > 0.5).
+The unsupervised approach has worked in this context in aptly describing decline severity as the phenotypic descriptors selected were highly specific and well suited to describing the decline severity problem.
+In situations were descriptors may well be less suited, perhaps as a result of technical limitations, the use of a semi-supervised approach may be favourable (ref).
+The unsupervised approach to derive the decline indexes would be applied to a subset of the observations on which the descriptors are known to perform well and that would be considered benchmark observations by the investigators.
+Indexes could then be attained for the rest of the observations by prediction based on supervised models of the benchmark subset (ref).
+This approach would be more suitable than a fully supervised approach as it would limit the inaccuacies that would be introduced by manual classification and still allow the data driving flexibility of the unsupervised approach.
 
-Machine learning approaches are usually seen as black box 
-- seen as black box but LIME and response surfaces enable interpretation and therefore trust
-- LIME can be applied to out of place cases
-- Important descriptors identified model-wide aren't necessarily relevant to localised cases. 
+Machine learning approaches are usually seen as black box and a lack of model interpretability is a concession in this approach however the are substantial gains in terms of predictive capability for model application in real world situations (ref).
+The assessment descriptor contributions to the index models are an integral part of this approach.
+Inout of knowledge of the biological problem by the investigator at this stage is essential in ensuring that the models suitably learn the patterns relevant biological problem to which they have been applied and that the descriptors contirbuting to these are sensible and that the algorithm (random forest) is not learning spurious or artificial patterns within the data (ref).
+Approaches such as LIME and model response surfaces enable investigators to query the contributions that phenotypic descriptors have in particular cases of interest.
+This inturn promotes trust in the indexes derived from these models and reduces their black box nature (ref).
 
-- use of indexes derived from machine learning are context agnostic
+### Applications
 
-### Applications and wider scalability
+- Explain the wider application of the approach
 
 The phenotypic descriptors used to calculate these indexes are easily measurable in the field and require no specialist equipment and are based on well established tree condition assessment protocols (refs).
 The representation of the decline severity spectrum provided by these decline indexes provides greatly enhanced sensitivity over categorical decline status assignments that could enhance integration with large scale data such as those from genome wide association studies or remote sensing (refs).  
 
-The current context in which these decline indexes are presented is based on a very focus set of descriptors on sites with a high proportion of declining trees. 
-
-Scaling this technique to enable generalised naive computation of decline indexes for any tree sampled in the UK would require a substantially larger training data set that incorporates the descriptive diversity of oak decline in the population as whole (ref).
-Scaling to this level would also require an appropriate method of tree size correction that could be applied on an individual tree basis.
-A potential solution to this would be to correct trees based on estimated age from DBH as proposed by @white1998.
 This would enable the development of web based tools that can then provide access to 
 
 - Discussion of applications to forestry monitoring and management
-- Refinement of protocol for large scale surveying
+- Refinement of protocol for large scale surveying or alternative applications
 
 Alternative phenotyping protocols could be developed compare across species that would incorporate appropriate tree size corrections
 - Aid long term monitoring by providing comparability over time. This was highlighted in the recently published Action Oak Knowledge Review as a key requirement in the future for safeguarding oak health. [@quine2019],
 - Applied to long established monitoring data sets such as The International Co-operative Programme on Assessment and Monitoring of Air Pollution Effects on Forests (ICP Forests) [@lorenz1995].
 
+The current context in which these decline indexes are presented is based on a very focus set of descriptors on sites with a high proportion of declining trees. 
+Scaling this technique to enable generalised naive computation of decline indexes for any tree sampled in the UK would require a substantially larger training data set that incorporates the descriptive diversity of oak decline in the population as whole (ref).
+Scaling to this level would also require an appropriate method of tree size correction that could be applied on an individual tree basis.
+A potential solution to this would be to correct trees based on estimated age from DBH as proposed by @white1998.
 
 They allow sensitive comparisons to be made for the same tree between years as well as comparisons of trees between different locations.
 which could have great utility in long term forest health monitoring for both forestry management and research.
@@ -358,10 +363,10 @@ which could have great utility in long term forest health monitoring for both fo
 - Crown condition descriptors most important for describing overall decline severity in the PDI.
 - Bacterial bleed related descriptors are most important for describing decline acuteness.
 - Decline indexes provide intuitive measures of decline severity based on simple phenotypic measurements that do not require specialist equipment
-- Encouraged to apply this approach in other contexts
 
 The decline indexes presented here provided intuitive measures 
 The approach presented here is easily adaptable to incorporate any phenotype
+It is encouraged that this approach of deriving descriptive index measurse in other tree health phenotyping contexts.
 
 ## Acknowledgements
 
