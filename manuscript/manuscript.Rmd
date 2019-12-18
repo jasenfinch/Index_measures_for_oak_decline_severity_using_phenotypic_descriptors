@@ -301,26 +301,25 @@ These two indexes provide a two dimensional oak decline continuum under which th
 The index thresholds for category definitions (healthy, declining, severe decline etc.) shown there currently serve only as a guide to aid human interpretation as opposed to definitive thresholds of disease. 
 Further work is needed that includes phenotypic data with greater spatial and temporal resolution would be needed to establishing definitive thresholds. 
 
-- Suitability of collected phenotypic descriptors and decline indexes for describing decline status
-
 Crown condition and volume were shown to be the key contributors to the PDI. 
 This is to be expected and hoped for when using an unsupervised approach as crown condition and crown dimensions are well established as the key components of assessing overall tree health and condition [@schomaker2007]. 
 However, previous studies such as @evans2012 and @pontius2014 have treated these descriptors as linear progressions of oak health that contribute equally to overall tree condition.
 It has been shown here that firstly factors of overal crown condition and size are unlikely to contribute equally to our visual definition of oak decline severity (Figure 2a) and secondly, it is unlikely that these aspects of crown condition contribute linearly to our visual definition of oak decline severity (Figure 3a).
 
 The high contribution of bleed prevalence related descriptors to the DAI is expected as this is one of the defining features of AOD [@denman2014]. 
-
 There was no contribution of *A. biguttatus* exit hole occurance with with the DAI and therefore stem bleeding - smaller area surveyed compared to bleeding. It has also been found previouly that trees with bleeds do not always have exit holes as  [@brown2017a;@vansteenkiste2004].
 
 AOD severity could also be associated with overall decline severity with trees identified that had a combination of both PDI values greater than 0.7 and DAI values greater than 0.5 (Figure 1).
 The association of crown condition and AOD severity could not previously be shown by @denman2014 due to a low sample size.
 
-- Size differences between AOD and COD trees
-
-The relationship of relative tree stature and the acuteness of the decline likely reflects the period of time under which these trees have been afflict. 
+It was shown that tree size, reflected by the live crown ratio descriptor, contributes most to the DAI in descriminating between COD and AOD trees.
+The relationship of relative tree stature and the acuteness of oak decline has not previously been shown and likely reflects the period of time under which these trees have been afflicted. 
 AOD occurs over a much shorter period compared COD and therefore has less time in which to inhibit growth of the tree as a whole.
 
-- Refined definition of remission - repeat measurement
+The remission trees as a group were shown to be intermediate in decline severity and type to the healthy, AOD and COD trees on both the PDI and DAI index scales.
+However, this was also the most varied of the decline status groups.
+It is possible that this could reflect an underly relationship of the potential for trees to recover from AOD but this is speculative and it is not possible to attribute this further with these observations.
+Using these decline indexes, remission trees can be more objectively defined in terms of their temporal trajectory within the decline index continuum. 
 
 ### The machine learning approach
 
@@ -361,6 +360,7 @@ Alternatively, the machine learning approach used to derive these decline indexe
 
 ## Conclusions
 
+- Suitability of collected phenotypic descriptors and decline indexes for describing decline status
 - Crown condition descriptors most important for describing overall decline severity in the PDI.
 - Bacterial bleed related descriptors are most important for describing decline acuteness.
 - Decline indexes provide intuitive measures of decline severity based on simple phenotypic measurements that do not require specialist equipment
