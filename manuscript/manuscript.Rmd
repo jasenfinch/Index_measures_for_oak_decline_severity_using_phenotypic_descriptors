@@ -88,7 +88,7 @@ The phenotypic data were collected from a total of 174 trees from nine sites fro
 The occurrence of AOD has previously been reported and studied at six of the sites [@brown2016; @brown2017a].
 These sites included a variety of woodland, management and soil types as well as tree sizes/ages and were made up of mainly *Q. robur*.
 
-All trees were manually assigned a decline status category; control, AOD, COD or remission prior to collection of phenotypic descriptors.
+All trees were manually assigned a decline status category; healthy, AOD, COD or remission prior to collection of phenotypic descriptors.
 The remission group included trees that had shown stem bleeds associated with AOD within the previous three years but were not showing signs of stem bleeds at the time of assessment.
 
 The phenotypic descriptors collected related to the trees shape, size, crown condition and the presence of biotic agents including insects, bacteria and fungi.
@@ -222,7 +222,7 @@ Cases included neutral, moderate and severe with PDI scores greater than 0.5 and
 
 ### Site differences
 
-High discrimination was found in the phenotypic descriptors between the sites was investigated using supervised random forest classification (Supplementary  figure 3a; margin = `r site_rf_margin$Margin %>% signif(digits = 3)`). 
+High discrimination was found in the phenotypic descriptors between the sites, which was investigated using supervised random forest classification (Supplementary  figure 3a; margin = `r site_rf_margin$Margin %>% signif(digits = 3)`). 
 The descriptors that contributed most to this discrimination were those that were related to trees size such as DBH, total height and crown radius and likely reflect the varied tree age and planting density across the nine sites (Supplementary figure 3b). 
 After the application of trees size adjustment to removed inter-site variability but maintain intra-site variability, the random forest margin was substantially reduced to `r site_rf_post_correction_margin$Margin %>% signif(digits = 3)` indicating that the majority of the between site variance had been removed.
 This enabled subsequent comparisons to be made between the trees at the different sites in the context of decline severity.
@@ -230,13 +230,13 @@ This enabled subsequent comparisons to be made between the trees at the differen
 ### Oak decline severity indexes of manually assigned decline statuses
 
 A scatter plot of the calculated PDI and DAI scores is shown in Figure 1 for all `r nrow(site_corrected_analysis_suitable_data)` trees for which phenotypic descriptor data was collected.
-It can clearly be seen that the control trees group towards the lower end of the PDI scale and the symptomatic COD and AOD groups towards the higher end.
+It can clearly be seen that the healthy trees group towards the lower end of the PDI scale and the symptomatic COD and AOD groups towards the higher end.
 This gave a significant difference when PDI of the control and symptomatic (AOD and COD) decline statuses were compared using an independent two sample t-test (`r glue("t({PDI_status_ttest$parameter}) = {signif(PDI_status_ttest$statistic,digits = 3) %>% abs()}, p < 0.001")`) with group means of `r signif(PDI_status_ttest$estimate1,digits = 3)` and `r signif(PDI_status_ttest$estimate2,digits = 3)` for non-symptomatic and symptomatic statuses respectively.
 
 On the DAI scale, the AOD trees group at the upper end of the scale (> 0) and the COD trees at the lower end (< 0).
 This was confirmed with significance found in the DAI between these groups (`r glue("t({DAI_groups_ttest$parameter}) = {signif(DAI_groups_ttest$statistic,digits = 3) %>% abs()}, p < 0.001")`) with group means of `r signif(DAI_groups_ttest$estimate1,digits = 3)` and `r signif(DAI_groups_ttest$estimate2,digits = 3)` for the AOD and COD groups respectively.
 
-The remission trees were found to be significantly different in their PDI scores from both the control (`r glue("t({remission_PDI_group_ttest$parameter[1]}) = {signif(remission_PDI_group_ttest$statistic[1],digits = 3) %>% abs()}, p < 0.001")`) and symptomatic (AOD and COD; `r glue("t({remission_PDI_group_ttest$parameter[2]}) = {signif(remission_PDI_group_ttest$statistic[2],digits = 3) %>% abs()}, p < 0.001")`) groups with means of `r signif(remission_PDI_group_ttest$estimate1[1],digits = 3)`, `r signif(remission_PDI_group_ttest$estimate2[1],digits = 3)` and `r signif(remission_PDI_group_ttest$estimate2[2],digits = 3)` for the control, remission and symptomatic groups respectively.
+The remission trees were found to be significantly different in their PDI scores from both the healthy (`r glue("t({remission_PDI_group_ttest$parameter[1]}) = {signif(remission_PDI_group_ttest$statistic[1],digits = 3) %>% abs()}, p < 0.001")`) and symptomatic (AOD and COD; `r glue("t({remission_PDI_group_ttest$parameter[2]}) = {signif(remission_PDI_group_ttest$statistic[2],digits = 3) %>% abs()}, p < 0.001")`) groups with means of `r signif(remission_PDI_group_ttest$estimate1[1],digits = 3)`, `r signif(remission_PDI_group_ttest$estimate2[1],digits = 3)` and `r signif(remission_PDI_group_ttest$estimate2[2],digits = 3)` for the healthy, remission and symptomatic groups respectively.
 As a group, these trees are showing moderate overall decline.
 
 The remission trees were also found to be significantly different to the AOD (`r glue("t({remission_DAI_group_ttest$parameter[1]}) = {signif(remission_DAI_group_ttest$statistic[1],digits = 3) %>% abs()}, p = < 0.001")`) and COD (`r glue("t({remission_DAI_group_ttest$parameter[2]}) = {signif(remission_DAI_group_ttest$statistic[2],digits = 3) %>% abs()}, p = {round(remission_DAI_group_ttest$p.value[2],3)}")`) groups on the DAI scale with group means of `r signif(remission_DAI_group_ttest$estimate1[1],digits = 3)`, `r signif(remission_DAI_group_ttest$estimate2[1],digits = 3)` and `r signif(remission_DAI_group_ttest$estimate1[2],digits = 3)` for the AOD, remission and COD groups respectively. 
@@ -245,7 +245,7 @@ As a group, the remission trees were found to be neither AOD or COD.
 ### Key descriptors contributing to the decline indexes
 
 The top four ranked descriptors found to contribute to the PDI index model were all crown size and condition related descriptors with composite crown volume the top ranked descriptor overall (Figure 2a).
-Other tree size related descriptors such as and stem bleeding descriptors contributed secondarily.
+Other tree size related descriptors such as and live crown ratio stem bleeding descriptors contributed secondarily.
 
 The DAI was more complex in descriptor contribution many more descriptors contributing more equally than the PDI (Figure 2b).
 The overall tree size descriptors live crown ratio, DBH and crown volume contributed almost equally to the DAI index model.
@@ -258,7 +258,7 @@ The following sections identify how the descriptors contribute and interact to t
 ### Localised descriptor contributions and trends within the PDI and DAI models
 
 LIME identified crown volume, condition transparency and radius as the top four descriptors contributing to the PDI in each of the healthy, moderate and severe decline cases using lime (Table 1).
-These descriptors were also the same top descriptors in the overall model importance lists for the PDI.
+These descriptors were also the same top descriptors in the overall model importance lists for the PDI (Figure 2a).
 Increasing decline severity was associated with a reduction in the size and condition of the crown.
 For instance, declining trees were found to have a composite crown volume below 841m^3^.
 Healthy trees were found to have a crown condition greater than 71.3%, moderately declining trees between 47.6% and 71.3% and severely declining trees a condition below 23.9%.
@@ -279,7 +279,7 @@ Figures 3 and 4 show the simulated index value response surfaces under a variety
 Crown condition descriptors such as composite crown volume and crown condition contributed highly to the PDI (Figure 2a).
 The phenotypic measures central to this were percentage missing crown and percentage crown transparency from which crown condition and crown volume are calculated. 
 It can be seen in Figure 3 that as the percentage missing crown and percentage crown transparency increase and therefore crown condition and composite crown volume decrease, the PDI increases. 
-A much greater range of PDI values can be obtained from trees with relatively greater stature (e.g. greater crown radius, total height, lower crown height and DBH; Figures 3a & b), with relatively small stature trees having PDIs of 0.5 or greater even with 100% crown condition.
+A much greater range of PDI values can be obtained from trees with relatively greater stature (e.g. greater crown radius, total height, lower crown height and DBH; Figures 3a & b), with relatively small stature trees having PDIs of 0.6 or greater even with 100% crown condition.
 
 The DAI is a much more complex index with more descriptors contributing to it than the PDI such as bleed prevalence, DBH and crown condition descriptors. 
 Simulated response surfaces for the DAI are shown in Figure 4. 

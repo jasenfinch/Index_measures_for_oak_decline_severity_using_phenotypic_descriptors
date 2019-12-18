@@ -2,6 +2,10 @@
 declineIndexesPlot <- function(decline_indexes){
   decline_indexes %>%
     filter(ChosenGroup != 'Extra') %>%
+    {
+      .$ChosenGroup[.$ChosenGroup == 'Control'] <- 'Healthy'
+      return(.)
+    } %>%
     ggplot(aes(x = PDI,y = DAI)) +
     geom_point(aes(fill = ChosenGroup),shape = 21,size = 3) +
     scale_fill_manual(values = ptol_pal()(4)[c(4,1,2,3)]) +
