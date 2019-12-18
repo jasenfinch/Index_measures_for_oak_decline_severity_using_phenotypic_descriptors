@@ -1,8 +1,8 @@
 ---
 title: "Index measures for oak decline severity using phenotypic descriptors"
 output: 
-  #word_document: default
-  pdf_document: default
+  word_document: default
+  # pdf_document: default
 bibliography: references.bib
 ---
 
@@ -360,14 +360,12 @@ Alternatively, the machine learning approach used to derive these decline indexe
 
 ## Conclusions
 
-- Suitability of collected phenotypic descriptors and decline indexes for describing decline status
-- Crown condition descriptors most important for describing overall decline severity in the PDI.
-- Bacterial bleed related descriptors are most important for describing decline acuteness.
-- Decline indexes provide intuitive measures of decline severity based on simple phenotypic measurements that do not require specialist equipment
+The decline indexes presented here provide a new framework in which to quantitative describe the phenotypic oak decline spectrum using intuitive measures severity (PDI) and type (DAI).
+Their basis is on simple phenotypic descriptor measuerments and a utilisation of a data driven, unsupervised random forest based machine learning approach.
+This has shown the relative contributions that aspects of tree size, crown condition, and symptoms such as stem bleeding have on quantitatively defining our concepts of oak decline status.
 
-The decline indexes presented here provided intuitive measures 
-The approach presented here is easily adaptable to incorporate any phenotype
-It is encouraged that this approach of deriving descriptive index measurse in other tree health phenotyping contexts.
+Strategies have been presented such as the use of LIME and simulated model response surfaces that can aid the interpretation of the complex descriptor interactions that underly these simple index measures and  greatly reduce the black box nature that is often associated with these approaches. 
+It is encouraged that this approach of deriving descriptive index measures using machine learning is applied in other tree health phenotyping contexts and it is hoped that this will have an impact on future the consistency and comparability of oak health monitoring.  
 
 ## Acknowledgements
 
