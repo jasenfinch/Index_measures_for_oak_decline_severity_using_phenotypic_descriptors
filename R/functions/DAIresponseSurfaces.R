@@ -74,14 +74,14 @@ DAIresponseSurfaces <- function(DAIrf,decline_indexes,site_corrected_analysis_su
     map(~{
       type <- .
       list(
-        `Crown transparency (%)` = seq(ranges$min[ranges$Descriptor == 'Crown transparency (%)'],ranges$max[ranges$Descriptor == 'Crown transparency (%)'],length.out = 100),
-        `Missing crown (%)` = seq(ranges$min[ranges$Descriptor == 'Missing crown (%)'],ranges$max[ranges$Descriptor == 'Missing crown (%)'],length.out = 100)
+        `Total height (m)` = seq(ranges$min[ranges$Descriptor == 'Total height (m)'],ranges$max[ranges$Descriptor == 'Total height (m)'],length.out = 100),
+        `Lower crown height (m)` = seq(ranges$min[ranges$Descriptor == 'Lower crown height (m)'],ranges$max[ranges$Descriptor == 'Lower crown height (m)'],length.out = 100)
       ) %>%
         expand.grid() %>%
         as_tibble() %>%
         mutate(ID = 1) %>%
         left_join(spectrumTrees_DAI[[type]] %>%
-                    select(-`Crown transparency (%)`,-`Missing crown (%)`) %>%
+                    select(-`Total height (m)`,-`Lower crown height (m)`) %>%
                     mutate(ID = 1),
                   by = 'ID') %>%
         select(-ID) %>%
@@ -136,7 +136,7 @@ DAIresponseSurfaces <- function(DAIrf,decline_indexes,site_corrected_analysis_su
     map(~{
       type <- .
       pl <- plotRanges_DAI_def[[type]] %>%
-        ggplot(aes(x = `Crown transparency (%)`,y = `Missing crown (%)`,fill = DAI,z = DAI)) +
+        ggplot(aes(x = `Total height (m)`,y = `Lower crown height (m)`,fill = DAI,z = DAI)) +
         geom_raster() +
         geom_contour(colour = 'black',binwidth = 0.1) +
         geom_text_contour(stroke = 0.2,binwidth = 0.1,min.size = 10,size = 3) +
@@ -151,8 +151,6 @@ DAIresponseSurfaces <- function(DAIrf,decline_indexes,site_corrected_analysis_su
         labs(title = type,
              caption = str_c(
                'Crown radius (m) = ',plotRanges_DAI_def[[type]]$`Crown radius (m)`[1] %>% round(3),'\n',
-               'Total height (m) = ',plotRanges_DAI_def[[type]]$`Total height (m)`[1] %>% round(3),'\n',
-               'Lower crown height (m) = ',plotRanges_DAI_def[[type]]$`Lower crown height (m)`[1] %>% round(3),'\n',
                'Diameter at breast height (m) = ',plotRanges_DAI_def[[type]]$`Diameter at breast height (m)`[1] %>% round(3)
              )
         )
