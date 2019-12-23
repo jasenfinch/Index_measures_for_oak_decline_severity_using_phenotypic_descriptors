@@ -373,10 +373,9 @@ It is encouraged that this approach of deriving descriptive index measures using
 We would like to thank the Forest Research TSU for collecting the phenotypic data presented in this article especially Liz Richardson and Mark Oram for coordinating surveying.
 This work was supported by Woodland Heritage and the Future Proofing Plant Health (FPPH) Oak Resilience project.
 
-## Checks
 
 ```{r check,comment='',cache=FALSE}
-manuscript_check(checks = c('word count','spelling'))
+# manuscript_check(checks = c('word count','spelling'))
 ```
 
 ## References
