@@ -8,7 +8,7 @@ PDIlimeAnalysisTable <- function(PDI_lime_analysis,decline_indexes){
   
   PDI_lime_analysis %>%
     left_join(cases,by = 'case') %>%
-    select(Status = name,PDI,`Predicted PDI` = prediction,Descriptor = feature,Value = feature_value,`Descriptor (\\textit{d}) range` = feature_desc,Weight = feature_weight) %>%
+    select(Status = name,PDI,`Predicted PDI` = prediction,Descriptor = feature,`Descriptor (\\textit{d}) range` = feature_desc,Weight = feature_weight) %>%
     {
       for (i in unique(.$Descriptor)) {
         .$`Descriptor (\\textit{d}) range` <- str_replace_all(.$`Descriptor (\\textit{d}) range`,coll(i),'\\textit{d}')

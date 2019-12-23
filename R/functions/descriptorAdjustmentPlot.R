@@ -4,15 +4,15 @@ descriptorAdjustmentPlot <- function(phenoData,correctedPhenoData){
   
   corrected_dbh <- varSummary(correctedPhenoData)
   
-  overallMean <- mean(phenoData$`Diameter at breast height (mm)`)
+  overallMean <- mean(phenoData$`Diameter at breast height (m)`)
   
   ylims <- c(
-    dbh %>% 
+    dbh %>%
       filter(Mean == min(Mean)) %>%
-      {.$Mean[1] - .$SE[1] - 1},
-    dbh %>% 
+      {.$Mean[1] - .$SE[1] - 0.01},
+    dbh %>%
       filter(Mean == max(Mean)) %>%
-      {.$Mean[1] + .$SE[1] + 1}
+      {.$Mean[1] + .$SE[1] + 0.01}
   )
   
   descriptor_adjustment <- list(
@@ -25,7 +25,7 @@ descriptorAdjustmentPlot <- function(phenoData,correctedPhenoData){
             axis.text.x = element_text(angle = 20,hjust = 1),
             axis.title = element_text(face = 'bold')) +
       labs(title = 'Unadjusted',
-           y = 'Diameter at\nbreast height (mm)',
+           y = 'Diameter at\nbreast height (m)',
            x = '') +
       ylim(ylims[1],ylims[2]),
     b = ggplot(corrected_dbh,aes(x = Location,y = Mean,)) +
@@ -37,7 +37,7 @@ descriptorAdjustmentPlot <- function(phenoData,correctedPhenoData){
             axis.text.x = element_text(angle = 20,hjust = 1),
             axis.title = element_text(face = 'bold')) +
       labs(title = 'Adjusted',
-           y = 'Adjusted diameter at\nbreast height (mm)',
+           y = 'Adjusted diameter at\nbreast height (m)',
            x = '') +
       ylim(ylims[1],ylims[2])
   )

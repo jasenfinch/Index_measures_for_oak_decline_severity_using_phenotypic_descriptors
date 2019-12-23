@@ -11,19 +11,19 @@ knitr::opts_chunk$set(echo = FALSE,
                       message = FALSE)
 ```
 
-```{r decline_index_plot}
+```{r decline_index_plot,fig.cap='Decline indexes for all 174 trees. The chosen group categories were selected in the field prior to data collection. AOD = acute oak decline; COD = chronic oak decline. Remisson tress were those that were known to have had active bleeds within the previous 3 years.'}
 loadd(decline_indexes_plot)
 
 decline_indexes_plot
 ```
 
-```{r descriptor_contributions, fig.height = 6,fig.cap = 'Descriptor importance scores from random forest models for relative contributions to\ndecline index measures. a) Phenotypic decline index (PDI). b) Decline acuteness index (DAI)'}
+```{r descriptor_contributions, fig.height = 6,fig.cap = 'Descriptor importance scores from random forest models for relative contributions to\ndecline index measures.'}
 loadd(descriptor_contribution_plots)
 
 descriptor_contribution_plots$a + descriptor_contribution_plots$b
 ```
 
-```{r PDI_response_surfaces,fig.height = 6,fig.cap='PDI response surfaces for simulated descriptor values from trained Random Forest models. All other descriptors were set at the values of those of the trees with the lowest PDI used for trainig the models'}
+```{r PDI_response_surfaces,fig.height = 6,fig.cap='PDI response surfaces for simulated descriptor values from trained random forest models.'}
 loadd(PDI_response_surfaces)
 
 grid.arrange(PDI_response_surfaces$`a)`,
@@ -34,7 +34,7 @@ grid.arrange(PDI_response_surfaces$`a)`,
 ```
 
 
-```{r DAI_response_surfaces,fig.height = 8,fig.cap='DAI response surfaces for simulated descriptor values from trained Random Forest models. All other descriptors were set at the values of those of the trees with the lowest PDI used for trainig the models'}
+```{r DAI_response_surfaces,fig.height = 8,fig.cap='DAI response surfaces for simulated descriptor values from trained random forest models.'}
 loadd(DAI_response_surfaces)
 
 grid.arrange(textGrob(expression(bold('AOD')),hjust = -0.1),
@@ -56,6 +56,6 @@ grid.arrange(textGrob(expression(bold('AOD')),hjust = -0.1),
              newpage = F)
 ```
 
-```{r DI_space,fig.cap='Two dimensional continuum of the phenotypic decline indexes for oak decline severity.',fig.height=3,fig.width=5}
+```{r DI_space,fig.cap='Two dimensional continuum of the phenotypic decline indexes for oak decline severity. Decline category boundaries intended as a guide to aid interpretation only. Grey area indicates area for which the decline indexes are currently undefined.' ,fig.height=3,fig.width=5}
 DIspace()
 ```

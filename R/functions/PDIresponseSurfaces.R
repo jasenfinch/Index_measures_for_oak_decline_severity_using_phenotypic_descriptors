@@ -1,9 +1,23 @@
 
 PDIresponseSurfaces <- function(PDIrf,decline_indexes,site_corrected_analysis_suitable_data){
+  
+  PDI_quantiles <- decline_indexes$PDI %>%
+    quantile() %>%
+    .[c("0%","50%",'100%')]
+    # .[c("25%","50%",'75%')]
+
+  PDI_values <- PDI_quantiles %>%
+    map_dbl(~{
+      a <- decline_indexes$PDI %>%
+        {. - .x} %>%
+        abs()
+      decline_indexes$PDI[which(a == min(a))[1]]
+      })
+  
   spectrumTrees_PDI <- list(
-    `a)` = site_corrected_analysis_suitable_data[which(decline_indexes$PDI == min(decline_indexes$PDI)),],
-    `b)` = site_corrected_analysis_suitable_data[which(decline_indexes$PDI == min(decline_indexes$PDI)),],
-    `c)` = site_corrected_analysis_suitable_data[which(decline_indexes$PDI == min(decline_indexes$PDI)),]
+    `a) Healthy` = site_corrected_analysis_suitable_data[decline_indexes$PDI == PDI_values[['0%']],],
+    `b) Moderate decline` = site_corrected_analysis_suitable_data[decline_indexes$PDI == PDI_values[['50%']],],
+    `c) Severe decline` = site_corrected_analysis_suitable_data[decline_indexes$PDI == PDI_values[['100%']],]
   )
   
   variables <- names(site_corrected_analysis_suitable_data)[map_lgl(site_corrected_analysis_suitable_data,is.numeric)]
@@ -18,22 +32,6 @@ PDIresponseSurfaces <- function(PDIrf,decline_indexes,site_corrected_analysis_su
     }) %>%
     set_names(variables) %>%
     bind_rows(.id = 'Descriptor')
-  
-  spectrumTrees_PDI$`a)`$`Crown radius (m)` <- ranges$max[ranges$Descriptor == 'Crown radius (m)']
-  spectrumTrees_PDI$`b)`$`Crown radius (m)` <- ranges$center[ranges$Descriptor == 'Crown radius (m)']
-  spectrumTrees_PDI$`c)`$`Crown radius (m)` <- ranges$min[ranges$Descriptor == 'Crown radius (m)']
-  
-  spectrumTrees_PDI$`a)`$`Total height (m)` <- ranges$max[ranges$Descriptor == 'Total height (m)']
-  spectrumTrees_PDI$`b)`$`Total height (m)` <- ranges$center[ranges$Descriptor == 'Total height (m)']
-  spectrumTrees_PDI$`c)`$`Total height (m)` <- ranges$min[ranges$Descriptor == 'Total height (m)']
-  
-  spectrumTrees_PDI$`a)`$`Lower crown height (m)` <- ranges$max[ranges$Descriptor == 'Lower crown height (m)']
-  spectrumTrees_PDI$`b)`$`Lower crown height (m)` <- ranges$center[ranges$Descriptor == 'Lower crown height (m)']
-  spectrumTrees_PDI$`c)`$`Lower crown height (m)` <- ranges$min[ranges$Descriptor == 'Lower crown height (m)']
-  
-  spectrumTrees_PDI$`a)`$`Diameter at breast height (mm)` <- ranges$max[ranges$Descriptor == 'Diameter at breast height (mm)']
-  spectrumTrees_PDI$`b)`$`Diameter at breast height (mm)` <- ranges$center[ranges$Descriptor == 'Diameter at breast height (mm)']
-  spectrumTrees_PDI$`c)`$`Diameter at breast height (mm)` <- ranges$min[ranges$Descriptor == 'Diameter at breast height (mm)']
   
   plotRanges_PDI <- spectrumTrees_PDI %>%
     names() %>%
@@ -75,7 +73,7 @@ PDIresponseSurfaces <- function(PDIrf,decline_indexes,site_corrected_analysis_su
              caption = str_c('Crown radius (m) = ',plotRanges_PDI[[type]]$`Crown radius (m)`[1] %>% round(3),'\n',
                              'Total height (m) = ',plotRanges_PDI[[type]]$`Total height (m)`[1] %>% round(3),'\n',
                              'Lower crown height (m) = ',plotRanges_PDI[[type]]$`Lower crown height (m)`[1] %>% round(3),'\n',
-                             'Diameter at breast height (mm) = ',plotRanges_PDI[[type]]$`Diameter at breast height (mm)`[1] %>% round(3)
+                             'Diameter at breast height (m) = ',plotRanges_PDI[[type]]$`Diameter at breast height (m)`[1] %>% round(3)
              )
         )
       return(pl)

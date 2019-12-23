@@ -44,7 +44,7 @@ plan <- drake_plan(
   ## site differences MDS and importance plots
   site_differences_mds_plot = site_differences_rf %>%
     siteDifferencesRFplot(pheno_data_with_additional_descriptors),
-    
+  
   ## calculate descriptor correction factors
   site_correction_factors = pheno_data_with_additional_descriptors %>%
     siteCorrectionFactors(),
@@ -95,8 +95,58 @@ plan <- drake_plan(
   
   ## t-test for PDI and status
   PDI_status_ttest = decline_indexes %>%
+    filter(ChosenGroup %in% c('Control','AOD','COD')) %>%
     t.test(PDI~Status,data = .,var.equal = TRUE) %>%
     tidy(),
+  
+  ## DAI decline type summary
+  DAI_groups_summary = decline_indexes %>%
+    filter(ChosenGroup %in% c('AOD','COD')) %>% 
+    group_by(ChosenGroup) %>% 
+    summarise(median = median(DAI),
+              mean = mean(DAI)),
+  
+  ## Remission PDI t-test
+  remission_PDI_group_ttest = decline_indexes %>%
+    filter(ChosenGroup %in% c('Control','AOD','COD','Remission')) %>%
+    {
+      d <- .
+      c_r <- d %>%
+        filter(ChosenGroup %in% c('Control','Remission')) %>%
+        t.test(PDI~ChosenGroup,data = .,var.equal = TRUE) %>%
+        tidy()
+      s_r <- d %>%
+        filter(ChosenGroup %in% c('Remission','AOD','COD')) %>%
+        mutate(new_status = ChosenGroup) %>%
+        {
+          .$new_status[.$ChosenGroup == 'AOD'] <- 'Symptomatic'
+          .$new_status[.$ChosenGroup == 'COD'] <- 'Symptomatic'
+          return(.)
+        } %>%
+        t.test(PDI~new_status,data = .,var.equal = TRUE) %>%
+        tidy()
+      list(`control~remission` = c_r,
+           `symptomatic~remission` = s_r) %>%
+        bind_rows(.id = 'comparison')
+    },
+  
+  ## Remission DAI ttest
+  remission_DAI_group_ttest = decline_indexes %>%
+    filter(ChosenGroup %in% c('AOD','COD','Remission')) %>%
+    {
+      d <- .
+      r_a <- d %>%
+        filter(ChosenGroup %in% c('AOD','Remission')) %>%
+        t.test(DAI~ChosenGroup,data = .,var.equal = TRUE) %>%
+        tidy()
+      r_c <- d %>%
+        filter(ChosenGroup %in% c('COD','Remission')) %>%
+        t.test(DAI~ChosenGroup,data = .,var.equal = TRUE) %>%
+        tidy()
+      list(`AOD~remission` = r_a,
+           `COD~remission` = r_c) %>%
+        bind_rows(.id = 'comparison')
+    },
   
   ## plot DAI against AOD and COD groups
   DAI_groups_plot = decline_indexes %>% 
@@ -133,18 +183,26 @@ plan <- drake_plan(
   PDI_rf_model = site_corrected_analysis_suitable_data %>%
     {set.seed(1234)
       randomForest(.,y = decline_indexes$PDI,
-                 ntree = PDI_rf_tune_params$ntree,
-                 mtry = PDI_rf_tune_params$mtry)},
+                   ntree = PDI_rf_tune_params$ntree,
+                   mtry = PDI_rf_tune_params$mtry,
+                   importance = TRUE)},
+  
+  ## PDI descriptor importance
+  PDI_descriptor_importance = descriptorImportance(PDI_rf_model),
   
   ## generate DAI predictive random forest model
   DAI_rf_model = site_corrected_analysis_suitable_data %>%
     {set.seed(1234)
       randomForest(.,y = decline_indexes$DAI,
                    ntree = DAI_rf_tune_params$ntree,
-                   mtry = DAI_rf_tune_params$mtry)},
+                   mtry = DAI_rf_tune_params$mtry,
+                   importance = TRUE)},
+  
+  ## DAI descriptor importance
+  DAI_descriptor_importance = descriptorImportance(DAI_rf_model),
   
   ## create descriptor contribution plots
-  descriptor_contribution_plots = descriptorImportancePlots(PDI_rf_model,DAI_rf_model),
+  descriptor_contribution_plots = descriptorImportancePlots(PDI_descriptor_importance,DAI_descriptor_importance),
   
   ## PDI lime analysis
   PDI_lime_analysis = PDIlimeAnalysis(site_corrected_analysis_suitable_data,PDI_rf_model,decline_indexes),
@@ -180,8 +238,10 @@ plan <- drake_plan(
   ## render figures
   figures = render(knitr_in('manuscript/figures.Rmd'),quiet = T),
   
-  ## render manuscript
-  manuscript = render(knitr_in('manuscript/manuscript.Rmd'),quiet = T),
+  ## render manuscript 
+  manuscript = render(knitr_in('manuscript/manuscript.Rmd'),
+                      quiet = T,
+                      output_format = 'all'),
   
   ## render supplementary
   supplementary = render(knitr_in('manuscript/supplementary.Rmd'),quiet = T)

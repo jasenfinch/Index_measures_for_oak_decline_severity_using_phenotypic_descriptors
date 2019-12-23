@@ -30,16 +30,19 @@ knitr::opts_chunk$set(echo = FALSE,
 loadd(phenotypic_descriptor_info)
 
 phenotypic_descriptor_info %>%
-  kable(format = 'latex',booktabs = TRUE,longtable = TRUE) %>%
-  kable_styling(latex_options = 'repeat_header',repeat_header_continued = TRUE) %>%
-  column_spec(1,width = '1.5cm') %>%
-  column_spec(2,width = '3cm') %>%
-  column_spec(4:5,width = '7cm') %>%
-  collapse_rows(columns = 1,latex_hline = "major", valign = "middle") %>%
-  landscape()
+  select(-`Descriptor Type`,-`Data Type`) %>%
+  kable(format = 'latex',
+        booktabs = TRUE,
+        longtable = TRUE,
+        caption = 'Phenotypic descriptors collected for oak decline severity.') %>%
+  kable_styling(latex_options = c('striped','repeat_header'),repeat_header_continued = TRUE) %>%
+  # column_spec(1,width = '1.5cm') %>%
+  column_spec(1,width = '3cm') %>%
+  column_spec(2:3,width = '6cm') #%>%
+  # collapse_rows(columns = 1,latex_hline = "major", valign = "middle")
 ```
 
-```{r descriptor_adjustment,fig.cap='Error bars show ±1SE of the mean.\nDashed red line shows the overall mean.'}
+```{r descriptor_adjustment,fig.cap='Exapmle of overall mean adjustment applied to the diameter at breast height (m) descriptor. Error bars show ±1SE of the mean. Dashed red line shows the overall mean.'}
 loadd(descriptor_adjustment_example)
 
 descriptor_adjustment_example %>%
@@ -51,35 +54,35 @@ loadd(site_correction_factors)
 
 site_correction_factors %>%
   mutate_if(is.double,signif,digits = 3) %>%
-  kable(format = 'latex',booktabs = TRUE,caption = 'Descriptor correction factors at each site') %>%
+  kable(format = 'latex',booktabs = TRUE,caption = 'Descriptor adjustment factors at each site.') %>%
   collapse_rows(columns = 1,latex_hline = "major", valign = "middle")
 ```
 
-```{r modelTuningResultsPlot}
+```{r modelTuningResultsPlot,fig.cap='Random forest parameter tuning results for decline index models.'}
 loadd(rf_tune_plot)
 
 rf_tune_plot
 ```
 
-```{r site_differences,fig.cap='Differences between sites in phenotypic descriptors analysed by supervised Random Forest. a) Multidimensional scaling (MDS) plot of random forest proximity values of individual trees scaled to two dimensions. Mean margin value shown. b) Relative descriptor Gini importances measures.',fig.height=6}
+```{r site_differences,fig.cap='Differences between sites in phenotypic descriptors analysed by supervised Random Forest. a) Multidimensional scaling (MDS) plot of random forest proximity values of individual trees scaled to two dimensions. Mean margin value shown. b) Descriptor importances measures.',fig.height=6}
 loadd(site_differences_mds_plot)
 grid.arrange(site_differences_mds_plot$a,site_differences_mds_plot$b,nrow = 1)
 ```
 
-```{r PDInumeric,fig.height=9}
+```{r PDInumeric,fig.height=9,fig.cap='Continuous descriptors plotted against the PDI.'}
 loadd(descriptor_scatter_plots)
 
 descriptor_scatter_plots$PDI_numeric
 ```
 
-```{r PDIfactor,fig.height=8}
+```{r PDIfactor,fig.height=8,fig.cap='Categorical descriptors plotted against the PDI.'}
 descriptor_scatter_plots$PDI_factor
 ```
 
-```{r DAInumeric,fig.height=9}
+```{r DAInumeric,fig.height=9,fig.cap='Continuous descriptors plotted against the DAI.'}
 descriptor_scatter_plots$DAI_numeric
 ```
 
-```{r DAIfactor,fig.height=8}
+```{r DAIfactor,fig.height=8,fig.cap='Categorical descriptors plotted against the DAI.'}
 descriptor_scatter_plots$DAI_factor
 ```

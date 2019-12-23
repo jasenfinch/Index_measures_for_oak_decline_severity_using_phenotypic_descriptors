@@ -22,9 +22,5 @@ dataCorrections <- function(phenoData){
   phenoData <- phenoData %>%
     correctStatuses()
   
-  phenoData <- phenoData %>%
-    mutate_at(vars(contains(coll('(cm)'))),~{. * 10}) %>%
-    rename_at(vars(contains(coll('(cm)'))),~{str_replace(.,'(cm)','mm')})
-  
   return(phenoData)
 }

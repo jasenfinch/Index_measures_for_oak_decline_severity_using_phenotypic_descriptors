@@ -1,66 +1,50 @@
 
-descriptorImportancePlots <- function(PDIrf,DAIrf){
+descriptorImportancePlots <- function(PDI_descriptor_importance,DAI_descriptor_importance){
   list(
     a = {
-      dat <- PDIrf %>%
-        {
-          imp <- importance(.)
-          feat <- rownames(imp)
-          imp <- imp[,1]
-          tibble(Feature = feat,`Gini Importance` = imp)
-        } %>%
-        arrange(`Gini Importance`) %>%
-        mutate(Feature = factor(Feature,levels = Feature), `Relative Importance` = `Gini Importance` / max(`Gini Importance`)) 
-      
+      dat <- PDI_descriptor_importance %>%
+        arrange(`%IncMSE`) %>%
+        mutate(Feature = factor(Feature,levels = Feature)) 
       descriptorLabels <- dat$Feature %>%
         as.character() %>%
-        {c(.[1:(which(str_detect(.,coll('Agrilus exit hole density (m^-2)'))) - 1)],
-           expression(Agrillus~exit~hole~density ( m^-2 ) ),
-           .[(which(str_detect(.,coll('Agrilus exit hole density (m^-2)'))) + 1):36],
-           expression(Crown~surface~area ( m^2 )),
-           expression(Crown~volume ( m^3 ) )
-        )}
+        {
+          .[str_detect(.,coll('Agrilus exit hole density (m^-2)'))] <- expression(Agrillus~exit~hole~density ( m^-2 ) )
+          .[str_detect(.,coll('Crown volume (m^3)'))] <- expression(Crown~volume ( m^3 ) )
+          return(.)
+        }
       
-      ggplot(dat,aes(x = Feature,y = `Relative Importance`)) +
-        geom_point(fill = ptol_pal()(1),shape = 21) +
+      ggplot(dat,aes(x = Feature,y = `%IncMSE`)) +
+        geom_point(fill = ptol_pal()(1),shape = 21,size = 2) +
         coord_flip() +
         theme_bw() +
         theme(plot.title = element_text(face = 'bold'),
               axis.title = element_text(face = 'bold',size = 10)) +
         labs(title = 'a) PDI',
-             y = 'Relative Gini\nimportance',
+             y = 'Mean decrease in\naccuracy',
              x = NULL) +
         scale_x_discrete(labels = descriptorLabels)
     },
     b = {
-      dat <- DAIrf %>%
-        {
-          imp <- importance(.)
-          feat <- rownames(imp)
-          imp <- imp[,1]
-          tibble(Feature = feat,`Gini Importance` = imp)
-        } %>%
-        arrange(`Gini Importance`) %>%
-        mutate(Feature = factor(Feature,levels = Feature), `Relative Importance` = `Gini Importance` / max(`Gini Importance`))
+      dat <- DAI_descriptor_importance %>%
+        arrange(`%IncMSE`) %>%
+        mutate(Feature = factor(Feature,levels = Feature)) 
       
       descriptorLabels <- dat$Feature %>%
         as.character() %>%
-        {c(.[1:(which(str_detect(.,coll('Agrilus exit hole density (m^-2)'))) - 1)],
-           expression(Agrillus~exit~hole~density ( m^-2 ) ),
-           .[(which(str_detect(.,coll('Agrilus exit hole density (m^-2)'))) + 1):(which(str_detect(.,coll('Crown surface area (m^2)'))) - 1)],
-           expression(Crown~surface~area ( m^2 )),
-           expression(Crown~volume ( m^3 ) ),
-           .[(which(str_detect(.,coll('Crown volume (m^3)'))) + 1):38]
-        )}
+        {
+          .[str_detect(.,coll('Agrilus exit hole density (m^-2)'))] <- expression(Agrillus~exit~hole~density ( m^-2 ) )
+          .[str_detect(.,coll('Crown volume (m^3)'))] <- expression(Crown~volume ( m^3 ) )
+          return(.)
+        }
       
-      ggplot(dat,aes(x = Feature,y = `Relative Importance`)) +
-        geom_point(fill = ptol_pal()(1),shape = 21) +
+      ggplot(dat,aes(x = Feature,y = `%IncMSE`)) +
+        geom_point(fill = ptol_pal()(1),shape = 21,size = 2) +
         coord_flip() +
         theme_bw() +
         theme(plot.title = element_text(face = 'bold'),
               axis.title = element_text(face = 'bold',size = 10)) +
         labs(title = 'b) DAI',
-             y = 'Relative Gini\nimportance',
+             y = 'Mean decrease in\naccuracy',
              x = NULL) +
         scale_x_discrete(labels = descriptorLabels)
     }

@@ -4,9 +4,9 @@ calcDIs <- function(rfModels,phenoData){
     mds() %>%
     rename(PDI = `Dimension 1`,DAI = `Dimension 2`) %>%
     mutate(PDI = PDI %>%
+             {. * -1} %>%
              minMaxScale(),
            DAI = DAI %>%
-             {. * -1} %>%
              minMaxScale() %>%
              {2 * . - 1}) %>%
     bind_cols(phenoData %>%
