@@ -1,4 +1,4 @@
-FROM rocker/verse:3.6.1
+FROM rocker/verse:3.6.2
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -9,6 +9,7 @@ RUN Rscript -e "install.packages(c('renv'), repos = c(CRAN = 'https://cloud.r-pr
 
 WORKDIR /home/rstudio/
 
+COPY .Renviron .Renviron
 COPY renv.lock renv.lock
 
 RUN Rscript -e 'renv::consent(provided = TRUE); renv::restore()'
