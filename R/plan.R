@@ -78,7 +78,9 @@ plan <- drake_plan(
   
   ## calculate decline indexes
   decline_indexes = unsupervised_rf %>%
-    calcDIs(site_corrected_pheno_data),
+    calcDIs(invertPDI = TRUE,invertDAI = FALSE) %>%
+    bind_cols(site_corrected_pheno_data %>%
+                select(Location,`Tree No`,Status,ChosenGroup)),
   
   ## export decline indexes
   export_decline_indexes = decline_indexes %>%
