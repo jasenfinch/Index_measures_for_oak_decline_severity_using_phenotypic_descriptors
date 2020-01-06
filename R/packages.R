@@ -27,7 +27,7 @@ pacman::p_load(drake,
 
 # Load dependant GitHub libraries
 
-pacman::p_load_gh('jasenfinch/pdi@devel',
+pacman::p_load_gh('jasenfinch/pdi',
                   'ropenscilabs/gramr',
                   'benmarwick/wordcountaddin')
 
