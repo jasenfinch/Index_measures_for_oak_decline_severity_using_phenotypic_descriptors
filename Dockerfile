@@ -12,4 +12,4 @@ WORKDIR /home/rstudio/
 COPY .Renviron .Renviron
 COPY renv.lock renv.lock
 
-RUN Rscript -e 'renv::consent(provided = TRUE); renv::restore()'
+RUN Rscript -e 'renv::consent(provided = TRUE); renv::init()'
