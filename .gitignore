@@ -4,6 +4,7 @@
 .Ruserdata
 *.pdf
 *.docx
+*.docx#
 *_cache
 .drake
 *.html
