@@ -73,7 +73,7 @@ Coupled with this, monitoring methods should take advantage of modern data analy
 Machine learning is finding increasing utility in ecological and environmental applications due to it's ability to learn complex patterns within and between variables [@cutler2007;@belgiu2016].
 A popular algorithm is that of random forest due to it's versatility, relatively trivial training requirements and ease of use [@breiman2001a;@biau2016]. 
 
-It is an ensemble machine learning method where forests of bootstrap sampled decision trees are grown, yielding both out of bag sample prediction accuracies and variable importance.
+Random forest is an ensemble machine learning method where forests of bootstrap sampled decision trees are grown, yielding both out of bag sample prediction accuracies and variable importance.
 It is also able to simultaneously handle both continuous and categorical variables.
 Unsupervised learning is possible using the assumption that if the data contains any underlying structure, this should be distinguishable from a randomly generated version of itself.
 An observation proximity matrix can be derived from this process on which additional unsupervised methods can be applied such as multidimensional scaling [@shi2006].
@@ -91,15 +91,22 @@ Acutely declining trees have a score closer to 1 and chronically declining trees
 
 ### Phenotypic data collection
 
-The phenotypic data were collected from a total of 174 trees from nine sites from across the south (Hatchlands and Richmond Park), east (Big Wood, Great Monks Wood and Winding Wood) and west (Attingham, Chestnuts, Langdale and Speculation) of England between June and September in 2016 or 2017.
-The occurrence of AOD has previously been reported and studied at six of the sites [@brown2016; @brown2017a].
+The phenotypic data were collected over two summers between June and September from a total of 174 trees at nine sites across the south of England.
+In 2016 three COD sites were visited (Big Wood,Chestnuts and Speculation) and in 2017 six AOD sites were added to the dataset (Attingham, Great Monks Wood, Hatchlands, Langdale Wood, Richmond Park and Winding Wood).
+The occurrence of AOD has previously been reported and studied at these sites [@brown2016; @brown2017a].
 These sites included a variety of woodland, management and soil types as well as tree sizes/ages and were made up of mainly *Q. robur*.
 
 All trees were manually assigned a decline status category; healthy, AOD, COD or remission prior to collection of phenotypic descriptors.
+At the COD sites trees were either COD (trees with clear signs of poor crown condition and canopy dieback, at Big Wood trees with stronger crowns were categorised as COD when *Armillaria* fruiting bodies had been observed) or healthy (dominant or co-dominant trees with full crowns). 
+At the AOD sites, annual monitoring data collected since 2009 was used to guide tree selection.
+Healthy trees had no know history of AOD and fruiting bodies of root pathogens had not been observed, all trees had canopy condition of 4 or 5, see @brown2016 for details of this assessment.
+AOD trees had current stem bleeds but a variety of crown conditions. 
+COD trees either had poor crowns (category 2) or the fruiting bodies of *Gymnopus* or *Armillaria* had been observed in previous years.
 The remission group included trees that had shown stem bleeds associated with AOD within the previous three years but were not showing signs of stem bleeds at the time of assessment.
+Thus at all sites, sampling attempted to include the unhealthiest and healthiest trees.
 
 The phenotypic descriptors collected related to the trees shape, size, crown condition and the presence of biotic agents including insects, bacteria and fungi.
-The descriptors collected were based on @innes1990.
+The descriptors collected were based on @icpforests2016.
 Diameter at breast height (DBH) was collected at a stem height of 1.3m, to the nearest 0.1cm.
 Total height, timber height and lowest live crown were measured using an inclinometer to the nearest 0.1m
 The timber height was measured at either 7cm top stem diameter or where no main stem could be distinguished.
@@ -185,9 +192,9 @@ The code used to generate the decline indexes is available as an R package pdi v
 
 ### Descriptor contribution to decline indexes
 
-Individual random forest regression models of the phenotypic descriptors were trained, supervised using each decline index.
-The optimal number of trees (ntree) and number randomly of variables (mtry) parameters for random forest were tuned prior to training using the values of 10, 100, 1,000, 10,000 for ntree and a range of 2-26 at intervals of 4 for the mtry parameter. 
-The combination parameters giving the lowest percent mean absolute error (PMAE) were selected and set as follows: PDI - `r glue('ntree = {prettyNum(PDI_rf_tune_params$ntree,big.mark = ',')}, mtry = {PDI_rf_tune_params$mtry}, PMAE = {PDI_rf_tune_params$PMAE %>% signif(digits = 3)}%')`; DAI - `r glue('ntree = {prettyNum(DAI_rf_tune_params$ntree,big.mark = ',')}, mtry = {DAI_rf_tune_params$mtry}, PMAE = {DAI_rf_tune_params$PMAE %>% signif(digits = 3)}%')` (Supplementary figure 2).
+To investigate the descriptor contributions to the decline indexes, supervised random forest regression models were trained for each decline index using the phenotypic descriptors for all 174 trees.
+The optimal number of trees (ntree) and number randomly of variables (mtry) parameters for random forest model were tuned prior to training using the values of 10, 100, 1,000, 10,000 for ntree and a range of 2-26 at intervals of 4 for the mtry parameter. 
+The combination parameters giving the lowest percent mean absolute error (PMAE) were selected and set as follows: for the PDI - `r glue('ntree = {prettyNum(PDI_rf_tune_params$ntree,big.mark = ',')}, mtry = {PDI_rf_tune_params$mtry}, PMAE = {PDI_rf_tune_params$PMAE %>% signif(digits = 3)}%')`; for the DAI - `r glue('ntree = {prettyNum(DAI_rf_tune_params$ntree,big.mark = ',')}, mtry = {DAI_rf_tune_params$mtry}, PMAE = {DAI_rf_tune_params$PMAE %>% signif(digits = 3)}%')` (Supplementary figure 2).
 Overall descriptor importance contributions to each of the indexes was measured in each model using the mean decrease in accuracy measure.
 
 ### Local descriptor contribution to index models
