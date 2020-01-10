@@ -1,24 +1,5 @@
 
-PDIresponseSurfaces <- function(PDIrf,decline_indexes,site_corrected_analysis_suitable_data){
-  
-  PDI_quantiles <- decline_indexes$PDI %>%
-    quantile() %>%
-    .[c("0%","50%",'100%')]
-    # .[c("25%","50%",'75%')]
-
-  PDI_values <- PDI_quantiles %>%
-    map_dbl(~{
-      a <- decline_indexes$PDI %>%
-        {. - .x} %>%
-        abs()
-      decline_indexes$PDI[which(a == min(a))[1]]
-      })
-  
-  spectrumTrees_PDI <- list(
-    `a) Healthy` = site_corrected_analysis_suitable_data[decline_indexes$PDI == PDI_values[['0%']],],
-    `b) Moderate decline` = site_corrected_analysis_suitable_data[decline_indexes$PDI == PDI_values[['50%']],],
-    `c) Severe decline` = site_corrected_analysis_suitable_data[decline_indexes$PDI == PDI_values[['100%']],]
-  )
+PDIresponseSurfaces <- function(PDIrf,PDI_example_cases,site_corrected_analysis_suitable_data){
   
   variables <- names(site_corrected_analysis_suitable_data)[map_lgl(site_corrected_analysis_suitable_data,is.numeric)]
   
@@ -33,7 +14,7 @@ PDIresponseSurfaces <- function(PDIrf,decline_indexes,site_corrected_analysis_su
     set_names(variables) %>%
     bind_rows(.id = 'Descriptor')
   
-  plotRanges_PDI <- spectrumTrees_PDI %>%
+  plotRanges_PDI <- PDI_example_cases %>%
     names() %>%
     map(~{
       type <- .
@@ -43,7 +24,7 @@ PDIresponseSurfaces <- function(PDIrf,decline_indexes,site_corrected_analysis_su
         expand.grid() %>%
         as_tibble() %>%
         mutate(ID = 1) %>%
-        left_join(spectrumTrees_PDI[[type]] %>%
+        left_join(PDI_example_cases[[type]] %>%
                     select(-`Missing crown (%)`,-`Crown transparency (%)`) %>%
                     mutate(ID = 1),by = 'ID') %>%
         select(-ID) %>%
@@ -51,7 +32,7 @@ PDIresponseSurfaces <- function(PDIrf,decline_indexes,site_corrected_analysis_su
                `Crown volume (m^3)` = crownVolume(`Crown radius (m)`,`Total height (m)`,`Lower crown height (m)`,`Crown condition (%)`)) %>%
         mutate(PDI = predict(PDIrf,newdata = .))
     }) %>%
-    set_names(names(spectrumTrees_PDI))
+    set_names(names(PDI_example_cases))
   
   PDI_response_plot <- plotRanges_PDI %>%
     names() %>%
@@ -78,7 +59,7 @@ PDIresponseSurfaces <- function(PDIrf,decline_indexes,site_corrected_analysis_su
         )
       return(pl)
     }) %>%
-    set_names(names(spectrumTrees_PDI))
+    set_names(names(PDI_example_cases))
   
   PDI_legend <- get_legend(PDI_response_plot$`a)`)
   

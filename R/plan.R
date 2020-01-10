@@ -206,11 +206,17 @@ plan <- drake_plan(
   ## create descriptor contribution plots
   descriptor_contribution_plots = descriptorImportancePlots(PDI_descriptor_importance,DAI_descriptor_importance),
   
+  ## extract PDI example trees
+  PDI_example_cases = PDIexampleCases(site_corrected_analysis_suitable_data,decline_indexes),
+  
+  ## extract PDI example trees
+  DAI_example_cases = DAIexampleCases(site_corrected_analysis_suitable_data,decline_indexes),
+  
   ## PDI lime analysis
-  PDI_lime_analysis = PDIlimeAnalysis(site_corrected_analysis_suitable_data,PDI_rf_model,decline_indexes),
+  PDI_lime_analysis = PDIlimeAnalysis(site_corrected_analysis_suitable_data,PDI_rf_model,PDI_example_cases),
   
   ## DAI lime analysis
-  DAI_lime_analysis = DAIlimeAnalysis(site_corrected_analysis_suitable_data,DAI_rf_model,decline_indexes),
+  DAI_lime_analysis = DAIlimeAnalysis(site_corrected_analysis_suitable_data,DAI_rf_model,DAI_example_cases),
   
   ## PDI lime analysis table
   PDI_lime_analysis_table = PDIlimeAnalysisTable(PDI_lime_analysis,decline_indexes),
@@ -226,12 +232,12 @@ plan <- drake_plan(
   
   ## PDI rf model response surfaces
   PDI_response_surfaces = PDIresponseSurfaces(PDI_rf_model,
-                                              decline_indexes,
+                                              PDI_example_cases,
                                               site_corrected_analysis_suitable_data),
   
   ## DAI rf model response surfaces
   DAI_response_surfaces = DAIresponseSurfaces(DAI_rf_model,
-                                              decline_indexes,
+                                              DAI_example_cases,
                                               site_corrected_analysis_suitable_data),
   
   ## render tables
