@@ -67,7 +67,7 @@ It is these characteristics that many studies use as the primary indicator of tr
 Assigning discrete decline status labels neglects the true spectrum of decline severity encountered in the field.
 There is a growing need for sensitive, continuous measures of tree decline that accurately reflect the decline spectrum [@pontius2014].
 This has the potential to greatly improve monitoring, enable the early detection of decline for accurate forecasting and inform forestry management practices.
-The recently published Action Oak Knowledge Review highlighted monitoring long term consistently as a key requirement for safeguarding UK oak health in the future [@quine2019].
+Consistent long term monitoring has been higlited as a key requirement for understanding the threats to oak and safeguarding its future [@hartmann2018].
 Coupled with this, monitoring methods should take advantage of modern data analysis techniques whilst still retaining practical simplicity in the field.
 
 Machine learning is finding increasing utility in ecological and environmental applications due to it's ability to learn complex patterns within and between variables [@cutler2007;@belgiu2016].
@@ -199,13 +199,11 @@ Overall descriptor importance contributions to each of the indexes was measured 
 
 ### Local descriptor contribution to index models
 
-Local Interpretable Model-Agnostic Explanations (LIME) were computed to identify descriptors contributing locally to case specific examples of each of the indexes [@ribeiro2016]. 
-The lime R package version `r packageVersion('lime') %>% as.character()` was used with the default parameters [@pedersen2019].
-A healthy, a moderate and a severe decline case was used for the PDI. 
-For each case, a tree with a score closest to 0, 0.5 and 1 respectively was selected.
-For the DAI cases were selected from trees with a PDI score greater than 0.5, 
-A decline neutral case was selected with a score closest to 0.
-Then for each of the AOD and COD syndromes, moderate and severe cases were selected with scores closes to 0.5 and 1 for AOD and -0.5 and -1 for COD respectively. 
+To identify which phenotypic descriptors contributed locally to specific example cases of each of the decline indexes, Local Interpretable Model-Agnostic Explanations (LIME) were computed [@ribeiro2016].  
+For the PDI, the example cases consisted of selecting three trees scores closest to 0 (healthy), 0.5 (moderate) and 1 (severely declining) respectively.
+For the DAI, five example cases were selected from trees with PDI scores greater than 0.5.
+These cases incuded a decline neutral case with a score closest to 0 and then for each of the AOD and COD syndromes, a moderate and a severe case were selected with scores closes to 0.5 and 1 for AOD and -0.5 and -1 for COD respectively. 
+LIME analysis was conducted using the lime R package version `r packageVersion('lime') %>% as.character()` with the default parameters [@pedersen2019].
 
 ### Index model simulations to investigate interactions of key descriptors
 
