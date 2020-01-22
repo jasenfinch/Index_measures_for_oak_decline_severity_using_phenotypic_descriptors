@@ -10,7 +10,8 @@ plan <- drake_plan(
   pheno_data = phenotype_data_file_paths %>%
     map(readPhenotypeSheet) %>%
     {set_names(.,map_chr(.,~{.$Location}))} %>%
-    dataCorrections(), 
+    dataCorrections() %>%
+    mutate(ID = 1:nrow(.)), 
   
   ## calculate additional desecriptors
   pheno_data_with_additional_descriptors = pheno_data %>%
@@ -80,7 +81,7 @@ plan <- drake_plan(
   decline_indexes = unsupervised_rf %>%
     calcDIs(invertPDI = TRUE,invertDAI = FALSE) %>%
     bind_cols(site_corrected_pheno_data %>%
-                select(Location,`Tree No`,Status,ChosenGroup)),
+                select(Location,ID,`Tree No`,Status,ChosenGroup)),
   
   ## export decline indexes
   export_decline_indexes = decline_indexes %>%
@@ -219,10 +220,10 @@ plan <- drake_plan(
   DAI_lime_analysis = DAIlimeAnalysis(site_corrected_analysis_suitable_data,DAI_rf_model,DAI_example_cases),
   
   ## PDI lime analysis table
-  PDI_lime_analysis_table = PDIlimeAnalysisTable(PDI_lime_analysis,decline_indexes),
+  PDI_lime_analysis_table = PDIlimeAnalysisTable(PDI_lime_analysis,PDI_example_cases,decline_indexes),
   
   ## PDI lime analysis plot
-  PDI_lime_analysis_plot = PDIlimeAnalysisPlot(PDI_lime_analysis,decline_indexes),
+  PDI_lime_analysis_plot = PDIlimeAnalysisPlot(PDI_lime_analysis,PDI_example_cases,decline_indexes),
   
   ## PDI lime analysis table
   DAI_lime_analysis_table = DAIlimeAnalysisTable(DAI_lime_analysis,decline_indexes),
