@@ -37,7 +37,11 @@ PDIresponseSurfaces <- function(PDIrf,PDI_example_cases,site_corrected_analysis_
   PDI_response_plot <- plotRanges_PDI %>%
     names() %>%
     map(~{
-      type <- .
+      type <- .x
+      ptitle <- .x %>%
+        str_split_fixed('-',2) %>%
+        .[,1] %>%
+        {str_c(letters[1:3],.,sep = ') ')}
       pl <- ggplot(plotRanges_PDI[[type]],aes(x = `Missing crown (%)`,y = `Crown transparency (%)`,fill = PDI,z = PDI)) +
         geom_raster() +
         geom_contour(colour = 'black',binwidth = 0.1) +
@@ -50,7 +54,7 @@ PDIresponseSurfaces <- function(PDIrf,PDI_example_cases,site_corrected_analysis_
               axis.title = element_text(face = 'bold'),
               legend.title = element_text(face = 'bold')) +
         coord_fixed() +
-        labs(title = type,
+        labs(title = ptitle,
              caption = str_c('Crown radius (m) = ',plotRanges_PDI[[type]]$`Crown radius (m)`[1] %>% round(3),'\n',
                              'Total height (m) = ',plotRanges_PDI[[type]]$`Total height (m)`[1] %>% round(3),'\n',
                              'Lower crown height (m) = ',plotRanges_PDI[[type]]$`Lower crown height (m)`[1] %>% round(3),'\n',
@@ -58,10 +62,9 @@ PDIresponseSurfaces <- function(PDIrf,PDI_example_cases,site_corrected_analysis_
              )
         )
       return(pl)
-    }) %>%
-    set_names(names(PDI_example_cases))
+    })
   
-  PDI_legend <- get_legend(PDI_response_plot$`a)`)
+  PDI_legend <- get_legend(PDI_response_plot[[1]])
   
   PDI_response_plot <- PDI_response_plot %>%
     map(~{
