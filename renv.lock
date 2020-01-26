@@ -81,10 +81,10 @@
     },
     "V8": {
       "Package": "V8",
-      "Version": "3.0",
+      "Version": "3.0.1",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "ac43492758d14247f5b99dc810f81aac"
+      "Hash": "7d1118179f4cb56f5e49e58b166999fe"
     },
     "askpass": {
       "Package": "askpass",
@@ -326,10 +326,10 @@
     },
     "foreign": {
       "Package": "foreign",
-      "Version": "0.8-74",
+      "Version": "0.8-75",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "fbd213a1d55f4709d295304300f3d95d"
+      "Hash": "9a7efaa7320b9f327a904d1e615b0b46"
     },
     "formula.tools": {
       "Package": "formula.tools",
@@ -868,10 +868,10 @@
     },
     "rmarkdown": {
       "Package": "rmarkdown",
-      "Version": "2.0",
+      "Version": "2.1",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "745a60d9256842b1abae2dcf7b64ebc1"
+      "Hash": "9d1c61d476c448350c482d6664e1b28b"
     },
     "rstudioapi": {
       "Package": "rstudioapi",

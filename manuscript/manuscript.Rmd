@@ -199,19 +199,19 @@ Overall descriptor importance contributions to each of the indexes was measured 
 
 ### Local descriptor contribution to index models
 
-To identify which phenotypic descriptors contributed locally to specific example cases of each of the decline indexes, Local Interpretable Model-Agnostic Explanations (LIME) were computed [@ribeiro2016].  
-For the PDI, the example cases consisted of selecting three trees scores closest to 0 (healthy), 0.5 (moderate) and 1 (severely declining) respectively.
+To identify which phenotypic descriptors contributed locally to specific example cases of each of the decline indexes, Local Interpretable Model-Agnostic Explanations (LIME) were computed [@ribeiro2016]. 
+The example cases included the trees with the minimum (0) and maximum (1) PDI values and the tree with the PDI value closest to the median for the healthy, severe and moderately declining trees respectively.
 For the DAI, five example cases were selected from trees with PDI scores greater than 0.5.
 These cases incuded a decline neutral case with a score closest to 0 and then for each of the AOD and COD syndromes, a moderate and a severe case were selected with scores closes to 0.5 and 1 for AOD and -0.5 and -1 for COD respectively. 
 LIME analysis was conducted using the lime R package version `r packageVersion('lime') %>% as.character()` with the default parameters [@pedersen2019].
 
 ### Index model simulations to investigate interactions of key descriptors
 
-The interactions of key raw descriptors identified from the overall importance scores and their associations with the decline indexes was investigated by using simulated descriptor values to construct index model response surfaces for specific cases.
+The interactions of key raw descriptors identified from the overall importance scores and their associations with the decline indexes was investigated by using simulated descriptor values to construct index model response surfaces for specific example cases.
+The same example cases were used as described for the LIME analyses above.
 This approach was similar to response surface methodology without the need for probabilistic approximation due to the low computation time required for index calculation [@abbasi2012].
 
 For the PDI, missing crown and crown transparency were compared for example cases of a healthy, a moderate and a severely tree.
-The example cases included the trees with the minimum and maximum PDI values and the tree with the PDI value closest to the median for the healthy, severe and moderately declining trees respectively.
 The value ranges for the missing crown (`r glue("{min(site_corrected_analysis_suitable_data[['Missing crown (%)']])}-{max(site_corrected_analysis_suitable_data[['Missing crown (%)']])}%")`) and crown transparency (`r glue("{min(site_corrected_analysis_suitable_data[['Crown transparency (%)']])}-{max(site_corrected_analysis_suitable_data[['Crown transparency (%)']])}%")`) descriptors were divided into 100 increments.
 For a given case, each combination of theses simulated descriptor values were used to calculate a PDI value from the supervised random forest regression model, building a model response surface.
 
@@ -228,7 +228,6 @@ symptom_ranges <- site_corrected_analysis_suitable_data %>%
 
 The same approach was used for the DAI using also a comparison between active bleed size and black staining size as well as missing crown and crown transparency.
 The upper boundary for the ranges of active bleed size and black stain size was taken as the centre value between the maximum and minimum and reduced by a factor of eight to give ranges of `r glue("{symptom_ranges$minimum[1]}-{signif(symptom_ranges$center[1] / 8,digits = 3)}mm")` and `r glue("{symptom_ranges$minimum[2]}-{signif(symptom_ranges$center[2] / 8,digits = 3)}mm")` respectively and enable more effective visualisation.
-Cases included neutral, moderate and severe with PDI scores greater than 0.5 and DAI scores closest to 0, 0.5 and 1 respectively for AOD and 0, -0.5 and -1 respectively for COD.
 
 ## Results
 

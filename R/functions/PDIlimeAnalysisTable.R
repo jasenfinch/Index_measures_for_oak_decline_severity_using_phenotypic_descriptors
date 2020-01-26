@@ -1,10 +1,23 @@
 
-PDIlimeAnalysisTable <- function(PDI_lime_analysis,decline_indexes){
+PDIlimeAnalysisTable <- function(PDI_lime_analysis,PDI_example_cases,decline_indexes){
+  IDs <- PDI_example_cases %>%
+    names() %>%
+    str_split_fixed('-',2) %>%
+    .[,2] %>%
+    as.numeric()
+  
+  name <- PDI_example_cases %>%
+    names() %>%
+    str_split_fixed('-',2) %>%
+    .[,1]
+  
   cases <- tibble(case = 1:3 %>% as.character(),
-                  name = c('Healthy','Moderate decline','Severe decline'),
-                  PDI = c(min(decline_indexes$PDI),
-                          decline_indexes$PDI[abs(decline_indexes$PDI - 0.5) == min(abs(decline_indexes$PDI - 0.5))],
-                          max(decline_indexes$PDI)))
+                  name = name,
+                  PDI = decline_indexes %>%
+                    filter(ID %in% IDs) %>%
+                    arrange(PDI) %>%
+                    .$PDI) %>%
+    mutate(PDI = signif(PDI,3))
   
   PDI_lime_analysis %>%
     left_join(cases,by = 'case') %>%

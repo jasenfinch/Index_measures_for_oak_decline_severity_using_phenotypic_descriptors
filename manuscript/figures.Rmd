@@ -26,9 +26,9 @@ descriptor_contribution_plots$a + descriptor_contribution_plots$b
 ```{r PDI_response_surfaces,fig.height = 6,fig.cap='PDI response surfaces for simulated descriptor values from trained random forest models.'}
 loadd(PDI_response_surfaces)
 
-grid.arrange(PDI_response_surfaces$`a)`,
-             PDI_response_surfaces$`b)`,
-             PDI_response_surfaces$`c)`,
+grid.arrange(PDI_response_surfaces[[1]],
+             PDI_response_surfaces[[2]],
+             PDI_response_surfaces[[3]],
              PDI_response_surfaces$legend,
              nrow = 2,newpage = F)
 ```
