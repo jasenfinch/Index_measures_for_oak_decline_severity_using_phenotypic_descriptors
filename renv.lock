@@ -137,10 +137,10 @@
     },
     "callr": {
       "Package": "callr",
-      "Version": "3.4.0",
+      "Version": "3.4.1",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "f73f76ba9c2c23cbe3a7657f7411ddc4"
+      "Hash": "f3c7c37950ae9a772b3676e4c172f978"
     },
     "cellranger": {
       "Package": "cellranger",
@@ -763,10 +763,10 @@
     },
     "prettyunits": {
       "Package": "prettyunits",
-      "Version": "1.1.0",
+      "Version": "1.1.1",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "51bcc03e24fa50b5da40f285a916a1d6"
+      "Hash": "95ef9167b75dde9d2ccc3c7528393e7e"
     },
     "processx": {
       "Package": "processx",
@@ -861,10 +861,10 @@
     },
     "rlang": {
       "Package": "rlang",
-      "Version": "0.4.2",
+      "Version": "0.4.3",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "ff31d958a041593f58ba04fc637d90dd"
+      "Hash": "5527892f8ca320dd4d2efb5aa4e3bd89"
     },
     "rmarkdown": {
       "Package": "rmarkdown",
@@ -1001,10 +1001,10 @@
     },
     "tidyr": {
       "Package": "tidyr",
-      "Version": "1.0.0",
+      "Version": "1.0.2",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "8187ca2c27e80978f5b143bec554a437"
+      "Hash": "fb73a010ace00d6c584c2b53a21b969c"
     },
     "tidyselect": {
       "Package": "tidyselect",
@@ -1043,10 +1043,10 @@
     },
     "vctrs": {
       "Package": "vctrs",
-      "Version": "0.2.1",
+      "Version": "0.2.2",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "5c2d0fe441406cba811b46708ea28e41"
+      "Hash": "a1de558a76d2843a10f766209b9a545f"
     },
     "viridisLite": {
       "Package": "viridisLite",
@@ -1081,12 +1081,12 @@
       "Version": "0.3.0.9000",
       "Source": "GitHub",
       "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteRepo": "wordcountaddin",
       "RemoteUsername": "benmarwick",
+      "RemoteRepo": "wordcountaddin",
       "RemoteRef": "master",
-      "RemoteSha": "fdf70d9c2d91bc54396026d148ea90aaba5973fd",
-      "Hash": "e9bde46ecd243f8487ded1e181f4c237"
+      "RemoteSha": "be8c0ec64d1503d32539a8cf2e0ede462bebd05e",
+      "RemoteHost": "api.github.com",
+      "Hash": "3c94a2ecfb5a0cb31836f9a182f5e765"
     },
     "xfun": {
       "Package": "xfun",
@@ -1115,13 +1115,6 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "c78bdf1d16bd4ec7ecc86c6986d53309"
-    },
-    "zeallot": {
-      "Package": "zeallot",
-      "Version": "0.1.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "ee9b643aa8331c45d8d82eb3a137c9bc"
     }
   }
 }
