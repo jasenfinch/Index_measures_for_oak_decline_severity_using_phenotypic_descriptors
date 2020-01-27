@@ -38,17 +38,16 @@ loadd(site_rf_margin,
 Oak decline is becoming increasingly prevalent along with the need for accurate and quantitative oak health monitoring.
 The Phenotypic Decline Index (PDI) and the Decline Acuteness Index (DAI), were developed to quantitatively describe and differentiate acute and chronic oak decline severity using a multitude of easily measurable phenotypic descriptors.
 Measured phenotypic descriptors included aspects of tree shape and size, crown condition and the presence of biotic agents.
-The decline indexes were derived using proximity values from n unsupervised random forest of the phenotypic descriptors, multidimensional scaling (MDS) and min-max scaling.
+The decline indexes were derived using proximity values from unsupervised random forest of the phenotypic descriptors, multidimensional scaling (MDS) and min-max scaling.
 These indexes are simple but sensitive measures of tree decline severity allowing easy comparisons of oak trees both spatially and temporally providing a potentially useful tool for forest monitoring and management.
 
 ## Introduction
 
-Trees and forests across the globe face threats from a changing climate, notably warming and an increase in drought episodes affect the health status of individual trees causing vegetation changes at the landscape scale [@choat2012; @millar2015; @allen2015]. 
-Within this context biotic agents (Pests and Diseases) can flourish and often drive mortality [@kautz2017; @jactel2012]. 
+Trees and forests across the globe face threats from a changing climate, notably warming and an increase in drought episodes affect the health status of individual trees, causing vegetation changes at the landscape scale [@choat2012; @millar2015; @allen2015]. 
+Within this context biotic agents (pests and diseases) can flourish and often drive mortality [@kautz2017; @jactel2012]. 
 Monitoring vegetation changes and understanding the underlying processes affecting tree health are important first steps to predicting the scale and extent of these threats [@hartmann2018] and plan future policies for planting and mitigation efforts [@bradford2017]. 
 Current ‘omics and remote sensing approaches provide powerful tools to document and understand these changes across multiple scales (from cellular to tree to landscape scales), but an important prerequisite is the ability to accurately describe tree health status, so that even subtle changes can be documented [@dungey2018; @hornero2020]. 
 Phenotyping, documenting the physical traits of an individual or group, is thus a crucial first step relevant to studies across disciplines and further, it is necessary to understand how these measurements combine to describe health status. 
-Here, we present a method using unsupervised machine learning (Random Forest) to quantify both the extent and form of decline observed in oak forests across England. 
 
 Oak decline is expected to become increasingly prevalent in the UK and across Europe with the onset of climate change [@sturrock2011; @petr2014; @brown2018].
 Oak declines are complex syndromes that are facilitated by a variety of both abiotic and biotic factors.
@@ -72,14 +71,11 @@ Consistent long term monitoring has been highlighted as a key requirement for un
 Coupled with this, monitoring methods should take advantage of modern data analysis techniques whilst still retaining practical simplicity in the field.
 
 Machine learning is finding increasing utility in ecological and environmental applications due to it's ability to learn complex patterns within and between variables [@cutler2007;@belgiu2016].
-A popular algorithm is that of random forest due to it's versatility, relatively trivial training requirements and ease of use [@breiman2001a;@biau2016]. 
+A popular algorithm is that of random forest due to it's versatility, relatively trivial training requirements and ease of use. 
+It is an ensemble machine learning method where forests of bootstrap sampled decision trees are grown, yielding both out of bag sample prediction accuracies and variable importance [@breiman2001a;@biau2016].
 
-Random forest is an ensemble machine learning method where forests of bootstrap sampled decision trees are grown, yielding both out of bag sample prediction accuracies and variable importance.
-It is also able to simultaneously handle both continuous and categorical variables.
-Unsupervised learning is possible using the assumption that if the data contains any underlying structure, this should be distinguishable from a randomly generated version of itself.
-An observation proximity matrix can be derived from this process on which additional unsupervised methods can be applied such as multidimensional scaling [@shi2006].
+Here, we propose a framework to enable quantitative visible oak decline severity measurement that utilises a range of targeted phenotypic descriptors observed in oak forests across England and unsupervised random forest machine learning.
 
-Here, we propose a framework to enable quantitative visible oak decline severity measurement that utilises a range of targeted phenotypic descriptors and unsupervised random forest machine learning.
 The two resulting measures are:
 
 * The phenotypic decline index (PDI) - a measure of decline severity scoring trees between 0 and 1.
@@ -98,7 +94,8 @@ The occurrence of AOD has previously been reported and studied at these sites [@
 These sites included a variety of woodland, management and soil types as well as tree sizes/ages and were made up of mainly *Q. robur*.
 
 All trees were manually assigned a decline status category; healthy, AOD, COD or remission prior to collection of phenotypic descriptors.
-At the COD sites trees were either COD (trees with clear signs of poor crown condition and canopy dieback, at Big Wood trees with stronger crowns were categorised as COD when *Armillaria* fruiting bodies had been observed) or healthy (dominant or co-dominant trees with full crowns). 
+At the COD sites trees were either COD (trees with clear signs of poor crown condition and canopy dieback) or healthy (dominant or co-dominant trees with full crowns). 
+At Big Wood trees with stronger crowns were categorised as COD when *Armillaria* fruiting bodies had been observed.
 At the AOD sites, annual monitoring data collected since 2009 was used to guide tree selection.
 Healthy trees had no know history of AOD and fruiting bodies of root pathogens had not been observed, all trees had canopy condition of 4 or 5, see @brown2016 for details of this assessment.
 AOD trees had current stem bleeds but a variety of crown conditions. 
@@ -183,7 +180,7 @@ $h$ = number of *A. biguttatus* exit holes, d = DBH (m)
 The phenotypic descriptors were analysed using 100 repetitions of unsupervised random forest using the randomForest R package version `r packageVersion('randomForest') %>% as.character()` [@liaw2002].
 The proximity matrices from each repetition were averaged to a single proximity matrix ($P$).
 This was then transformed to a dissimilarity matrix ($1 - P$) and scaled to two dimensions using  multidimensional scaling (MDS).
-The first MDS dimension ($D$) was first inverted ($1 - D$) to ensure the correct dimension orientation relative to decline severity.
+The first MDS dimension ($D$) was inverted ($1 - D$) to ensure the correct dimensional orientation relative to decline severity.
 It was then min-max scaled to give a scale between 0 and 1 with more severely declining trees having a score closer to 1.
 This dimension was named the PDI.
 The second MDS dimension was min-max scaled and then transformed ($2D - 1$) to give a scale between -1 and 1 with COD trees having a score closer to -1 and AOD having a score closer to 1. 
@@ -194,15 +191,16 @@ The code used to generate the decline indexes is available as an R package pdi v
 ### Descriptor contribution to decline indexes
 
 To investigate the descriptor contributions to the decline indexes, supervised random forest regression models were trained for each decline index using the phenotypic descriptors for all 174 trees.
+These models will subsequently be referred to as $M_1$ and $M_2$ for the PDI and DAI respectively. 
 The optimal number of trees (ntree) and number randomly of variables (mtry) parameters for random forest model were tuned prior to training using the values of 10, 100, 1,000, 10,000 for ntree and a range of 2-26 at intervals of 4 for the mtry parameter. 
-The combination parameters giving the lowest percent mean absolute error (PMAE) were selected and set as follows: for the PDI - `r glue('ntree = {prettyNum(PDI_rf_tune_params$ntree,big.mark = ',')}, mtry = {PDI_rf_tune_params$mtry}, PMAE = {PDI_rf_tune_params$PMAE %>% signif(digits = 3)}%')`; for the DAI - `r glue('ntree = {prettyNum(DAI_rf_tune_params$ntree,big.mark = ',')}, mtry = {DAI_rf_tune_params$mtry}, PMAE = {DAI_rf_tune_params$PMAE %>% signif(digits = 3)}%')` (Supplementary figure 2).
+The combination parameters giving the lowest percent mean absolute error (PMAE) were selected and set as follows: for the PDI ($M_1$) - `r glue('ntree = {prettyNum(PDI_rf_tune_params$ntree,big.mark = ',')}, mtry = {PDI_rf_tune_params$mtry}, PMAE = {PDI_rf_tune_params$PMAE %>% signif(digits = 3)}%')`; for the DAI ($M_2$) - `r glue('ntree = {prettyNum(DAI_rf_tune_params$ntree,big.mark = ',')}, mtry = {DAI_rf_tune_params$mtry}, PMAE = {DAI_rf_tune_params$PMAE %>% signif(digits = 3)}%')` (Supplementary figure 2).
 Overall descriptor importance contributions to each of the indexes was measured in each model using the mean decrease in accuracy measure.
 
 ### Local descriptor contribution to index models
 
-To identify which phenotypic descriptors contributed locally to specific example cases of each of the decline indexes, Local Interpretable Model-Agnostic Explanations (LIME) were computed [@ribeiro2016]. 
-The example cases included the trees with the minimum (0) and maximum (1) PDI values and the tree with the PDI value closest to the median for the healthy, severe and moderately declining trees respectively.
-For the DAI, five example cases were selected from trees with PDI scores greater than 0.5.
+To identify which phenotypic descriptors contributed locally to specific example cases of each of the decline indexes, Local Interpretable Model-Agnostic Explanations (LIME) were computed for each of models $M_1$ and $M_2$ [@ribeiro2016]. 
+The example cases for the PDI used for $M_1$ included the trees with the minimum (0) and maximum (1) PDI values and the tree with the PDI value closest to the median for the healthy, severe and moderately declining trees respectively.
+For the DAI ($M_2$), five example cases were selected from trees with PDI scores greater than 0.5.
 These cases included a decline neutral case with a score closest to 0 and then for each of the AOD and COD syndromes, a moderate and a severe case were selected with scores closes to 0.5 and 1 for AOD and -0.5 and -1 for COD respectively. 
 LIME analysis was conducted using the lime R package version `r packageVersion('lime') %>% as.character()` with the default parameters [@pedersen2019].
 
