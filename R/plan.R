@@ -241,6 +241,9 @@ plan <- drake_plan(
                                               DAI_example_cases,
                                               site_corrected_analysis_suitable_data),
   
+  ## Surveyor names
+  surveyors_names = surveyors(),
+  
   ## render tables
   tables = render(knitr_in('manuscript/tables.Rmd'),quiet = T),
   
