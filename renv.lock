@@ -714,6 +714,18 @@
       "Repository": "CRAN",
       "Hash": "16eee5b5edc41eec5af1149ccdc6b2c9"
     },
+    "pdi": {
+      "Package": "pdi",
+      "Version": "0.3.0",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "jasenfinch",
+      "RemoteRepo": "pdi",
+      "RemoteRef": "master",
+      "RemoteSha": "7e6e1cb71ae07a2082658cfaabf9aae99becc0a7",
+      "Hash": "4aebe09935f014dafbbf6322dbf1f8bc"
+    },
     "pillar": {
       "Package": "pillar",
       "Version": "1.4.3",
