@@ -1,26 +1,8 @@
 
-DAIresponseSurfaces <- function(DAIrf,decline_indexes,site_corrected_analysis_suitable_data){
+DAIresponseSurfaces <- function(DAIrf,DAI_example_cases,site_corrected_analysis_suitable_data){
   
-  dat <- site_corrected_analysis_suitable_data %>%
-    bind_cols(decline_indexes %>%
-                select(PDI,DAI)) %>%
-    filter(PDI > 0.5)
-  
-  spectrumTrees_DAI <- list(
-    `a)` = dat %>%
-      filter(abs(DAI) == min(abs(DAI))),
-    `b)` = dat %>%
-      filter(abs(DAI - 0.5) == min(abs(DAI - 0.5))),
-    `c)` = dat %>%
-      filter(DAI == max(DAI)),
-    `d)` = dat %>%
-      filter(abs(DAI) == min(abs(DAI))),
-    `e)` = dat %>%
-      filter(abs(DAI + 0.5) == min(abs(DAI + 0.5))),
-    `f)` = dat %>%
-      filter(DAI == min(DAI))
-  ) %>%
-    map(select,-PDI,-DAI)
+  DAI_example_cases <- DAI_example_cases %>%
+    set_names(c('a)','b)','c)','d)','e)','f)'))
   
   variables <- names(site_corrected_analysis_suitable_data)[map_lgl(site_corrected_analysis_suitable_data,is.numeric)]
   
@@ -36,7 +18,7 @@ DAIresponseSurfaces <- function(DAIrf,decline_indexes,site_corrected_analysis_su
     set_names(variables) %>%
     bind_rows(.id = 'Descriptor')
   
-  plotRanges_DAI_abc <- spectrumTrees_DAI[c('a)','b)','c)')] %>%
+  plotRanges_DAI_abc <- DAI_example_cases[c('a)','b)','c)')] %>%
     names() %>%
     map(~{
       type <- .
@@ -47,7 +29,7 @@ DAIresponseSurfaces <- function(DAIrf,decline_indexes,site_corrected_analysis_su
         expand.grid() %>%
         as_tibble() %>%
         mutate(ID = 1) %>%
-        left_join(spectrumTrees_DAI[[type]] %>%
+        left_join(DAI_example_cases[[type]] %>%
                     select(-`Active bleed size (mm)`,-`Black staining size (mm)`) %>%
                     mutate(ID = 1),
                   by = 'ID') %>%
@@ -67,9 +49,9 @@ DAIresponseSurfaces <- function(DAIrf,decline_indexes,site_corrected_analysis_su
         ) %>%
         mutate(DAI = predict(DAIrf,newdata = .))
     }) %>%
-    set_names(names(spectrumTrees_DAI[c('a)','b)','c)')]))
+    set_names(names(DAI_example_cases[c('a)','b)','c)')]))
   
-  plotRanges_DAI_def <- spectrumTrees_DAI[c('d)','e)','f)')] %>%
+  plotRanges_DAI_def <- DAI_example_cases[c('d)','e)','f)')] %>%
     names() %>%
     map(~{
       type <- .
@@ -80,7 +62,7 @@ DAIresponseSurfaces <- function(DAIrf,decline_indexes,site_corrected_analysis_su
         expand.grid() %>%
         as_tibble() %>%
         mutate(ID = 1) %>%
-        left_join(spectrumTrees_DAI[[type]] %>%
+        left_join(DAI_example_cases[[type]] %>%
                     select(-`Crown transparency (%)`,-`Missing crown (%)`) %>%
                     mutate(ID = 1),
                   by = 'ID') %>%
@@ -100,7 +82,7 @@ DAIresponseSurfaces <- function(DAIrf,decline_indexes,site_corrected_analysis_su
         ) %>%
         mutate(DAI = predict(DAIrf,newdata = .))
     }) %>%
-    set_names(names(spectrumTrees_DAI[c('d)','e)','f)')]))
+    set_names(names(DAI_example_cases[c('d)','e)','f)')]))
   
   DAI_response_plot_abc <- plotRanges_DAI_abc %>%
     names() %>%
@@ -129,7 +111,7 @@ DAIresponseSurfaces <- function(DAIrf,decline_indexes,site_corrected_analysis_su
         )
       return(pl)
     }) %>%
-    set_names(names(spectrumTrees_DAI[c('a)','b)','c)')]))
+    set_names(names(DAI_example_cases[c('a)','b)','c)')]))
   
   DAI_response_plot_def <- plotRanges_DAI_def %>%
     names() %>%
@@ -158,7 +140,7 @@ DAIresponseSurfaces <- function(DAIrf,decline_indexes,site_corrected_analysis_su
         )
       return(pl)
     }) %>%
-    set_names(names(spectrumTrees_DAI[c('d)','e)','f)')]))
+    set_names(names(DAI_example_cases[c('d)','e)','f)')]))
   
   DAI_legend <- get_legend(DAI_response_plot_abc$`a)`)
   

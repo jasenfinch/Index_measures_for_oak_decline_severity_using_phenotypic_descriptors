@@ -4,7 +4,7 @@
 
 calcAdditionalDescriptors <- function(phenoData){
   phenoData %>%
-    mutate(`Live crown ratio (%)` = liveCrownRatio(`Total height (m)`,
+    mutate(`Live crown ratio (%)` = pdi::liveCrownRatio(`Total height (m)`,
                                                    `Lower crown height (m)`),
            `Crown condition (%)` = crownCondition(`Missing crown (%)`,
                                                   `Crown transparency (%)`),

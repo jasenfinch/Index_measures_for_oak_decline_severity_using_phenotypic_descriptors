@@ -12,4 +12,9 @@ WORKDIR /home/rstudio/
 COPY .Renviron .Renviron
 COPY renv.lock renv.lock
 
+WORKDIR /home/rstudio/
+
+
 RUN Rscript -e 'renv::consent(provided = TRUE); renv::restore()'
+
+ENTRYPOINT ["Rscript","-e","renv::hydrate();renv::install('bookdown'); drake::r_make()"]
