@@ -191,16 +191,16 @@ The code used to generate the decline indexes is available as an R package pdi v
 ### Descriptor contribution to decline indexes
 
 To investigate the descriptor contributions to the decline indexes, supervised random forest regression models were trained for each decline index using the phenotypic descriptors for all 174 trees.
-These models will subsequently be referred to as $M_1$ and $M_2$ for the PDI and DAI respectively. 
-The optimal number of trees (ntree) and number randomly of variables (mtry) parameters for random forest model were tuned prior to training using the values of 10, 100, 1,000, 10,000 for ntree and a range of 2-26 at intervals of 4 for the mtry parameter. 
-The combination parameters giving the lowest percent mean absolute error (PMAE) were selected and set as follows: for the PDI ($M_1$) - `r glue('ntree = {prettyNum(PDI_rf_tune_params$ntree,big.mark = ',')}, mtry = {PDI_rf_tune_params$mtry}, PMAE = {PDI_rf_tune_params$PMAE %>% signif(digits = 3)}%')`; for the DAI ($M_2$) - `r glue('ntree = {prettyNum(DAI_rf_tune_params$ntree,big.mark = ',')}, mtry = {DAI_rf_tune_params$mtry}, PMAE = {DAI_rf_tune_params$PMAE %>% signif(digits = 3)}%')` (Supplementary figure 2).
+These models will subsequently be referred to as $M_{PDI}$ and $M_{DAI}$ for the PDI and DAI respectively. 
+The optimal number of trees ($ntree$) and number randomly of variables ($mtry$) parameters for random forest model were tuned prior to training using the values of 10, 100, 1,000, 10,000 for ntree and a range of 2-26 at intervals of 4 for the mtry parameter. 
+The combination parameters giving the lowest percent mean absolute error (PMAE) were selected and set as follows: for the PDI ($M_{PDI}$): `r glue('$ntree$ = {prettyNum(PDI_rf_tune_params$ntree,big.mark = ',')}, $mtry$ = {PDI_rf_tune_params$mtry}, PMAE = {PDI_rf_tune_params$PMAE %>% signif(digits = 3)}%')`; for the DAI ($M_{DAI}$): `r glue('$ntree$ = {prettyNum(DAI_rf_tune_params$ntree,big.mark = ',')}, $mtry$ = {DAI_rf_tune_params$mtry}, PMAE = {DAI_rf_tune_params$PMAE %>% signif(digits = 3)}%')` (Supplementary figure 2).
 Overall descriptor importance contributions to each of the indexes was measured in each model using the mean decrease in accuracy measure.
 
 ### Local descriptor contribution to index models
 
-To identify which phenotypic descriptors contributed locally to specific example cases of each of the decline indexes, Local Interpretable Model-Agnostic Explanations (LIME) were computed for each of models $M_1$ and $M_2$ [@ribeiro2016]. 
-The example cases for the PDI used for $M_1$ included the trees with the minimum (0) and maximum (1) PDI values and the tree with the PDI value closest to the median for the healthy, severe and moderately declining trees respectively.
-For the DAI ($M_2$), five example cases were selected from trees with PDI scores greater than 0.5.
+To identify which phenotypic descriptors contributed locally to specific example cases of each of the decline indexes, Local Interpretable Model-Agnostic Explanations (LIME) were computed for each of models $M_{PDI}$ and $M_{DAI}$ [@ribeiro2016]. 
+The example cases for the PDI used for $M_{PDI}$ included the trees with the minimum (0) and maximum (1) PDI values and the tree with the PDI value closest to the median for the healthy, severe and moderately declining trees respectively.
+For the DAI ($M_{DAI}$), five example cases were selected from trees with PDI scores greater than 0.5.
 These cases included a decline neutral case with a score closest to 0 and then for each of the AOD and COD syndromes, a moderate and a severe case were selected with scores closes to 0.5 and 1 for AOD and -0.5 and -1 for COD respectively. 
 LIME analysis was conducted using the lime R package version `r packageVersion('lime') %>% as.character()` with the default parameters [@pedersen2019].
 
