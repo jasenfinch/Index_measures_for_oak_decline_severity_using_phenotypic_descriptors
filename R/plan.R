@@ -2,8 +2,14 @@
 
 plan <- drake_plan(
   
+  ## data directory
+  data_dir = 'data/phenotype_collection_sheets',
+  
+  ## Download data files
+  download_data = pb_download(tag = 'data',dest = data_dir),
+  
   ## Locate data files
-  phenotype_data_file_paths = 'data/phenotype_collection_sheets' %>%
+  phenotype_data_file_paths = data_dir %>%
     list.files(full.names = T),
   
   ## read in data, correct data sheet mistakes
