@@ -1,8 +1,11 @@
 ---
-title: "Index measures for oak decline severity using phenotypic descriptors"
 output: 
   word_document: default
   pdf_document: default
+header-includes:
+  - \linespread{2}
+  - \usepackage{lineno}
+  - \linenumbers
 bibliography: references.bib
 ---
 
@@ -27,9 +30,19 @@ loadd(site_rf_margin,
       surveyors_names)
 ```
 
-**Authors:** Jasen Finch, Nathan Brown, John Draper & Sandra Denman 
+**Proposed journal:** (1) Forest Ecology & Management (2) Forestry (3) European Journal of Forest Research (4) Plant Methods 
 
-**Proposed journal:** Still undecided! ??Plant Methods, Forestry?? 
+# Title: Index measures for oak decline severity using phenotypic descriptors
+
+**Authors:** Jasen Finch^1\*^, Nathan Brown^2^, Manfred Beckmann^1^, Sandra Denman^2^ & John Draper^1^  
+
+^\*^ Corresponding author
+
+**Addresses:**
+
+1. Institute of biological, environmental and rural sciences, Aberystwyth University, Aberystwyth, SY23 3DA, UK
+
+2. Centre for Forestry and Climate Change, Forest Research, Alice Holt Lodge, Farnham GU 4LH, UK
 
 **Keywords:** acute oak decline, chronic oak decline, phenotyping, machine learning, unsupervised learning, random forest, decline spectrum
 
@@ -40,6 +53,9 @@ The Phenotypic Decline Index (PDI) and the Decline Acuteness Index (DAI), were d
 Measured phenotypic descriptors included aspects of tree shape and size, crown condition and the presence of biotic agents.
 The decline indexes were derived using proximity values from unsupervised random forest of the phenotypic descriptors, multidimensional scaling (MDS) and min-max scaling.
 These indexes are simple but sensitive measures of tree decline severity allowing easy comparisons of oak trees both spatially and temporally providing a potentially useful tool for forest monitoring and management.
+
+
+\newpage
 
 ## Introduction
 
