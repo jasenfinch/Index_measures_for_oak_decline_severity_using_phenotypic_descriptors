@@ -170,6 +170,13 @@
       "Repository": "CRAN",
       "Hash": "08cf4045c149a0f0eaf405324c7495bd"
     },
+    "clisymbols": {
+      "Package": "clisymbols",
+      "Version": "1.2.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "96c01552bfd5661b9bbdefbc762f4bcd"
+    },
     "codetools": {
       "Package": "codetools",
       "Version": "0.2-16",
@@ -232,6 +239,13 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "022c8630abecb00f22740d021ab89595"
+    },
+    "desc": {
+      "Package": "desc",
+      "Version": "1.2.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "6c8fe8fa26a23b79949375d372c7b395"
     },
     "digest": {
       "Package": "digest",
@@ -394,6 +408,20 @@
       "Repository": "CRAN",
       "Hash": "dfa67ccc3fb199f102a34d557ec1ff45"
     },
+    "gh": {
+      "Package": "gh",
+      "Version": "1.1.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "89ea5998938d1ad55f035c8a86f96b74"
+    },
+    "git2r": {
+      "Package": "git2r",
+      "Version": "0.26.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "135db4dbc94ed18f629ff8843a8064b7"
+    },
     "glmnet": {
       "Package": "glmnet",
       "Version": "3.0-2",
@@ -504,6 +532,13 @@
       "Repository": "CRAN",
       "Hash": "fffa635f747cd07ffc56bc13a23701e4"
     },
+    "ini": {
+      "Package": "ini",
+      "Version": "0.3.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "6154ec2223172bce8162d4153cda21f7"
+    },
     "iterators": {
       "Package": "iterators",
       "Version": "1.0.12",
@@ -527,10 +562,10 @@
     },
     "knitr": {
       "Package": "knitr",
-      "Version": "1.27",
+      "Version": "1.28",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "0eaaccb0946bf5ee33e2762882a4ae07"
+      "Hash": "915a6f0134cdbdf016d7778bc80b2eda"
     },
     "koRpus": {
       "Package": "koRpus",
@@ -726,6 +761,13 @@
       "RemoteHost": "api.github.com",
       "Hash": "8bcaec188653f0450c9f2574914cce8e"
     },
+    "piggyback": {
+      "Package": "piggyback",
+      "Version": "0.0.10",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "7eddec477c4de05eb7145b7d9437c278"
+    },
     "pillar": {
       "Package": "pillar",
       "Version": "1.4.3",
@@ -872,6 +914,13 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "9d1c61d476c448350c482d6664e1b28b"
+    },
+    "rprojroot": {
+      "Package": "rprojroot",
+      "Version": "1.3-2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "f6a407ae5dd21f6f80a6708bbb6eb3ae"
     },
     "rstudioapi": {
       "Package": "rstudioapi",
@@ -1033,6 +1082,13 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "92e5a36ad5b445e895a0f9b98db4d810"
+    },
+    "usethis": {
+      "Package": "usethis",
+      "Version": "1.5.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "30ee6fa315a020d5db6f28adbb7fea83"
     },
     "utf8": {
       "Package": "utf8",
