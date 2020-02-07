@@ -147,7 +147,7 @@ The crown density ($CD$) values collected at Attingham and Langdale were convert
 All descriptors collected in cm were converted to mm except for DBH which was converted to m.
 The tap tests that were positive for hollow stem tissue were converted to present and absent then renamed dead stem tissue.
 The canopy closure descriptor was converted from yes and no to present and absent.
-Finally, the stem symptoms sizes for active bleeds, black staining and callused wounds were averaged and a frequency per tree totalled.
+Finally, the stem symptoms lengthss for active bleeds, black staining and callused wounds were averaged and a frequency per tree totalled.
 After preparation there were a total of 31 raw descriptors for analysis. 
 
 ### Tree size descriptor adjustment for age and inter site variance
@@ -183,7 +183,7 @@ Estimated bleed prevalence (%) - estimated percentage of the surveyed 3m basal t
 
 $$p = \frac{a^2A + b^2B}{3000d\pi} \times 100$$
 
-$a$ = average active bleed size (mm), $A$ = number of active bleeds, $b$ = average black stain size (mm), $B$ = black stain number, $d$ = $DBH (m) \times 1000$
+$a$ = average active bleed length (mm), $A$ = number of active bleeds, $b$ = average black stain length (mm), $B$ = black stain number, $d$ = $DBH (m) \times 1000$
 
 Agrilus exit hole density (m^-2^) - density of observed *A. biguttatus* exit holes across the surveyed 2m basal trunk area.
 
@@ -232,7 +232,7 @@ For a given case, each combination of theses simulated descriptor values were us
 
 ```{r stem_symptom_ranges}
 symptom_ranges <- site_corrected_analysis_suitable_data %>%
-  select(`Active bleed size (mm)`,`Black staining size (mm)`) %>%
+  select(`Active bleed length (mm)`,`Black staining length (mm)`) %>%
   gather(descriptor,value) %>%
   group_by(descriptor) %>%
   summarise(minimum = min(value),
@@ -241,8 +241,8 @@ symptom_ranges <- site_corrected_analysis_suitable_data %>%
              )
 ```
 
-The same approach was used for $M_{DAI}$ using a comparison between active bleed size and black staining size as well as missing crown and crown transparency.
-The upper boundary for the ranges of active bleed size and black stain size was taken as the centre value between the maximum and minimum and reduced by a factor of eight to give ranges of `r glue("{symptom_ranges$minimum[1]}-{signif(symptom_ranges$center[1] / 8,digits = 3)}mm")` and `r glue("{symptom_ranges$minimum[2]}-{signif(symptom_ranges$center[2] / 8,digits = 3)}mm")` respectively and enable more effective visualisation.
+The same approach was used for $M_{DAI}$ using a comparison between active bleed length and black staining length as well as missing crown and crown transparency.
+The upper boundary for the ranges of active bleed length and black stain length was taken as the centre value between the maximum and minimum and reduced by a factor of eight to give ranges of `r glue("{symptom_ranges$minimum[1]}-{signif(symptom_ranges$center[1] / 8,digits = 3)}mm")` and `r glue("{symptom_ranges$minimum[2]}-{signif(symptom_ranges$center[2] / 8,digits = 3)}mm")` respectively and enable more effective visualisation.
 
 ## Results
 
@@ -313,7 +313,7 @@ A much greater range of PDI values can be obtained from trees with relatively gr
 The DAI ($M_{DAI}$) is a much more complex index with more descriptors contributing to it than the PDI such as bleed prevalence, DBH and crown condition descriptors. 
 Simulated response surfaces for the DAI are shown in Figure 4. 
 These response surfaces show circumstances under which bleed prevalence related descriptors (Figures 4a, b & c) and crown condition descriptors (Figures 4d, e & f) change for non-symptomatic AOD or COD trees (Figures 4a & d respectively), moderate AOD or COD (Figures 4b & e respectively) and severe AOD or COD (Figures 4c & f respectively). 
-Increasing active bleed, staining size and frequency contributed to greater positive values of the DAI and more severe AOD. 
+Increasing active bleed, staining length and frequency contributed to greater positive values of the DAI and more severe AOD. 
 Higher DAI values could also be obtained from trees with greater stature (Figure 4c). 
 Crown transparency and missing crown have no influence on the DAI for trees of neutral decline type (Figure 4d).
 Similarly to the PDI, trees with smaller stature and poorer crown condition give lower DAI values (Figures 4e & f) and therefore more severe COD however only narrow ranges of DAI values could be obtained for each case when varying the ranges of these descriptors.

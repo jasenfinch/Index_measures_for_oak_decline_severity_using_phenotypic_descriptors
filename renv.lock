@@ -751,15 +751,15 @@
     },
     "pdi": {
       "Package": "pdi",
-      "Version": "0.3.1",
+      "Version": "0.3.2",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteUsername": "jasenfinch",
       "RemoteRepo": "pdi",
       "RemoteRef": "master",
-      "RemoteSha": "6ba5e614eee0f4530b756f6845693bb848d756f4",
+      "RemoteSha": "cdc6e52f311ac84b22b811b0f9010b22134f99e9",
       "RemoteHost": "api.github.com",
-      "Hash": "8bcaec188653f0450c9f2574914cce8e"
+      "Hash": "c40c8fd0cb09128f8b761a3d807b6de3"
     },
     "piggyback": {
       "Package": "piggyback",

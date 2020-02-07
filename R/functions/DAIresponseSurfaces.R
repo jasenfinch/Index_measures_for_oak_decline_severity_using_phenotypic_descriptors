@@ -23,14 +23,14 @@ DAIresponseSurfaces <- function(DAIrf,DAI_example_cases,site_corrected_analysis_
     map(~{
       type <- .
       list(
-        `Active bleed size (mm)` = seq(ranges$min[ranges$Descriptor == 'Active bleed size (mm)'],ranges$center[ranges$Descriptor == 'Active bleed size (mm)']/8,length.out = 100),
-        `Black staining size (mm)` = seq(ranges$min[ranges$Descriptor == 'Black staining size (mm)'],ranges$center[ranges$Descriptor == 'Black staining size (mm)']/8,length.out = 100)
+        `Active bleed length (mm)` = seq(ranges$min[ranges$Descriptor == 'Active bleed length (mm)'],ranges$center[ranges$Descriptor == 'Active bleed length (mm)']/8,length.out = 100),
+        `Black staining length (mm)` = seq(ranges$min[ranges$Descriptor == 'Black staining length (mm)'],ranges$center[ranges$Descriptor == 'Black staining length (mm)']/8,length.out = 100)
       ) %>%
         expand.grid() %>%
         as_tibble() %>%
         mutate(ID = 1) %>%
         left_join(DAI_example_cases[[type]] %>%
-                    select(-`Active bleed size (mm)`,-`Black staining size (mm)`) %>%
+                    select(-`Active bleed length (mm)`,-`Black staining length (mm)`) %>%
                     mutate(ID = 1),
                   by = 'ID') %>%
         select(-ID) %>%
@@ -41,9 +41,9 @@ DAIresponseSurfaces <- function(DAIrf,DAI_example_cases,site_corrected_analysis_
                                              `Total height (m)`,
                                              `Lower crown height (m)`,
                                              `Crown condition (%)`),
-          `Bleed prevalence (%)` = bleedPrevalence(`Active bleed size (mm)`,
+          `Bleed prevalence (%)` = bleedPrevalence(`Active bleed length (mm)`,
                                                    `Active bleeds`,
-                                                   `Black staining size (mm)`,
+                                                   `Black staining length (mm)`,
                                                    `Black staining`,
                                                    `Diameter at breast height (m)`)
         ) %>%
@@ -74,9 +74,9 @@ DAIresponseSurfaces <- function(DAIrf,DAI_example_cases,site_corrected_analysis_
                                              `Total height (m)`,
                                              `Lower crown height (m)`,
                                              `Crown condition (%)`),
-          `Bleed prevalence (%)` = bleedPrevalence(`Active bleed size (mm)`,
+          `Bleed prevalence (%)` = bleedPrevalence(`Active bleed length (mm)`,
                                                    `Active bleeds`,
-                                                   `Black staining size (mm)`,
+                                                   `Black staining length (mm)`,
                                                    `Black staining`,
                                                    `Diameter at breast height (m)`)
         ) %>%
@@ -89,7 +89,7 @@ DAIresponseSurfaces <- function(DAIrf,DAI_example_cases,site_corrected_analysis_
     map(~{
       type <- .
       pl <- plotRanges_DAI_abc[[type]] %>%
-        ggplot(aes(x = `Active bleed size (mm)`,y = `Black staining size (mm)`,fill = DAI,z = DAI)) +
+        ggplot(aes(x = `Active bleed length (mm)`,y = `Black staining length (mm)`,fill = DAI,z = DAI)) +
         geom_raster() +
         geom_raster() +
         geom_contour(colour = 'black',binwidth = 0.1) +
