@@ -40,9 +40,9 @@ loadd(site_rf_margin,
 
 **Addresses:**
 
-1. Institute of biological, environmental and rural sciences, Aberystwyth University, Aberystwyth, SY23 3DA, UK
+^1^ Institute of Biological, Environmental and Rural Sciences, Aberystwyth University, Aberystwyth, SY23 3DA, UK
 
-2. Centre for Forestry and Climate Change, Forest Research, Alice Holt Lodge, Farnham GU 4LH, UK
+^2^ Centre for Forestry and Climate Change, Forest Research, Alice Holt Lodge, Farnham GU 4LH, UK
 
 **Keywords:** acute oak decline, chronic oak decline, phenotyping, machine learning, unsupervised learning, random forest, decline spectrum
 
@@ -53,7 +53,6 @@ The Phenotypic Decline Index (PDI) and the Decline Acuteness Index (DAI), were d
 Measured phenotypic descriptors included aspects of tree shape and size, crown condition and the presence of biotic agents.
 The decline indexes were derived using proximity values from unsupervised random forest of the phenotypic descriptors, multidimensional scaling (MDS) and min-max scaling.
 These indexes are simple but sensitive measures of tree decline severity allowing easy comparisons of oak trees both spatially and temporally providing a potentially useful tool for forest monitoring and management.
-
 
 \newpage
 
