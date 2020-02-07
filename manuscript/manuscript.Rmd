@@ -32,7 +32,7 @@ loadd(site_rf_margin,
 
 **Proposed journal:** (1) Forest Ecology & Management (2) Forestry (3) European Journal of Forest Research (4) Plant Methods 
 
-# Title: Index measures for oak decline severity using phenotypic descriptors
+# Title: Index measures for oak decline severity using phenotypic descriptors {-}
 
 **Authors:** Jasen Finch^1\*^, Nathan Brown^2^, Manfred Beckmann^1^, Sandra Denman^2^ & John Draper^1^  
 
@@ -46,7 +46,7 @@ loadd(site_rf_margin,
 
 **Keywords:** acute oak decline, chronic oak decline, phenotyping, machine learning, unsupervised learning, random forest, decline spectrum
 
-## Abstract
+## Abstract {-}
 
 Oak decline is becoming increasingly prevalent along with the need for accurate and quantitative oak health monitoring.
 The Phenotypic Decline Index (PDI) and the Decline Acuteness Index (DAI), were developed to quantitatively describe and differentiate acute and chronic oak decline severity using a multitude of easily measurable phenotypic descriptors.
@@ -70,7 +70,7 @@ Abiotic factors can include both predisposing and inciting factors such as droug
 Biotic agents can include insect infestation such as the larvae of bark boring beetle *Agrilus biguttatus* or bacterial stem bleeds associated with Acute Oak Decline (AOD) [@brown2017a; @denman2014], as well as a variety of fungal root pathogens associated Chronic Oak Decline (COD) [@denman2017].
 
 Oak decline syndromes are wide ranging in cause and attempts have been made to subdivide the types of decline associated with *Quercus robur* and *Q. petraea* based on the duration over which a tree has been declining and the biotic agents associated with a declining tree.
-Mortality in trees suffering from COD can occur over a period of decades where as AOD can occur in 5-10 years [@denman2009].
+Mortality in trees suffering from COD can occur over a period of decades whereas AOD can occur in 5-10 years [@denman2009].
 A chronically declining oak can also subsequently begin to develop the stem bleeds associated with AOD.
 The visual, manual assignment of decline status and severity in the field is variable and error prone due to the contribution of many factors.
 Doing this accurately requires much expertise, experience, and training [@ferretti1997].
@@ -130,7 +130,7 @@ See Supplementary Table 1 for category details.
 
 Crown radius, canopy closure and tap tests for dead stem tissue were measured for each cardinal point.
 The crown radius was measured using a vertex transponder attached to the relevant side of the stem at a height of 1.3m. Canopy closure recorded as yes or no depending on whether any other crowns are touching the sampling tree.
-A high resolution photo was taken of the vase to the spring of the crown and of the stem from the base to a height of 3m for each cardinal point for later reference.
+A high resolution photo was taken of the base to the top of the crown and of the stem from the base to a height of 3m for each cardinal point for later reference.
 
 The AOD stem symptoms (active bleeds, black staining, callused wounds) were collected by measuring longest axis of each individual bleed, stain or callused wound found within the basal 3m of the stem.
 The frequency of *A. biguttatus* exit holes were counted along with the presence or absence of each of oval shaped exit holes, small circular shaped exit holes and ground level fungal fruiting bodies which were recorded from the basal 2m of the stem. 
@@ -267,7 +267,7 @@ As a group, these trees are showing moderate overall decline.
 The remission trees were also found to be significantly different to the AOD (`r glue("t({remission_DAI_group_ttest$parameter[1]}) = {signif(remission_DAI_group_ttest$statistic[1],digits = 3) %>% abs()}, p = < 0.001")`) and COD (`r glue("t({remission_DAI_group_ttest$parameter[2]}) = {signif(remission_DAI_group_ttest$statistic[2],digits = 3) %>% abs()}, p = {round(remission_DAI_group_ttest$p.value[2],3)}")`) groups on the DAI scale with group means of `r signif(remission_DAI_group_ttest$estimate1[1],digits = 3)`, `r signif(remission_DAI_group_ttest$estimate2[1],digits = 3)` and `r signif(remission_DAI_group_ttest$estimate1[2],digits = 3)` for the AOD, remission and COD groups respectively. 
 As a group, the remission trees were found to be neither AOD or COD.
 
-Although significance was obtained between the decline status groups on both the PDI and DAI scales, Figure 5 highlights the inaccuracies in the manual decline status classifications when viewed in an individual tree context.
+Although significance was obtained between the decline status groups on both the PDI and DAI scales, Figure 1 highlights the inaccuracies in the manual decline status classifications when viewed in an individual tree context.
 It can be seen that a number of the trees, when compared quantitatively using these measures, could in fact be classified with a different decline state. 
 
 ### Key descriptors contributing to the decline indexes
@@ -281,12 +281,12 @@ These were followed closely by the stem staining and bleeding descriptors such a
 The presence of *A. biguttatus* exit holes had very little contribution to the DAI with exit hole density ranked only `r which(DAI_descriptor_importance$Feature == 'Agrilus exit hole density (m^-2)')`th.
 
 Plots of the individual descriptors against the decline indexes are available in Supplementary Figures 4-7. 
-The following sections identify how the descriptors contribute and interact to the decline index models in specific decline cases. 
+The following sections identify how the descriptors contribute and interact within the decline index models in specific decline cases. 
 
-### Localised descriptor contributions and trends within the PDI and DAI models
+### Local descriptor contributions and trends within the PDI and DAI models
 
-LIME identified crown volume, condition transparency and radius as the top four descriptors contributing to $M_{PDI}$ in each of the healthy, moderate and severe decline cases using lime (Table 1).
-These descriptors were also the same top descriptors in the overall model importance lists for the PDI (Figure 2a).
+LIME identified crown volume, condition transparency and radius as the top four descriptors contributing to $M_{PDI}$ in each of the healthy, moderate and severe decline cases (Table 1).
+These descriptors were also among the same top descriptors in the overall model importance lists for the PDI (Figure 2a).
 Increasing decline severity was associated with a reduction in the size and condition of the crown.
 For instance, declining trees were found to have a composite crown volume below 841m^3^.
 Healthy trees were found to have a crown condition greater than 71.3%, moderately declining trees between 47.6% and 71.3% and severely declining trees a condition below 23.9%.
