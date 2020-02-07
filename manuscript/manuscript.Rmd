@@ -2,6 +2,7 @@
 output: 
   word_document: default
   pdf_document: default
+fontsize: 12pt
 header-includes:
   - \linespread{2}
   - \usepackage{lineno}
@@ -80,7 +81,7 @@ When the decline is severe there are clear symptoms visible in the crown, such a
 It is these characteristics that many studies use as the primary indicator of tree decline severity [@zarnoch2004], however these symptoms can develop slowly (especially in the case of COD) and simple classes are unlikely to capture the full detail of the subtle transition from being healthy to declined. 
 
 Assigning discrete decline status labels neglects the true spectrum of decline severity encountered in the field.
-There is a growing need for sensitive, continuous measures of tree decline that accurately reflect the decline spectrum [@pontius2014].
+There is a growing need for sensitive, continuous measures of tree decline that accurately reflect the decline severity spectrum [@pontius2014].
 This has the potential to greatly improve monitoring, enable the early detection of decline for accurate forecasting and inform forestry management practices.
 Consistent long term monitoring has been highlighted as a key requirement for understanding the threats to oak and safeguarding its future [@hartmann2018].
 Coupled with this, monitoring methods should take advantage of modern data analysis techniques whilst still retaining practical simplicity in the field.
@@ -142,11 +143,11 @@ R version `r str_c(version$major,version$minor,sep ='.')` was used for all parsi
 All raw data, data preparation routines and analysis code used to generate this manuscript are available at https://github.com/jasenfinch/Index_measures_for_oak_decline_severity_using_phenotypic_descriptors.
 
 All cardinal assessments were averaged to give a single value per tree.
-The crown density ($CD$) values erroneously collected at Attingham and Langdale were converted to crown transparency ($t = 100 - CD$)
+The crown density ($CD$) values collected at Attingham and Langdale were converted to crown transparency ($t = 100 - CD$)
 All descriptors collected in cm were converted to mm except for DBH which was converted to m.
 The tap tests that were positive for hollow stem tissue were converted to present and absent then renamed dead stem tissue.
 The canopy closure descriptor was converted from yes and no to present and absent.
-Finally, the stem symptoms sizes for active bleeds, black staining and callused wounds were averaged and a frequency per tree collected.
+Finally, the stem symptoms sizes for active bleeds, black staining and callused wounds were averaged and a frequency per tree totalled.
 After preparation there were a total of 31 raw descriptors for analysis. 
 
 ### Tree size descriptor adjustment for age and inter site variance
@@ -209,7 +210,7 @@ To investigate the descriptor contributions to the decline indexes, supervised r
 These models will subsequently be referred to as $M_{PDI}$ and $M_{DAI}$ for the PDI and DAI respectively. 
 The optimal number of trees ($ntree$) and number randomly of variables ($mtry$) parameters for random forest model were tuned prior to training using the values of 10, 100, 1,000, 10,000 for ntree and a range of 2-26 at intervals of 4 for the mtry parameter. 
 The combination parameters giving the lowest percent mean absolute error (PMAE) were selected and set as follows: for the PDI ($M_{PDI}$): `r glue('$ntree$ = {prettyNum(PDI_rf_tune_params$ntree,big.mark = ',')}, $mtry$ = {PDI_rf_tune_params$mtry}, PMAE = {PDI_rf_tune_params$PMAE %>% signif(digits = 3)}%')`; for the DAI ($M_{DAI}$): `r glue('$ntree$ = {prettyNum(DAI_rf_tune_params$ntree,big.mark = ',')}, $mtry$ = {DAI_rf_tune_params$mtry}, PMAE = {DAI_rf_tune_params$PMAE %>% signif(digits = 3)}%')` (Supplementary figure 2).
-Overall descriptor importance contributions to each of the indexes was measured in each model using the mean decrease in accuracy measure.
+Overall descriptor importance contributions to each of the indexes was measured in each model using the mean decrease in accuracy measure with higher values considered to have a higher overall contribution to the decline index.
 
 ### Local descriptor contribution to index models
 
