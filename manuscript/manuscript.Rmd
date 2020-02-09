@@ -273,8 +273,10 @@ It can be seen that a number of the trees, when compared quantitatively using th
 
 ### Key descriptors contributing to the decline indexes
 
+The relative contributions of the phenotypic descriptors to the decline index models is shown in Figure 2.
+
 The top four ranked descriptors found to contribute to $M_{PDI}$ were all crown size and condition related descriptors with composite crown volume the top ranked descriptor overall (Figure 2a).
-Other tree size related descriptors such as and live crown ratio stem bleeding descriptors contributed secondarily.
+Other tree size related descriptors such as bleed prevalence and live crown ratio stem bleeding descriptors contributed secondarily.
 
 $M_{DAI}$ was more complex in descriptor contribution many more descriptors contributing more equally than the PDI (Figure 2b).
 The overall tree size descriptors live crown ratio, DBH and crown volume contributed almost equally to $M_{DAI}$.
