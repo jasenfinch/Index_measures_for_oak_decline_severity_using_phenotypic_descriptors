@@ -1,6 +1,7 @@
 ---
 output: 
-  word_document: default
+  word_document:
+    reference_docx: template.docx
   pdf_document: default
 fontsize: 12pt
 header-includes:
@@ -34,7 +35,7 @@ loadd(site_rf_margin,
 
 **Proposed journal:** (1) Forest Ecology & Management (2) Forestry (3) European Journal of Forest Research (4) Plant Methods 
 
-# Title: Index measures for oak decline severity using phenotypic descriptors {-}
+# **Title:** Index measures for oak decline severity using phenotypic descriptors {-}
 
 **Authors:** Jasen Finch^1\*^, Nathan Brown^2^, Manfred Beckmann^1^, Sandra Denman^2^ & John Draper^1^  
 
