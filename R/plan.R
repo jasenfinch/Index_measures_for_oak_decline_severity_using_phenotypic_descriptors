@@ -48,6 +48,10 @@ plan <- drake_plan(
     margins() %>%
     summarise(Margin = mean(Margin)),
   
+  ## Calculate AUC for site differences
+  site_rf_auc = site_differences_rf %>%
+    auc(),
+  
   ## site differences MDS and importance plots
   site_differences_mds_plot = site_differences_rf %>%
     siteDifferencesRFplot(pheno_data_with_additional_descriptors),
@@ -74,10 +78,14 @@ plan <- drake_plan(
     siteRF( pheno_data_with_additional_descriptors$Location %>% factor(),
        n = 100),
   
-  ## Calculate margin for site differences
+  ## Calculate margin for site differences post adjustment
   site_rf_post_correction_margin = site_differences_rf_post_correction %>%
     margins() %>%
     summarise(Margin = mean(Margin)),
+  
+  ## Calculate AUC for site differences post adjustment
+  site_rf_post_correction_auc = site_differences_rf_post_correction %>%
+    auc(),
   
   ## run unsupervised random forest analysis
   unsupervised_rf = site_corrected_analysis_suitable_data %>%

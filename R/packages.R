@@ -24,7 +24,8 @@ pacman::p_load(drake,
                glue,
                kableExtra,
                grid,
-               piggyback)
+               piggyback,
+               yardstick)
 
 # Load dependant GitHub libraries
 
