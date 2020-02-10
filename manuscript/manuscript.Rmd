@@ -1,8 +1,9 @@
 ---
 output: 
-  word_document:
+  bookdown::word_document2:
     reference_docx: template.docx
-  pdf_document: default
+  bookdown::pdf_document2:
+    toc: false
 fontsize: 12pt
 header-includes:
   - \linespread{2}
@@ -55,14 +56,14 @@ Oak decline is becoming increasingly prevalent along with the need for accurate 
 The Phenotypic Decline Index (PDI) and the Decline Acuteness Index (DAI), were developed to quantitatively describe and differentiate acute and chronic oak decline severity using a multitude of easily measurable phenotypic descriptors.
 Measured phenotypic descriptors included aspects of tree shape and size, crown condition and the presence of biotic agents.
 The decline indexes were derived using proximity values from unsupervised random forest of the phenotypic descriptors, multidimensional scaling (MDS) and min-max scaling.
-These indexes are simple but sensitive measures of tree decline severity allowing easy comparisons of oak trees both spatially and temporally providing a potentially useful tool for forest monitoring and management.
+These indexes are simple but sensitive measures of tree decline severity allowing easy comparisons of oak trees both spatially and temporally, providing a potentially useful tool for forest monitoring and management.
 
 \newpage
 
 ## Introduction
 
 Trees and forests across the globe face threats from a changing climate, notably warming and an increase in drought episodes affect the health status of individual trees, causing vegetation changes at the landscape scale [@choat2012; @millar2015; @allen2015]. 
-Within this context biotic agents (pests and diseases) can flourish and often drive mortality [@kautz2017; @jactel2012]. 
+Within this context, biotic agents (pests and diseases) can flourish and often drive mortality [@kautz2017; @jactel2012]. 
 Monitoring vegetation changes and understanding the underlying processes affecting tree health are important first steps to predicting the scale and extent of these threats [@hartmann2018] and plan future policies for planting and mitigation efforts [@bradford2017]. 
 Current ‘omics and remote sensing approaches provide powerful tools to document and understand these changes across multiple scales (from cellular to tree to landscape scales), but an important prerequisite is the ability to accurately describe tree health status, so that even subtle changes can be documented [@dungey2018; @hornero2020]. 
 Phenotyping, documenting the physical traits of an individual or group, is thus a crucial first step relevant to studies across disciplines and further, it is necessary to understand how these measurements combine to describe health status. 
