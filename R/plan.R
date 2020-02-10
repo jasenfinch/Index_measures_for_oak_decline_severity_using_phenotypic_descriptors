@@ -40,7 +40,7 @@ plan <- drake_plan(
   
   ## Analyse site differences using supervised random forest
   site_differences_rf = analysis_suitable_data %>%
-    siteRF(pheno_data_with_additional_descriptors$Location %>% factor(),
+    stratifiedRF(pheno_data_with_additional_descriptors$Location %>% factor(),
        n = 100),
   
   ## Calculate margin for site differences
@@ -75,7 +75,7 @@ plan <- drake_plan(
   
   ## re-analyse site differences after site correction
   site_differences_rf_post_correction = site_corrected_analysis_suitable_data %>%
-    siteRF( pheno_data_with_additional_descriptors$Location %>% factor(),
+    stratifiedRF( pheno_data_with_additional_descriptors$Location %>% factor(),
        n = 100),
   
   ## Calculate margin for site differences post adjustment

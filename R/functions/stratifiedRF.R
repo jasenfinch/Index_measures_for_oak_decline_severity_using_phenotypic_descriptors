@@ -1,5 +1,5 @@
 
-siteRF <- function(d,cl,n){
+stratifiedRF <- function(d,cl,n){
   ss <- cl %>%
     table() %>%
     min()
