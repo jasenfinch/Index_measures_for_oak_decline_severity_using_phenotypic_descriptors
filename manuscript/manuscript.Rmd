@@ -28,7 +28,8 @@ loadd(site_rf_margin,
       remission_PDI_group_ttest,
       remission_DAI_group_ttest,
       DAI_descriptor_importance,
-      surveyors_names)
+      surveyors_names,
+      pheno_data_with_additional_descriptors)
 ```
 
 **Proposed journal:** (1) Forest Ecology & Management (2) Forestry (3) European Journal of Forest Research (4) Plant Methods 
@@ -147,13 +148,8 @@ The crown density ($CD$) values collected at Attingham and Langdale were convert
 All descriptors collected in cm were converted to mm except for DBH which was converted to m.
 The tap tests that were positive for hollow stem tissue were converted to present and absent then renamed dead stem tissue.
 The canopy closure descriptor was converted from yes and no to present and absent.
-Finally, the stem symptoms lengthss for active bleeds, black staining and callused wounds were averaged and a frequency per tree totalled.
+Finally, the stem symptoms lengths for active bleeds, black staining and callused wounds were averaged and a frequency per tree totalled.
 After preparation there were a total of 31 raw descriptors for analysis. 
-
-### Tree size descriptor adjustment for age and inter site variance
-
-To account for age, size and site specific tree difference, an adjustment of site means to the overall mean was applied to each of the size descriptors (DBH, lower crown height, timber height, total height, crown radius). 
-An example of this adjustment is shown for DBH in Supplementary Figure 1 and the adjustment factors for each of the descriptors at each site is shown in Supplementary Table 2.  
 
 ### Composite descriptor calculation
 
@@ -191,9 +187,29 @@ $$e = \frac{h}{2d\pi}$$
 
 $h$ = number of *A. biguttatus* exit holes, d = DBH (m)
 
+
+### Random forest analysis of inter-site discrimination
+
+Supervised random forest classification was performed to assess the discrimination in the phenotypic descriptors between the site locations and identify descriptors that could potentially confound comparisons relating to oak decline severity.
+Random forest analysis was performed using the randomForest R package version `r packageVersion('randomForest') %>% as.character()` [@liaw2002] with 100 repetitions using default $mtry$ and $ntree$ parameters.
+Due to uneven class sizes, the site classes were balanced using stratified sampling with a sample size of `r pheno_data_with_additional_descriptors$Location %>% table() %>% min()` per class, the smallest class size.
+
+To assess classification performance the *margin* metric was computed for each observation using the out of bag predictions, which was averaged across all observations for each random forest repetition, and then averaged across all repetitions.
+The *margin* metric is the difference between the proportion of votes for the correct class and the maximum proportion of votes for the other classes for a given observation.
+A positive *margin* value indicates correct classification [@breiman2001a].
+
+Descriptor importance contributions were measured using the mean decrease in accuracy metric averaged for each descriptor across the repetitions.
+Higher mean decrease in accuracy values had greater overall contribution and therefore greater importance.
+
+### Tree size descriptor adjustment for age and inter site variance
+
+To account for age, size and site specific tree difference, an adjustment of site means to the overall mean was applied to each of the size descriptors (DBH, lower crown height, timber height, total height, crown radius). 
+An example of this adjustment is shown for DBH in Supplementary Figure 1 and the adjustment factors for each of the descriptors at each site is shown in Supplementary Table 2.  
+All composite descriptors utilising these adjusted descriptors were recalculated after adjustment.
+
 ### Calculation of indexes for oak decline severity
 
-The phenotypic descriptors were analysed using 100 repetitions of unsupervised random forest using the randomForest R package version `r packageVersion('randomForest') %>% as.character()` [@liaw2002].
+The phenotypic descriptors were analysed using 100 repetitions of unsupervised random forest.
 The proximity matrices from each repetition were averaged to a single proximity matrix ($P$).
 This was then transformed to a dissimilarity matrix ($1 - P$) and scaled to two dimensions using  multidimensional scaling (MDS).
 The first MDS dimension ($D$) was inverted ($1 - D$) to ensure the correct dimensional orientation relative to decline severity.
@@ -210,7 +226,7 @@ To investigate the descriptor contributions to the decline indexes, supervised r
 These models will subsequently be referred to as $M_{PDI}$ and $M_{DAI}$ for the PDI and DAI respectively. 
 The optimal number of trees ($ntree$) and number randomly of variables ($mtry$) parameters for random forest model were tuned prior to training using the values of 10, 100, 1,000, 10,000 for ntree and a range of 2-26 at intervals of 4 for the mtry parameter. 
 The combination parameters giving the lowest percent mean absolute error (PMAE) were selected and set as follows: for the PDI ($M_{PDI}$): `r glue('$ntree$ = {prettyNum(PDI_rf_tune_params$ntree,big.mark = ',')}, $mtry$ = {PDI_rf_tune_params$mtry}, PMAE = {PDI_rf_tune_params$PMAE %>% signif(digits = 3)}%')`; for the DAI ($M_{DAI}$): `r glue('$ntree$ = {prettyNum(DAI_rf_tune_params$ntree,big.mark = ',')}, $mtry$ = {DAI_rf_tune_params$mtry}, PMAE = {DAI_rf_tune_params$PMAE %>% signif(digits = 3)}%')` (Supplementary figure 2).
-Overall descriptor importance contributions to each of the indexes was measured in each model using the mean decrease in accuracy measure with higher values considered to have a higher overall contribution to the decline index.
+Overall descriptor importance contributions to each of the indexes using the mean decrease in accuracy measure as described in Section #.
 
 ### Local descriptor contribution to index models
 
@@ -251,7 +267,7 @@ The upper boundary for the ranges of active bleed length and black stain length 
 A preliminary analysis using supervised random forest classification could separate trees based on their location (Supplementary  figure 3a) with an average *margin* value of `r site_rf_margin$Margin %>% signif(digits = 3)`.
 The descriptors that contributed most to this discrimination were those that were related to trees size such as DBH, total height and crown radius and likely reflect the varied tree age and planting density across the nine sites (Supplementary figure 3b). 
 To counter this, effect sizes were adjusted based on the site means for each tree size descriptor to remove inter-site variability but maintain intra-site variability as described in Section #.
-This ensures that the subsequent comparisons of these discriptors in the context of oak decline are not confounded by these identified site differences.
+This ensures that the subsequent comparisons of these descriptors in the context of oak decline are not confounded by these identified site differences.
 After the application of the tree size adjustment, the random forest margin was substantially reduced to `r site_rf_post_correction_margin$Margin %>% signif(digits = 3)` indicating that the adjustment was able to remove the majority of the between site variance.
 
 ### Oak decline severity indexes of manually assigned decline statuses
