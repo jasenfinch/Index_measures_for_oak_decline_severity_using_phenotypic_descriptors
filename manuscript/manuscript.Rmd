@@ -286,9 +286,6 @@ As a group, these trees are showing moderate overall decline.
 The remission trees were also found to be significantly different to the AOD (`r glue("t({remission_DAI_group_ttest$parameter[1]}) = {signif(remission_DAI_group_ttest$statistic[1],digits = 3) %>% abs()}, p = < 0.001")`) and COD (`r glue("t({remission_DAI_group_ttest$parameter[2]}) = {signif(remission_DAI_group_ttest$statistic[2],digits = 3) %>% abs()}, p = {round(remission_DAI_group_ttest$p.value[2],3)}")`) groups on the DAI scale with group means of `r signif(remission_DAI_group_ttest$estimate1[1],digits = 3)`, `r signif(remission_DAI_group_ttest$estimate2[1],digits = 3)` and `r signif(remission_DAI_group_ttest$estimate1[2],digits = 3)` for the AOD, remission and COD groups respectively. 
 As a group, the remission trees were found to be neither AOD or COD.
 
-Although significance was obtained between the decline status groups on both the PDI and DAI scales, Figure 1 highlights the inaccuracies in the manual decline status classifications when viewed in an individual tree context.
-It can be seen that a number of the trees, when compared quantitatively using these measures, could in fact be classified with a different decline state. 
-
 ### Key descriptors contributing to the decline indexes
 
 The relative contributions of the phenotypic descriptors to the decline index models is shown in Figure 2.
@@ -346,6 +343,9 @@ The decline indexes presented here provide single intuitive scores based on a wi
 These two indexes can be represented as a two dimensional oak decline continuum under which the spectrum of decline severity and type can be assessed (Figure 5).
 The index thresholds for category definitions (healthy, declining, severe decline etc.) shown currently serve only as a guide to aid human interpretation as opposed to definitive thresholds of disease. 
 Further work is needed that includes phenotypic data with greater spatial and temporal to establish definitive thresholds. 
+
+Although significance was obtained between the decline status groups on both the PDI and DAI scales, Figure 1 highlights the inaccuracies in the manual decline status classifications when viewed in an individual tree context.
+It can be seen that a number of the trees, when compared quantitatively using these measures, could in fact be classified with a different decline state. 
 
 Crown condition and volume were shown to be the key contributors to the $M_{PDI}$. 
 This is to be expected and are an indicator of model suitability for the unsupervised approach as crown condition and crown dimensions are well established as the key components of assessing overall tree health and condition [@schomaker2007]. 
