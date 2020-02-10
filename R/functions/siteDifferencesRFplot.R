@@ -46,7 +46,6 @@ siteDifferencesRFplot <- function(site_differences_rf,phenoData){
                      fill = Location),
                  shape = 21,
                  size = 3) +
-      geom_text(data = locationMargin,aes(x = x,y = y,label = label)) +
       scale_fill_ptol() +
       theme_bw() +
       theme(plot.title = element_text(face = 'bold'),
@@ -55,7 +54,7 @@ siteDifferencesRFplot <- function(site_differences_rf,phenoData){
             legend.position = 'bottom') +
       coord_fixed() +
       guides(fill = guide_legend(ncol = 2,title.position = "top")) +
-      labs(title = 'a) MDS plot',
+      labs(title = 'a) MDS scatter plot',
            fill = 'Site'),
     b = ggplot(locationImportance,aes(x = `MeanDecreaseAccuracy`,y = Descriptor)) +
       geom_point(shape = 21,fill = ptol_pal()(1),size = 3) +
