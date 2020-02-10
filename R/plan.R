@@ -40,8 +40,8 @@ plan <- drake_plan(
   
   ## Analyse site differences using supervised random forest
   site_differences_rf = analysis_suitable_data %>%
-    rf(cls = pheno_data_with_additional_descriptors$Location %>% factor(),
-       nreps = 100),
+    siteRF(pheno_data_with_additional_descriptors$Location %>% factor(),
+       n = 100),
   
   ## Calculate margin for site differences
   site_rf_margin = site_differences_rf %>%
@@ -71,8 +71,8 @@ plan <- drake_plan(
   
   ## re-analyse site differences after site correction
   site_differences_rf_post_correction = site_corrected_analysis_suitable_data %>%
-    rf(cls = pheno_data_with_additional_descriptors$Location %>% factor(),
-       nreps = 100),
+    siteRF( pheno_data_with_additional_descriptors$Location %>% factor(),
+       n = 100),
   
   ## Calculate margin for site differences
   site_rf_post_correction_margin = site_differences_rf_post_correction %>%
