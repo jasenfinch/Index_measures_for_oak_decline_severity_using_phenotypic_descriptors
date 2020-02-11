@@ -116,7 +116,7 @@ All trees were manually assigned a decline status category; healthy, AOD, COD or
 At the COD sites trees were either COD (trees with clear signs of poor crown condition and canopy dieback) or healthy (dominant or co-dominant trees with full crowns). 
 At Big Wood trees with stronger crowns were categorised as COD when *Armillaria* fruiting bodies had been observed.
 At the AOD sites, annual monitoring data collected since 2009 was used to guide tree selection.
-Healthy trees had no know history of AOD and fruiting bodies of root pathogens had not been observed, all trees had canopy condition of 4 or 5, see @brown2016 for details of this assessment.
+Healthy trees had no known history of AOD and fruiting bodies of root pathogens had not been observed, all trees had canopy condition of 4 or 5, see @brown2016 for details of this assessment.
 AOD trees had current stem bleeds but a variety of crown conditions. 
 COD trees either had poor crowns (category 2) or the fruiting bodies of *Gymnopus* or *Armillaria* had been observed in previous years.
 The remission group included trees that had shown stem bleeds associated with AOD within the previous three years but were not showing signs of stem bleeds at the time of assessment.
