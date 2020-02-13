@@ -58,13 +58,6 @@
       "Repository": "CRAN",
       "Hash": "e031418365a7f7a766181ab5a41a5716"
     },
-    "RCurl": {
-      "Package": "RCurl",
-      "Version": "1.98-1.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "26b1263f36bd66a9e8b5c80753ebedea"
-    },
     "Rcpp": {
       "Package": "Rcpp",
       "Version": "1.0.3",
@@ -121,13 +114,6 @@
       "Repository": "CRAN",
       "Hash": "0c54cf3a08cc0e550fbd64ad33166143"
     },
-    "bitops": {
-      "Package": "bitops",
-      "Version": "1.0-6",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "0b118d5900596bae6c4d4865374536a6"
-    },
     "broom": {
       "Package": "broom",
       "Version": "0.5.4",
@@ -137,10 +123,10 @@
     },
     "callr": {
       "Package": "callr",
-      "Version": "3.4.1",
+      "Version": "3.4.2",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "f3c7c37950ae9a772b3676e4c172f978"
+      "Hash": "d16f6e202179e69c1400cc1f845bfc09"
     },
     "cellranger": {
       "Package": "cellranger",
@@ -249,10 +235,10 @@
     },
     "digest": {
       "Package": "digest",
-      "Version": "0.6.23",
+      "Version": "0.6.24",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "931fd68809dab4609b4d4b5702206066"
+      "Hash": "dc0030cea0d85397ba3ba5b930c82c6a"
     },
     "dotCall64": {
       "Package": "dotCall64",
@@ -333,17 +319,10 @@
     },
     "foreach": {
       "Package": "foreach",
-      "Version": "1.4.7",
+      "Version": "1.4.8",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "5c52b519714c1d0fc5efca58f74918fe"
-    },
-    "foreign": {
-      "Package": "foreign",
-      "Version": "0.8-75",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "9a7efaa7320b9f327a904d1e615b0b46"
+      "Hash": "fbca7161e09d205648cd784611633ea8"
     },
     "formula.tools": {
       "Package": "formula.tools",
@@ -375,10 +354,10 @@
     },
     "ggpubr": {
       "Package": "ggpubr",
-      "Version": "0.2.4",
+      "Version": "0.2.5",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "1c55ee228d9a2e054374030ae564196c"
+      "Hash": "6033b315b3a600d40aa4c1dbe1ce814d"
     },
     "ggrepel": {
       "Package": "ggrepel",
@@ -651,13 +630,6 @@
       "Repository": "CRAN",
       "Hash": "392212982257ea03c37b63547dc871b4"
     },
-    "maptools": {
-      "Package": "maptools",
-      "Version": "0.9-9",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "11f9769cebea9435c02e0b83fc65dd76"
-    },
     "markdown": {
       "Package": "markdown",
       "Version": "1.1",
@@ -674,10 +646,10 @@
     },
     "metR": {
       "Package": "metR",
-      "Version": "0.5.0",
+      "Version": "0.6.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "c6f06d173818d8f7c88be6f984e68c1f"
+      "Hash": "ebcf81b4b8cff80d8d14cdd8cb9ce3b4"
     },
     "mgcv": {
       "Package": "mgcv",
@@ -734,6 +706,13 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "bd93354f4a2ee4e096e3d7ad33e08b72"
+    },
+    "pROC": {
+      "Package": "pROC",
+      "Version": "1.16.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "162b2306b3a9ff917c087361599012d5"
     },
     "pacman": {
       "Package": "pacman",
@@ -833,10 +812,10 @@
     },
     "ps": {
       "Package": "ps",
-      "Version": "1.3.0",
+      "Version": "1.3.2",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "919a32c940a25bc95fd464df9998a6ba"
+      "Hash": "98777535b61c57d1749344345e2a4ccd"
     },
     "purrr": {
       "Package": "purrr",
@@ -882,10 +861,10 @@
     },
     "renv": {
       "Package": "renv",
-      "Version": "0.9.2",
+      "Version": "0.9.3",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "5181d5f316c7a6589219866d640e004c"
+      "Hash": "c1a367437d8a8a44bec4b9d4974cb20c"
     },
     "reprex": {
       "Package": "reprex",
@@ -1171,6 +1150,13 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "2826c5d9efb0a88f657c7a679c7106db"
+    },
+    "yardstick": {
+      "Package": "yardstick",
+      "Version": "0.0.5",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "fdeb9dd70a68058fca68e94af04cfc62"
     }
   }
 }
