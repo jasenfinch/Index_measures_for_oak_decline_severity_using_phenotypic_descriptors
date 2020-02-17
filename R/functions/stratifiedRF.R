@@ -2,7 +2,8 @@
 stratifiedRF <- function(d,cl,n){
   ss <- cl %>%
     table() %>%
-    min()
+    min() %>%
+    rep(cl %>% unique() %>% length())
   
   1:n %>%
     map(~{
