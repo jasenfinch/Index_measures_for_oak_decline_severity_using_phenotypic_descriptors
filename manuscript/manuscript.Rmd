@@ -38,7 +38,7 @@ loadd(site_rf_margin,
 
 # **Title:** Index measures for oak decline severity using phenotypic descriptors {-}
 
-**Authors:** Jasen Finch^1\*^, Nathan Brown^2^, Manfred Beckmann^1^, Sandra Denman^2^ & John Draper^1^  
+**Authors:** Jasen P. Finch^1\*^, Nathan Brown^2^, Manfred Beckmann^1^, Sandra Denman^2^ & John Draper^1^  
 
 ^\*^ Corresponding author
 
@@ -384,7 +384,7 @@ This approach would be more suitable than a fully supervised approach as it woul
 Machine learning approaches are usually seen as black box and difficulty in model interpretation is a concession in this approach; however, there are substantial gains in terms of predictive capability for model application in real world situations [@touw2012].
 The assessment of descriptor contributions to the index models are an integral part of this approach.
 Input of knowledge of the biological problem by the investigator at this stage is essential in ensuring that the models suitably learn the patterns relevant biological problem to which they have been applied.
-The descriptors contributing to these should be sensible and that the algorithm (random forest) is not learning spurious or artificial patterns within the data.
+The descriptors contributing to these should be sensible and that the algorithm (random forest) is not learning spurious or artificial patterns within the data such as site differences in tree size and age.
 Approaches such as LIME and model response surfaces enable investigators to query the contributions that phenotypic descriptors have in particular cases of interest.
 This in turn promotes trust in the indexes derived from these models and reduces their black box nature [@ribeiro2016].
 
@@ -403,7 +403,7 @@ A potential solution to this would be to correct trees based on estimated age fr
 These indexes could have great utility in long term forest health monitoring by providing comparability over time that could be utilised for both forestry management and research [@denman2010].
 
 The phenotypic descriptors used to calculate these indexes are easily measurable in the field, requiring no specialist equipment and are based on well established tree condition assessment protocols [@innes1990].
-Refinement of the protocols used here could make could reduce survey time and complexity and potentially be incorporated into citizen science programmes as a resource to build general UK oak training set [@brown2017b].
+Refinement of the protocols used here could reduce survey time and complexity and potentially be incorporated into citizen science programmes as a resource to build general UK oak training set [@brown2017b].
 Alternatively, the machine learning approach used to derive these decline indexes could also be applied to long established oak health monitoring programmes to aid sensitivity in detecting overall trends in oak health. An example programme includes The International Co-operative Programme on Assessment and Monitoring of Air Pollution Effects on Forests (ICP Forests) [@lorenz1995].
 
 # Conclusions
