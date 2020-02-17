@@ -26,7 +26,8 @@ pacman::p_load(drake,
                grid,
                piggyback,
                yardstick,
-               bookdown)
+               bookdown,
+               ggtext)
 
 # Load dependant GitHub libraries
 

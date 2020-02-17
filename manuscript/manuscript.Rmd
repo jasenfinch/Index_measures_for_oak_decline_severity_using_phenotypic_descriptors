@@ -124,9 +124,9 @@ Thus at all sites, sampling attempted to include the unhealthiest and healthiest
 
 The phenotypic descriptors collected related to the trees shape, size, crown condition and the presence of biotic agents including insects, bacteria and fungi.
 The descriptors collected were based on @icpforests2016.
-Diameter at breast height (DBH) was collected at a stem height of 1.3m, to the nearest 0.1cm.
-Total height, timber height and lowest live crown were measured using an inclinometer to the nearest 0.1m
-The timber height was measured at either 7cm top stem diameter or where no main stem could be distinguished.
+Diameter at breast height (DBH) was collected at a stem height of 1.3m, to the nearest 1mm.
+Total height, timber height and lowest live crown were measured using an inclinometer to the nearest 0.1m.
+The timber height was measured at either were the top stem diameter was 70mm or where no main stem could be distinguished.
 For the crown, crown contact, missing crown and absolute crown transparency percentages were visually estimated within 5% classes
 
 Other categorical descriptors included social class, dieback type, main crown dieback location, stem epicormic growth, branch epicormic growth, extent of insect damage, insect damage type, extent of crown mildew and the presence or absence of pruning damage or branch loss from the main stem.
@@ -269,7 +269,7 @@ A preliminary analysis using supervised random forest classification could separ
 The descriptors that contributed most to this discrimination were those that were related to trees size such as DBH, total height and crown radius and likely reflect the varied tree age and planting density across the nine sites (Supplementary figure 3b). 
 To counter this, effect sizes were adjusted based on the site means for each tree size descriptor to remove inter-site variability but maintain intra-site variability as described in Section \@ref(method-adjustment).
 This ensures that the subsequent comparisons of these descriptors in the context of oak decline are not confounded by these identified site differences.
-After the application of the tree size adjustment, the average random forest margin value was substantially reduced to `r site_rf_post_correction_margin$Margin %>% signif(digits = 3)`.
+After the application of the tree size adjustment, the average random forest *margin* value was substantially reduced to `r site_rf_post_correction_margin$Margin %>% signif(digits = 3)`.
 This negative value indicates that the adjustment was able to remove the majority of the between site variance and that the random forest models were on average unable to correctly classify the site locations of the trees.
 
 ## Oak decline severity indexes of manually assigned decline statuses
@@ -402,18 +402,18 @@ Scaling to this level would also require an appropriate method of tree size corr
 A potential solution to this would be to correct trees based on estimated age from DBH as proposed by @white1998.
 These indexes could have great utility in long term forest health monitoring by providing comparability over time that could be utilised for both forestry management and research [@denman2010].
 
-The phenotypic descriptors used to calculate these indexes are easily measurable in the field, requiring no specialist equipment and are based on well established tree condition assessment protocols [@innes1990].
+The phenotypic descriptors used to calculate these indexes are easily measurable in the field and are based on well established tree condition assessment protocols [@innes1990].
 Refinement of the protocols used here could reduce survey time and complexity and potentially be incorporated into citizen science programmes as a resource to build general UK oak training set [@brown2017b].
 Alternatively, the machine learning approach used to derive these decline indexes could also be applied to long established oak health monitoring programmes to aid sensitivity in detecting overall trends in oak health. An example programme includes The International Co-operative Programme on Assessment and Monitoring of Air Pollution Effects on Forests (ICP Forests) [@lorenz1995].
 
 # Conclusions
 
-The decline indexes presented here provide a new framework in which to quantitatively describe the phenotypic oak decline spectrum using intuitive measures severity (PDI) and type (DAI).
+The decline indexes presented here provide a new framework to quantitatively describe the phenotypic oak decline spectrum using intuitive measures severity (PDI) and type (DAI).
 Their basis is on simple phenotypic descriptor measurements and a utilisation of a data driven, unsupervised random forest based machine learning approach.
 This has shown the relative contributions that aspects of tree size, crown condition and symptoms such as stem bleeding have on quantitatively defining our concepts of oak decline status.
 
 Strategies have been presented such as the use of LIME and simulated model response surfaces that can aid the interpretation of the complex descriptor interactions that underpin these simple index measures and  greatly reduce the black box nature that is often associated with these approaches. 
-It is encouraged that this approach of deriving descriptive index measures using machine learning is applied in other tree health phenotyping contexts and it is hoped that this will have an impact on future the consistency and comparability of oak health monitoring.  
+It is encouraged that this approach of deriving descriptive index measures using machine learning is applied in other tree health phenotyping contexts and it is hoped that this will have an impact on the future consistency and comparability of oak health monitoring.  
 
 # Acknowledgements {-}
 
