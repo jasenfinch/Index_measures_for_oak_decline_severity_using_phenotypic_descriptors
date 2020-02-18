@@ -274,7 +274,7 @@ This negative value indicates that the adjustment was able to remove the majorit
 
 ## Oak decline severity indexes of manually assigned decline statuses
 
-A scatter plot (Figure 1) of the calculated PDI and DAI scores (see Supplementary information Figures 4 to 7) for all `r nrow(site_corrected_analysis_suitable_data)` trees for which phenotypic descriptor data was collected shows that the healthy trees group towards the lower end of the PDI scale and the symptomatic COD and AOD groups towards the higher end.
+A scatter plot (Figure 1) of the calculated PDI and DAI scores (see Supplementary information Figures 5 to 8) for all `r nrow(site_corrected_analysis_suitable_data)` trees for which phenotypic descriptor data was collected shows that the healthy trees group towards the lower end of the PDI scale and the symptomatic COD and AOD groups towards the higher end.
 This gave a significant difference when PDI of the control and symptomatic (AOD and COD) decline statuses were compared using an independent two sample t-test (`r glue("t({PDI_status_ttest$parameter}) = {signif(PDI_status_ttest$statistic,digits = 3) %>% abs()}, p < 0.001")`) with group means of `r signif(PDI_status_ttest$estimate1,digits = 3)` and `r signif(PDI_status_ttest$estimate2,digits = 3)` for non-symptomatic and symptomatic statuses respectively.
 
 On the DAI scale, the AOD trees group at the upper end of the scale (> 0) and the COD trees at the lower end (< 0).
@@ -298,7 +298,7 @@ The overall tree size descriptors live crown ratio, DBH and crown volume contrib
 These were followed closely by the stem staining and bleeding descriptors such as bleed prevalence. 
 The presence of *A. biguttatus* exit holes had very little contribution to the DAI with exit hole density ranked only `r which(DAI_descriptor_importance$Feature == 'Agrilus exit hole density (m^-2)')`th.
 
-Plots of the individual descriptors against the decline indexes are available in Supplementary Figures 4-7. 
+Plots of the individual descriptors against the decline indexes are available in Supplementary Figures 5-8. 
 The following sections identify how the descriptors contribute and interact within the decline index models in specific decline cases. 
 
 ## Local descriptor contributions and trends within the PDI and DAI models

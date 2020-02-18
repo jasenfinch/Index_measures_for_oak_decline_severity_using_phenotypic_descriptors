@@ -87,6 +87,10 @@ plan <- drake_plan(
   site_rf_post_correction_auc = site_differences_rf_post_correction %>%
     auc(),
   
+  ## site differences post correction MDS and importance plots
+  site_differences_post_correction_mds_plot = site_differences_rf_post_correction %>%
+    siteDifferencesRFplot(pheno_data_with_additional_descriptors),
+  
   ## run unsupervised random forest analysis
   unsupervised_rf = site_corrected_analysis_suitable_data %>%
     rf(cls = NULL,nreps = 100),
