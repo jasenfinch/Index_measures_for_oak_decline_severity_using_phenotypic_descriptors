@@ -228,7 +228,7 @@ plan <- drake_plan(
   ## extract PDI example trees
   PDI_example_cases = PDIexampleCases(site_corrected_analysis_suitable_data,decline_indexes),
   
-  ## extract PDI example trees
+  ## extract DAI example trees
   DAI_example_cases = DAIexampleCases(site_corrected_analysis_suitable_data,decline_indexes),
   
   ## PDI lime analysis
