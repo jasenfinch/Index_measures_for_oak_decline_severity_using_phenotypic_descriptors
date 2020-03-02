@@ -17,7 +17,7 @@ loadd(decline_indexes_plot)
 decline_indexes_plot
 ```
 
-```{r descriptor_contributions, fig.height = 6,fig.cap = 'Descriptor mean decrease in accuracy importance scores from the random forest models $M_{PDI}$ and $M_{DAI}$ for relative contributions to the decline index measures. Descriptors are ordered by descending mean decrease in accuracy and therefore from highest contribution to lowest contribution to the given decline index.'}
+```{r descriptor_contributions, fig.height = 6,fig.cap = 'Descriptor mean decrease in accuracy importance scores from the random forest models $M_{PDI}$ and $M_{DAI}$ for relative contributions to the decline index measures. Descriptors are ordered by descending mean decrease in accuracy and therefore from highest contribution to lowest contribution to the given decline index. MSE = mean squared error.'}
 loadd(descriptor_contribution_plots)
 
 descriptor_contribution_plots$a + descriptor_contribution_plots$b

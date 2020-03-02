@@ -20,7 +20,7 @@ descriptorImportancePlots <- function(PDI_descriptor_importance,DAI_descriptor_i
         theme(plot.title = element_text(face = 'bold'),
               axis.title = element_text(face = 'bold',size = 10)) +
         labs(title = 'a) PDI',
-             y = 'Mean decrease in\naccuracy',
+             y = '% increase in\nMSE',
              x = NULL) +
         scale_x_discrete(labels = descriptorLabels)
     },
@@ -44,7 +44,7 @@ descriptorImportancePlots <- function(PDI_descriptor_importance,DAI_descriptor_i
         theme(plot.title = element_text(face = 'bold'),
               axis.title = element_text(face = 'bold',size = 10)) +
         labs(title = 'b) DAI',
-             y = 'Mean decrease in\naccuracy',
+             y = '% increase in\nMSE',
              x = NULL) +
         scale_x_discrete(labels = descriptorLabels)
     }
