@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "3.6.2",
+    "Version": "3.6.3",
     "Repositories": [
       {
         "Name": "CRAN",
@@ -123,10 +123,10 @@
     },
     "broom": {
       "Package": "broom",
-      "Version": "0.5.4",
+      "Version": "0.5.5",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "c8cc938d5fd2d51c33c705cda6998328"
+      "Hash": "70ec3aef8a0df13661bf6cc2ff877d61"
     },
     "callr": {
       "Package": "callr",
@@ -151,10 +151,10 @@
     },
     "cli": {
       "Package": "cli",
-      "Version": "2.0.1",
+      "Version": "2.0.2",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "5173d8ab28680cf263636b110f4f3220"
+      "Hash": "ff0becff7bfdfe3f75d29aff8f3172dd"
     },
     "clipr": {
       "Package": "clipr",
@@ -263,10 +263,10 @@
     },
     "drake": {
       "Package": "drake",
-      "Version": "7.10.0",
+      "Version": "7.11.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "b9986084d504d6fc9edaec79021db696"
+      "Hash": "331e17bca2f794d492b03a81d7bbcdd1"
     },
     "ellipsis": {
       "Package": "ellipsis",
@@ -319,10 +319,10 @@
     },
     "forcats": {
       "Package": "forcats",
-      "Version": "0.4.0",
+      "Version": "0.5.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "c6a8cdc67d337ac3df901b0ea73b8cec"
+      "Hash": "1cb4279e697650f0bd78cd3601ee7576"
     },
     "foreach": {
       "Package": "foreach",
@@ -360,9 +360,9 @@
       "RemoteUsername": "tidyverse",
       "RemoteRepo": "ggplot2",
       "RemoteRef": "master",
-      "RemoteSha": "d5b339ae75e18e3a8271720845276d0ff6e1ae89",
+      "RemoteSha": "8bc39f285cff4f0bac68655be5f0f2b60fdb6d80",
       "RemoteHost": "api.github.com",
-      "Hash": "d6154812c19ca55e0f11cf3bb8dfa728"
+      "Hash": "021f7de31700a0c7668148d7ba17e59c"
     },
     "ggpubr": {
       "Package": "ggpubr",
@@ -754,10 +754,10 @@
     },
     "piggyback": {
       "Package": "piggyback",
-      "Version": "0.0.10",
+      "Version": "0.0.11",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "7eddec477c4de05eb7145b7d9437c278"
+      "Hash": "f5fc1efd1d0f6a19f4da689c5bef0de2"
     },
     "pillar": {
       "Package": "pillar",
@@ -915,10 +915,10 @@
     },
     "rlang": {
       "Package": "rlang",
-      "Version": "0.4.4",
+      "Version": "0.4.5",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "09a36f36a13436be327dad3d000c8dd3"
+      "Hash": "1cc1b38e4db40ea6eb19ab8080bbed3b"
     },
     "rmarkdown": {
       "Package": "rmarkdown",
@@ -992,10 +992,10 @@
     },
     "sp": {
       "Package": "sp",
-      "Version": "1.4-0",
+      "Version": "1.4-1",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "faa16caa79d66f09b556d5632e1856fa"
+      "Hash": "a44a3cebab900c0f77e16804f361468e"
     },
     "spam": {
       "Package": "spam",
@@ -1090,10 +1090,10 @@
     },
     "tinytex": {
       "Package": "tinytex",
-      "Version": "0.19",
+      "Version": "0.20",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "b1c0c22cab714ec9ce9472a8073b6922"
+      "Hash": "d2cef450cbbf081b4a2ef1067fae9f32"
     },
     "txtq": {
       "Package": "txtq",
