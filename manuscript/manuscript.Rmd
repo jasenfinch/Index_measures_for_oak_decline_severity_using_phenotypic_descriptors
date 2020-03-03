@@ -76,10 +76,11 @@ Biotic agents can include insect infestation such as the larvae of bark boring b
 Oak decline syndromes are wide ranging in cause and attempts have been made to subdivide the types of decline associated with *Quercus robur* and *Q. petraea* based on the duration over which a tree has been declining and the biotic agents associated with a declining tree.
 Mortality in trees suffering from COD can occur over a period of decades whereas AOD can occur in 5-10 years [@denman2009].
 A chronically declining oak can also subsequently begin to develop the stem bleeds associated with AOD.
+
 The visual, manual assignment of decline status and severity in the field is variable and error prone due to the contribution of many factors.
 Doing this accurately requires much expertise, experience, and training [@ferretti1997].
 
-As a result of this, there are many visual phenotypic descriptors that contribute to categorizing an oak tree as being in decline. 
+As a result of the variety of factors contributing to oak decline, there are many visual phenotypic descriptors that contribute to categorizing an oak tree as being in decline. 
 When the decline is severe there are clear symptoms visible in the crown, such as low foliage density and numerous dead branches. 
 It is these characteristics that many studies use as the primary indicator of tree decline severity [@zarnoch2004], however these symptoms can develop slowly (especially in the case of COD) and simple classes are unlikely to capture the full detail of the subtle transition from being healthy to declined. 
 
@@ -123,7 +124,7 @@ The remission group included trees that had shown stem bleeds associated with AO
 Thus, at all sites, selection attempted to create a balanced sample of condition categories including both the unhealthiest and healthiest trees.
 
 The phenotypic descriptors collected related to the trees shape, size, crown condition and the presence of biotic agents including insects, bacteria and fungi.
-The descriptors collected were based on @icpforests2016.
+The descriptors collected were based on @innes1990 and @icpforests2016.
 Diameter at breast height (DBH) was collected at a stem height of 1.3m, to the nearest 1mm.
 Total height, timber height and lowest live crown were measured using an inclinometer to the nearest 0.1m.
 The timber height was measured at either were the top stem diameter was 70mm or where no main stem could be distinguished.
@@ -136,7 +137,7 @@ Crown radius, canopy closure and tap tests for dead stem tissue were measured fo
 The crown radius was measured using a vertex transponder attached to the relevant side of the stem at a height of 1.3m. Canopy closure recorded as yes or no depending on whether any other crowns are touching the sampling tree.
 A high resolution photo was taken of the base to the top of the crown and of the stem from the base to a height of 3m for each cardinal point for later reference.
 
-The AOD stem symptoms (active bleeds, black staining, callused wounds) were collected by measuring longest axis of each individual bleed, stain or callused wound found within the basal 3m of the stem.
+The AOD stem symptoms (active bleeds, black staining, calloused wounds) were collected by measuring longest axis of each individual bleed, stain or callused wound found within the basal 3m of the stem.
 The frequency of *A. biguttatus* exit holes were counted along with the presence or absence of each of oval shaped exit holes, small circular shaped exit holes and ground level fungal fruiting bodies which were recorded from the basal 2m of the stem. 
 The collected descriptors are all included in Supplementary Table 1.
 
@@ -150,7 +151,7 @@ The crown density ($CD$) values collected at Attingham and Langdale were convert
 All descriptors collected in cm were converted to mm except for DBH which was converted to m.
 The tap tests that were positive for hollow stem tissue were converted to present and absent then renamed dead stem tissue.
 The canopy closure descriptor was converted from yes and no to present and absent.
-Finally, the stem symptoms lengths for active bleeds, black staining and callused wounds were averaged and a frequency per tree totalled.
+Finally, the stem symptoms lengths for active bleeds, black staining and calloused wounds were averaged and a frequency per tree totalled.
 After preparation there were a total of 31 raw descriptors for analysis. 
 
 ## Composite descriptor calculation {#method-composite-descriptors}
