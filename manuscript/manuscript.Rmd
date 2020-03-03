@@ -76,10 +76,12 @@ Biotic agents can include insect infestation such as the larvae of bark boring b
 The bacterial stem bleeds associated with AOD initially start as active dark weeping patches.
 Over time, as lesion development continues beneath the bark, external cracks develop between the bark plates that are surrounded by blackening stains.
 Evidence of stem tissue repair can be seen as lignified-callus-like tissue that, when extensive, can fully occlude the internal lesion, appearing as exposed rolls of calloused tissue on the exterior [@denman2014].
+Stem bleeds can also, but not always, be associated with *Armillaria* attack on the inner stem tissues of oak.
+Active stem weeping and black staining can be found along the leading edge of the mycelial front of affected stem tissues [@denman2017].
 
 Oak decline syndromes are wide ranging in cause and attempts have been made to subdivide the types of decline associated with *Quercus robur* and *Q. petraea* based on the duration over which a tree has been declining and the biotic agents associated with a declining tree.
 Mortality in trees suffering from COD can occur over a period of decades whereas AOD can occur in 5-10 years [@denman2009].
-A chronically declining oak can also subsequently begin to develop the stem bleeds associated with AOD.
+A chronically declining oak can also subsequently begin to develop the stem bleeds associated with AOD [@denman2017].
 
 As a result of the variety of factors contributing to oak decline, there are many visual phenotypic descriptors that contribute to categorizing an oak tree as being in decline. 
 When the decline is severe there are clear symptoms visible in the crown, such as low foliage density and numerous dead branches. 
@@ -88,7 +90,7 @@ It is these characteristics that many studies use as the primary indicator of tr
 The visual, manual assignment of decline status and severity in the field is variable and error prone due to the many factors contributing to oak decline.
 Doing this accurately requires much expertise, experience, and training [@ferretti1997].
 
-Assigning discrete decline status labels neglects the true spectrum of decline severity encountered in the field.
+Assigning discrete decline status classes neglects the true spectrum of decline severity encountered in the field.
 There is a growing need for sensitive, continuous measures of tree decline that accurately reflect the decline severity spectrum [@pontius2014].
 This has the potential to greatly improve monitoring, enable the early detection of decline for accurate forecasting and inform forestry management practices.
 Consistent long term monitoring has been highlighted as a key requirement for understanding the threats to oak and safeguarding its future [@hartmann2018].
