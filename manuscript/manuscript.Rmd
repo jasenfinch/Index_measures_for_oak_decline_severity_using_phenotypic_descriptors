@@ -53,16 +53,17 @@ loadd(site_rf_margin,
 # Abstract {-}
 
 Oak decline is becoming increasingly prevalent along with the need for accurate and quantitative oak health monitoring.
-The Phenotypic Decline Index (PDI) and the Decline Acuteness Index (DAI), were developed to quantitatively describe and differentiate acute and chronic oak decline severity using a multitude of easily measurable phenotypic descriptors.
+The Phenotypic Decline Index (PDI) and the Decline Acuteness Index (DAI) were developed to quantitatively describe and differentiate acute and chronic oak decline severity using a multitude of easily measurable phenotypic descriptors.
 Measured phenotypic descriptors included aspects of tree shape and size, crown condition and the presence of biotic agents.
 The decline indexes were derived using proximity values from unsupervised random forest of the phenotypic descriptors, multidimensional scaling (MDS) and min-max scaling.
-These indexes are simple but sensitive measures of tree decline severity allowing easy comparisons of oak trees both spatially and temporally, providing a potentially useful tool for forest monitoring and management.
+These indexes give simple but sensitive measures of tree decline severity allowing easy comparisons of oak trees both spatially and temporally, providing a potentially useful tool for forest monitoring and management.
 
 \newpage
 
 # Introduction {#introduction}
 
-Trees and forests across the globe face threats from a changing climate, notably warming and an increase in drought episodes affect the health status of individual trees, causing vegetation changes at the landscape scale [@choat2012; @millar2015; @allen2015]. 
+Trees and forests across the globe face threats from a changing climate.
+Notably warming and an increase in drought episodes affect the health status of individual trees, causing vegetation changes at the landscape scale [@choat2012; @millar2015; @allen2015]. 
 Within this context, biotic agents (pests and diseases) can flourish and often drive mortality [@kautz2017; @jactel2012]. 
 Monitoring vegetation changes and understanding the underlying processes affecting tree health are important first steps to predicting the scale and extent of these threats [@hartmann2018] and plan future policies for planting and mitigation efforts [@bradford2017]. 
 Current ‘omics and remote sensing approaches provide powerful tools to document and understand these changes across multiple scales (from cellular to tree to landscape scales), but an important prerequisite is the ability to accurately describe tree health status, so that even subtle changes can be documented [@dungey2018; @hornero2020]. 
@@ -72,17 +73,20 @@ Oak decline is expected to become increasingly prevalent in the UK and across Eu
 Oak declines are complex syndromes that are facilitated by a variety of both abiotic and biotic factors.
 Abiotic factors can include both long-term predisposing and one-off inciting factors.
 Biotic agents can include insect infestation such as the larvae of bark boring beetle *Agrilus biguttatus* or bacterial stem bleeds associated with Acute Oak Decline (AOD) [@brown2017a; @denman2014], as well as a variety of fungal root pathogens associated Chronic Oak Decline (COD) [@denman2017].
+The bacterial stem bleeds associated with AOD initially start as active dark weeping patches.
+Over time, as lesion development continues beneath the bark, external cracks develop between the bark plates that are surrounded by blackening stains.
+Evidence of stem tissue repair can be seen as lignified-callus-like tissue that, when extensive, can fully occlude the internal lesion, appearing as exposed rolls of calloused tissue on the exterior [@denman2014].
 
 Oak decline syndromes are wide ranging in cause and attempts have been made to subdivide the types of decline associated with *Quercus robur* and *Q. petraea* based on the duration over which a tree has been declining and the biotic agents associated with a declining tree.
 Mortality in trees suffering from COD can occur over a period of decades whereas AOD can occur in 5-10 years [@denman2009].
 A chronically declining oak can also subsequently begin to develop the stem bleeds associated with AOD.
 
-The visual, manual assignment of decline status and severity in the field is variable and error prone due to the contribution of many factors.
-Doing this accurately requires much expertise, experience, and training [@ferretti1997].
-
 As a result of the variety of factors contributing to oak decline, there are many visual phenotypic descriptors that contribute to categorizing an oak tree as being in decline. 
 When the decline is severe there are clear symptoms visible in the crown, such as low foliage density and numerous dead branches. 
 It is these characteristics that many studies use as the primary indicator of tree decline severity [@zarnoch2004], however these symptoms can develop slowly (especially in the case of COD) and simple classes are unlikely to capture the full detail of the subtle transition from being healthy to declined. 
+
+The visual, manual assignment of decline status and severity in the field is variable and error prone due to the many factors contributing to oak decline.
+Doing this accurately requires much expertise, experience, and training [@ferretti1997].
 
 Assigning discrete decline status labels neglects the true spectrum of decline severity encountered in the field.
 There is a growing need for sensitive, continuous measures of tree decline that accurately reflect the decline severity spectrum [@pontius2014].
@@ -98,10 +102,10 @@ Here, we propose a framework to enable quantitative visible oak decline severity
 
 The two resulting measures are:
 
-* The phenotypic decline index (PDI) - a measure of decline severity scoring trees between 0 and 1.
+* The Phenotypic Decline Index (PDI) - a measure of decline severity scoring trees between 0 and 1.
 More severely declining oak trees have a score closer to 1.
 
-* The decline acuteness index (DAI) - a measure differentiating between chronically and acutely declining oak trees with a score between -1 and 1. 
+* The Decline Acuteness Index (DAI) - a measure differentiating between chronically and acutely declining oak trees with a score between -1 and 1. 
 Acutely declining trees have a score closer to 1 and chronically declining trees have a score closer to -1.
 
 # Materials and methods {#materials-and-methods}
