@@ -96,11 +96,11 @@ This has the potential to greatly improve monitoring, enable the early detection
 Consistent long term monitoring has been highlighted as a key requirement for understanding the threats to oak and safeguarding its future [@hartmann2018].
 Coupled with this, monitoring methods should take advantage of modern data analysis techniques whilst still retaining practical simplicity in the field.
 
-Machine learning is finding increasing utility in ecological and environmental applications due to it's ability to learn complex patterns within and between variables [@cutler2007;@belgiu2016].
+Machine learning is finding increasing utility in ecological and environmental applications due to its ability to learn complex patterns within and between variables [@cutler2007;@belgiu2016].
 A popular algorithm is random forest due to it's versatility, relatively trivial training requirements and ease of use. 
 It is an ensemble machine learning method where forests of bootstrap sampled decision trees are grown, yielding both out of bag sample prediction accuracies and variable importance [@breiman2001a;@biau2016].
 
-Here, we propose a framework to enable quantitative visible oak decline severity measurement that utilises a range of targeted phenotypic descriptors observed in oak forests across England and unsupervised random forest machine learning.
+Here, we propose a framework using unsupervised random forest machine learning to enable quantitative, visible oak decline severity measurement that utilises a range of targeted phenotypic descriptors observed in oak forests across England.
 
 The two resulting measures are:
 
@@ -120,8 +120,8 @@ The occurrence of AOD has previously been reported and studied at these sites [@
 These sites included a variety of woodland, management and soil types as well as tree sizes/ages and were made up of mainly *Q. robur*.
 
 All trees were manually assigned a decline status category; healthy, AOD, COD or remission prior to collection of phenotypic descriptors.
-At the COD sites trees were either COD (trees with clear signs of poor crown condition and canopy dieback) or healthy (dominant or co-dominant trees with full crowns). 
-At Big Wood trees with stronger crowns were also categorised as COD when *Armillaria* fruiting bodies had been observed.
+At the COD sites, trees were either COD (trees with clear signs of poor crown condition and canopy dieback) or healthy (dominant or co-dominant trees with full crowns). 
+At Big Wood, trees with stronger crowns were also categorised as COD when *Armillaria* fruiting bodies had been observed.
 At the AOD sites, annual monitoring data collected since 2009 was used to guide tree selection.
 Healthy trees had no known history of AOD and fruiting bodies of root pathogens had not been observed; all trees had canopy condition of 4 or 5, see @brown2016 for details of this assessment.
 AOD trees had current stem bleeds but a variety of crown conditions. 
@@ -129,18 +129,18 @@ COD trees either had poor crowns (category 2) or the fruiting bodies of *Gymnopu
 The remission group included trees that had shown stem bleeds associated with AOD within the previous three years but were not showing signs of stem bleeds at the time of assessment.
 Thus, at all sites, selection attempted to create a balanced sample of condition categories including both the unhealthiest and healthiest trees.
 
-The phenotypic descriptors collected related to the trees shape, size, crown condition and the presence of biotic agents including insects, bacteria and fungi.
+The collected phenotypic descriptors related to the trees shape, size, crown condition and the presence of biotic agents including insects, bacteria and fungi.
 The descriptors collected were based on @innes1990 and @icpforests2016.
 Diameter at breast height (DBH) was collected at a stem height of 1.3m, to the nearest 1mm.
 Total height, timber height and lowest live crown were measured using an inclinometer to the nearest 0.1m.
-The timber height was measured at either were the top stem diameter was 70mm or where no main stem could be distinguished.
-For the crown, crown contact, missing crown and absolute crown transparency percentages were visually estimated within 5% classes
+The timber height was measured at either where the top stem diameter was 70mm or where no main stem could be distinguished.
+For crown contact, missing crown and absolute crown transparency, percentages were visually estimated within 5% classes
 
 Other categorical descriptors included social class, dieback type, main crown dieback location, stem epicormic growth, branch epicormic growth, extent of insect damage, insect damage type, extent of crown mildew and the presence or absence of pruning damage or branch loss from the main stem.
 See Supplementary Table 1 for category details.
 
 Crown radius, canopy closure and tap tests for dead stem tissue were measured for each cardinal point.
-The crown radius was measured using a vertex transponder attached to the relevant side of the stem at a height of 1.3m. Canopy closure recorded as yes or no depending on whether any other crowns are touching the sampling tree.
+The crown radius was measured using a vertex transponder attached to the relevant side of the stem at a height of 1.3m. Canopy closure was recorded as yes or no depending on whether any other crowns are touching the sampling tree.
 A high resolution photo was taken of the base to the top of the crown and of the stem from the base to a height of 3m for each cardinal point for later reference.
 
 The AOD stem symptoms (active bleeds, black staining, calloused wounds) were collected by measuring longest axis of each individual bleed, stain or callused wound found within the basal 3m of the stem.
@@ -157,7 +157,8 @@ The crown density ($CD$) values collected at Attingham and Langdale were convert
 All descriptors collected in cm were converted to mm except for DBH which was converted to m.
 The tap tests that were positive for hollow stem tissue were converted to present and absent then renamed dead stem tissue.
 The canopy closure descriptor was converted from yes and no to present and absent.
-Finally, the stem symptoms lengths for active bleeds, black staining and calloused wounds were averaged and a frequency per tree totalled.
+Finally, the stem symptoms lengths for active bleeds, black staining and calloused wounds were averaged and a frequency per tree given by the total observed.
+The application and effect of this adjustment is described and discussed in Sections 3.1 and 4.3 respectively.
 After preparation there were a total of 31 raw descriptors for analysis. 
 
 ## Composite descriptor calculation {#method-composite-descriptors}
@@ -226,15 +227,15 @@ It was then min-max scaled to give a scale between 0 and 1 with more severely de
 This dimension was named the Phenotypic Decline Index, PDI.
 The second MDS dimension was min-max scaled and then transformed ($2D - 1$) to give a scale between -1 and 1 with COD trees having a score closer to -1 and AOD having a score closer to 1. 
 This dimension was named the Decline Acuteness Index, DAI.
-The code used to generate the decline indexes is available as an R package pdi version `r packageVersion('pdi') %>% as.character()` at https://github.com/jasenfinch/pdi.
+The code used to generate the decline indexes is available as an R package pdi version `r packageVersion('pdi') %>% as.character()`, available at https://github.com/jasenfinch/pdi.
 
 ## Descriptor contribution to decline indexes {#method-descriptor-contribution}
 
 To investigate the descriptor contributions to the decline indexes, supervised random forest regression models were trained for each decline index using the phenotypic descriptors for all 174 trees.
 These models will subsequently be referred to as $M_{PDI}$ and $M_{DAI}$ for the PDI and DAI respectively. 
-The parameters number of trees ($ntree$) and number of randomly assigned variables ($mtry$) for random forest model were tuned prior to training using the values of 10, 100, 1,000, 10,000 for ntree and a range of 2-26 at intervals of 4 for the mtry parameter. 
-The combination parameters giving the lowest percent mean absolute error (PMAE) were selected and set as follows: for the PDI ($M_{PDI}$): `r glue('$ntree$ = {prettyNum(PDI_rf_tune_params$ntree,big.mark = ',')}, $mtry$ = {PDI_rf_tune_params$mtry}, PMAE = {PDI_rf_tune_params$PMAE %>% signif(digits = 3)}%')`; for the DAI ($M_{DAI}$): `r glue('$ntree$ = {prettyNum(DAI_rf_tune_params$ntree,big.mark = ',')}, $mtry$ = {DAI_rf_tune_params$mtry}, PMAE = {DAI_rf_tune_params$PMAE %>% signif(digits = 3)}%')` (Supplementary figure 2).
-Overall descriptor importance contributions to each of the indexes using the mean decrease in accuracy measure as described in Section \@ref(method-inter-site-differences).
+The parameters number of trees ($ntree$) and number of randomly assigned variables ($mtry$), for each random forest model, were tuned prior to training using the values of 10, 100, 1,000, 10,000 for ntree and a range of 2-26 at intervals of 4 for the mtry parameter. 
+The combination parameters giving the lowest mean absolute percentage error (MAPE) were selected and set as follows: for the PDI ($M_{PDI}$): `r glue('$ntree$ = {prettyNum(PDI_rf_tune_params$ntree,big.mark = ',')}, $mtry$ = {PDI_rf_tune_params$mtry}, MAPE = {PDI_rf_tune_params$PMAE %>% signif(digits = 3)}%')`; for the DAI ($M_{DAI}$): `r glue('$ntree$ = {prettyNum(DAI_rf_tune_params$ntree,big.mark = ',')}, $mtry$ = {DAI_rf_tune_params$mtry}, MAPE = {DAI_rf_tune_params$PMAE %>% signif(digits = 3)}%')` (Supplementary figure 2).
+Overall descriptor importance contributions to each of the indexes was assessed using the percentage increase in mean squared error measure with higher values indicating a greater overall contribution to the given model and therefore greater importance.
 
 ## Local descriptor contribution to index models
 
@@ -247,11 +248,12 @@ LIME analysis was conducted using the lime R package version `r packageVersion('
 ## Index model simulations to investigate interactions of key descriptors
 
 The interactions of key raw descriptors identified with high mean decrease in accuracy importance scores and their associations with the decline indexes was investigated by using simulated descriptor values to construct index model ($M_{PDI}$,$M_{DAI}$) response surfaces for specific example cases.
-The same example cases were used as described for the LIME analyses above.
+The same example cases were used as described for the LIME analyses in Section 2.8.
 This approach was similar to response surface methodology without the need for probabilistic approximation due to the low computation time required for index calculation [@abbasi2012].
 
 For $M_{PDI}$, missing crown and crown transparency were compared for example cases of a healthy, a moderate and a severely declining tree.
-The value ranges for the missing crown (`r glue("{min(site_corrected_analysis_suitable_data[['Missing crown (%)']])}-{max(site_corrected_analysis_suitable_data[['Missing crown (%)']])}%")`) and crown transparency (`r glue("{min(site_corrected_analysis_suitable_data[['Crown transparency (%)']])}-{max(site_corrected_analysis_suitable_data[['Crown transparency (%)']])}%")`) descriptors were divided into 100 increments.
+The value ranges were based on the observed range in the training data.
+For the missing crown (`r glue("{min(site_corrected_analysis_suitable_data[['Missing crown (%)']])}-{max(site_corrected_analysis_suitable_data[['Missing crown (%)']])}%")`) and crown transparency (`r glue("{min(site_corrected_analysis_suitable_data[['Crown transparency (%)']])}-{max(site_corrected_analysis_suitable_data[['Crown transparency (%)']])}%")`) descriptors, the ranges were divided into 100 increments.
 For a given case, each combination of these simulated descriptor values were used to calculate a PDI value from $M_{PDI}$, building a model response surface.
 
 ```{r stem_symptom_ranges}
@@ -266,7 +268,8 @@ symptom_ranges <- site_corrected_analysis_suitable_data %>%
 ```
 
 The same approach was used for $M_{DAI}$ using a comparison between active bleed length and black staining length as well as missing crown and crown transparency.
-The upper boundary for the ranges of active bleed length and black stain length was taken as the centre value between the maximum and minimum and reduced by a factor of eight to give ranges of `r glue("{symptom_ranges$minimum[1]}-{signif(symptom_ranges$center[1] / 8,digits = 3)}mm")` and `r glue("{symptom_ranges$minimum[2]}-{signif(symptom_ranges$center[2] / 8,digits = 3)}mm")` respectively and enable more effective visualisation.
+The upper boundary for the ranges of active bleed length and black stain length was taken as the centre value between the maximum and minimum values in the training data sets.
+These were reduced by a factor of eight to give ranges of `r glue("{symptom_ranges$minimum[1]}-{signif(symptom_ranges$center[1] / 8,digits = 3)}mm")` and `r glue("{symptom_ranges$minimum[2]}-{signif(symptom_ranges$center[2] / 8,digits = 3)}mm")` respectively and enabled more effective visualisation.
 
 # Results
 
