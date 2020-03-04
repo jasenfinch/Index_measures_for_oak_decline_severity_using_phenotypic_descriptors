@@ -40,22 +40,24 @@ siteDifferencesRFplot <- function(site_differences_rf,phenoData){
   
   site_differences <- list(
     a = ggplot() +
+      geom_hline(yintercept = 0,linetype = 2,colour = 'lightgray') +
+      geom_vline(xintercept = 0,linetype = 2,colour = 'lightgray') +
       geom_point(data = locationMDS,
                  aes(x = `Dimension 1`, 
                      y = `Dimension 2`,
                      fill = Location),
                  shape = 21,
                  size = 3) +
-      geom_text(data = locationMargin,aes(x = x,y = y,label = label)) +
       scale_fill_ptol() +
       theme_bw() +
       theme(plot.title = element_text(face = 'bold'),
             axis.title = element_text(face = 'bold'),
             legend.title = element_text(face = 'bold'),
-            legend.position = 'bottom') +
+            legend.position = 'bottom',
+            panel.grid = element_blank()) +
       coord_fixed() +
       guides(fill = guide_legend(ncol = 2,title.position = "top")) +
-      labs(title = 'a) MDS plot',
+      labs(title = 'a) MDS scatter plot',
            fill = 'Site'),
     b = ggplot(locationImportance,aes(x = `MeanDecreaseAccuracy`,y = Descriptor)) +
       geom_point(shape = 21,fill = ptol_pal()(1),size = 3) +
@@ -64,7 +66,7 @@ siteDifferencesRFplot <- function(site_differences_rf,phenoData){
             axis.title = element_text(face = 'bold',size = 10)) +
       labs(title = 'b) Descriptor\nimportance',
            y = NULL,
-           x = 'Mean decrease in\naccuracy') +
+           x = 'Mean decrease in\naccuracy (%)') +
       scale_y_discrete(labels = descriptorLabels)
   )
   

@@ -17,24 +17,24 @@ loadd(decline_indexes_plot)
 decline_indexes_plot
 ```
 
-```{r descriptor_contributions, fig.height = 6,fig.cap = 'Descriptor importance scores from random forest models for relative contributions to\ndecline index measures. a) Phenotypic decline index (PDI). b) Decline acuteness index (DAI)'}
+```{r descriptor_contributions, fig.height = 6,fig.cap = 'Descriptor mean decrease in accuracy importance scores from the random forest models $M_{PDI}$ and $M_{DAI}$ for relative contributions to the decline index measures. Descriptors are ordered by descending percentage increase in mean squared error (MSE) and therefore from highest contribution to lowest contribution to the given decline index.'}
 loadd(descriptor_contribution_plots)
 
 descriptor_contribution_plots$a + descriptor_contribution_plots$b
 ```
 
-```{r PDI_response_surfaces,fig.height = 6,fig.cap='PDI response surfaces for simulated descriptor values from trained Random Forest models. All other descriptors were set at the values of those of the trees with the lowest PDI used for trainig the models'}
+```{r PDI_response_surfaces,fig.height = 6,fig.cap='PDI response surfaces from $M_{PDI}$ for simulated values of key contributing descriptors for example healthy, moderate and severly declining cases. The values of additional tree size descriptors are shown for the individual cases to indicate the relative stature of the example cases.'}
 loadd(PDI_response_surfaces)
 
-grid.arrange(PDI_response_surfaces$`a)`,
-             PDI_response_surfaces$`b)`,
-             PDI_response_surfaces$`c)`,
+grid.arrange(PDI_response_surfaces[[1]],
+             PDI_response_surfaces[[2]],
+             PDI_response_surfaces[[3]],
              PDI_response_surfaces$legend,
              nrow = 2,newpage = F)
 ```
 
 
-```{r DAI_response_surfaces,fig.height = 8,fig.cap='DAI response surfaces for simulated descriptor values from trained Random Forest models. All other descriptors were set at the values of those of the trees with the lowest PDI used for trainig the models'}
+```{r DAI_response_surfaces,fig.height = 8,fig.cap='DAI response surfaces from $M_{DAI}$ for simulated values of key contributing descriptors for example cases. The neutral case is a tree that can be neither distinguished as AOD or COD. All cases have PDI values > 0.5.'}
 loadd(DAI_response_surfaces)
 
 grid.arrange(textGrob(expression(bold('AOD')),hjust = -0.1),
@@ -56,6 +56,6 @@ grid.arrange(textGrob(expression(bold('AOD')),hjust = -0.1),
              newpage = F)
 ```
 
-```{r DI_space,fig.cap='Two dimensional continuum of the phenotypic decline indexes for oak decline severity.',fig.height=3,fig.width=5}
+```{r DI_space,fig.cap='Two dimensional continuum of the phenotypic decline indexes for oak decline severity. Decline category boundaries intended as a guide to aid interpretation only. Grey area indicates area for which the decline indexes are currently undefined.' ,fig.height=3,fig.width=5}
 DIspace()
 ```

@@ -42,7 +42,7 @@ phenotypic_descriptor_info %>%
   # collapse_rows(columns = 1,latex_hline = "major", valign = "middle")
 ```
 
-```{r descriptor_adjustment,fig.cap='Exapmle of overall mean adjustment applied to the diameter at breast height descriptor. Error bars show ±1SE of the mean. Dashed red line shows the overall mean.'}
+```{r descriptor_adjustment,fig.cap='Exapmle of overall mean adjustment applied to the diameter at breast height (m) descriptor. Error bars show ±1SE of the mean. Dashed red line shows the overall mean.'}
 loadd(descriptor_adjustment_example)
 
 descriptor_adjustment_example %>%
@@ -64,9 +64,14 @@ loadd(rf_tune_plot)
 rf_tune_plot
 ```
 
-```{r site_differences,fig.cap='Differences between sites in phenotypic descriptors analysed by supervised Random Forest. a) Multidimensional scaling (MDS) plot of random forest proximity values of individual trees scaled to two dimensions. Mean margin value shown. b) Relative descriptor Gini importances measures.',fig.height=6}
+```{r site_differences,fig.cap='Differences between sites in phenotypic descriptors analysed by supervised random forest classification. a) Multidimensional scaling (MDS) scatter plot of random forest proximity values of individual trees scaled to two dimensions. b) Descriptor mean decrease in accuracy importances measures. Descriptors ordered in descending importance.',fig.height=6}
 loadd(site_differences_mds_plot)
 grid.arrange(site_differences_mds_plot$a,site_differences_mds_plot$b,nrow = 1)
+```
+
+```{r site_differences_corrected,fig.cap='Differences between sites in phenotypic descriptors after adjustment of tree size descriptors analysed by supervised random forest classification. a) Multidimensional scaling (MDS) scatter plot of random forest proximity values of individual trees scaled to two dimensions. b) Descriptor mean decrease in accuracy importances measures. Descriptors ordered in descending importance.',fig.height=6}
+loadd(site_differences_post_correction_mds_plot)
+grid.arrange(site_differences_post_correction_mds_plot$a,site_differences_post_correction_mds_plot$b,nrow = 1)
 ```
 
 ```{r PDInumeric,fig.height=9,fig.cap='Continuous descriptors plotted against the PDI.'}

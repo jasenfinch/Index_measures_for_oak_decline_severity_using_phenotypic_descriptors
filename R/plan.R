@@ -2,15 +2,22 @@
 
 plan <- drake_plan(
   
+  ## data directory
+  data_dir = 'data/phenotype_collection_sheets',
+  
+  ## Download data files
+  download_data = pb_download(tag = 'data',dest = data_dir),
+  
   ## Locate data files
-  phenotype_data_file_paths = 'data/phenotype_collection_sheets' %>%
+  phenotype_data_file_paths = data_dir %>%
     list.files(full.names = T),
   
   ## read in data, correct data sheet mistakes
   pheno_data = phenotype_data_file_paths %>%
     map(readPhenotypeSheet) %>%
     {set_names(.,map_chr(.,~{.$Location}))} %>%
-    dataCorrections(), 
+    dataCorrections() %>%
+    mutate(ID = 1:nrow(.)), 
   
   ## calculate additional desecriptors
   pheno_data_with_additional_descriptors = pheno_data %>%
@@ -33,13 +40,17 @@ plan <- drake_plan(
   
   ## Analyse site differences using supervised random forest
   site_differences_rf = analysis_suitable_data %>%
-    rf(cls = pheno_data_with_additional_descriptors$Location %>% factor(),
-       nreps = 100),
+    stratifiedRF(pheno_data_with_additional_descriptors$Location %>% factor(),
+       n = 100),
   
   ## Calculate margin for site differences
   site_rf_margin = site_differences_rf %>%
     margins() %>%
     summarise(Margin = mean(Margin)),
+  
+  ## Calculate AUC for site differences
+  site_rf_auc = site_differences_rf %>%
+    auc(),
   
   ## site differences MDS and importance plots
   site_differences_mds_plot = site_differences_rf %>%
@@ -64,13 +75,21 @@ plan <- drake_plan(
   
   ## re-analyse site differences after site correction
   site_differences_rf_post_correction = site_corrected_analysis_suitable_data %>%
-    rf(cls = pheno_data_with_additional_descriptors$Location %>% factor(),
-       nreps = 100),
+    stratifiedRF( pheno_data_with_additional_descriptors$Location %>% factor(),
+       n = 100),
   
-  ## Calculate margin for site differences
+  ## Calculate margin for site differences post adjustment
   site_rf_post_correction_margin = site_differences_rf_post_correction %>%
     margins() %>%
     summarise(Margin = mean(Margin)),
+  
+  ## Calculate AUC for site differences post adjustment
+  site_rf_post_correction_auc = site_differences_rf_post_correction %>%
+    auc(),
+  
+  ## site differences post correction MDS and importance plots
+  site_differences_post_correction_mds_plot = site_differences_rf_post_correction %>%
+    siteDifferencesRFplot(pheno_data_with_additional_descriptors),
   
   ## run unsupervised random forest analysis
   unsupervised_rf = site_corrected_analysis_suitable_data %>%
@@ -78,7 +97,9 @@ plan <- drake_plan(
   
   ## calculate decline indexes
   decline_indexes = unsupervised_rf %>%
-    calcDIs(site_corrected_pheno_data),
+    calcDIs(invertPDI = TRUE,invertDAI = FALSE) %>%
+    bind_cols(site_corrected_pheno_data %>%
+                select(Location,ID,`Tree No`,Status,ChosenGroup)),
   
   ## export decline indexes
   export_decline_indexes = decline_indexes %>%
@@ -204,17 +225,23 @@ plan <- drake_plan(
   ## create descriptor contribution plots
   descriptor_contribution_plots = descriptorImportancePlots(PDI_descriptor_importance,DAI_descriptor_importance),
   
+  ## extract PDI example trees
+  PDI_example_cases = PDIexampleCases(site_corrected_analysis_suitable_data,decline_indexes),
+  
+  ## extract DAI example trees
+  DAI_example_cases = DAIexampleCases(site_corrected_analysis_suitable_data,decline_indexes),
+  
   ## PDI lime analysis
-  PDI_lime_analysis = PDIlimeAnalysis(site_corrected_analysis_suitable_data,PDI_rf_model,decline_indexes),
+  PDI_lime_analysis = PDIlimeAnalysis(site_corrected_analysis_suitable_data,PDI_rf_model,PDI_example_cases),
   
   ## DAI lime analysis
-  DAI_lime_analysis = DAIlimeAnalysis(site_corrected_analysis_suitable_data,DAI_rf_model,decline_indexes),
+  DAI_lime_analysis = DAIlimeAnalysis(site_corrected_analysis_suitable_data,DAI_rf_model,DAI_example_cases),
   
   ## PDI lime analysis table
-  PDI_lime_analysis_table = PDIlimeAnalysisTable(PDI_lime_analysis,decline_indexes),
+  PDI_lime_analysis_table = PDIlimeAnalysisTable(PDI_lime_analysis,PDI_example_cases,decline_indexes),
   
   ## PDI lime analysis plot
-  PDI_lime_analysis_plot = PDIlimeAnalysisPlot(PDI_lime_analysis,decline_indexes),
+  PDI_lime_analysis_plot = PDIlimeAnalysisPlot(PDI_lime_analysis,PDI_example_cases,decline_indexes),
   
   ## PDI lime analysis table
   DAI_lime_analysis_table = DAIlimeAnalysisTable(DAI_lime_analysis,decline_indexes),
@@ -224,13 +251,16 @@ plan <- drake_plan(
   
   ## PDI rf model response surfaces
   PDI_response_surfaces = PDIresponseSurfaces(PDI_rf_model,
-                                              decline_indexes,
+                                              PDI_example_cases,
                                               site_corrected_analysis_suitable_data),
   
   ## DAI rf model response surfaces
   DAI_response_surfaces = DAIresponseSurfaces(DAI_rf_model,
-                                              decline_indexes,
+                                              DAI_example_cases,
                                               site_corrected_analysis_suitable_data),
+  
+  ## Surveyor names
+  surveyors_names = surveyors(),
   
   ## render tables
   tables = render(knitr_in('manuscript/tables.Rmd'),quiet = T),
@@ -238,8 +268,10 @@ plan <- drake_plan(
   ## render figures
   figures = render(knitr_in('manuscript/figures.Rmd'),quiet = T),
   
-  ## render manuscript
-  manuscript = render(knitr_in('manuscript/manuscript.Rmd'),quiet = T),
+  ## render manuscript 
+  manuscript = render(knitr_in('manuscript/manuscript.Rmd'),
+                      quiet = T,
+                      output_format = 'all'),
   
   ## render supplementary
   supplementary = render(knitr_in('manuscript/supplementary.Rmd'),quiet = T)

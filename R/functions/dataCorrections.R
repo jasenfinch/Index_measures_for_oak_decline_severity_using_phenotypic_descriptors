@@ -15,7 +15,7 @@ dataCorrections <- function(phenoData){
   
   phenoData <- phenoData %>%
     map(preparePhenotypeData) %>%
-    bind_rows(.id = 'Location')
+    bind_rows()
   
   phenoData$`Crown transparency (%)`[phenoData$Location %in% c('Attingham','Langdale')] <- 100 - phenoData$`Crown transparency (%)`[phenoData$Location %in% c('Attingham','Langdale')]
   

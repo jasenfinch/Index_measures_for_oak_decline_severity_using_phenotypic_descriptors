@@ -23,13 +23,17 @@ pacman::p_load(drake,
                broom,
                glue,
                kableExtra,
-               grid)
+               grid,
+               piggyback,
+               yardstick,
+               bookdown)
 
 # Load dependant GitHub libraries
 
-pacman::p_load_gh('jasenfinch/pdi@devel',
+pacman::p_load_gh('jasenfinch/pdi',
                   'ropenscilabs/gramr',
-                  'benmarwick/wordcountaddin')
+                  'benmarwick/wordcountaddin',
+                  'wilkelab/ggtext')
 
 # Resolve conflicts
 

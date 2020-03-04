@@ -3,8 +3,11 @@
 .RData
 .Ruserdata
 *.pdf
-*.docx
+manuscript.docx
+*.docx#
 *_cache
 .drake
 *.html
 *.log
+data/phenotype_collection_sheets
+proofed/
