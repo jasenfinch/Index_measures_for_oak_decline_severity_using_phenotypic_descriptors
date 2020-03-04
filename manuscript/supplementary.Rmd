@@ -53,6 +53,7 @@ descriptor_adjustment_example %>%
 loadd(site_correction_factors)
 
 site_correction_factors %>%
+  rename(Adjustment = Correction) %>%
   mutate_if(is.double,signif,digits = 3) %>%
   kable(format = 'latex',booktabs = TRUE,caption = 'Descriptor adjustment factors at each site.') %>%
   collapse_rows(columns = 1,latex_hline = "major", valign = "middle")

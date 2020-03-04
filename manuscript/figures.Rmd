@@ -11,13 +11,13 @@ knitr::opts_chunk$set(echo = FALSE,
                       message = FALSE)
 ```
 
-```{r decline_index_plot,fig.cap='Decline indexes for all 174 trees. The chosen group categories were selected in the field prior to data collection. AOD = acute oak decline; COD = chronic oak decline. Remisson tress were those that were known to have had active bleeds within the previous 3 years.'}
+```{r decline_index_plot,fig.cap='Decline indexes for all 174 surveyed trees. The chosen group categories were selected in the field prior to data collection. AOD = acute oak decline; COD = chronic oak decline. Remisson tress were those that were known to have had active bleeds within the previous 3 years.'}
 loadd(decline_indexes_plot)
 
 decline_indexes_plot
 ```
 
-```{r descriptor_contributions, fig.height = 6,fig.cap = 'Descriptor mean decrease in accuracy importance scores from the random forest models $M_{PDI}$ and $M_{DAI}$ for relative contributions to the decline index measures. Descriptors are ordered by descending percentage increase in mean squared error (MSE) and therefore from highest contribution to lowest contribution to the given decline index.'}
+```{r descriptor_contributions, fig.height = 6,fig.cap = 'Descriptor importance scores from the random forest models $M_{PDI}$ and $M_{DAI}$ for relative contributions to the decline index measures. Descriptors are ordered by descending percentage increase in mean squared error (MSE) and therefore from highest contribution to lowest contribution to the given decline index.'}
 loadd(descriptor_contribution_plots)
 
 descriptor_contribution_plots$a + descriptor_contribution_plots$b

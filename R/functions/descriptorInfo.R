@@ -13,7 +13,7 @@ descriptorInfo <- function(analysisTable){
   
   type <- tribble(
     ~Descriptor,~Description,~`Categories / units`,
-    'Diameter at breast height (mm)','Diameter of the trunk to within 1mm at a height of 1.3m.','mm',
+    'Diameter at breast height (m)','Diameter of the trunk to within 1mm at a height of 1.3m.','m',
     'Crown radius (m)','','m',
     'Total height (m)','Total tree height.','m',
     'Lower crown height (m)','Lowest live crown height to within 0.1m.','m',
