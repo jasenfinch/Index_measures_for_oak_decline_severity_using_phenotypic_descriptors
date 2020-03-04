@@ -339,12 +339,12 @@ The phenotypic measures central to this were percentage missing crown and percen
 It can be seen in Figure 3 that as the percentage missing crown and percentage crown transparency increase and therefore crown condition and composite crown volume decrease, the PDI increases. 
 A much greater range of PDI values can be obtained from trees with relatively greater stature (e.g. greater crown radius, total height, lower crown height and DBH; Figures 3a & b), while relatively small stature trees have PDIs of 0.6 or greater even with 100% crown condition.
 
-The DAI ($M_{DAI}$) is a much more complex index with more descriptors contributing to it than the PDI such as bleed prevalence, DBH and crown condition descriptors. 
+The DAI ($M_{DAI}$) is a much more complex index with more descriptors contributing to it than the PDI such as live crown ration, bleed prevalence, DBH descriptors. 
 Simulated response surfaces for the DAI are shown in Figure 4. 
-These response surfaces show circumstances under which bleed prevalence related descriptors (Figures 4a, b & c) and crown condition descriptors (Figures 4d, e & f) change for non-symptomatic AOD or COD trees (Figures 4a & d respectively), moderate AOD or COD (Figures 4b & e respectively) and severe AOD or COD (Figures 4c & f respectively). 
+These response surfaces show circumstances under which bleed prevalence related descriptors (Figures 4a, b & c) and live crown ratio descriptors (Figures 4d, e & f) change for non-symptomatic AOD or COD trees (Figures 4a & d respectively), moderate AOD or COD (Figures 4b & e respectively) and severe AOD or COD (Figures 4c & f respectively). 
 Increasing active bleed, staining length and frequency contributed to greater positive values of the DAI and more severe AOD. 
 Higher DAI values could also be obtained from trees with greater stature (Figure 4c). 
-Crown transparency and missing crown have no influence on the DAI for trees of neutral decline type (Figure 4d).
+Total height and lower crown height have no influence on the DAI for trees of neutral decline type (Figure 4d).
 Similarly to the PDI, trees with smaller stature and poorer crown condition give lower DAI values (Figures 4e & f) and therefore more severe COD; however, only narrow ranges of DAI values could be obtained for each case when varying the ranges of these descriptors.
 
 # Discussion
