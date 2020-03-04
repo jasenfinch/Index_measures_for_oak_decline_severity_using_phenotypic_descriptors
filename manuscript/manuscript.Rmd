@@ -267,9 +267,10 @@ symptom_ranges <- site_corrected_analysis_suitable_data %>%
              )
 ```
 
-The same approach was used for $M_{DAI}$ using a comparison between active bleed length and black staining length as well as missing crown and crown transparency.
+The same approach was used for $M_{DAI}$ using a comparison between active bleed length and black staining length as well as total height and lower crown height.
 The upper boundary for the ranges of active bleed length and black stain length was taken as the centre value between the maximum and minimum values in the training data sets.
 These were reduced by a factor of eight to give ranges of `r glue("{symptom_ranges$minimum[1]}-{signif(symptom_ranges$center[1] / 8,digits = 3)}mm")` and `r glue("{symptom_ranges$minimum[2]}-{signif(symptom_ranges$center[2] / 8,digits = 3)}mm")` respectively and enabled more effective visualisation.
+For the total height (`r glue("{max(site_corrected_analysis_suitable_data[['Lower crown height (m)']]) %>% signif(3)} - {max(site_corrected_analysis_suitable_data[['Total height (m)']]) %>% signif(3)}m")`) and lower crown height (`r glue("{min(site_corrected_analysis_suitable_data[['Lower crown height (m)']]) %>% signif(3)} - {max(site_corrected_analysis_suitable_data[['Lower crown height (m)']]) %>% signif(3)}m")`) descriptors, the ranges were divided into 100 increments.
 
 # Results
 

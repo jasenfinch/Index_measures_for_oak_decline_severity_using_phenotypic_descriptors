@@ -56,7 +56,7 @@ DAIresponseSurfaces <- function(DAIrf,DAI_example_cases,site_corrected_analysis_
     map(~{
       type <- .
       list(
-        `Total height (m)` = seq(ranges$min[ranges$Descriptor == 'Total height (m)'],ranges$max[ranges$Descriptor == 'Total height (m)'],length.out = 100),
+        `Total height (m)` = seq(ranges$max[ranges$Descriptor == 'Lower crown height (m)'],ranges$max[ranges$Descriptor == 'Total height (m)'],length.out = 100),
         `Lower crown height (m)` = seq(ranges$min[ranges$Descriptor == 'Lower crown height (m)'],ranges$max[ranges$Descriptor == 'Lower crown height (m)'],length.out = 100)
       ) %>%
         expand.grid() %>%
