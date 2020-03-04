@@ -280,14 +280,15 @@ The descriptors that contributed most to this discrimination were those that wer
 To counter this, effect sizes were adjusted based on the site means for each tree size descriptor to remove inter-site variability but maintain intra-site variability as described in Section \@ref(method-adjustment).
 This ensures that the subsequent comparisons of these descriptors in the context of oak decline are not confounded by these identified site differences.
 After the application of the tree size adjustment, the average random forest *margin* value was substantially reduced to `r site_rf_post_correction_margin$Margin %>% signif(digits = 3)`.
-This negative value indicates that the adjustment was able to remove the majority of the between site variance and that the random forest models were on average unable to correctly classify the site locations of the trees.
+The reduction in this value indicates that the adjustment was able to remove the majority of the between site variance and that the random forest models were no longer able accurately classify the site locations of the trees (Supplementary figure 4a) with almost no contribution of the corrected tree size descriptors (Supplementary figure 4b).
 
 ## Oak decline severity indexes of manually assigned decline statuses
 
-A scatter plot (Figure 1) of the calculated PDI and DAI scores (see Supplementary information Figures 5 to 8) for all `r nrow(site_corrected_analysis_suitable_data)` trees for which phenotypic descriptor data was collected shows that the healthy trees group towards the lower end of the PDI scale and the symptomatic COD and AOD groups towards the higher end.
-This gave a significant difference when PDI of the control and symptomatic (AOD and COD) decline statuses were compared using an independent two sample t-test (`r glue("t({PDI_status_ttest$parameter}) = {signif(PDI_status_ttest$statistic,digits = 3) %>% abs()}, p < 0.001")`) with group means of `r signif(PDI_status_ttest$estimate1,digits = 3)` and `r signif(PDI_status_ttest$estimate2,digits = 3)` for non-symptomatic and symptomatic statuses respectively.
+The calculated PDI and DAI scores (see Supplementary information #) derived from MDS of proximity values from unsupervised random forest for all `r nrow(site_corrected_analysis_suitable_data)` trees for which phenotypic descriptor data was collected is shown in Figure 1. 
+The healthy trees grouped towards the lower end of the PDI scale and the symptomatic COD and AOD groups towards the higher end.
+There was a significant difference when the PDI values of the healthy (non-symptomatic) and symptomatic (AOD and COD) decline statuses were compared using an independent two sample t-test (`r glue("t({PDI_status_ttest$parameter}) = {signif(PDI_status_ttest$statistic,digits = 3) %>% abs()}, p < 0.001")`) with group means of `r signif(PDI_status_ttest$estimate1,digits = 3)` and `r signif(PDI_status_ttest$estimate2,digits = 3)` for non-symptomatic and symptomatic statuses respectively.
 
-On the DAI scale, the AOD trees group at the upper end of the scale (> 0) and the COD trees at the lower end (< 0).
+On the DAI scale, the AOD trees grouped at the upper end of the scale (> 0) and the COD trees at the lower end (< 0).
 This was confirmed with significance found in the DAI between these groups (`r glue("t({DAI_groups_ttest$parameter}) = {signif(DAI_groups_ttest$statistic,digits = 3) %>% abs()}, p < 0.001")`) with group means of `r signif(DAI_groups_ttest$estimate1,digits = 3)` and `r signif(DAI_groups_ttest$estimate2,digits = 3)` for the AOD and COD groups respectively.
 
 The remission trees were found to be significantly different in their PDI scores from both the healthy (`r glue("t({remission_PDI_group_ttest$parameter[1]}) = {signif(remission_PDI_group_ttest$statistic[1],digits = 3) %>% abs()}, p < 0.001")`) and symptomatic (AOD and COD; `r glue("t({remission_PDI_group_ttest$parameter[2]}) = {signif(remission_PDI_group_ttest$statistic[2],digits = 3) %>% abs()}, p < 0.001")`) groups with means of `r signif(remission_PDI_group_ttest$estimate1[1],digits = 3)`, `r signif(remission_PDI_group_ttest$estimate2[1],digits = 3)` and `r signif(remission_PDI_group_ttest$estimate2[2],digits = 3)` for the healthy, remission and symptomatic groups respectively.
@@ -304,7 +305,7 @@ The top four ranked descriptors found to contribute to $M_{PDI}$ were all crown 
 Other tree size related descriptors such as bleed prevalence and live crown ratio stem bleeding descriptors contributed secondarily.
 
 $M_{DAI}$ was more complex with many more descriptors contributing more equally than for the PDI (Figure 2b).
-The overall tree size descriptors live crown ratio, DBH and crown volume contributed almost equally to $M_{DAI}$.
+The overall tree size descriptors such as live crown ratio, DBH and crown volume contributed almost equally to $M_{DAI}$.
 These were followed closely by the stem staining and bleeding descriptors such as bleed prevalence. 
 The presence of *A. biguttatus* exit holes had very little contribution to the DAI with exit hole density ranked only `r which(DAI_descriptor_importance$Feature == 'Agrilus exit hole density (m^-2)')`th.
 
