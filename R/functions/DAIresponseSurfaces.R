@@ -62,8 +62,6 @@ DAIresponseSurfaces <- function(DAIrf,DAI_example_cases,site_corrected_analysis_
         expand.grid() %>%
         as_tibble() %>%
         mutate(ID = 1) %>%
-        left_join(spectrumTrees_DAI[[type]] %>%
-                    select(-`Total height (m)`,-`Lower crown height (m)`) %>%
         left_join(DAI_example_cases[[type]] %>%
                     select(-`Total height (m)`,-`Lower crown height (m)`) %>%
                     mutate(ID = 1),
@@ -135,7 +133,9 @@ DAIresponseSurfaces <- function(DAIrf,DAI_example_cases,site_corrected_analysis_
         labs(title = type,
              caption = str_c(
                'Crown radius (m) = ',plotRanges_DAI_def[[type]]$`Crown radius (m)`[1] %>% round(3),'\n',
-               'Diameter at breast height (m) = ',plotRanges_DAI_def[[type]]$`Diameter at breast height (m)`[1] %>% round(3)
+               'Diameter at breast height (m) = ',plotRanges_DAI_def[[type]]$`Diameter at breast height (m)`[1] %>% round(3),'\n',
+               'Missing crown (%) = ',plotRanges_DAI_def[[type]]$`Missing crown (%)`[1] %>% round(3),'\n',  
+               'Crown transparency (%) = ',plotRanges_DAI_def[[type]]$`Crown transparency (%)`[1] %>% round(3)
              )
         )
       return(pl)
