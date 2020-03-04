@@ -31,7 +31,8 @@ loadd(site_rf_margin,
       remission_DAI_group_ttest,
       DAI_descriptor_importance,
       surveyors_names,
-      pheno_data_with_additional_descriptors)
+      pheno_data_with_additional_descriptors,
+      decline_indexes)
 ```
 
 **Proposed journal:** (1) Forest Ecology & Management (2) Forestry (3) European Journal of Forest Research (4) Plant Methods 
@@ -375,6 +376,13 @@ AOD occurs over a much shorter period compared to COD and therefore has less tim
 The high contribution of bleed prevalence related descriptors to $M_{DAI}$ is also expected as this is one of the defining features of AOD [@denman2014]. 
 There was no contribution of *A. biguttatus* exit hole occurrence to the DAI and therefore stem bleeding. 
 This could partly be due to the low number of trees on which *A. biguttatus* exit holes were detected (`r which(deframe(pheno_data_with_additional_descriptors[,'Agrilus exit holes']) > 0) %>% length()` out `r nrow(pheno_data_with_additional_descriptors)`) but it has also been shown previously that trees with bleeds do not always have exit holes, attributed to the fact that not all *A. biguttatus* larvae complete their life cycle [@brown2017a;@vansteenkiste2004].
+
+There were `r decline_indexes %>% filter(ChosenGroup == 'COD',PDI > 0.5,DAI > 0.5) %>% nrow()` manually assigned COD trees that were scored with PDI and DAI values greater than 0.5, suggesting that they were in fact AOD trees.
+These trees were manually assigned COD status due to the presence of *Armillaria* attack and associated bleeds.
+While the phenotyping protocol used here made no distinction as to the biotic origin of the stem bleeds, it is interesting to note that not only do these trees have the presence of stem bleeds similar to AOD trees, but also share their relatively larger stature compared to the majority of COD trees.
+This likely reflects a more acute and aggressive nature of the *Armillaria* infection in these trees with deterioration in crown health having occurred over a shorter time period. 
+It therefore has less time in which to impact overall growth compared to the other COD trees. 
+In this sense the DAI scale can be seen to differentiate decline types based less on the actual biotic agents involved in the interaction but more on the time-scales over which the trees themselves have been afflicted.
 
 AOD severity was able to be associated with overall decline severity with trees identified that had a combination of both PDI values greater than 0.7 and DAI values greater than 0.5 (Figure 1).
 The association of crown condition and AOD severity has previously be shown by @brown2016.
