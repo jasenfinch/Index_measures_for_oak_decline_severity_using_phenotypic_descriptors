@@ -17,13 +17,13 @@ loadd(decline_indexes_plot)
 decline_indexes_plot
 ```
 
-```{r descriptor_contributions, fig.height = 6,fig.cap = 'Descriptor mean decrease in accuracy importance scores from the random forest models $M_{PDI}$ and $M_{DAI}$ for relative contributions to the decline index measures. Descriptors are ordered by descending mean decrease in accuracy and therefore from highest contribution to lowest contribution to the given decline index. MSE = mean squared error.'}
+```{r descriptor_contributions, fig.height = 6,fig.cap = 'Descriptor mean decrease in accuracy importance scores from the random forest models $M_{PDI}$ and $M_{DAI}$ for relative contributions to the decline index measures. Descriptors are ordered by descending percentage increase in mean squared error (MSE) and therefore from highest contribution to lowest contribution to the given decline index.'}
 loadd(descriptor_contribution_plots)
 
 descriptor_contribution_plots$a + descriptor_contribution_plots$b
 ```
 
-```{r PDI_response_surfaces,fig.height = 6,fig.cap='PDI response surfaces for simulated descriptor values from trained random forest models.'}
+```{r PDI_response_surfaces,fig.height = 6,fig.cap='PDI response surfaces from $M_{PDI}$ for simulated values of key contributing descriptors for example healthy, moderate and severly declining cases. The values of additional tree size descriptors are shown for the individual cases to indicate the relative stature of the example cases.'}
 loadd(PDI_response_surfaces)
 
 grid.arrange(PDI_response_surfaces[[1]],
@@ -34,7 +34,7 @@ grid.arrange(PDI_response_surfaces[[1]],
 ```
 
 
-```{r DAI_response_surfaces,fig.height = 8,fig.cap='DAI response surfaces for simulated descriptor values from trained random forest models.'}
+```{r DAI_response_surfaces,fig.height = 8,fig.cap='DAI response surfaces from $M_{DAI}$ for simulated values of key contributing descriptors for example cases. The neutral case is a tree that can be neither distinguished as AOD or COD. All cases have PDI values > 0.5.'}
 loadd(DAI_response_surfaces)
 
 grid.arrange(textGrob(expression(bold('AOD')),hjust = -0.1),
