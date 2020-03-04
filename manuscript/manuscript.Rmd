@@ -353,7 +353,7 @@ Similarly to the PDI, trees with smaller stature and poorer crown condition give
 The decline indexes presented here provide single intuitive scores based on a wide number of factors known to be heavily influenced by oak decline severity.
 These two indexes can be represented as a two-dimensional oak decline continuum under which the spectrum of decline severity and type can be assessed (Figure 5).
 The index thresholds for category definitions (healthy, declining, severe decline etc.) shown currently serve only as a guide to aid human interpretation as opposed to definitive thresholds of disease. 
-Further work is needed that includes phenotypic data with greater spatial and temporal distribution to establish definitive thresholds. 
+Further work is needed that includes phenotypic data with greater spatial and temporal distribution to establish these definitive thresholds. 
 
 Although significant differences were obtained between the decline status groups on both the PDI and DAI scales, Figure 1 highlights the inaccuracies in the manual decline status classifications when viewed in an individual tree context.
 It can be seen that a number of the trees, when compared quantitatively using these measures, could in fact be classified with a different decline state.
@@ -361,20 +361,20 @@ This is likely due, at least in part, to the inclusion of trees in early stages 
 For example, trees with visible fruiting bodies of root pathogens were manually classed as COD, even if crown health was still relatively good.
 
 Crown condition and volume were shown to be the key contributors to the $M_{PDI}$. 
-This is to be expected and are an indicator of model suitability for the unsupervised approach as crown condition and crown dimensions are well established as the key components of assessing overall tree health and condition [@schomaker2007]. 
+This is to be expected and are indicators of model suitability using the unsupervised approach as crown condition and crown dimensions are well established as the key components of assessing overall tree health and condition [@schomaker2007]. 
 However, previous studies such as @evans2012 and @pontius2014 have treated these descriptors as linear progressions of oak health that contribute equally to overall tree condition.
-It has been shown here that in the given visual definitions of oak decline severity, firstly, factors of overall crown condition and size are unlikely to contribute equally (Figure 2a) and secondly, it is unlikely that these aspects of crown condition contribute linearly (Figure 3a).
-
-The high contribution of bleed prevalence related descriptors to $M_{DAI}$ is also expected as this is one of the defining features of AOD [@denman2014]. 
-There was no contribution of *A. biguttatus* exit hole occurrence to the DAI and therefore stem bleeding. 
-This could partly be due to smaller area surveyed compared to the stem bleed descriptors but it has also been identified previously that trees with bleeds do not always have exit holes, which has been attributed to the fact that not all *A. biguttatus* larvae complete their life cycle [@brown2017a;@vansteenkiste2004].
-
-AOD severity was able to be associated with overall decline severity with trees identified that had a combination of both PDI values greater than 0.7 and DAI values greater than 0.5 (Figure 1).
-The association of crown condition and AOD severity has previously be shown by @brown2016.
+It has been shown here that in the given visual definitions of oak decline severity; firstly, factors of overall crown condition and size are unlikely to contribute equally (Figure 2a) and secondly, it is unlikely that these aspects of crown condition contribute linearly (Figure 3a).
 
 It was shown that tree size, reflected by the live crown ratio descriptor, contributes most to the DAI in discriminating between COD and AOD trees.
 The relationship of relative tree stature and the acuteness of oak decline has not previously been shown and likely reflects the period of time under which these trees have been afflicted. 
 AOD occurs over a much shorter period compared to COD and therefore has less time in which to inhibit growth of the tree as a whole.
+
+The high contribution of bleed prevalence related descriptors to $M_{DAI}$ is also expected as this is one of the defining features of AOD [@denman2014]. 
+There was no contribution of *A. biguttatus* exit hole occurrence to the DAI and therefore stem bleeding. 
+This could partly be due to the low number of trees on which *A. biguttatus* exit holes were detected (`r which(deframe(pheno_data_with_additional_descriptors[,'Agrilus exit holes']) > 0) %>% length()` out `r nrow(pheno_data_with_additional_descriptors)`) but it has also been shown previously that trees with bleeds do not always have exit holes, attributed to the fact that not all *A. biguttatus* larvae complete their life cycle [@brown2017a;@vansteenkiste2004].
+
+AOD severity was able to be associated with overall decline severity with trees identified that had a combination of both PDI values greater than 0.7 and DAI values greater than 0.5 (Figure 1).
+The association of crown condition and AOD severity has previously be shown by @brown2016.
 
 The remission trees as a group were shown to be intermediate in decline severity and type to the healthy, AOD and COD trees on both the PDI and DAI index scales.
 However, this was also the most varied of the decline status groups.
@@ -383,7 +383,7 @@ Using these decline indexes, remission trees could be more objectively defined i
 
 ## The machine learning approach
 
-A machine learning approach was used to derive the phenotypic index measures as it allows the models to be moulded to the complex interactions and trends between phenotypic descriptors from which the decline indexes are calculated. 
+A machine learning approach was used to derive the phenotypic index measures as it allows the models to be moulded to the complex interactions that exist between the phenotypic descriptors from which the decline indexes are calculated. 
 This would likely be oversimplified using conventional modelling strategies [@breiman2001b]. 
 
 An unsupervised approach was favoured in this context due to the concession that there are known difficulties with and inaccuracy in manual decline status classification in the field [@ferretti1997].
@@ -392,7 +392,7 @@ The unsupervised approach has worked in this context in aptly describing decline
 In situations where descriptors may well be less suited, perhaps as a result of technical limitations, the use of a semi-supervised approach may be favourable.
 The unsupervised approach to derive the decline indexes would be applied to a subset of the observations on which the descriptors are known to perform well and that would be considered benchmark observations by the investigators.
 Indexes could then be attained for the rest of the observations by prediction based on supervised models of the benchmark subset [@chapelle2010].
-This approach would be more suitable than a fully supervised approach as it would limit the inaccuracies that would be introduced by manual classification and still allow the data driven flexibility of the unsupervised approach.
+This approach would be more suitable than a fully supervised approach as it would limit the inaccuracies that would be introduced by manual classification while still allowing the data driven flexibility of the unsupervised approach.
 
 Machine learning approaches are usually seen as black box and hard to interpret; however, there are substantial gains in terms of predictive capability for applying these models in real world situations [@touw2012].
 The assessment of descriptor contributions to the index models are an integral part of this approach and helps to overcome these limitations.
@@ -415,6 +415,7 @@ Scaling this technique to enable computation of decline indexes for any tree sam
 Scaling to this level would also require an appropriate method of tree size correction that could be applied on an individual tree basis.
 A potential solution to this would be to correct trees based on estimated age from DBH as proposed by @white1998.
 These indexes could have great utility in long term forest health monitoring by providing consistent scores which can be compared over time to inform both forestry management and research [@denman2010].
+For instance, the increase of the PDI values of trees within a woodland, beyond what is considered the healthy region of the PDI scale, could indicate that mangement intervention is required.
 
 The phenotypic descriptors used to calculate these indexes are easily measurable in the field and are based on well established tree condition assessment protocols [@innes1990].
 Further refinement of these protocols could be designed to reduce survey time and complexity and potentially be incorporated into citizen science programmes [@brown2017b].
@@ -436,7 +437,7 @@ This work was supported by Woodland Heritage and the Future Proofing Plant Healt
 
 
 ```{r check,comment='',cache=FALSE}
-# manuscript_check(checks = c('word count','spelling'))
+manuscript_check(checks = c('word count')) # ,'spelling'
 ```
 
 # References
