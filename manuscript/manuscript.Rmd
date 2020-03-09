@@ -77,18 +77,18 @@ Biotic agents can include insect infestation such as the larvae of bark boring b
 The bacterial stem bleeds associated with AOD initially start as active dark weeping patches.
 Over time, as lesion development continues beneath the bark, external cracks develop between the bark plates that are surrounded by blackening stains.
 Evidence of stem tissue repair can be seen as lignified-callus-like tissue that, when extensive, can fully occlude the internal lesion, appearing as exposed rolls of calloused tissue on the exterior [@denman2014].
-Stem bleeds can also, but not always, be associated with *Armillaria* attack on the inner stem tissues of oak.
+Stem bleeds can also be associated with a range of root pathogens including *Armillaria* attack on the inner stem tissues of oak.
 Active stem weeping and black staining can be found along the leading edge of the mycelial front of affected stem tissues [@denman2017].
 
 Oak decline syndromes are wide ranging in cause and attempts have been made to subdivide the types of decline associated with *Quercus robur* and *Q. petraea* based on the duration over which a tree has been declining and the biotic agents associated with a declining tree.
 Mortality in trees suffering from COD can occur over a period of decades whereas AOD can occur in 5-10 years [@denman2009].
 A chronically declining oak can also subsequently begin to develop the stem bleeds associated with AOD [@denman2017].
 
-As a result of the variety of factors contributing to oak decline, there are many visual phenotypic descriptors that contribute to categorizing an oak tree as being in decline. 
+As a result of the variety of factors contributing to oak decline and oak responses to these, there are many visual phenotypic descriptors that contribute to categorizing an oak tree as being in decline. 
 When the decline is severe there are clear symptoms visible in the crown, such as low foliage density and numerous dead branches. 
-It is these characteristics that many studies use as the primary indicator of tree decline severity [@zarnoch2004], however these symptoms can develop slowly (especially in the case of COD) and simple classes are unlikely to capture the full detail of the subtle transition from being healthy to declined. 
+It is these characteristics that many studies use as the primary indicator of tree decline severity [@zarnoch2004], however symptoms can develop slowly (especially in COD) and simple classes are unlikely to capture the full detail of the subtle transition from being healthy to declined. 
 
-The visual, manual assignment of decline status and severity in the field is variable and error prone due to the many factors contributing to oak decline.
+The visual, manual assignment of decline status and severity in the field is variable and error prone due to the many factors contributing to oak decline and surveyor bias.
 For instance, accurate and reproducible crown condition assessments often require rigorous quality assurance steps that include training and regular calibration among surveyors [@ferretti1997; @redfern2004].
 Additionally, differences in woodland age and individual tree sizes at different geographical locations can add difficulty to objectively comparing health status between sites.
 These factors require standardisation to reduce the potential confounding comparisons for tree health status [@zarnoch2004].
@@ -100,10 +100,10 @@ Consistent long term monitoring has been highlighted as a key requirement for un
 Coupled with this, monitoring methods should take advantage of modern data analysis techniques whilst still retaining practical simplicity in the field.
 
 Machine learning is finding increasing utility in ecological and environmental applications due to its ability to learn complex patterns within and between variables [@cutler2007;@belgiu2016].
-A popular algorithm is random forest due to it's versatility, relatively trivial training requirements and ease of use. 
+A popular algorithm is random forest due to it's versatility, relatively simple model training requirements and ease of use. 
 It is an ensemble machine learning method where forests of bootstrap sampled decision trees are grown, yielding both out of bag sample prediction accuracies and variable importance [@breiman2001a;@biau2016].
 
-Here, we propose a framework using unsupervised random forest machine learning to enable quantitative, visible oak decline severity measurement that utilises a range of targeted phenotypic descriptors observed in oak forests across England.
+Here, we propose a framework using unsupervised random forest machine learning to enable quantitative, visible oak decline severity assessments that utilises a range of oak decline targeted phenotypic descriptors observed in oak forests across England.
 
 The two resulting measures are:
 
@@ -123,34 +123,33 @@ The occurrence of AOD has previously been reported and studied at these sites [@
 These sites included a variety of woodlands, management histories and soil types as well as tree sizes/ages and were made up of mainly *Q. robur*.
 
 All trees were manually assigned a decline status category; healthy, AOD, COD or remission prior to collection of phenotypic descriptors.
-At the COD sites, trees were either COD (trees with clear signs of poor crown condition and canopy dieback) or healthy (dominant or co-dominant trees with full crowns). 
-At Big Wood, trees with stronger crowns were also categorised as COD when *Armillaria* fruiting bodies had been observed.
+At the COD sites, trees were either COD (trees with clear signs of poor crown condition and dieback) or healthy (dominant or co-dominant trees with full crowns). 
+At Big Wood, trees with stronger crowns were also categorised as COD when *Armillaria* (*Desarmillaria tabescens*) fruiting bodies had been observed on their buttress roots.
 At the AOD sites, annual monitoring data collected since 2009 was used to guide tree selection.
-Healthy trees had no known history of AOD and fruiting bodies of root pathogens had not been observed; all trees had canopy condition of 4 or 5, see @brown2016 for details of this assessment.
+Healthy trees had no known history of AOD and fruiting bodies of root pathogens had not been observed; all trees had crown condition of 4 or 5, see @brown2016 for details of this assessment.
 AOD trees had current stem bleeds but a variety of crown conditions. 
 COD trees either had poor crowns (category 2) or the fruiting bodies of *Gymnopus* or *Armillaria* had been observed in previous years.
 The remission group included trees that had shown stem bleeds associated with AOD within the previous three years but were not showing signs of stem bleeds at the time of assessment.
 Thus, at all sites, selection attempted to create a balanced sample of condition categories including both the unhealthiest and healthiest trees.
 
-The collected phenotypic descriptors related to the trees shape, size, crown condition and the presence of biotic agents including insects, bacteria and fungi.
+The collected phenotypic descriptors related to tree shape, size, crown condition and the presence of biotic agents including insects, bacteria and fungi are listed and described in Supplementary Table 1.
 Surveyors involved in phenotyping the trees used in this study had prior experience conducting ICP-Forests level I crown condition surveys. 
 In each year of sampling surveyors met to undergo refresher training and “calibration” assessments in oak woodland. 
 The descriptors collected were based on @innes1990 and @icpforests2016.
 Diameter at breast height (DBH) was collected at a stem height of 1.3m, to the nearest 1mm.
 Total height, timber height and lowest live crown were measured using an inclinometer to the nearest 0.1m.
 The timber height was measured at either where the top stem diameter was 70mm or where no main stem could be distinguished.
-For crown contact, missing crown and absolute crown transparency, percentages were visually estimated within 5% classes
+For crown contact, missing crown and absolute crown transparency, percentages were visually estimated between 0 and 100% in 5% interval classes.
 
 Other categorical descriptors included social class, dieback type, main crown dieback location, stem epicormic growth, branch epicormic growth, extent of insect damage, insect damage type, extent of crown mildew and the presence or absence of pruning damage or branch loss from the main stem.
 See Supplementary Table 1 for category details.
 
-Crown radius, canopy closure and tap tests for dead stem tissue were measured for each cardinal point.
+Crown radius, canopy closure and bark tap tests for dead stem tissue were measured for each cardinal point.
 The crown radius was measured using a vertex transponder attached to the relevant side of the stem at a height of 1.3m. Canopy closure was recorded as yes or no depending on whether any other crowns are touching the sampling tree.
 A high resolution photo was taken of the base to the top of the crown and of the stem from the base to a height of 3m for each cardinal point for later reference.
 
 The AOD stem symptoms (active bleeds, black staining, calloused wounds) were collected by measuring longest axis of each individual bleed, stain or calloused wound found within the basal 3m of the stem.
-The frequency of *A. biguttatus* exit holes were counted along with the presence or absence of each of oval shaped exit holes, small circular shaped exit holes and ground level fungal fruiting bodies which were recorded from the basal 2m of the stem. 
-The collected descriptors are all included in Supplementary Table 1.
+The frequency of *A. biguttatus* exit holes were counted along with the presence or absence of other oval shaped insect exit holes, small circular shaped exit holes and ground level fungal fruiting bodies which were recorded around the stem circumference from the basal tree collar to a radial distance of 2m of the stem. 
 
 ## Phenotypic descriptor preparation {#method-descriptor-preparation}
 
@@ -160,9 +159,9 @@ All raw data, data preparation routines and analysis code used to generate this 
 All cardinal assessments were averaged to give a single value per tree.
 The crown density ($CD$) values collected at Attingham and Langdale were converted to crown transparency ($t = 100 - CD$)
 All descriptors collected in cm were converted to mm except for DBH which was converted to m.
-The tap tests that were positive for hollow stem tissue were converted to present and absent then renamed dead stem tissue.
+The bark tap tests that were positive for hollow stem tissue were converted to present and absent then renamed dead stem tissue.
 The canopy closure descriptor was converted from yes and no to present and absent.
-Finally, the stem symptoms lengths for active bleeds, black staining and calloused wounds were averaged and a frequency per tree given by the total observed.
+Finally, the stem symptoms lengths for active bleeds, black staining and callused wounds were averaged and a frequency per tree given by the total observed.
 The application and effect of this adjustment is described and discussed in Sections 3.1 and 4.3 respectively.
 After preparation there were a total of 31 raw descriptors for analysis. 
 
@@ -184,7 +183,7 @@ $$c = (100 - m)(1-\frac{t}{100})$$
 
 $m$ = missing crown (%), $t$ = crown transparency (%)
 
-Composite crown volume (m^3^) - estimated volume of the crown as an paraboloid proportional to the crown condition. Adapted from the composite crown volume from @zarnoch2004 using crown condition instead of crown density alone.
+Composite crown volume (m^3^) - estimated volume of the crown as a paraboloid proportional to the crown condition. Adapted from the composite crown volume from @zarnoch2004 using crown condition instead of crown density alone.
 
 $$v = \frac{1}{2} \pi r^2(h-l) \times \frac{c}{100}$$
 
@@ -238,7 +237,7 @@ The code used to generate the decline indexes is available as an R package pdi v
 
 To investigate the descriptor contributions to the decline indexes, supervised random forest regression models were trained for each decline index using the phenotypic descriptors for all 174 trees.
 These models will subsequently be referred to as $M_{PDI}$ and $M_{DAI}$ for the PDI and DAI respectively. 
-The parameters number of trees ($ntree$) and number of randomly assigned variables ($mtry$), for each random forest model, were tuned prior to training using the values of 10, 100, 1,000, 10,000 for ntree and a range of 2-26 at intervals of 4 for the mtry parameter. 
+The parameters number of trees ($ntree$) and number of randomly assigned variables ($mtry$), for each random forest model, were tuned prior to training using the values of 10, 100, 1,000, 10,000 for $ntree$ and a range of 2-26 at intervals of 4 for the $mtry$ parameter. 
 The combination parameters giving the lowest mean absolute percentage error (MAPE) were selected and set as follows: for the PDI ($M_{PDI}$): `r glue('$ntree$ = {prettyNum(PDI_rf_tune_params$ntree,big.mark = ',')}, $mtry$ = {PDI_rf_tune_params$mtry}, MAPE = {PDI_rf_tune_params$PMAE %>% signif(digits = 3)}%')`; for the DAI ($M_{DAI}$): `r glue('$ntree$ = {prettyNum(DAI_rf_tune_params$ntree,big.mark = ',')}, $mtry$ = {DAI_rf_tune_params$mtry}, MAPE = {DAI_rf_tune_params$PMAE %>% signif(digits = 3)}%')` (Supplementary figure 2).
 Overall descriptor importance contributions to each of the indexes was assessed using the percentage increase in mean squared error measure with higher values indicating a greater overall contribution to the given model and therefore greater importance.
 
@@ -344,9 +343,9 @@ The phenotypic measures central to this were percentage missing crown and percen
 It can be seen in Figure 3 that as the percentage missing crown and percentage crown transparency increase and therefore crown condition and composite crown volume decrease, the PDI increases. 
 A much greater range of PDI values can be obtained from trees with relatively greater stature (e.g. greater crown radius, total height, lower crown height and DBH; Figures 3a & b), while relatively small stature trees have PDIs of 0.6 or greater even with 100% crown condition.
 
-The DAI ($M_{DAI}$) is a much more complex index with more descriptors contributing to it than the PDI such as live crown ratio, bleed prevalence, and DBH. 
+The DAI ($M_{DAI}$) is a more complex index with a greater number of descriptors contributing to it than the PDI such as live crown ratio, bleed prevalence, and DBH. 
 Simulated response surfaces for the DAI are shown in Figure 4. 
-These response surfaces show circumstances under which bleed prevalence related descriptors (Figures 4a, b & c) and live crown ratio descriptors (Figures 4d, e & f) change for non-symptomatic AOD or COD trees (Figures 4a & d respectively), moderate AOD or COD (Figures 4b & e respectively) and severe AOD or COD (Figures 4c & f respectively). 
+These response surfaces show circumstances under which bleed prevalence related descriptors (Figures 4a, b & c) and live crown ratio descriptors (Figures 4d, e & f) change for neutral decline type (Figures 4a & d respectively), moderate AOD or COD (Figures 4b & e respectively) and severe AOD or COD (Figures 4c & f respectively). 
 Increasing active bleed, black staining length and frequency contributed to greater positive values of the DAI and more severe AOD. 
 Higher DAI values could also be obtained from trees with greater stature (Figure 4c). 
 Total height and lower crown height have no influence on the DAI for trees of neutral decline type (Figure 4d).
@@ -446,7 +445,7 @@ It is encouraged that this approach of deriving descriptive index measures using
 # Acknowledgements {-}
 
 We would like to thank the Forest Research TSU for collecting the phenotypic data presented in this article. Thanks to Liz Richardson and Mark Oram for coordinating surveying and the surveyors: `r str_c(surveyors_names,collapse = ', ')`.
-This work was supported by Woodland Heritage and the Future Proofing Plant Health (FPPH) Oak Resilience project.
+This work was supported by Woodland Heritage, the Forestry Commission and the Defra Future Proofing Plant Health (FPPH) Oak Resilience project.
 
 
 ```{r check,comment='',cache=FALSE}
