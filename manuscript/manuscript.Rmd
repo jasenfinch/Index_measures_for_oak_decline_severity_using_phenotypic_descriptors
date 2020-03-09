@@ -133,6 +133,8 @@ The remission group included trees that had shown stem bleeds associated with AO
 Thus, at all sites, selection attempted to create a balanced sample of condition categories including both the unhealthiest and healthiest trees.
 
 The collected phenotypic descriptors related to the trees shape, size, crown condition and the presence of biotic agents including insects, bacteria and fungi.
+Surveyors involved in phenotyping the trees used in this study had prior experience conducting ICP-Forests level I crown condition surveys. 
+In each year of sampling surveyors met to undergo refresher training and “calibration” assessments in oak woodland. 
 The descriptors collected were based on @innes1990 and @icpforests2016.
 Diameter at breast height (DBH) was collected at a stem height of 1.3m, to the nearest 1mm.
 Total height, timber height and lowest live crown were measured using an inclinometer to the nearest 0.1m.

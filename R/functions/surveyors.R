@@ -1,4 +1,4 @@
 
 surveyors <- function(){
-  c('S. Coventry','I. Craig','J. McMinn','Stephen Whall')
+  c('Steve Coventry','Ian Craig','Joe McMinn','Stephen Whall')
 }
