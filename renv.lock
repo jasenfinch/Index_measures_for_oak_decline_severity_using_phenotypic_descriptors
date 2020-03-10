@@ -116,10 +116,10 @@
     },
     "bookdown": {
       "Package": "bookdown",
-      "Version": "0.17",
+      "Version": "0.18",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "727f96578043896024c9d309718fda73"
+      "Hash": "72e9c52caf3f7aacb4e368b75f6ec72a"
     },
     "broom": {
       "Package": "broom",
@@ -256,10 +256,10 @@
     },
     "dplyr": {
       "Package": "dplyr",
-      "Version": "0.8.4",
+      "Version": "0.8.5",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "3ecb1deedd4c4ad6ebf4605d263616f2"
+      "Hash": "57a42ddf80f429764ff7987128c3fd0a"
     },
     "drake": {
       "Package": "drake",
@@ -340,10 +340,10 @@
     },
     "fs": {
       "Package": "fs",
-      "Version": "1.3.1",
+      "Version": "1.3.2",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "0e26be4558dbbc713d7cfe4a4c361f38"
+      "Hash": "77cefb9b0bb109ec5ce526e6948c91aa"
     },
     "generics": {
       "Package": "generics",
@@ -360,9 +360,9 @@
       "RemoteUsername": "tidyverse",
       "RemoteRepo": "ggplot2",
       "RemoteRef": "master",
-      "RemoteSha": "8bc39f285cff4f0bac68655be5f0f2b60fdb6d80",
+      "RemoteSha": "db58364f9d95b7596249feb01b34420b7b4483b5",
       "RemoteHost": "api.github.com",
-      "Hash": "021f7de31700a0c7668148d7ba17e59c"
+      "Hash": "9e498204ed5db2834d1ef1c34c2f3582"
     },
     "ggpubr": {
       "Package": "ggpubr",
@@ -373,10 +373,10 @@
     },
     "ggrepel": {
       "Package": "ggrepel",
-      "Version": "0.8.1",
+      "Version": "0.8.2",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "d2d969d2ca127dbb2da60b5a20ee7234"
+      "Hash": "c013a50b19695daf04853679e1bc105a"
     },
     "ggsci": {
       "Package": "ggsci",
@@ -602,10 +602,10 @@
     },
     "lifecycle": {
       "Package": "lifecycle",
-      "Version": "0.1.0",
+      "Version": "0.2.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "dc0e9c03b3635ff433b045ce6bf0612d"
+      "Hash": "361811f31f71f8a617a9a68bf63f1f42"
     },
     "lime": {
       "Package": "lime",
@@ -700,10 +700,10 @@
     },
     "nlme": {
       "Package": "nlme",
-      "Version": "3.1-144",
+      "Version": "3.1-145",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "e80d41932d3cc235ccbbbb9732ae162e"
+      "Hash": "0ed9365684dc39cdd0bb5bd2f316dc67"
     },
     "openssl": {
       "Package": "openssl",
@@ -1118,10 +1118,10 @@
     },
     "vctrs": {
       "Package": "vctrs",
-      "Version": "0.2.3",
+      "Version": "0.2.4",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "2c0f41d87be7a186139a6d3d5215848e"
+      "Hash": "6c839a149a30cb4ffc70443efa74c197"
     },
     "viridisLite": {
       "Package": "viridisLite",
