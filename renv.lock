@@ -360,9 +360,9 @@
       "RemoteUsername": "tidyverse",
       "RemoteRepo": "ggplot2",
       "RemoteRef": "master",
-      "RemoteSha": "db58364f9d95b7596249feb01b34420b7b4483b5",
+      "RemoteSha": "781204daacd2f0c369fedd0d4829070e6fef14ab",
       "RemoteHost": "api.github.com",
-      "Hash": "9e498204ed5db2834d1ef1c34c2f3582"
+      "Hash": "793ed6cdc2ffb28b4e78e5177f6d8d16"
     },
     "ggpubr": {
       "Package": "ggpubr",
@@ -422,10 +422,10 @@
     },
     "glue": {
       "Package": "glue",
-      "Version": "1.3.1",
+      "Version": "1.3.2",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "d4e25697c450c01b202c79ef35694a83"
+      "Hash": "af1f47b63d1aa2206c1fe4d3db1d9366"
     },
     "gower": {
       "Package": "gower",
@@ -971,10 +971,10 @@
     },
     "shiny": {
       "Package": "shiny",
-      "Version": "1.4.0",
+      "Version": "1.4.0.2",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "6ca23724bb2c804c1d0b3db4862a39c7"
+      "Hash": "a56d058adfc9df30bdd45dbb01cec39f"
     },
     "shinythemes": {
       "Package": "shinythemes",
@@ -1172,10 +1172,10 @@
     },
     "xml2": {
       "Package": "xml2",
-      "Version": "1.2.2",
+      "Version": "1.2.5",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "63ad35854e01d8b59ca18095b5145bb7"
+      "Hash": "13efdfe4c591af40c1c29dc6408281ed"
     },
     "xtable": {
       "Package": "xtable",

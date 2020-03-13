@@ -99,9 +99,9 @@ This has the potential to greatly improve monitoring, enable the early detection
 Consistent long term monitoring has been highlighted as a key requirement for understanding the threats to oak and safeguarding its future [@hartmann2018].
 Coupled with this, monitoring methods should take advantage of modern data analysis techniques whilst still retaining practical simplicity in the field.
 
-Machine learning is finding increasing utility in ecological and environmental applications due to its ability to learn complex patterns within and between variables [@cutler2007;@belgiu2016].
+Machine learning is finding increasing utility in ecological and environmental applications due to it's ability to learn complex patterns within and between variables [@cutler2007;@belgiu2016].
 A popular algorithm is random forest due to it's versatility, relatively simple model training requirements and ease of use. 
-It is an ensemble machine learning method where forests of bootstrap sampled decision trees are grown, yielding both out of bag sample prediction accuracies and variable importance [@breiman2001a;@biau2016].
+It is an ensemble machine learning method where forests of bootstrap sampled decision trees are grown, yielding both 'out of bag' sample prediction accuracies and variable importance [@breiman2001a;@biau2016].
 
 Here, we propose a framework using unsupervised random forest machine learning to enable quantitative, visible oak decline severity assessments that utilises a range of oak decline targeted phenotypic descriptors observed in oak forests across England.
 
@@ -132,7 +132,7 @@ COD trees either had poor crowns (category 2) or the fruiting bodies of *Gymnopu
 The remission group included trees that had shown stem bleeds associated with AOD within the previous three years but were not showing signs of stem bleeds at the time of assessment.
 Thus, at all sites, selection attempted to create a balanced sample of condition categories including both the unhealthiest and healthiest trees.
 
-The collected phenotypic descriptors related to tree shape, size, crown condition and the presence of biotic agents including insects, bacteria and fungi are listed and described in Supplementary Table 1.
+The collected phenotypic descriptors related to tree size, crown condition and the presence of biotic agents including insects, bacteria and fungi are listed and described in Supplementary Table 1.
 Surveyors involved in phenotyping the trees used in this study had prior experience conducting ICP-Forests level I crown condition surveys. 
 In each year of sampling surveyors met to undergo refresher training and “calibration” assessments in oak woodland. 
 The descriptors collected were based on @innes1990 and @icpforests2016.
