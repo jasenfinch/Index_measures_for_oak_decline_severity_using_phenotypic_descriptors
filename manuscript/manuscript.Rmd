@@ -49,7 +49,7 @@ loadd(site_rf_margin,
 
 ^2^ Centre for Forestry and Climate Change, Forest Research, Alice Holt Lodge, Farnham GU 4LH, UK
 
-**Keywords:** acute oak decline, chronic oak decline, phenotyping, machine learning, unsupervised learning, random forest, decline spectrum
+**Keywords:** Acute Oak Decline, Chronic Oak Decline, phenotyping, machine learning, unsupervised learning, random forest, decline spectrum
 
 # Abstract {-}
 
