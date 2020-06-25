@@ -30,7 +30,8 @@ jobs:
       - name: Run tests
         run: |
             docker build . --file Dockerfile
-            docker-compose up
+            docker run -v $(pwd):/home/rstudio/Index_measures_for_oak_decline_severity_using_phenotypic_descriptors oak_pdi
+            
 
   # Push image to GitHub Packages.
   # See also https://docs.docker.com/docker-hub/builds/

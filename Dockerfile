@@ -11,9 +11,8 @@ WORKDIR /home/rstudio/
 
 COPY renv.lock renv.lock
 
-WORKDIR /home/rstudio/
-
-
 RUN Rscript -e 'renv::restore(prompt = FALSE)'
 
-ENTRYPOINT ["Rscript","-e","renv::hydrate(); drake::r_make()"]
+WORKDIR /home/rstudio/Index_measures_for_oak_decline_severity_using_phenotypic_descriptors
+
+ENTRYPOINT ["Rscript","-e","renv::activate(); drake::r_make()"]
