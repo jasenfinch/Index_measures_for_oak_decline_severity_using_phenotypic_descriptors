@@ -26,14 +26,16 @@ pacman::p_load(drake,
                grid,
                piggyback,
                yardstick,
-               bookdown)
+               bookdown,
+               install = FALSE)
 
 # Load dependant GitHub libraries
 
 pacman::p_load_gh('jasenfinch/pdi',
                   'ropenscilabs/gramr',
                   'benmarwick/wordcountaddin',
-                  'wilkelab/ggtext')
+                  'wilkelab/ggtext',
+                  install = FALSE)
 
 # Resolve conflicts
 
