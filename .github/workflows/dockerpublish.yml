@@ -32,7 +32,7 @@ jobs:
           GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
         run: |
             docker build . --file Dockerfile  -t oak_pdi
-            docker run -v $(pwd):/home/rstudio/Index_measures_for_oak_decline_severity_using_phenotypic_descriptors oak_pdi
+            docker run -e GITHUB_PAT -v $(pwd):/home/rstudio/Index_measures_for_oak_decline_severity_using_phenotypic_descriptors oak_pdi
             
 
   # Push image to GitHub Packages.
