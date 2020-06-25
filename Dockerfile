@@ -9,12 +9,11 @@ RUN Rscript -e "install.packages(c('renv'), repos = c(CRAN = 'https://cloud.r-pr
 
 WORKDIR /home/rstudio/
 
-COPY .Renviron .Renviron
 COPY renv.lock renv.lock
 
 WORKDIR /home/rstudio/
 
 
-RUN Rscript -e 'renv::consent(provided = TRUE); renv::restore()'
+RUN Rscript -e 'renv::restore(prompt = FALSE)'
 
-ENTRYPOINT ["Rscript","-e","renv::hydrate();renv::install('bookdown'); drake::r_make()"]
+ENTRYPOINT ["Rscript","-e","renv::hydrate(); drake::r_make()"]
