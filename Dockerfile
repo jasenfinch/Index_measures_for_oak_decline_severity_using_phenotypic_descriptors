@@ -12,4 +12,4 @@ COPY renv.lock renv.lock
 
 RUN Rscript -e 'renv::consent(provided = TRUE); renv::restore(prompt = FALSE)'
 
-ENTRYPOINT ["Rscript","-e","renv::activate(); drake::r_make()"]
+ENTRYPOINT ["Rscript","-e","renv::activate(); renv::hydrate(); drake::r_make()"]
