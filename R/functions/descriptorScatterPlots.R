@@ -17,7 +17,7 @@ descriptorScatterPlots <- function(site_corrected_analysis_suitable_data,decline
            x = 'Descriptor value') +
       theme(plot.title = element_text(face = 'bold'),
             axis.title = element_text(face = 'bold'),
-            strip.text = element_markdown(),
+            strip.text = ggtext::element_markdown(),
             panel.grid = element_blank()),
     
     PDI_factor =  site_corrected_analysis_suitable_data %>%
