@@ -1,5 +1,7 @@
 # Index measures for oak decline severity using phenotypic descriptors
 
+[![Docker](https://github.com/jasenfinch/Index_measures_for_oak_decline_severity_using_phenotypic_descriptors/workflows/Docker/badge.svg?branch=devel)](https://github.com/jasenfinch/Index_measures_for_oak_decline_severity_using_phenotypic_descriptors/actions)
+
 This is the code, data and analysis repository for Finch et al. 2020. "Index Measures for oak decline severity using phenotypic descriptors".
 
 All code is written in `R` and the [drake](https://docs.ropensci.org/drake/) package has been used for workflow management.
