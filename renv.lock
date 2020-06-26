@@ -158,10 +158,10 @@
     },
     "bookdown": {
       "Package": "bookdown",
-      "Version": "0.19",
+      "Version": "0.20",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "4f669b7b4f236538e6afc311f32d2c93"
+      "Hash": "31ed5641f4a91cf113de490e0bb006b8"
     },
     "boot": {
       "Package": "boot",
@@ -431,15 +431,10 @@
     },
     "ggplot2": {
       "Package": "ggplot2",
-      "Version": "3.3.2.9000",
-      "Source": "GitHub",
-      "RemoteType": "github",
-      "RemoteUsername": "tidyverse",
-      "RemoteRepo": "ggplot2",
-      "RemoteRef": "master",
-      "RemoteSha": "b0134b10a152223519061e47456b99c941ffdecc",
-      "RemoteHost": "api.github.com",
-      "Hash": "35c195dad97c618c7ed2bebb4e84df01"
+      "Version": "3.3.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "4ded8b439797f7b1693bd3d238d0106b"
     },
     "ggpubr": {
       "Package": "ggpubr",
@@ -471,15 +466,15 @@
     },
     "ggtext": {
       "Package": "ggtext",
-      "Version": "0.1.0",
+      "Version": "0.1.0.9000",
       "Source": "GitHub",
       "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteRepo": "ggtext",
       "RemoteUsername": "wilkelab",
+      "RemoteRepo": "ggtext",
       "RemoteRef": "master",
-      "RemoteSha": "740c85c5da4a3dc3447304b9072eafa5b0deb6f6",
-      "Hash": "31137bc4c452b55ac4a46a6c574380bc"
+      "RemoteSha": "dfb02af7ca53d8de696dfcc33a4d5f1a28abe986",
+      "RemoteHost": "api.github.com",
+      "Hash": "8ec5dd541cdfe0fac96de90ad793f6d2"
     },
     "ggthemes": {
       "Package": "ggthemes",
@@ -518,10 +513,10 @@
     },
     "gower": {
       "Package": "gower",
-      "Version": "0.2.1",
+      "Version": "0.2.2",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "1e7e711f2f87cc3a326f7f406815d019"
+      "Hash": "be6a2b3529928bd803d1c437d1d43152"
     },
     "gramr": {
       "Package": "gramr",
@@ -649,10 +644,10 @@
     },
     "jsonlite": {
       "Package": "jsonlite",
-      "Version": "1.6.1",
+      "Version": "1.7.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "84b0ee361e2f78d6b7d670db9471c0c5"
+      "Hash": "2657f20b9a74c996c602e74ebe540b06"
     },
     "kableExtra": {
       "Package": "kableExtra",
@@ -663,10 +658,10 @@
     },
     "knitr": {
       "Package": "knitr",
-      "Version": "1.28",
+      "Version": "1.29",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "915a6f0134cdbdf016d7778bc80b2eda"
+      "Hash": "e5f4c41c17df8cdf7b0df12117c0d99a"
     },
     "koRpus": {
       "Package": "koRpus",
@@ -880,10 +875,10 @@
     },
     "patchwork": {
       "Package": "patchwork",
-      "Version": "1.0.0",
+      "Version": "1.0.1",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "16eee5b5edc41eec5af1149ccdc6b2c9"
+      "Hash": "d6b817898a400e82e6777d4f7e027100"
     },
     "pbkrtest": {
       "Package": "pbkrtest",
@@ -1151,10 +1146,10 @@
     },
     "shiny": {
       "Package": "shiny",
-      "Version": "1.4.0.2",
+      "Version": "1.5.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "a56d058adfc9df30bdd45dbb01cec39f"
+      "Hash": "ee4ed72d7a5047d9e73cf922ad66e9c9"
     },
     "shinythemes": {
       "Package": "shinythemes",
@@ -1291,10 +1286,10 @@
     },
     "txtq": {
       "Package": "txtq",
-      "Version": "0.2.0",
+      "Version": "0.2.3",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "92e5a36ad5b445e895a0f9b98db4d810"
+      "Hash": "38a421b8003ba704b5b8471e6c3762a7"
     },
     "usethis": {
       "Package": "usethis",
