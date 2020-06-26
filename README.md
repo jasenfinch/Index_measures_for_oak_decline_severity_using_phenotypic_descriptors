@@ -16,21 +16,8 @@ To generate the manuscript, simply [clone the repository](https://git-scm.com/bo
 
 ### Docker
 
-Alternatively, docker can be used render the manuscript.
-To build the image locally run:
+The manuscript can be compiled from pre-built docker image directly from GitHub:
 
 ``` sh
-docker build . -t oak_pdi
-```
-
-And render the manuscript using:
-
-``` sh
-docker run -v .:/home/rstudio/Index_measures_for_oak_decline_severity_using_phenotypic_descriptors oak_pdi:latest
-```
-
-Or use the pre-built docker image directly from GitHub:
-
-``` sh
-docker run -v .:/home/rstudio/Index_measures_for_oak_decline_severity_using_phenotypic_descriptors docker.pkg.github.com/jasenfinch/Index_measures_for_oak_decline_severity_using_phenotypic_descriptors/oak_pdi:latest
+docker run -v $(pwd):/home/rstudio/Index_measures_for_oak_decline_severity_using_phenotypic_descriptors docker.pkg.github.com/jasenfinch/index_measures_for_oak_decline_severity_using_phenotypic_descriptors/oak_pdi:devel
 ```
