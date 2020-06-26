@@ -26,12 +26,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      
+      - name: Build image
+        run: | 
+            docker build . --file Dockerfile  -t oak_pdi
 
-      - name: Run tests
+      - name: Run test
         env:
           GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
         run: |
-            docker build . --file Dockerfile  -t oak_pdi
             docker run -e GITHUB_PAT -v $(pwd):/home/rstudio/Index_measures_for_oak_decline_severity_using_phenotypic_descriptors oak_pdi
             
 
