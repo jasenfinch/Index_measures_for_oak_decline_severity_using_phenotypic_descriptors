@@ -28,6 +28,9 @@ plan <- drake_plan(
   ## create site location map
   site_location_map = locationMap(),
   
+  ## Site information table
+  site_information = siteTable(),
+  
   ## Analyse site differences using supervised random forest
   site_differences_rf = analysis_suitable_data %>%
     stratifiedRF(pheno_data_with_additional_descriptors$Location %>% factor(),
