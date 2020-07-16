@@ -9,10 +9,12 @@ margins <- function(rfModels){
       margin(d) %>%
         tibble(Class = d$y, Margin = .) %>%
         group_by(Class) %>%
-        summarise(Margin = mean(Margin))
+        summarise(Margin = mean(Margin),
+                  .groups = 'drop')
     }) %>%
     bind_rows(.id = 'Repeat') %>%
     group_by(Class) %>%
     summarise(Margin = mean(Margin) %>%
-                round(3))
+                round(3),
+              .groups = 'drop')
 }

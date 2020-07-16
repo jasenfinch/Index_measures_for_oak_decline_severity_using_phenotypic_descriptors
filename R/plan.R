@@ -71,7 +71,7 @@ plan <- drake_plan(
   ## Calculate margin for site differences post adjustment
   site_rf_post_correction_margin = site_differences_rf_post_correction %>%
     margins() %>%
-    summarise(Margin = mean(Margin)),
+    summarise(Margin = mean(Margin),.groups = 'drop'),
   
   ## Calculate AUC for site differences post adjustment
   site_rf_post_correction_auc = site_differences_rf_post_correction %>%
@@ -115,7 +115,8 @@ plan <- drake_plan(
     filter(ChosenGroup %in% c('AOD','COD')) %>% 
     group_by(ChosenGroup) %>% 
     summarise(median = median(DAI),
-              mean = mean(DAI)),
+              mean = mean(DAI),
+              .groups = 'drop'),
   
   ## Remission PDI t-test
   remission_PDI_group_ttest = decline_indexes %>%

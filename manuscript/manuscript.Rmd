@@ -266,9 +266,10 @@ symptom_ranges <- site_corrected_analysis_suitable_data %>%
   gather(descriptor,value) %>%
   group_by(descriptor) %>%
   summarise(minimum = min(value),
-             maximum = max(value),
-             center = minimum + (maximum - minimum) / 2
-             )
+            maximum = max(value),
+            center = minimum + (maximum - minimum) / 2,
+            .groups = 'drop'
+  )
 ```
 
 The same approach was used for $M_{DAI}$ using a comparison between active bleed length and black staining length as well as total height and lower crown height.

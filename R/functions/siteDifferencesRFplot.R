@@ -26,7 +26,8 @@ siteDifferencesRFplot <- function(site_differences_rf,phenoData){
     bind_rows(.id = 'Rep') %>%
     group_by(Descriptor) %>%
     summarise(MeanDecreaseAccuracy = mean(MeanDecreaseAccuracy),
-              GiniImportance = mean(MeanDecreaseGini)) %>%
+              GiniImportance = mean(MeanDecreaseGini),
+              .groups = 'drop') %>%
     arrange(MeanDecreaseAccuracy) %>%
     mutate(Descriptor = factor(Descriptor,levels = Descriptor))
   
