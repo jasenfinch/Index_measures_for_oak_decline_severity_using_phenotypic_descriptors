@@ -3,21 +3,21 @@
 #' @param phenoData tibble containing phenotype data
 
 dataCorrections <- function(phenoData){
-  phenoData$`Big Wood`$Description$Value[
-    phenoData$`Big Wood`$Description$Value[phenoData$`Big Wood`$Description$Descriptor == 'Tree No'] %>% str_detect('CONTROL') &
-      phenoData$`Big Wood`$Description$Descriptor == 'Symptomatic'
-    ] <- 'N'
+  phenoData$`Site 2`$Description$Value[
+    phenoData$`Site 2`$Description$Value[phenoData$`Site 2`$Description$Descriptor == 'Tree No'] %>% str_detect('CONTROL') &
+      phenoData$`Site 2`$Description$Descriptor == 'Symptomatic'
+  ] <- 'N'
   
-  phenoData$`Big Wood`$Description$Value[
-    !(phenoData$`Big Wood`$Description$Value[phenoData$`Big Wood`$Description$Descriptor == 'Tree No'] %>% str_detect('CONTROL')) &
-      phenoData$`Big Wood`$Description$Descriptor == 'Symptomatic'
-    ] <- 'Y'
+  phenoData$`Site 2`$Description$Value[
+    !(phenoData$`Site 2`$Description$Value[phenoData$`Site 2`$Description$Descriptor == 'Tree No'] %>% str_detect('CONTROL')) &
+      phenoData$`Site 2`$Description$Descriptor == 'Symptomatic'
+  ] <- 'Y'
   
   phenoData <- phenoData %>%
     map(preparePhenotypeData) %>%
     bind_rows()
   
-  phenoData$`Crown transparency (%)`[phenoData$Location %in% c('Attingham','Langdale')] <- 100 - phenoData$`Crown transparency (%)`[phenoData$Location %in% c('Attingham','Langdale')]
+  phenoData$`Crown transparency (%)`[phenoData$Location %in% c('Site 1','Site 6')] <- 100 - phenoData$`Crown transparency (%)`[phenoData$Location %in% c('Site 1','Site 6')]
   
   phenoData <- phenoData %>%
     correctStatuses()
