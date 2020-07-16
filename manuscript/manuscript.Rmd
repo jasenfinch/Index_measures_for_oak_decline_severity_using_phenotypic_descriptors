@@ -117,10 +117,9 @@ Acutely declining trees have a score closer to 1 and chronically declining trees
 
 ## Phenotypic data collection {#data-collection}
 
-The phenotypic data were collected over two summers between June and September from a total of 174 trees at nine sites across the south of England.
-In 2016 three COD sites were visited (Big Wood,Chestnuts and Speculation) and in 2017 six AOD sites were added to the dataset (Attingham, Great Monks Wood, Hatchlands, Langdale Wood, Richmond Park and Winding Wood).
+The phenotypic data were collected over two summers between June and September from a total of 174 trees at nine sites across the south of England (Table 1).
 The occurrence of AOD has previously been reported and studied at these sites [@brown2016; @brown2017a].
-These sites included a variety of woodlands, management histories and soil types as well as tree sizes/ages and were made up of mainly *Q. robur*.
+These sites included a variety of woodlands, management histories as well as tree sizes/ages and were made up of mainly *Q. robur*.
 
 All trees were manually assigned a decline status category; healthy, AOD, COD or remission prior to collection of phenotypic descriptors.
 At the COD sites, trees were either COD (trees with clear signs of poor crown condition and dieback) or healthy (dominant or co-dominant trees with full crowns). 

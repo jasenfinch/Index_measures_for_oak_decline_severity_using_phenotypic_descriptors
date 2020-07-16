@@ -31,7 +31,8 @@ readd(site_information) %>%
   kable(format = 'latex',
         booktabs = TRUE,
         caption = 'Overview of the surveyed site information.') %>%
-    column_spec(3,width = '4cm')
+  column_spec(3,width = '4cm') %>%
+  column_spec(4,width = '3cm')
 ```
 
 ```{r PDI_lime_results}

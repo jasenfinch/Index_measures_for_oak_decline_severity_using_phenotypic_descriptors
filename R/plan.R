@@ -26,7 +26,14 @@ plan <- drake_plan(
     descriptorInfo(),
   
   ## Site information table
-  site_information = siteTable(),
+  site_information = siteTable() %>%
+    left_join(pheno_data %>%
+                select(Site = Location) %>%
+                mutate(Site = str_remove_all(Site,'Site ') %>%
+                         as.numeric()) %>%
+                group_by(Site) %>%
+                summarise(`Trees surveyed` = n(),
+                          .groups = 'drop'),by = 'Site'),
   
   ## Analyse site differences using supervised random forest
   site_differences_rf = analysis_suitable_data %>%
