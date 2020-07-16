@@ -25,9 +25,6 @@ plan <- drake_plan(
   phenotypic_descriptor_info = analysis_suitable_data %>%
     descriptorInfo(),
   
-  ## create site location map
-  site_location_map = locationMap(),
-  
   ## Site information table
   site_information = siteTable(),
   
