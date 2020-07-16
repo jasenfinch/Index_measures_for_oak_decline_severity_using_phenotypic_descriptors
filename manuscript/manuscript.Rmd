@@ -319,13 +319,13 @@ The following sections (3.4, 3.5) identify how the descriptors contribute and in
 
 ## Local descriptor contributions and trends within the PDI and DAI models
 
-LIME identified crown volume, condition, transparency and radius as the top four descriptors contributing to $M_{PDI}$ in each of the healthy, moderate and severe decline cases (Table 1).
+LIME identified crown volume, condition, transparency and radius as the top four descriptors contributing to $M_{PDI}$ in each of the healthy, moderate and severe decline cases (Table 2).
 These descriptors were also among the same top descriptors in the overall model importance lists for the PDI (Figure 2a).
 Increasing decline severity was associated with a reduction in the size and condition of the crown.
 For instance, declining trees were found to have a composite crown volume below 841m^3^.
 Healthy trees were found to have a crown condition greater than 71.3%, moderately declining trees between 47.6% and 71.3% and severely declining trees a condition below 23.9%.
 
-For $M_{DAI}$, a number of different descriptors were found to be locally important to the decline type cases compared to the overall model importance such as crown contact (Table 2).
+For $M_{DAI}$, a number of different descriptors were found to be locally important to the decline type cases compared to the overall model importance such as crown contact (Table 3).
 This likely reflects the greater number of descriptors contributing to the DAI with different descriptors relevant to particular decline contexts.
 The important descriptors identified were mainly associated with tree size such as live crown ratio and lower crown height.
 Bleed prevalence and stem symptom descriptors were not found to be locally important to any of the decline type cases.
