@@ -81,10 +81,10 @@
     },
     "RcppArmadillo": {
       "Package": "RcppArmadillo",
-      "Version": "0.9.900.1.0",
+      "Version": "0.9.900.2.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "9fcf8f42726ef53839d9b1d5ca44285f"
+      "Hash": "8845285b6151967fb0d95678b7eee11a"
     },
     "RcppEigen": {
       "Package": "RcppEigen",
@@ -305,10 +305,10 @@
     },
     "data.table": {
       "Package": "data.table",
-      "Version": "1.12.8",
+      "Version": "1.13.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "cd711af60c47207a776213a368626369"
+      "Hash": "06d5863292e2e8ffbb063ce34e77bb2a"
     },
     "dbplyr": {
       "Package": "dbplyr",
@@ -480,15 +480,10 @@
     },
     "ggtext": {
       "Package": "ggtext",
-      "Version": "0.1.0.9000",
-      "Source": "GitHub",
-      "RemoteType": "github",
-      "RemoteUsername": "wilkelab",
-      "RemoteRepo": "ggtext",
-      "RemoteRef": "master",
-      "RemoteSha": "dfb02af7ca53d8de696dfcc33a4d5f1a28abe986",
-      "RemoteHost": "api.github.com",
-      "Hash": "8ec5dd541cdfe0fac96de90ad793f6d2"
+      "Version": "0.1.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "c59f6b5f5847da34158788d99d857ed7"
     },
     "ggthemes": {
       "Package": "ggthemes",
@@ -609,10 +604,10 @@
     },
     "httr": {
       "Package": "httr",
-      "Version": "1.4.1",
+      "Version": "1.4.2",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "7146fea4685b4252ebf478978c75f597"
+      "Hash": "a525aba14184fec243f9eaec62fbed43"
     },
     "hunspell": {
       "Package": "hunspell",
@@ -910,15 +905,15 @@
     },
     "pdi": {
       "Package": "pdi",
-      "Version": "0.3.3",
+      "Version": "0.4.0",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
-      "RemoteUsername": "jasenfinch",
       "RemoteRepo": "pdi",
-      "RemoteRef": "master",
-      "RemoteSha": "2edd4115d50553cc63885f53d28c07f4e292d13e",
-      "Hash": "1f82824219c4aef8d8d43fd1ec05fd6e"
+      "RemoteUsername": "jasenfinch",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "573676930932db88b484b89b2759148f9e85fc9d",
+      "Hash": "89052d03315d36936754207d87a3c2c4"
     },
     "piggyback": {
       "Package": "piggyback",
@@ -1069,10 +1064,10 @@
     },
     "remotes": {
       "Package": "remotes",
-      "Version": "2.1.1",
+      "Version": "2.2.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "57c3009534f805f0f6476ffee68483cc"
+      "Hash": "430a0908aee75b1fcba0e62857cab0ce"
     },
     "renv": {
       "Package": "renv",
@@ -1251,10 +1246,10 @@
     },
     "sys": {
       "Package": "sys",
-      "Version": "3.3",
+      "Version": "3.4",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "507f3116a38d37ad330a038b3be07b66"
+      "Hash": "b227d13e29222b4574486cfcbde077fa"
     },
     "testthat": {
       "Package": "testthat",
@@ -1293,10 +1288,10 @@
     },
     "tinytex": {
       "Package": "tinytex",
-      "Version": "0.24",
+      "Version": "0.25",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "8f24b65b86f4d6d7b1e2d8a4ce2c02fb"
+      "Hash": "a4b9662282097d1033c60420dcb83350"
     },
     "txtq": {
       "Package": "txtq",
@@ -1368,10 +1363,10 @@
     },
     "xfun": {
       "Package": "xfun",
-      "Version": "0.15",
+      "Version": "0.16",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "ddeca7650052ff9131ac7c41a9a77b3b"
+      "Hash": "b4106139b90981a8bfea9c10bab0baf1"
     },
     "xml2": {
       "Package": "xml2",
