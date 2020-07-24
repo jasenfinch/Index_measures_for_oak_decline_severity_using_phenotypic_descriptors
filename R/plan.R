@@ -53,49 +53,49 @@ plan <- drake_plan(
   site_differences_mds_plot = site_differences_rf %>%
     siteDifferencesRFplot(pheno_data_with_additional_descriptors),
   
-  ## calculate descriptor correction factors
-  site_correction_factors = pheno_data_with_additional_descriptors %>%
-    siteCorrectionFactors(),
+  ## calculate descriptor adjustment factors
+  site_adjustment_factors = pheno_data_with_additional_descriptors %>%
+    siteAdjustmentFactors(),
   
-  ## apply site corrections and recalculate additional descriptors
-  site_corrected_pheno_data = pheno_data %>%
-    siteCorrection() %>%
+  ## apply site adjustments and recalculate additional descriptors
+  site_adjusted_pheno_data = pheno_data %>%
+    siteAdjustment() %>%
     calcAdditionalDescriptors(),
   
   ## plot descriptor adjustment example using dbh
   descriptor_adjustment_example = pheno_data_with_additional_descriptors %>%
-    descriptorAdjustmentPlot(site_corrected_pheno_data),
+    descriptorAdjustmentPlot(site_adjusted_pheno_data),
   
-  ## make site corrected analysis suitable table
-  site_corrected_analysis_suitable_data = site_corrected_pheno_data %>%
+  ## make site adjusted analysis suitable table
+  site_adjusted_analysis_suitable_data = site_adjusted_pheno_data %>%
     makeAnalysisTable(),
   
-  ## re-analyse site differences after site correction
-  site_differences_rf_post_correction = site_corrected_analysis_suitable_data %>%
+  ## re-analyse site differences after site adjustment
+  site_differences_rf_post_adjustment = site_adjusted_analysis_suitable_data %>%
     stratifiedRF( pheno_data_with_additional_descriptors$Location %>% factor(),
        n = 100),
   
   ## Calculate margin for site differences post adjustment
-  site_rf_post_correction_margin = site_differences_rf_post_correction %>%
+  site_rf_post_adjustment_margin = site_differences_rf_post_adjustment %>%
     margins() %>%
     summarise(Margin = mean(Margin),.groups = 'drop'),
   
   ## Calculate AUC for site differences post adjustment
-  site_rf_post_correction_auc = site_differences_rf_post_correction %>%
+  site_rf_post_adjustment_auc = site_differences_rf_post_adjustment %>%
     auc(),
   
-  ## site differences post correction MDS and importance plots
-  site_differences_post_correction_mds_plot = site_differences_rf_post_correction %>%
+  ## site differences post adjustment MDS and importance plots
+  site_differences_post_adjustment_mds_plot = site_differences_rf_post_adjustment %>%
     siteDifferencesRFplot(pheno_data_with_additional_descriptors),
   
   ## run unsupervised random forest analysis
-  unsupervised_rf = site_corrected_analysis_suitable_data %>%
+  unsupervised_rf = site_adjusted_analysis_suitable_data %>%
     rf(cls = NULL,nreps = 100),
   
   ## calculate decline indexes
   decline_indexes = unsupervised_rf %>%
     calcDIs(invertPDI = TRUE,invertDAI = FALSE) %>%
-    bind_cols(site_corrected_pheno_data %>%
+    bind_cols(site_adjusted_pheno_data %>%
                 select(Location,ID,`Tree No`,Status,ChosenGroup)),
   
   ## export decline indexes
@@ -181,17 +181,17 @@ plan <- drake_plan(
     tidy(),
   
   ## plot descriptors against decline indexes 
-  descriptor_scatter_plots = site_corrected_analysis_suitable_data %>%
+  descriptor_scatter_plots = site_adjusted_analysis_suitable_data %>%
     descriptorScatterPlots(decline_indexes),
   
   ## find optimal random forest parameters for PDI
-  PDI_rf_tune_results = tuneModel(site_corrected_analysis_suitable_data,
+  PDI_rf_tune_results = tuneModel(site_adjusted_analysis_suitable_data,
                                   decline_indexes$PDI,
                                   index_size = 1),
   PDI_rf_tune_params = optimalParams(PDI_rf_tune_results),
   
   ## find optimal random forest parameters for PDI
-  DAI_rf_tune_results = tuneModel(site_corrected_analysis_suitable_data,
+  DAI_rf_tune_results = tuneModel(site_adjusted_analysis_suitable_data,
                                   decline_indexes$DAI,index_size = 2),
   DAI_rf_tune_params = optimalParams(DAI_rf_tune_results),
   
@@ -199,7 +199,7 @@ plan <- drake_plan(
   rf_tune_plot = tuneResultsPlot(PDI_rf_tune_results,DAI_rf_tune_results),
   
   ## generate PDI predictive random forest model
-  PDI_rf_model = site_corrected_analysis_suitable_data %>%
+  PDI_rf_model = site_adjusted_analysis_suitable_data %>%
     {set.seed(1234)
       randomForest(.,y = decline_indexes$PDI,
                    ntree = PDI_rf_tune_params$ntree,
@@ -210,7 +210,7 @@ plan <- drake_plan(
   PDI_descriptor_importance = descriptorImportance(PDI_rf_model),
   
   ## generate DAI predictive random forest model
-  DAI_rf_model = site_corrected_analysis_suitable_data %>%
+  DAI_rf_model = site_adjusted_analysis_suitable_data %>%
     {set.seed(1234)
       randomForest(.,y = decline_indexes$DAI,
                    ntree = DAI_rf_tune_params$ntree,
@@ -224,16 +224,16 @@ plan <- drake_plan(
   descriptor_contribution_plots = descriptorImportancePlots(PDI_descriptor_importance,DAI_descriptor_importance),
   
   ## extract PDI example trees
-  PDI_example_cases = PDIexampleCases(site_corrected_analysis_suitable_data,decline_indexes),
+  PDI_example_cases = PDIexampleCases(site_adjusted_analysis_suitable_data,decline_indexes),
   
   ## extract DAI example trees
-  DAI_example_cases = DAIexampleCases(site_corrected_analysis_suitable_data,decline_indexes),
+  DAI_example_cases = DAIexampleCases(site_adjusted_analysis_suitable_data,decline_indexes),
   
   ## PDI lime analysis
-  PDI_lime_analysis = PDIlimeAnalysis(site_corrected_analysis_suitable_data,PDI_rf_model,PDI_example_cases),
+  PDI_lime_analysis = PDIlimeAnalysis(site_adjusted_analysis_suitable_data,PDI_rf_model,PDI_example_cases),
   
   ## DAI lime analysis
-  DAI_lime_analysis = DAIlimeAnalysis(site_corrected_analysis_suitable_data,DAI_rf_model,DAI_example_cases),
+  DAI_lime_analysis = DAIlimeAnalysis(site_adjusted_analysis_suitable_data,DAI_rf_model,DAI_example_cases),
   
   ## PDI lime analysis table
   PDI_lime_analysis_table = PDIlimeAnalysisTable(PDI_lime_analysis,PDI_example_cases,decline_indexes),
@@ -250,12 +250,12 @@ plan <- drake_plan(
   ## PDI rf model response surfaces
   PDI_response_surfaces = PDIresponseSurfaces(PDI_rf_model,
                                               PDI_example_cases,
-                                              site_corrected_analysis_suitable_data),
+                                              site_adjusted_analysis_suitable_data),
   
   ## DAI rf model response surfaces
   DAI_response_surfaces = DAIresponseSurfaces(DAI_rf_model,
                                               DAI_example_cases,
-                                              site_corrected_analysis_suitable_data),
+                                              site_adjusted_analysis_suitable_data),
   
   ## Surveyor names
   surveyors_names = surveyors(),

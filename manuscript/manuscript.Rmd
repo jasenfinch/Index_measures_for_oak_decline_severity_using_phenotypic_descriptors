@@ -20,13 +20,13 @@ knitr::opts_chunk$set(echo = FALSE,
 
 ```{r loadData, include = FALSE}
 loadd(site_rf_margin,
-      site_rf_post_correction_margin,
+      site_rf_post_adjustment_margin,
       PDI_status_ttest,
       DAI_groups_ttest,
       PDI_rf_tune_params,
       DAI_rf_tune_params,
       analysis_suitable_data,
-      site_corrected_analysis_suitable_data,
+      site_adjusted_analysis_suitable_data,
       remission_PDI_group_ttest,
       remission_DAI_group_ttest,
       DAI_descriptor_importance,
@@ -256,11 +256,11 @@ This approach was similar to response surface methodology without the need for p
 
 For $M_{PDI}$, missing crown and crown transparency were compared for example cases of a healthy, a moderate and a severely declining tree.
 The value ranges were based on the observed range in the training data.
-For the missing crown (`r glue("{min(site_corrected_analysis_suitable_data[['Missing crown (%)']])}-{max(site_corrected_analysis_suitable_data[['Missing crown (%)']])}%")`) and crown transparency (`r glue("{min(site_corrected_analysis_suitable_data[['Crown transparency (%)']])}-{max(site_corrected_analysis_suitable_data[['Crown transparency (%)']])}%")`) descriptors, the ranges were divided into 100 increments.
+For the missing crown (`r glue("{min(site_adjusted_analysis_suitable_data[['Missing crown (%)']])}-{max(site_adjusted_analysis_suitable_data[['Missing crown (%)']])}%")`) and crown transparency (`r glue("{min(site_adjusted_analysis_suitable_data[['Crown transparency (%)']])}-{max(site_adjusted_analysis_suitable_data[['Crown transparency (%)']])}%")`) descriptors, the ranges were divided into 100 increments.
 For a given case, each combination of these simulated descriptor values were used to calculate a PDI value from $M_{PDI}$, building a model response surface.
 
 ```{r stem_symptom_ranges}
-symptom_ranges <- site_corrected_analysis_suitable_data %>%
+symptom_ranges <- site_adjusted_analysis_suitable_data %>%
   select(`Active bleed length (mm)`,`Black staining length (mm)`) %>%
   gather(descriptor,value) %>%
   group_by(descriptor) %>%
@@ -274,7 +274,7 @@ symptom_ranges <- site_corrected_analysis_suitable_data %>%
 The same approach was used for $M_{DAI}$ using a comparison between active bleed length and black staining length as well as total height and lower crown height.
 The upper boundary for the ranges of active bleed length and black stain length was taken as the centre value between the maximum and minimum values in the training data sets.
 These were reduced by a factor of eight to give ranges of `r glue("{symptom_ranges$minimum[1]}-{signif(symptom_ranges$center[1] / 8,digits = 3)}mm")` and `r glue("{symptom_ranges$minimum[2]}-{signif(symptom_ranges$center[2] / 8,digits = 3)}mm")` respectively and enabled more effective visualisation.
-For the total height (`r glue("{max(site_corrected_analysis_suitable_data[['Lower crown height (m)']]) %>% signif(3)} - {max(site_corrected_analysis_suitable_data[['Total height (m)']]) %>% signif(3)}m")`) and lower crown height (`r glue("{min(site_corrected_analysis_suitable_data[['Lower crown height (m)']]) %>% signif(3)} - {max(site_corrected_analysis_suitable_data[['Lower crown height (m)']]) %>% signif(3)}m")`) descriptors, the ranges were divided into 100 increments.
+For the total height (`r glue("{max(site_adjusted_analysis_suitable_data[['Lower crown height (m)']]) %>% signif(3)} - {max(site_adjusted_analysis_suitable_data[['Total height (m)']]) %>% signif(3)}m")`) and lower crown height (`r glue("{min(site_adjusted_analysis_suitable_data[['Lower crown height (m)']]) %>% signif(3)} - {max(site_adjusted_analysis_suitable_data[['Lower crown height (m)']]) %>% signif(3)}m")`) descriptors, the ranges were divided into 100 increments.
 
 # Results
 
@@ -284,12 +284,12 @@ A preliminary analysis using supervised random forest classification could separ
 The descriptors that contributed most to this discrimination were those that were related to trees size such as DBH, total height and crown radius and likely reflect the varied tree age and planting density across the nine sites (Supplementary figure 3b). 
 To counter this, effect sizes were adjusted based on the site means for each tree size descriptor to remove inter-site variability but maintain intra-site variability as described in Section \@ref(method-adjustment).
 This ensures that the subsequent comparisons of these descriptors in the context of oak decline are not confounded by these identified site differences.
-After the application of the tree size adjustment, the average random forest *margin* value was substantially reduced to `r site_rf_post_correction_margin$Margin %>% signif(digits = 3)`.
+After the application of the tree size adjustment, the average random forest *margin* value was substantially reduced to `r site_rf_post_adjustment_margin$Margin %>% signif(digits = 3)`.
 The reduction in this value indicates that the adjustment was able to remove the majority of the between site variance and that the random forest models were no longer able accurately classify the site locations of the trees (Supplementary figure 4a) with almost no contribution of the corrected tree size descriptors (Supplementary figure 4b).
 
 ## Oak decline severity indexes of manually assigned decline statuses
 
-The calculated PDI and DAI scores (see Supplementary information #) derived from MDS of proximity values from unsupervised random forest for all `r nrow(site_corrected_analysis_suitable_data)` trees for which phenotypic descriptor data was collected is shown in Figure 1. 
+The calculated PDI and DAI scores (see Supplementary information #) derived from MDS of proximity values from unsupervised random forest for all `r nrow(site_adjusted_analysis_suitable_data)` trees for which phenotypic descriptor data was collected is shown in Figure 1. 
 The healthy trees grouped towards the lower end of the PDI scale and the symptomatic COD and AOD groups towards the higher end.
 There was a significant difference when the PDI values of the healthy (non-symptomatic) and symptomatic (AOD and COD) decline statuses were compared using an independent two sample t-test (`r glue("t({PDI_status_ttest$parameter}) = {signif(PDI_status_ttest$statistic,digits = 3) %>% abs()}, p < 0.001")`) with group means of `r signif(PDI_status_ttest$estimate1,digits = 3)` and `r signif(PDI_status_ttest$estimate2,digits = 3)` for non-symptomatic and symptomatic statuses respectively.
 
