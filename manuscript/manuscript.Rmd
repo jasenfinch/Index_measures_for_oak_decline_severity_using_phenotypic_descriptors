@@ -230,7 +230,7 @@ It was then min-max scaled to give a scale between 0 and 1 with more severely de
 This dimension was named the Phenotypic Decline Index, PDI.
 The second MDS dimension ($D_2$) was min-max scaled and then transformed ($2D_2 - 1$) to give a scale between -1 and 1 with COD trees having a score closer to -1 and AOD having a score closer to 1. 
 This dimension was named the Decline Acuteness Index, DAI.
-The code used to generate the decline indexes is available as an R package pdi version `r packageVersion('pdi') %>% as.character()`, available at https://github.com/jasenfinch/pdi.
+The code used to generate the decline indexes is available as an R package pdi version `r packageVersion('pdi') %>% as.character()` [@finch2020].
 
 ## Descriptor contribution to decline indexes {#method-descriptor-contribution}
 
