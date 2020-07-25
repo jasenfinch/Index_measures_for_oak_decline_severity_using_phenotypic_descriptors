@@ -315,6 +315,7 @@ These were followed closely by the stem staining and bleeding descriptors such a
 The presence of *A. biguttatus* exit holes had very little contribution to the DAI with exit hole density ranked only `r which(DAI_descriptor_importance$Feature == 'Agrilus exit hole density (m^-2)')`^th^.
 
 Plots of the individual descriptors against the decline indexes are available in Supplementary Figures 5-8. 
+A web application is also available at https://jasenfinch.shinyapps.io/decliner/ that allows interactive input of phenotypic descriptor values into the $M_PDI$ and $M_DAI$ models.
 The following sections (3.4, 3.5) identify how the descriptors contribute and interact within the decline index models in specific decline cases. 
 
 ## Local descriptor contributions and trends within the PDI and DAI models
