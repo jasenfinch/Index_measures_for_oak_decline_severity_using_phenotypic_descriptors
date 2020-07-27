@@ -101,9 +101,9 @@ Coupled with this, monitoring methods should take advantage of modern data analy
 
 Machine learning is finding increasing utility in ecological and environmental applications due to it's ability to learn complex patterns within and between variables [@cutler2007;@belgiu2016].
 A popular algorithm is random forest due to it's versatility, relatively simple model training requirements and ease of use. 
-It is an ensemble machine learning method where forests of bootstrap sampled decision trees are grown, yielding both 'out of bag' sample prediction accuracies and variable importance [@breiman2001a;@biau2016].
+It is an ensemble machine learning method where forests of bootstrap sampled decision trees are grown, yielding both 'out of bag' sample prediction accuracy and variable importance [@breiman2001a;@biau2016].
 
-Here, we propose a framework using unsupervised random forest machine learning to enable quantitative, visible oak decline severity assessments that utilises a range of oak decline targeted phenotypic descriptors observed in oak forests across England.
+Here, we propose a framework using unsupervised random forest machine learning to enable quantitative, visible oak decline severity assessments that utilise a range of oak decline informative phenotypic descriptors observed in oak forests across England.
 
 The two resulting measures are:
 
@@ -122,9 +122,9 @@ The occurrence of AOD has previously been reported and studied at these sites [@
 These sites included a variety of woodlands, management histories as well as tree sizes/ages and were made up of mainly *Q. robur*.
 
 All trees were manually assigned a decline status category; healthy, AOD, COD or remission prior to collection of phenotypic descriptors.
-At the COD sites, trees were either COD (trees with clear signs of poor crown condition and dieback) or healthy (dominant or co-dominant trees with full crowns). 
-At Big Wood, trees with stronger crowns were also categorised as COD when *Armillaria* (*Desarmillaria tabescens*) fruiting bodies had been observed on their buttress roots.
-At the AOD sites, annual monitoring data collected since 2009 was used to guide tree selection.
+At sites with only COD present, trees were either COD (trees with clear signs of poor crown condition and dieback) or healthy (dominant or co-dominant trees with full crowns). 
+At Site 2, trees with stronger crowns were also categorised as COD when *Armillaria* (*Desarmillaria tabescens*) fruiting bodies had been observed on their buttress roots.
+At sites with AOD present, annual monitoring data collected since 2009 was used to guide tree selection.
 Healthy trees had no known history of AOD and fruiting bodies of root pathogens had not been observed; all trees had crown condition of 4 or 5, see @brown2016 for details of this assessment.
 AOD trees had current stem bleeds but a variety of crown conditions. 
 COD trees either had poor crowns (category 2) or the fruiting bodies of *Gymnopus* or *Armillaria* had been observed in previous years.
@@ -138,7 +138,7 @@ The descriptors collected were based on @innes1990 and @icpforests2016.
 Diameter at breast height (DBH) was collected at a stem height of 1.3m, to the nearest 1mm.
 Total height, timber height and lowest live crown were measured using an inclinometer to the nearest 0.1m.
 The timber height was measured at either where the top stem diameter was 70mm or where no main stem could be distinguished.
-For crown contact, missing crown and absolute crown transparency, percentages were visually estimated between 0 and 100% in 5% interval classes.
+For crown contact, missing crown and absolute crown transparency, percentages were visually estimated between 0 and 100% in 5% interval ranges.
 
 Other categorical descriptors included social class, dieback type, main crown dieback location, stem epicormic growth, branch epicormic growth, extent of insect damage, insect damage type, extent of crown mildew and the presence or absence of pruning damage or branch loss from the main stem.
 See Supplementary Table 1 for category details.
@@ -346,7 +346,7 @@ A much greater range of PDI values can be obtained from trees with relatively gr
 
 The DAI ($M_{DAI}$) is a more complex index with a greater number of descriptors contributing to it than the PDI such as live crown ratio, bleed prevalence, and DBH. 
 Simulated response surfaces for the DAI are shown in Figure 4. 
-These response surfaces show circumstances under which bleed prevalence related descriptors (Figures 4a, b & c) and live crown ratio descriptors (Figures 4d, e & f) change for neutral decline type (Figures 4a & d respectively), moderate AOD or COD (Figures 4b & e respectively) and severe AOD or COD (Figures 4c & f respectively). 
+These response surfaces show circumstances under which bleed prevalence related descriptors (Figures 4a, b & c) and live crown ratio descriptors (Figures 4d, e & f) change for neutral decline type (trees neither distinctively AOD or COD; Figures 4a & d respectively), moderate AOD or COD (Figures 4b & e respectively) and severe AOD or COD (Figures 4c & f respectively). 
 Increasing active bleed, black staining length and frequency contributed to greater positive values of the DAI and more severe AOD. 
 Higher DAI values could also be obtained from trees with greater stature (Figure 4c). 
 Total height and lower crown height have no influence on the DAI for trees of neutral decline type (Figure 4d).
@@ -356,7 +356,7 @@ Similarly to the PDI, trees with smaller stature and poorer crown condition give
 
 ## Suitability of the decline indexes for describing decline severity and type
 
-The decline indexes presented here provide single intuitive scores based on a wide number of factors known to be heavily influenced by oak decline severity.
+The decline indexes presented here provide simple intuitive scores based on a wide number of factors known to be heavily influenced by oak decline severity.
 These two indexes can be represented as a two-dimensional oak decline continuum under which the spectrum of decline severity and type can be assessed (Figure 5).
 The index thresholds for category definitions (healthy, declining, severe decline etc.) shown currently serve only as a guide to aid human interpretation as opposed to definitive thresholds of disease. 
 Further work is needed that includes phenotypic data with greater spatial and temporal distribution to establish these definitive thresholds. 
