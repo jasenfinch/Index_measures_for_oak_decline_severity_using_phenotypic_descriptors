@@ -908,12 +908,12 @@
       "Version": "0.4.0",
       "Source": "GitHub",
       "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteRepo": "pdi",
       "RemoteUsername": "jasenfinch",
+      "RemoteRepo": "pdi",
       "RemoteRef": "HEAD",
-      "RemoteSha": "573676930932db88b484b89b2759148f9e85fc9d",
-      "Hash": "89052d03315d36936754207d87a3c2c4"
+      "RemoteSha": "2cf016fddd5d3a249c005c78dc152bbddabca81c",
+      "RemoteHost": "api.github.com",
+      "Hash": "5bd3f4acd3dd20427dfdfe3428f74a3f"
     },
     "piggyback": {
       "Package": "piggyback",
@@ -1127,10 +1127,10 @@
     },
     "rvest": {
       "Package": "rvest",
-      "Version": "0.3.5",
+      "Version": "0.3.6",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "6a20c2cdf133ebc7ac45888c9ccc052b"
+      "Hash": "a9795ccb2d608330e841998b67156764"
     },
     "scales": {
       "Package": "scales",
