@@ -260,12 +260,6 @@ plan <- drake_plan(
   ## Surveyor names
   surveyors_names = surveyors(),
   
-  ## render tables
-  tables = render(knitr_in('manuscript/tables.Rmd'),quiet = T),
-  
-  ## render figures
-  figures = render(knitr_in('manuscript/figures.Rmd'),quiet = T),
-  
   ## render manuscript 
   manuscript = render(knitr_in('manuscript/manuscript.Rmd'),
                       quiet = T,

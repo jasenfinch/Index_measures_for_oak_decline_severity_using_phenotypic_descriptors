@@ -6,8 +6,22 @@ output:
     toc: false
 fontsize: 12pt
 header-includes:
-  - \linespread{2}
+  - \usepackage{booktabs}
+  - \usepackage{longtable}
+  - \usepackage{array}
+  - \usepackage{multirow}
+  - \usepackage{wrapfig}
+  - \usepackage{float}
+  - \usepackage{colortbl}
+  - \usepackage{pdflscape}
+  - \usepackage{tabu}
+  - \usepackage{threeparttable}
+  - \usepackage{threeparttablex}
+  - \usepackage[normalem]{ulem}
+  - \usepackage{makecell}
+  - \usepackage{xcolor}
   - \usepackage{lineno}
+  - \linespread{2}
   - \linenumbers
 bibliography: references.bib
 ---
@@ -449,6 +463,91 @@ This work was supported by Woodland Heritage, the Forestry Commission and the De
 
 ```{r check,comment='',cache=FALSE}
 # manuscript_check(checks = c('word count')) # ,'spelling'
+```
+
+# Tables
+
+```{r site_information}
+readd(site_information) %>%
+  kable(format = 'latex',
+        booktabs = TRUE,
+        caption = 'Overview of the surveyed site information.') %>%
+  column_spec(3,width = '4cm') %>%
+  column_spec(4,width = '3cm')
+```
+
+```{r PDI_lime_results}
+loadd(PDI_lime_analysis_table)
+
+PDI_lime_analysis_table %>%
+  kable(format = 'latex',
+        booktabs = TRUE,
+        escape = FALSE,
+        caption = 'LIME results for oak decline severity cases in the PDI index model $M_{PDI}$. Top four important descriptors show. Descriptors ordered by descending absolute weight within each case.') %>%
+  collapse_rows(columns = 1:3, latex_hline = "major", valign = "middle")
+```
+
+```{r DAI_lime_results}
+loadd(DAI_lime_analysis_table)
+
+DAI_lime_analysis_table %>%
+  kable(format = 'latex',
+        booktabs = TRUE,
+        escape = FALSE,
+        caption = 'LIME results of oak decline type and severity in the DAI index model $M_{DAI}$. Top four important descriptors shown. Descriptors ordered by descending absolute weight within each case.') %>%
+  column_spec(5,width = '4cm') %>%
+  collapse_rows(columns = 1:4, latex_hline = "custom", valign = "middle",custom_latex_hline = 1:4)
+```
+
+# Figures
+
+```{r decline_index_plot,fig.cap='Decline indexes for all 174 surveyed trees. The chosen group categories were selected in the field prior to data collection. AOD = acute oak decline; COD = chronic oak decline. Remisson tress were those that were known to have had active bleeds within the previous 3 years.'}
+loadd(decline_indexes_plot)
+
+decline_indexes_plot
+```
+
+```{r descriptor_contributions, fig.height = 6,fig.cap = 'Descriptor importance scores from the random forest models $M_{PDI}$ and $M_{DAI}$ for relative contributions to the decline index measures. Descriptors are ordered by descending percentage increase in mean squared error (MSE) and therefore from highest contribution to lowest contribution to the given decline index.'}
+loadd(descriptor_contribution_plots)
+
+descriptor_contribution_plots$a + descriptor_contribution_plots$b
+```
+
+```{r PDI_response_surfaces,fig.height = 6,fig.cap='PDI response surfaces from $M_{PDI}$ for simulated values of key contributing descriptors for example healthy, moderate and severly declining cases. The values of additional tree size descriptors are shown for the individual cases to indicate the relative stature of the example cases.'}
+loadd(PDI_response_surfaces)
+
+grid.arrange(PDI_response_surfaces[[1]],
+             PDI_response_surfaces[[2]],
+             PDI_response_surfaces[[3]],
+             PDI_response_surfaces$legend,
+             nrow = 2,newpage = F)
+```
+
+
+```{r DAI_response_surfaces,fig.height = 8,fig.cap='DAI response surfaces from $M_{DAI}$ for simulated values of key contributing descriptors for example cases. The neutral case is a tree that can be neither distinguished as AOD or COD. All cases have PDI values > 0.5. The values of additional descriptors related to bleed prevalence and relative stature/crown condition are shown for the AOD and COD example cases respectively.'}
+loadd(DAI_response_surfaces)
+
+grid.arrange(textGrob(expression(bold('AOD')),hjust = -0.1),
+             textGrob(expression(bold('COD')),hjust = -0.1),
+             textGrob(expression(bold('Neutral')),rot = 90,hjust = -0.1),
+             textGrob(expression(bold('Moderate')),rot = 90,hjust = -0.1),
+             textGrob(expression(bold('Severe')),rot = 90,hjust = -0.1),
+             DAI_response_surfaces$`a)`,
+             DAI_response_surfaces$`b)`,
+             DAI_response_surfaces$`c)`,
+             DAI_response_surfaces$`d)`,
+             DAI_response_surfaces$`e)`,
+             DAI_response_surfaces$`f)`,
+             DAI_response_surfaces$legend,
+             ncol = 4,
+             layout_matrix = rbind(c(NA,1,2,NA),c(3,6,9,12),c(4,7,10,12),c(5,8,11,12)),
+             widths = c(1,10,10,2),
+             heights = c(1,10,10,10),
+             newpage = F)
+```
+
+```{r DI_space,fig.cap='Two dimensional continuum of the phenotypic decline indexes for oak decline severity. Decline category boundaries intended as a guide to aid interpretation only. Grey area indicates area for which the decline indexes are currently undefined.' ,fig.height=3,fig.width=5}
+DIspace()
 ```
 
 # References
