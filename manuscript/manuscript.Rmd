@@ -35,8 +35,6 @@ loadd(site_rf_margin,
       decline_indexes)
 ```
 
-**Proposed journal:** (1) Forest Ecology & Management (2) Forestry (3) European Journal of Forest Research (4) Plant Methods 
-
 # **Title:** Index measures for oak decline severity using phenotypic descriptors {-}
 
 **Authors:** Jasen P. Finch^1\*^, Nathan Brown^2^, Manfred Beckmann^1^, Sandra Denman^2^ & John Draper^1^  
