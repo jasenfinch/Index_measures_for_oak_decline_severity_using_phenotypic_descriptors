@@ -284,6 +284,7 @@ plan <- drake_plan(
   table_S3 =  supplementary_directory %>%
     {
       pheno_data_with_additional_descriptors %>%
+        select(-`Tree No`) %>%
         write_csv(file_out('manuscript/supplementary_materials/Table_S3.csv'))
     },
   

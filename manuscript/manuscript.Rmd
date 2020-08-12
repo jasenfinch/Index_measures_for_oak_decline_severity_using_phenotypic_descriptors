@@ -159,7 +159,7 @@ COD trees either had poor crowns (category 2) or the fruiting bodies of *Gymnopu
 The remission group included trees that had shown stem bleeds associated with AOD within the previous three years but were not showing signs of stem bleeds at the time of assessment.
 Thus, at all sites, selection attempted to create a balanced sample of condition categories including both the unhealthiest and healthiest trees.
 
-The collected phenotypic descriptors related to tree size, crown condition and the presence of biotic agents including insects, bacteria and fungi are listed and described in Supplementary Table 1.
+The collected phenotypic descriptors related to tree size, crown condition and the presence of biotic agents including insects, bacteria and fungi are listed and described in Supplementary Table S1.
 Surveyors involved in phenotyping the trees used in this study had prior experience conducting ICP-Forests level I crown condition surveys. 
 In each year of sampling surveyors met to undergo refresher training and “calibration” assessments in oak woodland. 
 The descriptors collected were based on @innes1990 and @icpforests2016.
@@ -169,7 +169,7 @@ The timber height was measured at either where the top stem diameter was 70mm or
 For crown contact, missing crown and absolute crown transparency, percentages were visually estimated between 0 and 100% in 5% interval ranges.
 
 Other categorical descriptors included social class, dieback type, main crown dieback location, stem epicormic growth, branch epicormic growth, extent of insect damage, insect damage type, extent of crown mildew and the presence or absence of pruning damage or branch loss from the main stem.
-See Supplementary Table 1 for category details.
+See Supplementary Table S1 for category details.
 
 Crown radius, canopy closure and bark tap tests for dead stem tissue were measured for each cardinal point.
 The crown radius was measured using a vertex transponder attached to the relevant side of the stem at a height of 1.3m. Canopy closure was recorded as yes or no depending on whether any other crowns are touching the sampling tree.
@@ -196,6 +196,7 @@ After preparation there were a total of 31 raw descriptors for analysis.
 
 Five additional, composite descriptors were calculated to account for the three dimensional attributes of the tree and covariate nature of certain descriptors as suggested by @zarnoch2004.
 This then gave a total of `r ncol(analysis_suitable_data)` raw and composite phenotypic descriptors.
+The data for these phenotypic descriptors for all `r nrow(analysis_suitable_data)` trees can be found in Supplementary Table S3.
 The composite descriptors are defined as follows:
 
 Live crown ratio (%) - percentage of the whole tree height that supports live crown.
@@ -245,7 +246,7 @@ Higher mean decrease in accuracy values had greater overall contribution and the
 ## Tree size descriptor adjustment for age and inter site variance {#method-adjustment}
 
 To account for age, size and site specific tree differences, the tree size descriptors (DBH, lower crown height, timber height, total height, crown radius) were standardised using an adjustment of site means to the overall mean. 
-An example of this adjustment is shown for DBH in Supplementary Figure 1 and the adjustment factors for each of the descriptors at each site is shown in Supplementary Table 2.  
+An example of this adjustment is shown for DBH in Supplementary Figure S1 and the adjustment factors for each of the descriptors at each site is shown in Supplementary Table S2.  
 All composite descriptors utilising these adjusted descriptors were recalculated after adjustment.
 
 ## Calculation of indexes for oak decline severity {#method-index-calculation}
@@ -265,7 +266,7 @@ The code used to generate the decline indexes is available as an R package pdi v
 To investigate the descriptor contributions to the decline indexes, supervised random forest regression models were trained for each decline index using the phenotypic descriptors for all 174 trees.
 These models will subsequently be referred to as $M_{PDI}$ and $M_{DAI}$ for the PDI and DAI respectively. 
 The parameters number of trees ($ntree$) and number of randomly assigned variables ($mtry$), for each random forest model, were tuned prior to training using the values of 10, 100, 1,000, 10,000 for $ntree$ and a range of 2-26 at intervals of 4 for the $mtry$ parameter. 
-The combination parameters giving the lowest mean absolute percentage error (MAPE) were selected and set as follows: for the PDI ($M_{PDI}$): `r glue('$ntree$ = {prettyNum(PDI_rf_tune_params$ntree,big.mark = ',')}, $mtry$ = {PDI_rf_tune_params$mtry}, MAPE = {PDI_rf_tune_params$PMAE %>% signif(digits = 3)}%')`; for the DAI ($M_{DAI}$): `r glue('$ntree$ = {prettyNum(DAI_rf_tune_params$ntree,big.mark = ',')}, $mtry$ = {DAI_rf_tune_params$mtry}, MAPE = {DAI_rf_tune_params$PMAE %>% signif(digits = 3)}%')` (Supplementary Figure 2).
+The combination parameters giving the lowest mean absolute percentage error (MAPE) were selected and set as follows: for the PDI ($M_{PDI}$): `r glue('$ntree$ = {prettyNum(PDI_rf_tune_params$ntree,big.mark = ',')}, $mtry$ = {PDI_rf_tune_params$mtry}, MAPE = {PDI_rf_tune_params$PMAE %>% signif(digits = 3)}%')`; for the DAI ($M_{DAI}$): `r glue('$ntree$ = {prettyNum(DAI_rf_tune_params$ntree,big.mark = ',')}, $mtry$ = {DAI_rf_tune_params$mtry}, MAPE = {DAI_rf_tune_params$PMAE %>% signif(digits = 3)}%')` (Supplementary Figure S2).
 Overall descriptor importance contributions to each of the indexes was assessed using the percentage increase in mean squared error measure with higher values indicating a greater overall contribution to the given model and therefore greater importance.
 
 ## Local descriptor contribution to index models
@@ -312,16 +313,16 @@ For the total height (`r glue("{max(site_adjusted_analysis_suitable_data[['Lower
 
 ## Phenotypic differences between site locations and trees size descriptor adjustments
 
-A preliminary analysis using supervised random forest classification could separate trees based on their location (Supplementary Figure 3a) with an average *margin* value of `r site_rf_margin$Margin %>% signif(digits = 3)`.
-The descriptors that contributed most to this discrimination were those that were related to trees size such as DBH, total height and crown radius and likely reflect the varied tree age and planting density across the nine sites (Supplementary Figure 3b). 
+A preliminary analysis using supervised random forest classification could separate trees based on their location (Supplementary Figure S3a) with an average *margin* value of `r site_rf_margin$Margin %>% signif(digits = 3)`.
+The descriptors that contributed most to this discrimination were those that were related to trees size such as DBH, total height and crown radius and likely reflect the varied tree age and planting density across the nine sites (Supplementary Figure S3b). 
 To counter this, effect sizes were adjusted based on the site means for each tree size descriptor to remove inter-site variability but maintain intra-site variability as described in Section \@ref(method-adjustment).
 This ensures that the subsequent comparisons of these descriptors in the context of oak decline are not confounded by these identified site differences.
 After the application of the tree size adjustment, the average random forest *margin* value was substantially reduced to `r site_rf_post_adjustment_margin$Margin %>% signif(digits = 3)`.
-The reduction in this value indicates that the adjustment was able to remove the majority of the between site variance and that the random forest models were no longer able accurately classify the site locations of the trees (Supplementary Figure 4a) with almost no contribution of the corrected tree size descriptors (Supplementary Figure 4b).
+The reduction in this value indicates that the adjustment was able to remove the majority of the between site variance and that the random forest models were no longer able accurately classify the site locations of the trees (Supplementary Figure S4a) with almost no contribution of the corrected tree size descriptors (Supplementary Figure S4b).
 
 ## Oak decline severity indexes of manually assigned decline statuses
 
-The calculated PDI and DAI scores (see Supplementary information #) derived from MDS of proximity values from unsupervised random forest for all `r nrow(site_adjusted_analysis_suitable_data)` trees for which phenotypic descriptor data was collected is shown in Figure \@ref(fig:decline-index-plot). 
+The calculated PDI and DAI scores (see Supplementary Table S4) derived from MDS of proximity values from unsupervised random forest for all `r nrow(site_adjusted_analysis_suitable_data)` trees for which phenotypic descriptor data was collected is shown in Figure \@ref(fig:decline-index-plot). 
 The healthy trees grouped towards the lower end of the PDI scale and the symptomatic COD and AOD groups towards the higher end.
 There was a significant difference when the PDI values of the healthy (non-symptomatic) and symptomatic (AOD and COD) decline statuses were compared using an independent two sample t-test (`r glue("t({PDI_status_ttest$parameter}) = {signif(PDI_status_ttest$statistic,digits = 3) %>% abs()}, p < 0.001")`) with group means of `r signif(PDI_status_ttest$estimate1,digits = 3)` and `r signif(PDI_status_ttest$estimate2,digits = 3)` for non-symptomatic and symptomatic statuses respectively.
 
@@ -366,7 +367,7 @@ The overall tree size descriptors such as live crown ratio, DBH and crown volume
 These were followed closely by the stem staining and bleeding descriptors such as bleed prevalence. 
 The presence of *A. biguttatus* exit holes had very little contribution to the DAI with exit hole density ranked only `r which(DAI_descriptor_importance$Feature == 'Agrilus exit hole density (m^-2)')`^th^.
 
-Plots of the individual descriptors against the decline indexes are available in Supplementary Figures 5-8. 
+Plots of the individual descriptors against the decline indexes are available in Supplementary Figures S5-S8. 
 A web application is also available at https://jasenfinch.shinyapps.io/decliner/ that allows interactive input of phenotypic descriptor values into the $M_PDI$ and $M_DAI$ models.
 The following sections (3.4, 3.5) identify how the descriptors contribute and interact within the decline index models in specific decline cases. 
 
