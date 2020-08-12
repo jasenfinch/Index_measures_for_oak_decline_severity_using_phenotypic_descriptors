@@ -259,41 +259,59 @@ plan <- drake_plan(
   
   ## create directory for supplementary material
   supplementary_directory = {
-    if (!dir.exists('manuscript/supplementary_material')){
-      dir.create('manuscript/supplementary_material')
+    if (!dir.exists('manuscript/supplementary_materials')){
+      dir.create('manuscript/supplementary_materials')
     }
   },
   
   ## render supplementary figures
   supplememtary_figures = supplementary_directory %>%
     {
-      render(knitr_in('manuscript/supplementary.Rmd'),
+      render(knitr_in('manuscript/supplementary_figures.Rmd'),
              quiet = T,
-             output_dir = 'manuscript/supplementary_material/supplementary_figures.pdf')
+             output_file = 'supplementary_materials/supplementary_figures.pdf')
     },
   
-  ## Supplementary table S1
-  table_S1 =  supplementary_directory %>%
+  ## render supplementary tables S1 & 2
+  supplememtary_tables = supplementary_directory %>%
+    {
+      render(knitr_in('manuscript/supplementary_tables.Rmd'),
+             quiet = T,
+             output_file = 'supplementary_materials/supplementary_tables.pdf')
+    },
+  
+  ## Supplementary table S3
+  table_S3 =  supplementary_directory %>%
     {
       pheno_data_with_additional_descriptors %>%
-        write_csv(file_out('manuscript/supplementary_material/Table_S1.csv'))
+        write_csv(file_out('manuscript/supplementary_materials/Table_S3.csv'))
     },
   
-  ## Supplementary table S2
-  table_S2 =  supplementary_directory %>%
+  
+  
+  ## Supplementary table S4
+  table_S4 =  supplementary_directory %>%
     {
       decline_indexes %>%
-        write_csv(file_out('manuscript/supplementary_material/Table_S2.csv'))
+        write_csv(file_out('manuscript/supplementary_materials/Table_S4.csv'))
     },
   
   ## zip supplementary material
   supplementary_zip = {
     invisible(supplementary_directory)
     invisible(supplememtary_figures)
-    invisible(table_S1)
-    invisible(table_S2)
+    invisible(table_S3)
+    invisible(table_S4)
     
-    zip(file_out('manuscript/supplementary_material.zip'),
-                          list.files('manuscript/supplementary_material',full.names = TRUE))
+    zipfile <- 'manuscript/supplementary_materials.zip'
+    
+    if (file.exists(zipfile)) {
+      unlink(zipfile) 
+    }
+    
+    zip(file_out('manuscript/supplementary_materials.zip'),
+        list.files('manuscript/supplementary_materials',full.names = TRUE) %>%
+          .[!str_detect(.,'.tex')],
+        flags = '-r9Xj')
   }
 )

@@ -1,0 +1,52 @@
+---
+output: 
+  pdf_document:
+    keep_tex: false
+header-includes:
+  - \usepackage{booktabs}
+  - \usepackage{longtable}
+  - \usepackage{array}
+  - \usepackage{multirow}
+  - \usepackage{wrapfig}
+  - \usepackage{float}
+  - \usepackage{colortbl}
+  - \usepackage{pdflscape}
+  - \usepackage{tabu}
+  - \usepackage{threeparttable}
+  - \usepackage{threeparttablex}
+  - \usepackage[normalem]{ulem}
+  - \usepackage{makecell}
+  - \usepackage{xcolor}
+  - \newcommand{\beginsupplement}{\setcounter{table}{0}  \renewcommand{\thetable}{S\arabic{table}} \setcounter{figure}{0} \renewcommand{\thefigure}{S\arabic{figure}}}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      message = FALSE)
+```
+
+\beginsupplement
+
+```{r phenotypic_descriptors,cache=FALSE}
+loadd(phenotypic_descriptor_info)
+
+phenotypic_descriptor_info %>%
+  select(-`Descriptor Type`,-`Data Type`) %>%
+  kable(format = 'latex',
+        booktabs = TRUE,
+        longtable = TRUE,
+        caption = 'Phenotypic descriptors collected for oak decline severity.') %>%
+  kable_styling(latex_options = c('striped','repeat_header'),repeat_header_continued = TRUE) %>%
+  column_spec(1,width = '3cm') %>%
+  column_spec(2:3,width = '6cm') 
+```
+
+```{r descriptor_adjustment_factors}
+loadd(site_adjustment_factors)
+
+site_adjustment_factors %>%
+  mutate_if(is.double,signif,digits = 3) %>%
+  kable(format = 'latex',booktabs = TRUE,caption = 'Descriptor adjustment factors at each site.') %>%
+  collapse_rows(columns = 1,latex_hline = "major", valign = "middle")
+```
