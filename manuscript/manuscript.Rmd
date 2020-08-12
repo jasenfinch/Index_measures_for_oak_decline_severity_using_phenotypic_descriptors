@@ -140,7 +140,9 @@ readd(site_information) %>%
         booktabs = TRUE,
         caption = 'Overview of the surveyed site information.') %>%
   column_spec(3,width = '4cm') %>%
-  column_spec(4,width = '3cm')
+  column_spec(4,width = '3cm') %>%
+  column_spec(5,width = '2cm') %>%
+  column_spec(6,width = '2cm')
 ```
 
 \linespread{2}
@@ -384,6 +386,8 @@ PDI_lime_analysis_table %>%
         booktabs = TRUE,
         escape = FALSE,
         caption = 'LIME results for oak decline severity cases in the PDI index model $M_{PDI}$. Top four important descriptors show. Descriptors ordered by descending absolute weight within each case.') %>%
+  column_spec(1,width = '2cm') %>%
+  column_spec(3,width = '2cm') %>%
   collapse_rows(columns = 1:3, latex_hline = "major", valign = "middle")
 ```
 
@@ -406,7 +410,11 @@ DAI_lime_analysis_table %>%
         booktabs = TRUE,
         escape = FALSE,
         caption = 'LIME results of oak decline type and severity in the DAI index model $M_{DAI}$. Top four important descriptors shown. Descriptors ordered by descending absolute weight within each case.') %>%
-  column_spec(5,width = '4cm') %>%
+  column_spec(1,width = '1.5cm') %>%
+  column_spec(2,width = '1.5cm') %>%
+  column_spec(4,width = '2cm') %>%
+  column_spec(5,width = '3.5cm') %>%
+  column_spec(6,width = '3cm') %>%
   collapse_rows(columns = 1:4, latex_hline = "custom", valign = "middle",custom_latex_hline = 1:4)
 ```
 
