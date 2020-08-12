@@ -62,6 +62,8 @@ loadd(site_rf_margin,
 
 **Keywords:** Acute Oak Decline, Chronic Oak Decline, phenotyping, machine learning, unsupervised learning, random forest, decline spectrum
 
+\newpage
+
 # Abstract {-}
 
 Oak decline is becoming increasingly prevalent along with the need for accurate and quantitative oak health monitoring.
