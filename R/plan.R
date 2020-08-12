@@ -13,10 +13,6 @@ plan <- drake_plan(
   pheno_data_with_additional_descriptors = pheno_data %>%
     calcAdditionalDescriptors(),
   
-  ## export phenotypic data
-  export_pheno_data_with_additional_descriptors = pheno_data_with_additional_descriptors %>%
-    write_csv(file_out('data/exports/pheno_data_with_additional_descriptors.csv')),
-  
   ## make analysis suitable table
   analysis_suitable_data = pheno_data_with_additional_descriptors %>%
     makeAnalysisTable(),
@@ -38,7 +34,7 @@ plan <- drake_plan(
   ## Analyse site differences using supervised random forest
   site_differences_rf = analysis_suitable_data %>%
     stratifiedRF(pheno_data_with_additional_descriptors$Location %>% factor(),
-       n = 100),
+                 n = 100),
   
   ## Calculate margin for site differences
   site_rf_margin = site_differences_rf %>%
@@ -73,7 +69,7 @@ plan <- drake_plan(
   ## re-analyse site differences after site adjustment
   site_differences_rf_post_adjustment = site_adjusted_analysis_suitable_data %>%
     stratifiedRF( pheno_data_with_additional_descriptors$Location %>% factor(),
-       n = 100),
+                  n = 100),
   
   ## Calculate margin for site differences post adjustment
   site_rf_post_adjustment_margin = site_differences_rf_post_adjustment %>%
@@ -97,10 +93,6 @@ plan <- drake_plan(
     calcDIs(invertPDI = TRUE,invertDAI = FALSE) %>%
     bind_cols(site_adjusted_pheno_data %>%
                 select(Location,ID,`Tree No`,Status,ChosenGroup)),
-  
-  ## export decline indexes
-  export_decline_indexes = decline_indexes %>%
-    write_csv(file_out('data/exports/decline_indexes.csv')),
   
   ## plot decline indexes
   decline_indexes_plot = declineIndexesPlot(decline_indexes),
@@ -265,6 +257,43 @@ plan <- drake_plan(
                       quiet = T,
                       output_format = 'all'),
   
-  ## render supplementary
-  supplementary = render(knitr_in('manuscript/supplementary.Rmd'),quiet = T)
+  ## create directory for supplementary material
+  supplementary_directory = {
+    if (!dir.exists('manuscript/supplementary_material')){
+      dir.create('manuscript/supplementary_material')
+    }
+  },
+  
+  ## render supplementary figures
+  supplememtary_figures = supplementary_directory %>%
+    {
+      render(knitr_in('manuscript/supplementary.Rmd'),
+             quiet = T,
+             output_dir = 'manuscript/supplementary_material/supplementary_figures.pdf')
+    },
+  
+  ## Supplementary table S1
+  table_S1 =  supplementary_directory %>%
+    {
+      pheno_data_with_additional_descriptors %>%
+        write_csv(file_out('manuscript/supplementary_material/Table_S1.csv'))
+    },
+  
+  ## Supplementary table S2
+  table_S2 =  supplementary_directory %>%
+    {
+      decline_indexes %>%
+        write_csv(file_out('manuscript/supplementary_material/Table_S2.csv'))
+    },
+  
+  ## zip supplementary material
+  supplementary_zip = {
+    invisible(supplementary_directory)
+    invisible(supplememtary_figures)
+    invisible(table_S1)
+    invisible(table_S2)
+    
+    zip(file_out('manuscript/supplementary_material.zip'),
+                          list.files('manuscript/supplementary_material',full.names = TRUE))
+  }
 )
