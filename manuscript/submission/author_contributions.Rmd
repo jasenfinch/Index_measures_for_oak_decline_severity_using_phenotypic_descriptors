@@ -1,0 +1,11 @@
+---
+output: word_document
+---
+
+### CRediT authorship contribution statement
+
+**Jasen Finch:** Conceptualization, Methodology, Software, Formal analysis, Data Curation, Visualization, Writing - Original Draft, Writing - review & editing.
+**Nathan Brown:** Methodology, Investigation, Data Curation, Writing - Review & Editing. 
+**Manfred Beckmann:** Writing - Review & Editing, Supervision.
+**Sandra Denman:** Methodology, Writing - Review & Editing, Project administration, Funding acquisition.
+**John Draper:** Methodology, Supervision, Project administration.

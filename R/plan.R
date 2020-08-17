@@ -314,5 +314,9 @@ plan <- drake_plan(
         list.files('manuscript/supplementary_materials',full.names = TRUE) %>%
           .[!str_detect(.,'.tex')],
         flags = '-r9Xj')
-  }
+  },
+  
+  ## Author contributions
+  author_contributions = render(knitr_in('manuscript/submission/author_contributions.Rmd'),
+                                quiet = TRUE)
 )
