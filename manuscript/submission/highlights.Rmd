@@ -1,0 +1,15 @@
+---
+output: word_document
+---
+
+### Highlights
+
+* Oak decline syndromes described quantitatively using phenotypic measures.
+
+* Unsupervised machine learning used to develop phenotypic indexes for oak decline.
+
+* The Phenotypic Decline Index measures oak decline severity.
+
+* The Decline Acuteness Index differentiates chronic and acute oak decline syndromes.
+
+* Oak decline indexes have forest monitoring and management applications.

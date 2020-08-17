@@ -318,5 +318,9 @@ plan <- drake_plan(
   
   ## Author contributions
   author_contributions = render(knitr_in('manuscript/submission/author_contributions.Rmd'),
-                                quiet = TRUE)
+                                quiet = TRUE),
+  
+  ## Highlights
+  highlights = render(knitr_in('manuscript/submission/highlights.Rmd'),
+                      quiet = TRUE)
 )
