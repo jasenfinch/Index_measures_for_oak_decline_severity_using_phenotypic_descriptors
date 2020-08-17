@@ -20,7 +20,8 @@ dataCorrections <- function(phenoData){
   phenoData$`Crown transparency (%)`[phenoData$Location %in% c('Site 1','Site 6')] <- 100 - phenoData$`Crown transparency (%)`[phenoData$Location %in% c('Site 1','Site 6')]
   
   phenoData <- phenoData %>%
-    correctStatuses()
+    correctStatuses() %>%
+    rename(`Callused wound` = `Calloused wound`,`Callused wound length (mm)` = `Calloused wound length (mm)`)
   
   return(phenoData)
 }

@@ -42,8 +42,8 @@ descriptorInfo <- function(analysisTable){
     'Active bleed length (mm)','Average active bleed length in the 3m section from the base of the tree.','mm',
     'Black staining','Number of black stains in the 3m section from the base of the tree. Inactive bleeds.','fequency',
     'Black staining length (mm)','Average black stain length in the 3m section from the base of the tree.','mm',
-    'Calloused wound','Number of callused wounds in the 3m section from the base of the tree. Scars.','frequency',
-    'Calloused wound length (mm)','Average callouse wound length in the 3m section from the base of the tree.','mm',
+    'Callused wound','Number of callused wounds in the 3m section from the base of the tree. Scars.','frequency',
+    'Callused wound length (mm)','Average callouse wound length in the 3m section from the base of the tree.','mm',
   ) %>%
     mutate(`Descriptor Type` = c(rep('tree size',5),
                                  rep('crown',13),
