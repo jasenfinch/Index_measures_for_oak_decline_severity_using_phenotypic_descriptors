@@ -66,11 +66,23 @@ loadd(site_rf_margin,
 
 # Abstract {-}
 
-Oak decline is becoming increasingly prevalent along with the need for accurate and quantitative oak health monitoring.
-The Phenotypic Decline Index (PDI) and the Decline Acuteness Index (DAI) were developed to quantitatively describe and differentiate acute and chronic oak decline severity using a multitude of easily measurable phenotypic descriptors.
-Measured phenotypic descriptors included aspects of tree shape and size, crown condition and the presence of biotic agents.
-The decline indexes were derived using proximity values from unsupervised random forest of the phenotypic descriptors, multidimensional scaling (MDS) and min-max scaling.
-These indexes give simple but sensitive measures of tree decline severity allowing easy comparisons of oak trees both spatially and temporally, providing a potentially useful tool for forest monitoring and management.
+Oak decline syndromes such as Acute Oak Decline (AOD) and Chronic Oak Decline (COD) are becoming increasingly prevalent and with this comes the need for more quantitative and sensitive visual oak health monitoring. 
+
+Phenotyping protocols were developed to specifically measure oak decline severity and were based on a multitude of simple to measure phenotypic descriptors. 
+There were a total of 36 phenotypic measurements describing oak decline status which included aspects of tree size, crown condition, the presence of biotic agents and a number of derived composite descriptors. 
+
+Phenotypic measurements were collected from a total of 174 *Quercus robur*, surveyed from 9 sites across England and included healthy, AOD, COD and AOD trees in remission.
+Using these data, the Phenotypic Decline Index (PDI) and the Decline Acuteness Index (DAI) were developed to quantitatively describe and differentiate the acute and chronic oak decline severity spectrum. 
+These decline indexes were derived from unsupervised random forest machine learning models, trained using the collected phenotypic data.
+
+The suitability of the decline indexes for describing decline severity and type were assessed by comparing decline index scores to manual decline status classifications along with an assessment of descriptor importance and contribution to the decline index models.
+Crown condition and trees size descriptors such as composite crown volume contributed positively to the PDI.
+Trees with smaller crowns in poor condition had greater PDI values. 
+Tree stature and the presence of stem bleeding contributed highly to the DAI, allowing differentiation between trees with AOD and COD syndromes. 
+AOD trees had relatively larger stature and the presence of stem bleeding where as COD trees had small stature and stem bleeding absent.  
+
+The oak decline indexes are simple but sensitive measures of tree decline severity and allow easy comparisons of oak trees both spatially and temporally. 
+These have the potential to provide useful tools for forest monitoring and management as well application to remote sensing and omics research.
 
 \newpage
 
