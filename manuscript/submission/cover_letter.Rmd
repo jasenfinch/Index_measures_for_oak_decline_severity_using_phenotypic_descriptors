@@ -1,0 +1,22 @@
+---
+output: word_document
+---
+
+Dear Editor
+
+Please find attached our manuscript entitled **“Index measures for oak decline severity using phenotypic descriptors” ** to be considered for publication in Forest Ecology and Management. 
+I am submitting this on behalf of my co-authors who are happy for me to act as corresponding author for this work.
+
+This manuscript outlines the development of two indexes for measuring the visual health and severity of oak decline in *Quercus robur* and to quantitatively differentiate Acute Oak Decline and Chronic Oak Decline syndromes.
+The methodology for deriving these indexes is based on an unsupervised machine learning approach and enables the objective comparison of visual oak health over large geographical areas and over the course of numerous growing seasons. 
+
+This work is a progression of work on Acute Oak Decline symptom expression by my co-authors Nathan Brown and Sandra Denman, previously published in this journal.
+We believe it will provide benefit to both remote sensing and omics based approaches for forest health monitoring and have utility as a decision making aid for forest management strategies.
+It is for this reason that we feel that Forest Ecology and Management is the ideal journal for presenting this novel methodology.
+Further work is already underway to build upon the models presented in the manuscript as well as the development of web based tools to improve their accessibility and use in the forestry community.  
+
+We thank you for your time in considering this submission. 
+
+Best wishes,
+
+Jasen Finch

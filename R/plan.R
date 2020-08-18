@@ -322,5 +322,9 @@ plan <- drake_plan(
   
   ## Highlights
   highlights = render(knitr_in('manuscript/submission/highlights.Rmd'),
-                      quiet = TRUE)
+                      quiet = TRUE),
+  
+  ## Cover letter
+  cover_letter = render(knitr_in('manuscript/submission/cover_letter.Rmd'),
+                        quiet = TRUE)
 )
