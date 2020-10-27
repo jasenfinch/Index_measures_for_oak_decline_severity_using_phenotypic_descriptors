@@ -3,6 +3,7 @@ output:
   bookdown::pdf_document2:
     keep_tex: true
     toc: false
+    citation_package: natbib
 fontsize: 12pt
 header-includes:
   - \usepackage{booktabs}
@@ -23,6 +24,8 @@ header-includes:
   - \linespread{2}
   - \linenumbers
 bibliography: references.bib
+biblio-style: abbrvnat
+natbiboptions: round
 ---
 
 ```{r setup, include=FALSE}
@@ -66,7 +69,7 @@ loadd(site_rf_margin,
 
 # Abstract {-}
 
-Oak decline syndromes such as Acute Oak Decline (AOD) and Chronic Oak Decline (COD) are becoming increasingly prevalent and with this comes the need for more quantitative and sensitive visual oak health monitoring. 
+Oak decline syndromes such as Acute Oak Decline (AOD) and Chronic Oak Decline (COD) are becoming increasingly prevalent and with this comes the need for more quantitative, sensitive and standardised visual oak health monitoring. 
 
 Phenotyping protocols were developed to specifically measure oak decline severity and were based on a multitude of simple to measure phenotypic descriptors. 
 There were a total of 36 phenotypic measurements describing oak decline status which included aspects of tree size, crown condition, the presence of biotic agents and a number of derived composite descriptors. 
@@ -89,7 +92,7 @@ These have the potential to provide useful tools for forest monitoring and manag
 # Introduction {#introduction}
 
 Trees and forests across the globe face threats from a changing climate.
-Notably warming and an increase in drought episodes affect the health status of individual trees, causing vegetation changes at the landscape scale [@choat2012; @millar2015; @allen2015]. 
+Notably warming and an increase in drought episodes can adversely affect the health status of individual trees, causing vegetation changes at the landscape scale [@choat2012; @millar2015; @allen2015]. 
 Within this context, biotic agents (pests and diseases) can flourish and often drive mortality [@kautz2017; @jactel2012]. 
 Monitoring vegetation changes and understanding the underlying processes affecting tree health are important first steps to predicting the scale and extent of these threats [@hartmann2018] and plan future policies for planting and mitigation efforts [@bradford2017]. 
 Current ‘omics and remote sensing approaches provide powerful tools to document and understand these changes across multiple scales (from cellular to tree to landscape scales), but an important prerequisite is the ability to accurately describe tree health status, so that even subtle changes can be documented [@dungey2018; @hornero2020]. 
@@ -98,7 +101,7 @@ Phenotyping, documenting the physical traits of an individual or group, is thus 
 Oak decline is expected to become increasingly prevalent in the UK and across Europe with the onset of climate change [@sturrock2011; @petr2014; @brown2018].
 Oak declines are complex syndromes that are facilitated by a variety of both abiotic and biotic factors.
 Abiotic factors can include both long-term predisposing and one-off inciting factors.
-Biotic agents can include insect infestation such as the larvae of bark boring beetle *Agrilus biguttatus* or bacterial stem bleeds associated with Acute Oak Decline (AOD) [@brown2017a; @denman2014], as well as a variety of fungal root pathogens associated Chronic Oak Decline (COD) [@denman2017].
+Biotic agents can include insect infestation such as the larvae of the bark boring beetle *Agrilus biguttatus* or bacterial stem bleeds associated with Acute Oak Decline (AOD) [@brown2017a; @denman2014], as well as a variety of fungal root pathogens associated Chronic Oak Decline (COD) [@denman2017].
 The bacterial stem bleeds associated with AOD initially start as active dark weeping patches.
 Over time, as lesion development continues beneath the bark, external cracks develop between the bark plates that are surrounded by blackening stains.
 Evidence of stem tissue repair can be seen as lignified-callus-like tissue that, when extensive, can fully occlude the internal lesion, appearing as exposed rolls of callused tissue on the exterior [@denman2014].
