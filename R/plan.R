@@ -213,7 +213,7 @@ plan <- drake_plan(
   DAI_descriptor_importance = descriptorImportance(DAI_rf_model),
   
   ## create descriptor contribution plots
-  descriptor_contribution_plots = descriptorImportancePlots(PDI_descriptor_importance,DAI_descriptor_importance),
+  descriptor_contribution_plot = descriptorImportancePlots(PDI_descriptor_importance,DAI_descriptor_importance),
   
   ## extract PDI example trees
   PDI_example_cases = PDIexampleCases(site_adjusted_analysis_suitable_data,decline_indexes),

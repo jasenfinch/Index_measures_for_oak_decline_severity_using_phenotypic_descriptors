@@ -370,10 +370,10 @@ Other tree size related descriptors such as bleed prevalence, live crown ratio a
 
 \linespread{1}
 
-```{r descriptor-contributions, fig.height = 6,fig.cap = 'Descriptor importance scores from the random forest models $M_{PDI}$ and $M_{DAI}$ for relative contributions to the decline index measures. Descriptors are ordered by descending percentage increase in mean squared error (MSE) and therefore from highest contribution to lowest contribution to the given decline index.'}
-loadd(descriptor_contribution_plots)
+```{r descriptor-contributions, fig.height = 6,fig.width=8,fig.cap = 'Descriptor importance scores from the random forest models $M_{PDI}$ and $M_{DAI}$ for relative contributions to the decline index measures. Descriptors are ordered by descending percentage increase in mean squared error (MSE) and therefore from highest contribution to lowest contribution to the given decline index.'}
+loadd(descriptor_contribution_plot)
 
-descriptor_contribution_plots$a + descriptor_contribution_plots$b
+descriptor_contribution_plot
 ```
 
 \linespread{2}
