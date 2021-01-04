@@ -43,7 +43,7 @@ loadd(descriptor_scatter_plots)
 descriptor_scatter_plots$PDI_numeric
 ```
 
-```{r PDIfactor,fig.height=8,fig.cap='Categorical descriptors plotted against the PDI.'}
+```{r PDIfactor,fig.height=9,fig.cap='PDI box plots of the categorical descriptors.'}
 descriptor_scatter_plots$PDI_factor
 ```
 
@@ -51,6 +51,6 @@ descriptor_scatter_plots$PDI_factor
 descriptor_scatter_plots$DAI_numeric
 ```
 
-```{r DAIfactor,fig.height=8,fig.cap='Categorical descriptors plotted against the DAI.'}
+```{r DAIfactor,fig.height=9,fig.cap='DAI box plots of the categorical descriptors.'}
 descriptor_scatter_plots$DAI_factor
 ```
