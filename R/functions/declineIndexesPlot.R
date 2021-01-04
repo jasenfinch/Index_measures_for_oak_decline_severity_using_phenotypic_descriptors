@@ -12,6 +12,9 @@ declineIndexesPlot <- function(decline_indexes){
     theme_bw() +
     theme(legend.position = 'bottom',
           axis.title = element_text(face = 'bold'),
-          legend.title = element_text(face = 'bold')) +
+          legend.title = element_text(face = 'bold'),
+          panel.border = element_blank(),
+          axis.line = element_line(),
+          panel.grid = element_blank()) +
     labs(fill = 'Assigned Decline Status')
 }
