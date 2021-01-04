@@ -16,7 +16,7 @@ descriptorImportancePlots <- function(PDI_descriptor_importance,DAI_descriptor_i
         }
       
       ggplot(dat,aes(y = Feature,x = `%IncMSE`)) +
-        geom_segment(aes(y = rev_Rank,yend = rev_Rank,x = -3,xend = `%IncMSE`)) +
+        geom_segment(aes(y = rev_Rank,yend = rev_Rank,x = -5,xend = `%IncMSE`)) +
         geom_point(fill = ptol_pal()(1),shape = 21,size = 2) +
         theme_bw() +
         theme(plot.title = element_text(face = 'bold',hjust = 0.5),
@@ -50,7 +50,7 @@ descriptorImportancePlots <- function(PDI_descriptor_importance,DAI_descriptor_i
         }
       
       ggplot(dat,aes(y = Feature,x = `%IncMSE`)) +
-        geom_segment(aes(y = rev_Rank,yend = rev_Rank,x = -3,xend = `%IncMSE`)) +
+        geom_segment(aes(y = rev_Rank,yend = rev_Rank,x = -5,xend = `%IncMSE`)) +
         geom_point(fill = ptol_pal()(1),shape = 21,size = 2) +
         theme_bw() +
         theme(plot.title = element_text(face = 'bold',hjust = 0.5),
