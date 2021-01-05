@@ -3,7 +3,6 @@ output:
   bookdown::pdf_document2:
     keep_tex: true
     toc: false
-    citation_package: natbib
 fontsize: 12pt
 header-includes:
   - \usepackage{booktabs}
@@ -24,8 +23,7 @@ header-includes:
   - \linespread{2}
   - \linenumbers
 bibliography: references.bib
-biblio-style: abbrvnat
-natbiboptions: round
+csl: forest-ecology-and-management.csl
 ---
 
 ```{r setup, include=FALSE}
