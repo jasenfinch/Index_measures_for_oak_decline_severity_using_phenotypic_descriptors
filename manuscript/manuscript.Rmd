@@ -3,6 +3,7 @@ output:
   bookdown::pdf_document2:
     keep_tex: true
     toc: false
+    citation_package: natbib
 fontsize: 12pt
 header-includes:
   - \usepackage{booktabs}
@@ -23,7 +24,8 @@ header-includes:
   - \linespread{2}
   - \linenumbers
 bibliography: references.bib
-csl: forest-ecology-and-management.csl
+biblio-style: elsarticle-harv
+# csl: forest-ecology-and-management.csl
 ---
 
 ```{r setup, include=FALSE}
@@ -574,7 +576,7 @@ This would only be viable so long as comparable phenotyping protocols are used.
 Alternatively, study specific decline index values could be generated using the unsupervised random forest approach.
 
 By defining decline severity objectively across a spectrum, these decline indexes provide greatly enhanced sensitivity over previous categorical decline status assignments.
-This approach could enhance integration with large scale data such as those from genome wide association studies or remote sensing [@stocks2019; @evans2012]. These index measures allow sensitive comparisons of visual health to be made for the same tree between years as well as comparisons of trees between different locations. 
+This approach could enhance integration with large scale data such as those from genome wide association studies or for providing ground-truth data for remote sensing [@stocks2019; @evans2012]. These index measures allow sensitive comparisons of visual health to be made for the same tree between years as well as comparisons of trees between different locations. 
 
 Scaling this technique to enable computation of decline indexes for any tree sampled in the UK would require index models trained using a substantially larger data set that incorporates the full descriptive diversity of oak health in the population as whole.
 Scaling to this level would also require an appropriate method of tree size correction that could be applied on an individual tree basis.
