@@ -1,7 +1,7 @@
 
-descriptorScatterPlots <- function(site_corrected_analysis_suitable_data,decline_indexes){
+descriptorScatterPlots <- function(site_adjusted_analysis_suitable_data,decline_indexes){
   list(
-    PDI_numeric = site_corrected_analysis_suitable_data %>%
+    PDI_numeric = site_adjusted_analysis_suitable_data %>%
       rowid_to_column(var = 'ID') %>%
       bind_cols(select(decline_indexes,PDI)) %>%
       select_if(is.numeric) %>%
@@ -20,7 +20,7 @@ descriptorScatterPlots <- function(site_corrected_analysis_suitable_data,decline
             strip.text = ggtext::element_markdown(),
             panel.grid = element_blank()),
     
-    PDI_factor =  site_corrected_analysis_suitable_data %>%
+    PDI_factor =  site_adjusted_analysis_suitable_data %>%
       select_if(is.factor) %>%
       rowid_to_column(var = 'ID') %>%
       bind_cols(select(decline_indexes,PDI)) %>%
@@ -28,17 +28,19 @@ descriptorScatterPlots <- function(site_corrected_analysis_suitable_data,decline
       mutate(Descriptor = factor(Descriptor) %>%
                fct_recode(`Small circular shaped<br>exit holes` = "Small circular shaped exit holes")) %>%
       ggplot(aes(x = Value,y = PDI)) +
-      geom_point(shape = 21,fill = ptol_pal()(1)) +
-      theme_bw() +
+      geom_boxplot(outlier.shape = NA) +
+      geom_point(colour = ptol_pal()(1),alpha = 0.5) +
+      theme_bw(base_size = 10) +
       facet_wrap(~Descriptor,scales = 'free',ncol = 3) +
       labs(title = 'PDI versus categorical descriptors',
            x = 'Descriptor value') +
       theme(plot.title = element_text(face = 'bold'),
             axis.title = element_text(face = 'bold'),
             strip.text = element_markdown(),
-            panel.grid = element_blank()),
+            panel.grid = element_blank()) +
+      coord_flip(),
     
-    DAI_numeric = site_corrected_analysis_suitable_data %>%
+    DAI_numeric = site_adjusted_analysis_suitable_data %>%
       rowid_to_column(var = 'ID') %>%
       bind_cols(select(decline_indexes,DAI)) %>%
       select_if(is.numeric) %>%
@@ -57,7 +59,7 @@ descriptorScatterPlots <- function(site_corrected_analysis_suitable_data,decline
             strip.text = element_markdown(),
             panel.grid = element_blank()),
     
-    DAI_factor = site_corrected_analysis_suitable_data %>%
+    DAI_factor = site_adjusted_analysis_suitable_data %>%
       select_if(is.factor) %>%
       rowid_to_column(var = 'ID') %>%
       bind_cols(select(decline_indexes,DAI)) %>%
@@ -65,14 +67,16 @@ descriptorScatterPlots <- function(site_corrected_analysis_suitable_data,decline
       mutate(Descriptor = factor(Descriptor) %>%
                fct_recode(`Small circular shaped<br>exit holes` = "Small circular shaped exit holes")) %>%
       ggplot(aes(x = Value,y = DAI)) +
-      geom_point(shape = 21,fill = ptol_pal()(1)) +
-      theme_bw() +
+      geom_boxplot(outlier.shape = NA) +
+      geom_point(colour = ptol_pal()(1),alpha = 0.5) +
+      theme_bw(base_size = 10) +
       facet_wrap(~Descriptor,scales = 'free',ncol = 3) +
       labs(title = 'DAI versus categorical descriptors',
            x = 'Descriptor value') +
       theme(plot.title = element_text(face = 'bold'),
             axis.title = element_text(face = 'bold'),
             strip.text = element_markdown(),
-            panel.grid = element_blank())
+            panel.grid = element_blank()) +
+      coord_flip()
   )
 }
