@@ -25,7 +25,6 @@ header-includes:
   - \linenumbers
 bibliography: references.bib
 biblio-style: elsarticle-harv
-# csl: forest-ecology-and-management.csl
 ---
 
 ```{r setup, include=FALSE}
