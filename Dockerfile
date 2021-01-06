@@ -3,6 +3,7 @@ FROM rocker/verse:4.0.0
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update
+RUN apt-get install texlive-full
 
 RUN Rscript -e "install.packages(c('renv'), repos = c(CRAN = 'https://cloud.r-project.org'))"
 
