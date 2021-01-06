@@ -3,7 +3,9 @@ FROM rocker/verse:4.0.0
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update
-RUN apt-get install -y texlive-full
+
+RUN tlmgr update --self
+RUN tlmgr install elsarticle
 
 RUN Rscript -e "install.packages(c('renv'), repos = c(CRAN = 'https://cloud.r-project.org'))"
 
